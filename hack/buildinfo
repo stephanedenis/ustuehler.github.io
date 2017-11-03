@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -o errexit
+
+cd "$(dirname "$0")/.."
+
+now=$(TZ=UTC date '+%Y%m%d%H%M%S')
+
+cat >'hack/content/BuildInfo.tid' <<EOS
+title: BuildInfo
+caption: Build Information
+created: $now
+
+This edition of TiddlyWiki was compiled on <\$view field="created" format="date" template="DDD, MMM DDth YYYY at hh:0mm"/>.
+EOS
+
+exit 0

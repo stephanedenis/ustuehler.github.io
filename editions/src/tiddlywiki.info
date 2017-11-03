@@ -1,0 +1,9 @@
+{
+	"build": {
+		"index": [
+			"--rendertiddler","$:/core/save/all","src.html","text/plain"]
+	},
+	"config": {
+		"retain-original-tiddler-path": true
+	}
+}

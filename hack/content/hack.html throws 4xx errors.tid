@@ -1,0 +1,7 @@
+created: 20171104025200774
+modified: 20171104032714226
+tags: SolvedIssues
+title: hack.html throws 4xx errors
+type: text/vnd.tiddlywiki
+
+The https://ustuehler.github.io/hack.html URL should load without errors. This can be achieved by disabling the tiddlyweb plugin.

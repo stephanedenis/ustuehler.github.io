@@ -1,0 +1,15 @@
+audio-url: http://94.176.104.15:8128/stream/1/
+created: 20171017150349582
+creator: CMDR soda314
+modified: 20171104050148574
+modifier: CMDR soda314
+tags: Templates/View/Partial
+template: Templates/View/Partial
+title: Templates/Audio
+type: text/vnd.tiddlywiki
+
+''{{!!title}}'' is an audio-only stream. Hit the play button to start the playback. Close this tiddler to force the playback to stop.
+
+<audio src={{!!audio-url}} controls="controls">
+Your browser does not support the <code>audio</code> element.
+</audio>

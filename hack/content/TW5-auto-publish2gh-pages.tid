@@ -1,0 +1,10 @@
+created: 20171104003747492
+link: <a href={{!!url}}>{{!!title}}</a>
+list: 
+modified: 20171104081717019
+tags: SimilarProjects PublicSite
+title: TW5-auto-publish2gh-pages
+type: text/vnd.tiddlywiki
+url: https://github.com/danielo515/TW5-auto-publish2gh-pages
+
+''{{!!title}}'' is a similar project to this one.

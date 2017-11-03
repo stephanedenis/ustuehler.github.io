@@ -1,0 +1,19 @@
+bag: default
+revision: 0
+type: text/vnd.tiddlywiki
+title: $:/plugins/ustuehler/github-api/usage
+span: 3
+modified: Sat Nov 04 2017 13:09:33 GMT+0100 (CET)
+github-repo: ustuehler.github.io
+github-path: test.tid
+github-owner: ustuehler
+created: Sat Nov 04 2017 09:23:17 GMT+0100 (CET)
+
+|<$link to="$:/status/GitHub/UserName">~GitHub username:</$link> |<$edit-text tiddler="$:/status/GitHub/UserName" default="" tag="input"/> |
+|<$link to="$:/status/GitHub/Password">~GitHub password:</$link> |<$edit-text tiddler="$:/status/GitHub/Password" default="" tag="input" type="password"/> {{$:/status/GitHub/Password||$:/plugins/danielo/encryptTiddler/crypt-button}} |
+<$github>
+<$button class="mdc-button">
+<$action-githubwritefile owner={{!!github-owner}} repo={{!!github-repo}} path={{!!github-path}}/>
+Write Test File
+</$button>
+</$github>

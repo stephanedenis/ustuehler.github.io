@@ -1,0 +1,28 @@
+caption: Publishing Flow
+created: 20171104004643491
+list: 
+modified: 20171104015804626
+span: 5
+tags: PublicSite
+title: PublishingFlow
+type: text/vnd.tiddlywiki
+
+The following sequence of commands will set up your local workspace.
+
+```
+git clone git@github.com:ustuehler/ustuehler.github.io
+cd ustuehler.github.io
+hack/setup
+```
+
+The next command watches `hack/content` and runs the gulp `build`, `commit` and `push` tasks whenever relevant content files are touched. It also restarts the local TiddlyWiki server, which can cause some hick-ups.
+
+```
+hack/watch
+```
+
+Now open http://localhost:8080/ in your browser and start making changes. Everything should be published in the background, automatically.
+
+''Trouble Shooting''
+
+If your changes don't appear on the PublicSite, then you may experience the issue that I'm currently having with nodemon, where it doesn't seem to pick up any changes.  Switch to the terminal where you've started `hack/watch` and type `rs` followed by a carriage return.

@@ -1,0 +1,11 @@
+color: #bbb
+created: 20171104003944734
+icon: $:/core/images/advanced-search-button
+modified: 20171104004001992
+span: 5
+title: $:/AdvancedSearch
+type: text/vnd.tiddlywiki
+
+<div class="tc-advanced-search">
+<<tabs "[all[shadows+tiddlers]tag[$:/tags/AdvancedSearch]!has[draft.of]]" "$:/core/ui/AdvancedSearch/System">>
+</div>

@@ -1,0 +1,9 @@
+created: 20171104051012157
+list-item-icon: search
+modified: 20171104084853680
+span: 3
+tags: $:/tags/Drawer $:/tags/AdvancedSearch
+title: System Tiddlers
+type: text/vnd.tiddlywiki
+
+{{$:/core/ui/AdvancedSearch/System}}

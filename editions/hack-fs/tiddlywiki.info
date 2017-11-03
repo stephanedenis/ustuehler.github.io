@@ -1,0 +1,26 @@
+{
+    "description": "Local hacking edition",
+    "plugins": [
+	"tiddlywiki/filesystem",
+        "tiddlywiki/highlight",
+	"ustuehler/github-api",
+	"ustuehler/caption",
+	"ustuehler/mdc-web-cdn",
+	"ustuehler/mdc",
+	"ustuehler/muuri"
+    ],
+    "themes": [
+	"ustuehler/material"
+    ],
+    "includeWikis": {
+	"path": "../public"
+    },
+    "build": {
+        "index": [
+	    "--output",".",
+	    "--rendertiddler","$:/core/save/all","hack.html","text/plain"]
+    },
+    "config": {
+	"retain-original-tiddler-path": true
+    }
+}

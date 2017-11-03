@@ -1,0 +1,35 @@
+language: node_js
+node_js:
+  - "8"
+
+branches:
+  except:
+    - master
+
+script:
+  # Prevent loops
+  - test X"`git log -1 --format='%ae'`" != X"deploy@travis-ci.org"
+
+  - git pull --tags
+  - npm run build
+  #- npm run test
+  - grep -v ^/index.html .gitignore >.gitignore.tmp
+  - mv .gitignore.tmp .gitignore
+
+cache:
+  directories:
+    - node_modules
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  # GitHub user pages must be published from master branch :(
+  target_branch: master
+  on:
+    branch: hack
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always

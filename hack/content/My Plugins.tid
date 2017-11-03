@@ -1,0 +1,14 @@
+created: 20171104065505356
+link: [[My Plugins]]
+list: $:/plugins/ustuehler/caption $:/plugins/ustuehler/github-api
+list-item-icon: extension
+modified: 20171104084444285
+tags: $:/tags/Drawer
+title: My Plugins
+type: text/vnd.tiddlywiki
+
+<ul>
+<$list filter="[list[]]">
+<li><$link>{{!!description}}</$link></li>
+</$list>
+</ul>

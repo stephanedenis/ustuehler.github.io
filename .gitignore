@@ -1,0 +1,10 @@
+.*.sw?
+
+/editions/public/plugins/
+/editions/public/themes/
+
+/node_modules/
+
+/hack/content/-*
+/hack/content/$__StoryList*.tid
+/hack/content/Draft of *.tid

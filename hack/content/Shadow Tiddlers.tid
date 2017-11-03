@@ -1,0 +1,9 @@
+created: 20171104051037540
+list-item-icon: search
+modified: 20171104084839883
+span: 3
+tags: $:/tags/Drawer $:/tags/AdvancedSearch
+title: Shadow Tiddlers
+type: text/vnd.tiddlywiki
+
+{{$:/core/ui/AdvancedSearch/Shadows}}

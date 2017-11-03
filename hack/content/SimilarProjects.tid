@@ -1,0 +1,18 @@
+caption: Similar Projects
+created: 20171104081510029
+creator: ustuehler
+link: SimilarProjects
+modified: 20171104081849775
+modifier: ustuehler
+span: 4
+tags: [[TiddlyWiki Links]]
+title: SimilarProjects
+type: text/vnd.tiddlywiki
+
+<ul>
+<$list filter="[list[]] [tag<currentTiddler>!has[draft.of]]">
+<li>
+<$transclude field="link" mode="inline"/><br>
+</li>
+</$list>
+</ul>

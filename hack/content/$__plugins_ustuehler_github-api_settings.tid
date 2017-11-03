@@ -1,0 +1,9 @@
+created: 20171104141409210
+modified: 20171104160238519
+span: 3
+title: $:/plugins/ustuehler/github-api/settings
+type: text/vnd.tiddlywiki
+
+|<$link to="$:/plugins/ustuehler/github-api/settings/username">~GitHub username:</$link> |<$edit-text tiddler="$:/plugins/ustuehler/github-api/settings/username" default="" tag="input"/> |
+|<$link to="$:/plugins/ustuehler/github-api/settings/password">~GitHub password:</$link> |<$edit-text tiddler="$:/plugins/ustuehler/github-api/settings/password" default="" tag="input" type="password"/> {{$:/plugins/ustuehler/github-api/settings/password||$:/plugins/danielo/encryptTiddler/crypt-button}} |
+|<$link to="$:/plugins/ustuehler/github-api/settings/branch">Default branch:</$link> |<$edit-text tiddler="$:/plugins/ustuehler/github-api/settings/branch" default="" tag="input"/> |

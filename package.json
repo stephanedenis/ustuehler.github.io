@@ -1,0 +1,58 @@
+{
+  "name": "ustuehler.github.io",
+  "version": "1.0.0",
+  "description": "Personal GitHub Pages Site",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ustuehler/ustuehler.github.io.git"
+  },
+  "keywords": [
+    "tiddlywiki",
+    "blog"
+  ],
+  "author": "Uwe Stuehler",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ustuehler/ustuehler.github.io/issues"
+  },
+  "homepage": "https://github.com/ustuehler/ustuehler.github.io#readme",
+  "dependencies": {
+    "github": "^12.0.1",
+    "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
+    "gulp-clean": "^0.3.2",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-shell": "^0.6.3",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.3.11",
+    "hubfs.js": "^1.0.0",
+    "nodemon": "^1.12.1",
+    "pump": "^1.0.2",
+    "run-sequence": "^2.2.0",
+    "tiddlywiki": "^5.1.14",
+    "tw5-material": "git+https://git@github.com/ustuehler/tw5-material.git"
+  },
+  "nodemonConfig": {
+    "verbose": true,
+    "ext": "js,tid,info,multids,json",
+    "ignore": [
+      "editions/public/output",
+      "editions/public/themes",
+      "editions/public/plugins",
+      "editions/hack/tiddlers",
+      "editions/hack-fs/*",
+      "hack/content/-*",
+      "hack/content/$__StoryList*.tid",
+      "hack/content/Draft*",
+      "hack/content/BuildInfo.tid"
+    ],
+    "delay": "1000"
+  }
+}
