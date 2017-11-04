@@ -83,7 +83,7 @@ make_edition_buildinfo_tid() {
       echo "Updating $out."
       echo "$new"
       echo "---"
-      cat "$out"
+      cat "$out" | tiddler_text
     fi
   else
     echo "Creating $out."
