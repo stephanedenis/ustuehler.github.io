@@ -1,5 +1,5 @@
-created: 20171104190409
-modified: 20171104190409
+created: 20171104190418
+modified: 20171104190418
 title: $:/BuildInfo
 
-This edition of TiddlyWiki was compiled on <$view field="created" format="date" template="DDD, MMM DDth YYYY at hh:0mm"/>.\n
+This edition of TiddlyWiki was compiled on <$view field="created" format="date" template="DDD, MMM DDth YYYY at hh:0mm"/>.\012
