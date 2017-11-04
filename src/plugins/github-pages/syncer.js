@@ -1,8 +1,11 @@
-/*!
-
+/*\
 title: $:/plugins/ustuehler/github-pages/syncer.js
-type: text/javascript
+type: application/javascript
 module-type: utils
+
+Story view that cooperates with the Muuri grid layout engine
+
+\*/
 
 !*/
 (function() {
