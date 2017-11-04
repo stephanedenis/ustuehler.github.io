@@ -7,10 +7,10 @@ module-type: utils
 (function() {
 'use strict';
 
-var enabled = false;
+var syncEnabled = false;
 
 exports.setGithubPagesSync = function(enabled) {
-  this.enabled = enabled;
+  syncEnabled = enabled;
 };
 
 })();
