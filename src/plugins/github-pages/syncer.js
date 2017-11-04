@@ -31,8 +31,7 @@ exports.setGitHubPagesSync = function(enabled) {
 function handleChanges(changes) {
   var syncFilter = $tw.wiki.getTiddlerText("$:/config/SyncFilter")
   var input = $tw.utils.stringifyList(changes.keys());
-
-  $tw.wiki.filterTiddlers(input + ' +' + syncFilter)
+  var filtered = $tw.wiki.filterTiddlers(input + ' +' + syncFilter)
 
   console.log('GitHubPagesSync noticed some changes:');
   console.log(changes);
