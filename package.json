@@ -4,7 +4,7 @@
   "description": "Personal GitHub Pages Site",
   "main": "index.js",
   "scripts": {
-    "build": "gulp build",
+    "build": "gulp deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

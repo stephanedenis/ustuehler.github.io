@@ -61,6 +61,10 @@ gulp.task("build", [], function (cb) {
   runSequence('clean', ['buildinfo', 'tiddlers', 'javascript', 'index.html'], cb)
 });
 
+gulp.task("deploy", [], function (cb) {
+  runSequence('clean', ['build', 'hack.html'], cb)
+});
+
 // ref: https://stackoverflow.com/questions/28048029/running-a-command-with-gulp-to-start-node-js-server
 gulp.task('server', function() {
 	nodemon({
