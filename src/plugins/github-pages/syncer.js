@@ -41,6 +41,7 @@ function handleChanges(changes) {
 
   var queue = $tw.utils.stringifyList(syncQueue);
   queue = queue + ' ' + output;
+
   $tw.wiki.setText("$:/status/GitHub/SyncQueue","list",undefined,queue);
 
   console.log("The GitHub Pages sync queue is now:");
