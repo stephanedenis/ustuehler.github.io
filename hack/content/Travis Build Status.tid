@@ -1,8 +1,9 @@
 created: 20171104131339557
-modified: 20171104150527273
+modified: 20171104162049623
 span: 3
 tags: 
 title: Travis Build Status
 type: text/vnd.tiddlywiki
 
-[img[https://travis-ci.org/ustuehler/ustuehler.github.io.svg?branch=master]]
+|!Branch |!Status |
+|head |[img[https://travis-ci.org/ustuehler/ustuehler.github.io.svg?branch=hack]] |
