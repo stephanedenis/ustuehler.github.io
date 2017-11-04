@@ -39,7 +39,7 @@ function handleChanges(changes) {
   var pagesFilter = $tw.wiki.getTiddlerText("$:/config/GitHubPages/SyncFilter");
 
   var input = $tw.utils.stringifyList(changedTiddlers);
-  var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter + ' +' + pagesFilter);
+  var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter + ' ' + pagesFilter);
 
   if (output.length < 1) {
     console.log("GitHub Pages sync ignored changes in:");
