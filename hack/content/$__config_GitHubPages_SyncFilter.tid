@@ -1,7 +1,6 @@
 created: 20171104225939718
-modified: 20171104230030725
-tags: GitHubPagesSyncQueue
-title: GitHubPagesSyncFilter
+modified: 20171104230212128
+title: $:/config/GitHubPages/SyncFilter
 type: text/vnd.tiddlywiki
 
 -[prefix[$:/StoryList]] -[prefix[Draft of ]]
