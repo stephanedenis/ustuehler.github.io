@@ -42,7 +42,7 @@ function handleChanges(changes) {
   var queue = $tw.utils.stringifyList(syncQueue);
   queue = queue + ' ' + output;
 
-  // Update the temporary tiddler to let the UI react immediately
+  // Update the temporary tiddler to let the UI react
   $tw.wiki.setText("$:/temp/GitHubPages/SyncQueue","list",undefined,queue);
 
   console.log("The GitHub Pages sync queue is now:");
