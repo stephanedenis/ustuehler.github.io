@@ -55,8 +55,7 @@ function handleChanges(changes) {
   var queue = $tw.utils.stringifyList(this.syncQueue);
   $tw.wiki.setText("$:/status/GitHubPages/SyncQueue","list",undefined,queue);
 
-  console.log("The GitHub Pages sync queue is now:");
-  console.log(queue);
+  console.log("The GitHub Pages sync queue is now: " + queue);
 }
 
 // Enable background sync by default. Runs as long as required settings are
