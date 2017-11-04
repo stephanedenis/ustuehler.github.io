@@ -52,7 +52,7 @@ function handleChanges(changes) {
   for (var title in output) { syncQueue.add(title); }
 
   // Update the temporary tiddler to let the user know
-  var queue = $tw.utils.stringifyList(syncQueue.values());
+  var queue = $tw.utils.stringifyList(Array.from(syncQueue));
   $tw.wiki.setText("$:/status/GitHubPages/SyncQueue","list",undefined,queue);
 
   console.log("The GitHub Pages sync queue is now: " + queue);
