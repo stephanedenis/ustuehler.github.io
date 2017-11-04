@@ -14,15 +14,15 @@ exports.getGithubPagesSyncEnabled = function() {
 };
 
 exports.setGithubPagesSyncEnabled = function(enabled) {
+  var self = this;
+
   syncEnabled = enabled;
 
   if (syncEnabled) {
-    var self = this;
-
-      // Listen out for changes to tiddlers
-      this.wiki.addEventListener("change",function(changes) {
-        self.syncToServer(changes);
-      });
+    // Listen out for changes to tiddlers
+    this.wiki.addEventListener("change",function(changes) {
+      self.syncToServer(changes);
+    });
   } else {
   }
 };
