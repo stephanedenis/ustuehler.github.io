@@ -90,7 +90,7 @@ created: $now
 modified: $now
 title: \$:/BuildInfo
 
-$now
+$new
 EOS
 }
 
