@@ -11,6 +11,7 @@ Story view that cooperates with the Muuri grid layout engine
 'use strict';
 
 var syncEnabled = false;
+var syncQueue = [];
 
 exports.getGitHubPagesSync = function() {
   return syncEnabled;
@@ -38,7 +39,7 @@ function handleChanges(changes) {
   var input = $tw.utils.stringifyList(changedTiddlers);
   var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter);
 
-  var queue = $tw.wiki.getTiddlerText("$:/status/GitHub/SyncQueue");
+  var queue = syncQueue;
   queue = queue + ' ' + output;
   $tw.wiki.setText("$:/status/GitHub/SyncQueue","list",undefined,queue);
 
