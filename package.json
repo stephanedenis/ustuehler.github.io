@@ -48,10 +48,7 @@
       "editions/public/plugins",
       "editions/hack/tiddlers",
       "editions/hack-fs/*",
-      "hack/content/-*",
-      "hack/content/$__StoryList*.tid",
-      "hack/content/Draft*",
-      "hack/content/$__BuildInfo.tid"
+      "hack/content/*"
     ],
     "delay": "1000"
   }
