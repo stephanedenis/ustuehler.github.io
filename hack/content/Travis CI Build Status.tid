@@ -1,5 +1,5 @@
 created: 20171104131339557
-modified: 20171104185204631
+modified: 20171104191324415
 span: 3
 tags: 
 title: Travis CI Build Status
@@ -9,4 +9,4 @@ type: text/vnd.tiddlywiki
 |ustuehler.growit.io |hack |<a target="_" href="https://travis-ci.org/ustuehler/ustuehler.github.io">[img[https://travis-ci.org/ustuehler/ustuehler.github.io.svg?branch=hack]]</a> |
 |tw5-material |master |<a target="_" href="https://travis-ci.org/ustuehler/tw5-material">[img[https://travis-ci.org/ustuehler/tw5-material.svg?branch=master]]</a> |
 
-{{github-api/v0.1.0-current}}
+{{$:/BuildInfo}}
