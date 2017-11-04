@@ -51,8 +51,8 @@ function handleChanges(changes) {
   // Merge the new tiddlers into the existing queue
   this.syncQueue = this.syncQueue.union(new Set(output));
 
-  // Update the temporary tiddler to let the UI react
-  var queue = 
+  // Update the temporary tiddler to let the user know
+  var queue = $tw.utils.stringifyList(this.syncQueue);
   $tw.wiki.setText("$:/status/GitHubPages/SyncQueue","list",undefined,queue);
 
   console.log("The GitHub Pages sync queue is now:");
