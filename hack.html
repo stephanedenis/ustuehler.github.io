@@ -46,7 +46,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
 <title>ustuehler.github.io — </title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~--><!--~~ Raw markup ~~-->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
+<script type="text/javascript" src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/hubfs.js/index.js"></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
@@ -173,6 +174,8 @@ Error message and password prompt
 <li>$:/plugins/ustuehler/github-api/settings/password</li>
 
 <li>$:/plugins/ustuehler/github-api/settings/username</li>
+
+<li>$:/plugins/ustuehler/github-pages</li>
 
 <li>$:/plugins/ustuehler/mdc</li>
 
@@ -8723,7 +8726,59 @@ Error message and password prompt
 </div>
 <div author="Uwe Stuehler" core-version="&gt;=5.1.14" dependents="" description="GitHub API client library" list="readme usage license" plugin-type="plugin" title="$:/plugins/ustuehler/github-api" type="application/json" version="0.1.0">
 <pre>{
-    &quot;tiddlers&quot;: {}
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/ustuehler/github/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/ustuehler/github/readme&quot;,
+            &quot;text&quot;: &quot;API: http://github-tools.github.io/github/&lt;br&gt;\nSource: https://github.com/github-tools/github&quot;
+        },
+        &quot;$:/plugins/ustuehler/github-api/status&quot;: {
+            &quot;created&quot;: &quot;20171104082317886&quot;,
+            &quot;modified&quot;: &quot;20171104145204093&quot;,
+            &quot;span&quot;: &quot;12&quot;,
+            &quot;title&quot;: &quot;$:/plugins/ustuehler/github-api/status&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;$github&gt;\n\n|&lt;$link to=\&quot;$:/status/GitHub/UserName\&quot;&gt;~GitHub username:&lt;/$link&gt; |&lt;$edit-text tiddler=\&quot;$:/status/GitHub/UserName\&quot; default={{$:/plugins/ustuehler/github-api/settings/username}} tag=\&quot;input\&quot;/&gt; |\n|&lt;$link to=\&quot;$:/status/GitHub/Password\&quot;&gt;~GitHub password:&lt;/$link&gt; |&lt;$edit-text tiddler=\&quot;$:/status/GitHub/Password\&quot; default={{$:/plugins/ustuehler/github-api/settings/password}} tag=\&quot;input\&quot; type=\&quot;password\&quot;/&gt; {{$:/status/GitHub/Password||$:/plugins/danielo/encryptTiddler/crypt-button}} |\n|&lt;$link to=\&quot;$:/status/GitHub/Branch\&quot;&gt;Default branch:&lt;/$link&gt; |&lt;$edit-text tiddler=\&quot;$:/status/GitHub/Branch\&quot; default={{$:/plugins/ustuehler/github-api/settings/branch}} tag=\&quot;input\&quot;/&gt; |\n\n&lt;/$github&gt;&quot;
+        },
+        &quot;$:/plugins/ustuehler/github-api/tiddlywiki5.html&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/ustuehler/github-api/tiddlywiki5.html&quot;,
+            &quot;tags&quot;: &quot;$:/tags/RawMarkup&quot;,
+            &quot;text&quot;: &quot;&lt;script type=\&quot;text/javascript\&quot; src=\&quot;https://unpkg.com/github-api/dist/GitHub.bundle.min.js\&quot;&gt;&lt;/script&gt;\n&lt;script type=\&quot;text/javascript\&quot; src=\&quot;https://unpkg.com/hubfs.js/index.js\&quot;&gt;&lt;/script&gt;&quot;
+        },
+        &quot;$:/plugins/ustuehler/github-api/ui/Buttons/write-file&quot;: {
+            &quot;caption&quot;: &quot;&lt;&lt;material-icon \&quot;cloud_upload\&quot;&gt;&gt; {{$:/language/Buttons/GitHubWriteFile/Caption}}&quot;,
+            &quot;created&quot;: &quot;20171104130219319&quot;,
+            &quot;description&quot;: &quot;{{$:/language/Buttons/GitHubWriteFile/Hint}}&quot;,
+            &quot;list-after&quot;: &quot;$:/themes/ustuehler/material/ui/Buttons/clone&quot;,
+            &quot;modified&quot;: &quot;20171104194150761&quot;,
+            &quot;span&quot;: &quot;6&quot;,
+            &quot;tags&quot;: &quot;$:/tags/ViewToolbar/BottomLeft&quot;,
+            &quot;title&quot;: &quot;$:/plugins/ustuehler/github-api/ui/Buttons/write-file&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;$button tooltip={{$:/language/Buttons/GitHubWriteFile/Hint}} aria-label={{$:/language/Buttons/GitHubWriteFile/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;\n&lt;$github&gt;\n  &lt;$action-githubwritefile branch={{$:/plugins/ustuehler/github-api/settings/branch}}/&gt;\n&lt;/$github&gt;\n&lt;$list filter=\&quot;[&lt;tv-config-toolbar-icons&gt;prefix[yes]]\&quot;&gt;\n&lt;&lt;material-icon \&quot;cloud_upload\&quot;&gt;&gt;\n&lt;/$list&gt;\n&lt;$list filter=\&quot;[&lt;tv-config-toolbar-text&gt;prefix[yes]]\&quot;&gt;\n&lt;span class=\&quot;tc-btn-text\&quot;&gt;&lt;$text text={{$:/language/Buttons/GitHubWriteFile/Caption}}/&gt;&lt;/span&gt;\n&lt;/$list&gt;\n&lt;/$button&gt;&quot;
+        },
+        &quot;$:/plugins/ustuehler/github-api/widgets/action-githubwritefile.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/ustuehler/github-api/widgets/action-githubwritefile.js\ntype: application/javascript\nmodule-type: widget\ncaption: action-githubwritefile\n\nAction widget that toggles the visibility of the first drawer found in the document\n\n\\*/\n(function(t){\&quot;use strict\&quot;;var e=require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;var i=function(t,e){this.initialise(t,e)};i.prototype=new e;i.prototype.render=function(t,e){this.computeAttributes();this.execute()};i.prototype.execute=function(){this.owner=this.getAttribute(\&quot;owner\&quot;);this.repo=this.getAttribute(\&quot;repo\&quot;);this.branch=this.getAttribute(\&quot;branch\&quot;);this.path=this.getAttribute(\&quot;path\&quot;);this.message=this.getAttribute(\&quot;message\&quot;);this.committerName=this.getAttribute(\&quot;name\&quot;,\&quot;Uwe Stuehler\&quot;);this.committerEmail=this.getAttribute(\&quot;email\&quot;,\&quot;ustuehler@growit.io\&quot;);this.makeChildWidgets()};i.prototype.refresh=function(t){var e=this.computeAttributes();if(e[\&quot;class\&quot;]||e.selector){this.refreshSelf();return true}return this.refreshChildren(t)};i.prototype.invokeAction=function(t,e){var i=this.getStatus(\&quot;UserName\&quot;,this.getSetting(\&quot;username\&quot;));var r=this.getStatus(\&quot;Password\&quot;,this.getSetting(\&quot;password\&quot;));console.log(\&quot;GitHubWriteFileWidget.prototype.invokeAction\&quot;);console.log(this);var o=new GitHub({username:i,password:r});var s=o.getUser();s.listNotifications(function(t,e){console.log(e)});s.listStarredRepos(function(t,e){console.log(e)});var n=$tw.wiki.getTiddler(this.getVariable(\&quot;currentTiddler\&quot;));var a=this.owner||i;var l=this.branch||this.getStatus(\&quot;Branch\&quot;,this.getSetting(\&quot;branch\&quot;));var h=this.repo||a+\&quot;.github.io\&quot;;var u=this.path||this.computePathFromTiddler(n);var c=this.tiddlerContent(n);var g=this.message||\&quot;Update \&quot;+n.fields.title;var p=o.getRepo(a,h);var m={committer:{name:this.committerName,email:this.committerEmail}};if(!r){$tw.utils.error(\&quot;Please set the password to a valid GitHub personal access token.\&quot;);return true}console.log(\&quot;username: \&quot;+i);console.log(\&quot;password: \&quot;+r.replace(/./g,\&quot;*\&quot;));console.log(\&quot;owner: \&quot;+a);console.log(\&quot;repo: \&quot;+h);console.log(\&quot;branch: \&quot;+l);console.log(\&quot;path: \&quot;+u);console.log(\&quot;committerName: \&quot;+this.committerName);console.log(\&quot;committerEmail: \&quot;+this.committerEmail);console.log(\&quot;message: \&quot;+g);console.log(\&quot;content: \&quot;+c);p.writeFile(l,u,c,g,m,function(t){if(t){$tw.utils.showSnackbar(\&quot;Error from GitHub: \&quot;+t)}else{$tw.utils.showSnackbar(\&quot;File uploaded: \&quot;+u)}});return true};i.prototype.getStatus=function(t,e){return $tw.wiki.getTiddlerText(\&quot;$:/status/GitHub/\&quot;+t)||e};i.prototype.getSetting=function(t,e){return $tw.wiki.getTiddlerText(\&quot;$:/plugins/ustuehler/github-api/settings/\&quot;+t)||e};i.prototype.computePathFromTiddler=function(t){var e=t.fields[\&quot;github-path-prefix\&quot;]||\&quot;hack/content/\&quot;;if(t.fields[\&quot;github-path\&quot;]){return e+t.fields[\&quot;github-path\&quot;]}return e+this.pathFromTitle(t.fields.title)};i.prototype.pathFromTitle=function(t){var e=/[^$A-Za-z0-9_ -]/g;return t.replace(e,\&quot;_\&quot;)+\&quot;.tid\&quot;};i.prototype.tiddlerContent=function(t){var e=t.fields;var i=\&quot;\&quot;;for(var r in e){if(r!=\&quot;text\&quot;&amp;&amp;r!=\&quot;created\&quot;&amp;&amp;r!=\&quot;modified\&quot;&amp;&amp;r!=\&quot;bag\&quot;&amp;&amp;r!=\&quot;revision\&quot;){i+=r+\&quot;: \&quot;+t.fields[r]+\&quot;\\n\&quot;}}i+=\&quot;\\n\&quot;+t.fields.text;return i};i.prototype.allowActionPropagation=function(){return false};exports[\&quot;action-githubwritefile\&quot;]=i})(this);&quot;,
+            &quot;title&quot;: &quot;$:/plugins/ustuehler/github-api/widgets/action-githubwritefile.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;,
+            &quot;caption&quot;: &quot;action-githubwritefile&quot;,
+            &quot;created&quot;: &quot;20171104100223686&quot;,
+            &quot;modified&quot;: &quot;20171104111838015&quot;,
+            &quot;span&quot;: &quot;9&quot;
+        },
+        &quot;$:/plugins/ustuehler/github-api/widgets/github&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/ustuehler/github-api/widgets/github.js\ntype: application/javascript\nmodule-type: widget\n\nInvisible GitHub API widget\n\n\\*/\n(function(){\&quot;use strict\&quot;;var t=require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;var e=function(t,e){this.initialise(t,e)};e.prototype=new t;e.prototype.render=function(t,e){this.computeAttributes();this.execute();this.renderChildren(t,e)};e.prototype.readSetting=function(t){self.wiki.setText(\&quot;$:/plugins/ustuehler/github-api/settings/username\&quot;,\&quot;text\&quot;,undefined,attribute,options)};e.prototype.execute=function(){this.username=this.getAttribute(\&quot;username\&quot;,this.getAttributeSetting(\&quot;username\&quot;));this.password=this.getAttribute(\&quot;password\&quot;,this.getAttributeSetting(\&quot;password\&quot;));if(!this.username){this.username=this.getAttributeStatus(\&quot;UserName\&quot;)}if(!this.password){this.password=this.getAttributeStatus(\&quot;Password\&quot;)}this.setVariable(\&quot;github-username\&quot;,this.username);this.setVariable(\&quot;github-password\&quot;,this.password);this.makeChildWidgets()};e.prototype.refresh=function(t){var e=this.computeAttributes();if(e.username||e.password){this.refreshSelf();return true}return this.refreshChildren(t)};e.prototype.getAttributeSetting=function(t){var e=\&quot;$:/plugins/ustuehler/github/settings/\&quot;+t;return $tw.wiki.getTiddlerText(e)};e.prototype.getAttributeStatus=function(t){var e=\&quot;$:/status/GitHub/\&quot;+t;return $tw.wiki.getTiddlerText(e)};e.prototype.setAttributeStatus=function(t,e){var i=\&quot;$:/status/GitHub/\&quot;+t;var s={};return $tw.wiki.setText(i,\&quot;text\&quot;,undefined,e,s)};exports.github=e})();&quot;,
+            &quot;title&quot;: &quot;$:/plugins/ustuehler/github-api/widgets/github&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;,
+            &quot;created&quot;: &quot;20171104092215236&quot;,
+            &quot;github-path&quot;: &quot;test.tid&quot;,
+            &quot;github-repo&quot;: &quot;ustuehler/ustuehler.github.io&quot;,
+            &quot;modified&quot;: &quot;20171104100834623&quot;,
+            &quot;span&quot;: &quot;4&quot;,
+            &quot;tags&quot;: &quot;&quot;
+        }
+    }
 }</pre>
 </div>
 <div created="20171104141409210" modified="20171104160238519" span="3" title="$:/plugins/ustuehler/github-api/settings" type="text/vnd.tiddlywiki">
@@ -8739,6 +8794,11 @@ Error message and password prompt
 </div>
 <div created="20171104082824571" modified="20171104082833200" title="$:/plugins/ustuehler/github-api/settings/username" type="text/vnd.tiddlywiki">
 <pre>ustuehler</pre>
+</div>
+<div author="Uwe Stuehler" core-version="&gt;=5.1.14" dependents="" description="GitHub API client library" list="readme usage license" plugin-type="plugin" title="$:/plugins/ustuehler/github-pages" type="application/json" version="0.1.0">
+<pre>{
+    &quot;tiddlers&quot;: {}
+}</pre>
 </div>
 <div author="Uwe Stuehler" core-version="&gt;=5.1.14" dependents="" description="Material Design components (needs MDC-Web assets)" list="readme usage changelog license" plugin-type="plugin" title="$:/plugins/ustuehler/mdc" type="application/json" version="0.1.4">
 <pre>{
