@@ -29,20 +29,20 @@ exports.setGitHubPagesSync = function(enabled) {
 };
 
 function handleChanges(changes) {
+  var changedTiddlers = [];
+  for (var title in changes) {
+    if (changes.hasOwnProperty(title)) {
+      changedTiddlers.push(title);
+    }
+
+  }
   var syncFilter = $tw.wiki.getTiddlerText("$:/config/SyncFilter")
-  var input = $tw.utils.stringifyList(changes.keys());
+  var input = $tw.utils.stringifyList(changedTiddlers);
   var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter)
   var queue = $tw.wiki.getTiddlerText("$:/status/GitHub/SyncQueue");
-  var keys = [];
 
   queue = queue + ' ' + output;
   $tw.wiki.setText("$:/status/GitHub/SyncQueue","list",undefined,queue);
-
-  for (var c in changes) {
-    if (changes.hasOwnProperty(c)) {
-      keys.push(c);
-    }
-  }
 
   console.log("The GitHub Pages sync queue is now:");
   console.log(queue);
