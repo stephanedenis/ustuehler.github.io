@@ -8490,7 +8490,14 @@ Error message and password prompt
 </div>
 <div author="Uwe Stuehler" core-version="&gt;=5.1.14" dependents="" description="Saves to GitHub Pages" list="readme usage license" plugin-type="plugin" title="$:/plugins/ustuehler/github-pages" type="application/json" version="0.1.0">
 <pre>{
-    &quot;tiddlers&quot;: {}
+    &quot;tiddlers&quot;: {
+        &quot;$:/plugins/ustuehler/github-pages/syncer.js&quot;: {
+            &quot;text&quot;: &quot;(function(){\&quot;use strict\&quot;;var e=false;exports.getGithubPagesSyncEnabled=function(){return e};exports.setGithubPagesSyncEnabled=function(t){var i=this;e=t;if(e){this.wiki.addEventListener(\&quot;change\&quot;,n)}else{this.wiki.removeEventListener(\&quot;change\&quot;,n)}};function n(e){console.log(e)}})();&quot;,
+            &quot;title&quot;: &quot;$:/plugins/ustuehler/github-pages/syncer.js&quot;,
+            &quot;type&quot;: &quot;text/javascript&quot;,
+            &quot;module-type&quot;: &quot;utils&quot;
+        }
+    }
 }</pre>
 </div>
 <div author="Uwe Stuehler" core-version="&gt;=5.1.14" dependents="" description="Material Design components (needs MDC-Web assets)" list="readme usage changelog license" plugin-type="plugin" title="$:/plugins/ustuehler/mdc" type="application/json" version="0.1.4">
