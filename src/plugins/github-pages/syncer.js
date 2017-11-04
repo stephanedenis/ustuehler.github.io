@@ -34,7 +34,7 @@ function handleChanges(changes) {
   var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter)
 
   console.log('GitHubPagesSync noticed some changes:');
-  console.log(changes);
+  console.log(output);
 }
 
 })();
