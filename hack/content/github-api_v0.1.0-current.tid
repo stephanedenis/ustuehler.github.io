@@ -1,8 +1,12 @@
 title: github-api/v0.1.0-current
 caption: >0.1.0
 tags: $:/tags/ReleaseNotes
-created: 20171104185033
-modified: 20171104185033
-released: 20171104185033
+created: 20171104190016
+modified: 20171104190016
+released: 20171104190016
 
-This edition of TiddlyWiki was compiled on <$view field="created" format="date" template="DDD, MMM DDth YYYY at hh:0mm"/>.
+Changes between version 0.1.0 and HEAD:
+
+```
+fatal: bad revision 'github-api/v0.1.0..HEAD'
+```

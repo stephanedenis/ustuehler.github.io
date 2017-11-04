@@ -14,11 +14,22 @@ buildinfo_tid_body() {
   local dir="$1"
   local vprefix="$2"
   local ver="$3"
+  local changes=$(git diff --pretty=oneline "$vprefix$ver..HEAD" -- "$dir" 2>&1)
 
-  echo "This edition of TiddlyWiki was compiled on <\$view field=\"created\" format=\"date\" template=\"DDD, MMM DDth YYYY at hh:0mm\"/>."
+  if [[ -n $changes ]]; then
+    echo "Changes between version $ver and HEAD:"
+    echo ''
+    echo '```'
+    echo "$changes" |
+      grep -E -v '^[+-](created|modified):' |
+      grep -E -v '^(diff|index) '
+    echo '```'
+  else
+    echo "No changes between version $ver and HEAD."
+  fi
 }
 
-buildinfo_tid() {
+plugin_buildinfo_tid() {
   local dir="$1"
   local vprefix="$2"
   local ver="$3"
@@ -42,7 +53,7 @@ make_buildinfo() {
   local name=$(dirname $vprefix)
   local ver=$(jq -r .version "$dir"/plugin.info)
   local out="hack/content/${name}_v$ver-current.tid"
-  local new="$(buildinfo_tid "$dir" "$vprefix" "$ver")"
+  local new="$(plugin_buildinfo_tid "$dir" "$vprefix" "$ver")"
 
   if [[ -f $out ]]; then
     if [[ "$(tiddler_text <<<"$new")" = "$(tiddler_text <"$out")" ]]; then
@@ -58,4 +69,31 @@ make_buildinfo() {
   printf '%s' "$new" >"$out"
 }
 
+make_edition_buildinfo_tid() {
+  local out="$1"
+  local now="$(TZ=UTC date +'%Y%m%d%H%M%S')"
+  local new="This edition of TiddlyWiki was compiled on <\$view field=\"created\" format=\"date\" template=\"DDD, MMM DDth YYYY at hh:0mm\"/>."
+
+  if [[ -f $out ]]; then
+    if [[ "$(tiddler_text <<<"$new")" = "$(tiddler_text <"$out")" ]]; then
+      echo "$out is already up-to-date."
+      return
+    else
+      echo "Updating $out."
+    fi
+  else
+    echo "Creating $out."
+  fi
+
+  cat >$out <<EOS
+created: $now
+modified: $now
+title: \$:/BuildInfo
+
+$now
+EOS
+}
+
 make_buildinfo src/plugins/github-api github-api/v
+
+make_edition_buildinfo_tid hack/content/\$__BuildInfo.tid
