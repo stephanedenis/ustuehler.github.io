@@ -51,7 +51,7 @@
       "hack/content/-*",
       "hack/content/$__StoryList*.tid",
       "hack/content/Draft*",
-      "hack/content/BuildInfo.tid"
+      "hack/content/$__BuildInfo.tid"
     ],
     "delay": "1000"
   }
