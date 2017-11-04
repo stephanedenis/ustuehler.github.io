@@ -52,6 +52,7 @@ function handleChanges(changes) {
 // Enable background sync by default. Runs as long as required settings are
 // present.
 setTimeout(function() {
+  console.log('Starting background sync with GitHub Pages');
   setGitHubPagesSync(true);
 }, 1000);
 
