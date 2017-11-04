@@ -11,7 +11,7 @@ Story view that cooperates with the Muuri grid layout engine
 'use strict';
 
 var syncEnabled = false;
-var syncQueue = [];
+var syncQueue = new Set();
 
 exports.getGitHubPagesSync = function() {
   return syncEnabled;
@@ -48,10 +48,11 @@ function handleChanges(changes) {
   console.log("GitHub Pages sync noticed changes in:");
   console.log(changedTiddlers);
 
-  var queue = $tw.utils.stringifyList(syncQueue);
-  queue = queue + ' ' + output;
+  // Merge the new tiddlers into the existing queue
+  this.syncQueue = this.syncQueue.union(new Set(output));
 
   // Update the temporary tiddler to let the UI react
+  var queue = 
   $tw.wiki.setText("$:/status/GitHubPages/SyncQueue","list",undefined,queue);
 
   console.log("The GitHub Pages sync queue is now:");
