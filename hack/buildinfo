@@ -76,7 +76,7 @@ make_edition_buildinfo_tid() {
 "
 
   if [[ -f $out ]]; then
-    if [ X"$(tiddler_text <<<"$new")" = X"$(tiddler_text <"$out")" ]; then
+    if [ X"$(tiddler_text <<<"$new")" != X"$(tiddler_text <"$out")" ]; then
       echo "$out is already up-to-date."
       return
     else
