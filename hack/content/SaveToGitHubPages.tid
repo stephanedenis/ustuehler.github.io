@@ -1,5 +1,5 @@
 created: 20171104231505296
-modified: 20171104234250595
+modified: 20171104234314380
 span: 3
 tags: [[GitHub Pages]]
 title: SaveToGitHubPages
@@ -16,7 +16,7 @@ type: text/vnd.tiddlywiki
 |<$link to="$:/config/GitHubPages/Save/Branch">Repository branch:</$link> |<$edit-text tiddler="$:/config/GitHubPages/Save/Branch" default="" tag="input"/> |
 |<$link to="$:/config/GitHubPages/Save/Path">Path within repository:</$link> |<$edit-text tiddler="$:/config/GitHubPages/Save/Path" default="" tag="input"/> |
 
-''Step 3: Profit!''
+''Step 3:''
 
 <$button class="mdc-button mdc-button--raised">
 <$set name="currentTiddler" value="$:/core/save/all">
