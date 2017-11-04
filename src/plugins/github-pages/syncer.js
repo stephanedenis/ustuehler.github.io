@@ -33,7 +33,6 @@ function handleChanges(changes) {
   var input = $tw.utils.stringifyList(changes.keys());
   var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter)
 
-  console.log('GitHubPagesSync noticed some changes:');
   console.log(output);
 }
 
