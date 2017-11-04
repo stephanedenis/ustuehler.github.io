@@ -88,7 +88,7 @@ make_edition_buildinfo_tid() {
     echo "Creating $out."
   fi
 
-  cat >$out <<EOS
+  cat >"$out" <<EOS
 created: $now
 modified: $now
 title: \$:/BuildInfo
