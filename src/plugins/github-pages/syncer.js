@@ -19,10 +19,9 @@ exports.setGithubPagesSyncEnabled = function(enabled) {
   syncEnabled = enabled;
 
   if (syncEnabled) {
-    // Listen out for changes to tiddlers
-    this.wiki.addEventListener("change", listener);
+    this.wiki.addEventListener("change", handleChanges);
   } else {
-    this.wiki.removeEventListener("change", listener);
+    this.wiki.removeEventListener("change", handleChanges);
   }
 };
 
