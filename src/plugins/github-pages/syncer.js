@@ -53,7 +53,7 @@ function handleChanges(changes) {
 // present.
 setTimeout(function() {
   console.log('Starting background sync with GitHub Pages');
-  setGitHubPagesSync(true);
+  exports.setGitHubPagesSync(true);
 }, 1000);
 
 })();
