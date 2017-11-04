@@ -36,11 +36,11 @@ function handleChanges(changes) {
     }
   }
 
-  var syncFilter = $tw.wiki.getTiddlerText("$:/config/SyncFilter")
+  var syncFilter = $tw.wiki.getTiddlerText("$:/config/SyncFilter");
   var input = $tw.utils.stringifyList(changedTiddlers);
-  var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter)
-  var queue = $tw.wiki.getTiddlerText("$:/status/GitHub/SyncQueue");
+  var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter);
 
+  var queue = $tw.wiki.getTiddlerText("$:/status/GitHub/SyncQueue");
   queue = queue + ' ' + output;
   $tw.wiki.setText("$:/status/GitHub/SyncQueue","list",undefined,queue);
 
