@@ -156,7 +156,7 @@ GitHubWriteFileWidget.prototype.computePathFromTiddler = function(tiddler) {
 };
 
 GitHubWriteFileWidget.prototype.pathFromTitle = function(title) {
-  var re = /[^$A-Za-z0-9_-]/g;
+  var re = /[^$A-Za-z0-9_ -]/g;
   return title.replace(re, '_') + '.tid';
 };
 
