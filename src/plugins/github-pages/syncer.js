@@ -9,10 +9,6 @@ module-type: utils
 
 var syncEnabled = false;
 
-var handleChangeEvent = function(changes) {
-  console.log(changes);
-}
-
 exports.getGithubPagesSyncEnabled = function() {
   return syncEnabled;
 };
@@ -29,5 +25,9 @@ exports.setGithubPagesSyncEnabled = function(enabled) {
     this.wiki.removeEventListener("change", listener);
   }
 };
+
+function handleChanges(changes) {
+  console.log(changes);
+}
 
 })();
