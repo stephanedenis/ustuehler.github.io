@@ -72,11 +72,17 @@ make_buildinfo() {
 make_edition_buildinfo_tid() {
   local out="$1"
   local now="$(TZ=UTC date +'%Y%m%d%H%M%S')"
-  local new="This edition of TiddlyWiki was compiled on <\$view field=\"created\" format=\"date\" template=\"DDD, MMM DDth YYYY at hh:0mm\"/>.
-"
+  local new="$(cat <<EOS
+created: $now
+modified: $now
+title: \$:/BuildInfo
+
+This edition of TiddlyWiki was compiled on <\$view field=\"created\" format=\"date\" template=\"DDD, MMM DDth YYYY at hh:0mm\"/>.
+EOS
+)"
 
   if [[ -f $out ]]; then
-    if [ X"$(tiddler_text <<<"$new")" != X"$(tiddler_text <"$out")" ]; then
+    if [[ "$(tiddler_text <<<"$new")" == "$(tiddler_text <"$out")" ]]; then
       echo "$out is already up-to-date."
       return
     else
@@ -89,13 +95,7 @@ make_edition_buildinfo_tid() {
     echo "Creating $out."
   fi
 
-  cat >"$out" <<EOS
-created: $now
-modified: $now
-title: \$:/BuildInfo
-
-$new
-EOS
+  printf '%s' "$new" >"$out"
 }
 
 make_buildinfo src/plugins/github-api github-api/v
