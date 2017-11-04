@@ -80,6 +80,9 @@ make_edition_buildinfo_tid() {
       return
     else
       echo "Updating $out."
+      echo "$new"
+      echo "---"
+      cat "$out"
     fi
   else
     echo "Creating $out."
