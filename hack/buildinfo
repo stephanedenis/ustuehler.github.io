@@ -3,14 +3,59 @@ set -o errexit
 
 cd "$(dirname "$0")/.."
 
-now=$(TZ=UTC date '+%Y%m%d%H%M%S')
+#cat >editions/material/tiddlers/content/material_
+#ssss log --stat --pretty=oneline material/v0.1.9.. -- src/themes/material >
 
-cat >'hack/content/BuildInfo.tid' <<EOS
+tiddler_text() {
+  awk '/^$/ { body = 1; } body { print; }'
+}
+
+buildinfo_tid_body() {
+  local dir="$1"
+  local vprefix="$2"
+  local ver="$3"
+
+  echo "This edition of TiddlyWiki was compiled on <\$view field=\"created\" format=\"date\" template=\"DDD, MMM DDth YYYY at hh:0mm\"/>."
+}
+
+buildinfo_tid() {
+  local dir="$1"
+  local vprefix="$2"
+  local ver="$3"
+  local now="$(TZ=UTC date +'%Y%m%d%H%M%S')"
+
+  cat <<EOS
+title: $vprefix$ver-current
+caption: >$ver
 title: BuildInfo
-caption: Build Information
+tags: $:/tags/ReleaseNotes
 created: $now
+modified: $now
+released: $now
 
-This edition of TiddlyWiki was compiled on <\$view field="created" format="date" template="DDD, MMM DDth YYYY at hh:0mm"/>.
+$(buildinfo_tid_body "$dir" "$vprefix" "$ver")
 EOS
+}
 
-exit 0
+make_buildinfo() {
+  local dir="$1"
+  local vprefix="$2"
+  local ver=$(jq -r .version "$dir"/plugin.info)
+  local out="hack/content/${ver}-current.tid"
+  local new="$(buildinfo_tid "$dir" "$vprefix" "$ver")"
+
+  if [[ -f $out ]]; then
+    if [[ "$(tiddler_text <<<"$new")" = "$(tiddler_text <"$out")" ]]; then
+      echo "$out is already up-to-date."
+      return
+    else
+      echo "Updating $out."
+    fi
+  else
+    echo "Creating $out."
+  fi
+
+  printf '%s' "$new" >"$out"
+}
+
+make_buildinfo src/plugins/github-api github-api/v

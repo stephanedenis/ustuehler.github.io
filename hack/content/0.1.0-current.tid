@@ -1,0 +1,9 @@
+title: github-api/v0.1.0-current
+caption: >0.1.0
+title: BuildInfo
+tags: $:/tags/ReleaseNotes
+created: 20171104183748
+modified: 20171104183748
+released: 20171104183748
+
+This edition of TiddlyWiki was compiled on <$view field="created" format="date" template="DDD, MMM DDth YYYY at hh:0mm"/>.
