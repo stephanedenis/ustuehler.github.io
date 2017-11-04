@@ -72,7 +72,7 @@ make_buildinfo() {
 make_edition_buildinfo_tid() {
   local out="$1"
   local now="$(TZ=UTC date +'%Y%m%d%H%M%S')"
-  local new="This edition of TiddlyWiki was compiled on <\$view field=\"created\" format=\"date\" template=\"DDD, MMM DDth YYYY at hh:0mm\"/>.\n"
+  local new="This edition of TiddlyWiki was compiled on <\$view field=\"created\" format=\"date\" template=\"DDD, MMM DDth YYYY at hh:0mm\"/>.\012"
 
   if [[ -f $out ]]; then
     if [[ "$(tiddler_text <<<"$new")" = "$(tiddler_text <"$out")" ]]; then
