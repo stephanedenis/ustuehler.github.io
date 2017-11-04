@@ -1,7 +1,7 @@
-created: 20171104150249077
-modified: 20171104150351061
-span: 3
+created: 20171104174226419
+modified: 20171104191909509
+span: 2
 title: GitHub Login
 type: text/vnd.tiddlywiki
 
-{{$:/plugins/ustuehler/github-api/status}}
+{{$:/plugins/ustuehler/github-api/settings}}
