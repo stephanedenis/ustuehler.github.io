@@ -1,0 +1,22 @@
+created: 20171104231505296
+modified: 20171104233324578
+span: 12
+tags: [[GitHub Pages]]
+title: SaveToGitHubPages
+type: text/vnd.tiddlywiki
+
+|<$link to="$:/config/GitHubPages/Save/Repo">~GitHub repository:</$link> |<$edit-text tiddler="$:/config/GitHubPages/Save/Repo" default="" tag="input"/> |
+|<$link to="$:/config/GitHubPages/Save/Owner">Repository owner:</$link> |<$edit-text tiddler="$:/config/GitHubPages/Save/Owner" default="" tag="input"/> |
+|<$link to="$:/config/GitHubPages/Save/Branch">Repository branch:</$link> |<$edit-text tiddler="$:/config/GitHubPages/Save/Branch" default="" tag="input"/> |
+|<$link to="$:/config/GitHubPages/Save/Path">Path within repository:</$link> |<$edit-text tiddler="$:/config/GitHubPages/Save/Path" default="" tag="input"/> |
+
+<$button class="mdc-button mdc-button--raised">
+<$set name="currentTiddler" value="$:/core/save/all">
+<$action-githubwritefile
+  owner={{$:/config/GitHubPages/Save/Owner}}
+  repo={{$:/config/GitHubPages/Save/Repo}}
+  branch={{$:/config/GitHubPages/Save/Branch}}
+  path={{$:/config/GitHubPages/Save/Path}}/>
+</$set>
+Install
+</$button>
