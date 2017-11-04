@@ -17,8 +17,6 @@ exports.getGitHubPagesSync = function() {
 };
 
 exports.setGitHubPagesSync = function(enabled) {
-  var self = this;
-
   if (enabled) {
     if (!syncEnabled) {
       $tw.wiki.addEventListener("change", handleChanges);
