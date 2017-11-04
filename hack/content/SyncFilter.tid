@@ -1,0 +1,9 @@
+created: 20171104194712842
+modified: 20171104195111788
+tags: TiddlyWiki
+title: SyncFilter
+type: text/vnd.tiddlywiki
+
+The $:/config/SyncFilter setting controls which tiddlers will be saved when modified. See also the SavingMechanism.
+
+ref: https://groups.google.com/forum/#!topic/tiddlywiki/gWRqpmZNg9k
