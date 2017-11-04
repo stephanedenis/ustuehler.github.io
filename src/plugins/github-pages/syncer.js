@@ -9,6 +9,10 @@ module-type: utils
 
 var syncEnabled = false;
 
+exports.getGithubPagesSync = function() {
+  return syncEnabled;
+};
+
 exports.setGithubPagesSync = function(enabled) {
   syncEnabled = enabled;
 };
