@@ -27,7 +27,6 @@ buildinfo_tid() {
   cat <<EOS
 title: $vprefix$ver-current
 caption: >$ver
-title: BuildInfo
 tags: $:/tags/ReleaseNotes
 created: $now
 modified: $now
@@ -40,8 +39,9 @@ EOS
 make_buildinfo() {
   local dir="$1"
   local vprefix="$2"
+  local name=$(dirname $vprefix)
   local ver=$(jq -r .version "$dir"/plugin.info)
-  local out="hack/content/${ver}-current.tid"
+  local out="hack/content/${name}_v$ver-current.tid"
   local new="$(buildinfo_tid "$dir" "$vprefix" "$ver")"
 
   if [[ -f $out ]]; then
