@@ -1,9 +1,10 @@
 created: 20171104174226419
 list-item-icon: cloud_upload
-modified: 20171104192027743
+modified: 20171104235214384
 span: 3
 tags: $:/tags/Drawer
 title: GitHub Pages
 type: text/vnd.tiddlywiki
 
-{{$:/plugins/ustuehler/github-api/settings}}
+* SaveToGitHub
+* GitHubPagesSyncQueue

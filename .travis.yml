@@ -10,6 +10,7 @@ script:
   # Prevent loops
   - test X"`git log -1 --format='%ae'`" != X"deploy@travis-ci.org"
 
+  - rm -f hack/content/\$__BuildInfo.tid
   - git pull --tags
   - npm run build
   #- npm run test
