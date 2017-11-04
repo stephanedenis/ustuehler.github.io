@@ -1,6 +1,7 @@
 /*!
 
 title: $:/plugins/ustuehler/github-pages/syncer.js
+type: text/javascript
 module-type: utils
 
 !*/
