@@ -29,7 +29,7 @@ exports.setGitHubPagesSync = function(enabled) {
 };
 
 function handleChanges(changes) {
-  console.log('GitHubPagesSync found changes:');
+  console.log('GitHubPagesSync noticed some changes:');
   console.log(changes);
 }
 
