@@ -21,7 +21,7 @@ exports.setGithubPagesSyncEnabled = function(enabled) {
   if (syncEnabled) {
     // Listen out for changes to tiddlers
     this.wiki.addEventListener("change",function(changes) {
-      self.syncToServer(changes);
+      console.log(changes);
     });
   } else {
   }
