@@ -29,4 +29,6 @@ function handleChanges(changes) {
   console.log(changes);
 }
 
+exports.setGithubPagesSyncEnabled(true);
+
 })();
