@@ -51,7 +51,7 @@ function handleChanges(changes) {
   console.log(changedTiddlers);
 
   // Merge the new tiddlers into the existing queue
-  for (var title in output) { syncQueue.add(title); }
+  output.forEach((title) => { syncQueue.add(title); });
 
   // Update the temporary tiddler to let the user know
   var queue = $tw.utils.stringifyList(Array.from(syncQueue));
