@@ -39,7 +39,7 @@ function handleChanges(changes) {
   var input = $tw.utils.stringifyList(changedTiddlers);
   var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter);
 
-  var queue = syncQueue;
+  var queue = $tw.utils.stringifyList(syncQueue);
   queue = queue + ' ' + output;
   $tw.wiki.setText("$:/status/GitHub/SyncQueue","list",undefined,queue);
 
