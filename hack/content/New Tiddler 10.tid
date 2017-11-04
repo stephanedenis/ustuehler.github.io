@@ -1,7 +1,9 @@
 created: 20171104222336619
-modified: 20171104222826879
+modified: 20171104223106702
 tags: Search
 title: New Tiddler 10
 type: text/vnd.tiddlywiki
 
-{{$:/status/GitHubPages/SyncQueue}}
+<$list filter="[[$:/status/GitHubPages/SyncQueue]list[]]">
+<<currentTiddler>><br>
+</$list>
