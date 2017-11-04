@@ -39,11 +39,20 @@ function handleChanges(changes) {
   var input = $tw.utils.stringifyList(changedTiddlers);
   var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter);
 
+  if (output.length < 1) {
+    console.log("GitHub Pages sync ignored changes in:");
+    console.log(changedTiddlers);
+    return;
+  }
+
+  console.log("GitHub Pages sync noticed changes in:");
+  console.log(changedTiddlers);
+
   var queue = $tw.utils.stringifyList(syncQueue);
   queue = queue + ' ' + output;
 
   // Update the temporary tiddler to let the UI react
-  $tw.wiki.setText("$:/temp/GitHubPages/SyncQueue","list",undefined,queue);
+  $tw.wiki.setText("$:/status/GitHubPages/SyncQueue","list",undefined,queue);
 
   console.log("The GitHub Pages sync queue is now:");
   console.log(queue);
