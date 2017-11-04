@@ -1,8 +1,12 @@
 caption: nodemon doesn't pick up any changes
 created: 20171104022843759
-modified: 20171104023129694
+modified: 20171104194254269
 tags: PublishingFlow Issues
 title: Issues/nodemon
 type: text/vnd.tiddlywiki
 
 Instead of nodemon picking up changes to `hack/content` automatically, I now have to switch to the terminal and type `rs` to publish my changes. Bummer.
+
+! Solution
+
+This was caused by the substring `.git` in my working directory. It seems to be a bug somewhere.
