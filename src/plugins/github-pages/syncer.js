@@ -34,8 +34,8 @@ function handleChanges(changes) {
     if (changes.hasOwnProperty(title)) {
       changedTiddlers.push(title);
     }
-
   }
+
   var syncFilter = $tw.wiki.getTiddlerText("$:/config/SyncFilter")
   var input = $tw.utils.stringifyList(changedTiddlers);
   var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter)
