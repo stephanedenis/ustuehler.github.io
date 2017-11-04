@@ -36,6 +36,8 @@ function handleChanges(changes) {
   });
 
   var syncFilter = $tw.wiki.getTiddlerText("$:/config/SyncFilter");
+  var pagesFilter = $tw.wiki.getTiddlerText("$:/config/GitHubPages/SyncFilter");
+
   var input = $tw.utils.stringifyList(changedTiddlers);
   var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter);
 
