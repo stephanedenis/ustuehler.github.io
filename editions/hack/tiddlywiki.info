@@ -5,6 +5,7 @@
 	"tiddlywiki/filesystem",
         "tiddlywiki/highlight",
 	"ustuehler/github-api",
+	"ustuehler/github-pages",
 	"ustuehler/caption",
 	"ustuehler/mdc-web-cdn",
 	"ustuehler/mdc",
