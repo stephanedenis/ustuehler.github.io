@@ -1,7 +1,7 @@
 caption: Public Site
 created: 20171104000156141
 list-item-icon: public
-modified: 20171104192318613
+modified: 20171104224920114
 span: 4
 tags: $:/tags/Drawer
 title: PublicSite
@@ -10,7 +10,7 @@ url: https://ustuehler.github.io
 
 \define hack-url() $(url)$/hack.html
 
-{{!!url}}/<br>
+{{!!url}}<br>
 <$set name="url" value={{!!url}}><<hack-url>></$set>
 
 Merged PullRequests and commits on the `master` branch of the [[repository on GitHub|https://github.com/ustuehler/ustuehler.github.io]] are published automatically. This can take a few minutes, because the `index.html` page needs to be rebuilt by [[Travis CI|https://travis-ci.org/ustuehler/ustuehler.github.io]].
