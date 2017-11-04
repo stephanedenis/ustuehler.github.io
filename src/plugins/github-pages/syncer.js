@@ -30,11 +30,9 @@ exports.setGitHubPagesSync = function(enabled) {
 
 function handleChanges(changes) {
   var changedTiddlers = [];
-  for (var title in changes) {
-    if (changes.hasOwnProperty(title)) {
-      changedTiddlers.push(title);
-    }
-  }
+  $tw.utils.each(changes,function(change,title) {
+    changedTiddlers.push(title);
+  });
 
   var syncFilter = $tw.wiki.getTiddlerText("$:/config/SyncFilter");
   var input = $tw.utils.stringifyList(changedTiddlers);
