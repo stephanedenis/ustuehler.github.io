@@ -7,7 +7,6 @@ Story view that cooperates with the Muuri grid layout engine
 
 \*/
 
-!*/
 (function() {
 'use strict';
 
