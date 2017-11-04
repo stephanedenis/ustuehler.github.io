@@ -49,4 +49,7 @@ function handleChanges(changes) {
   console.log(queue);
 }
 
+// Enable background sync by default; starts when all required settings are given
+exports.setGitHubPagesSync(true);
+
 })();
