@@ -147,6 +147,15 @@ GitHubWriteFileWidget.prototype.invokeAction = function(triggeringWidget,event) 
   return true; // Action was invoked
 };
 
+GitHubWriteFileWidget.prototype.renderTemplate = function(template) {
+  var options = {};
+  var contentType = 'text/plain'
+
+  var text = this.wiki.renderTiddler(contentType,template,options);
+
+	return text;
+};
+
 GitHubWriteFileWidget.prototype.getStatus = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/status/GitHub/' + name) || fallback;
 };
