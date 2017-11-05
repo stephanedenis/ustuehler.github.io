@@ -1,0 +1,41 @@
+caption: Build Status
+created: 20171104131339557
+filter: ustuehler.github.io tw5-material tw5-elite tw5-github monkey git-cvs tlsd openbsd-src openbsd-ports
+modified: 20171105173533304
+span: 5
+tags: 
+title: BuildStatus
+type: text/vnd.tiddlywiki
+
+\define branch-url()
+https://github.com/$(owner)$/$(currentTiddler)$/tree/$(branch)$
+\end
+
+\define homepage-url()
+{{!!url}}
+\end
+
+\define default-url()
+https://github.com/$(owner)$/$(currentTiddler)$
+\end
+
+<table>
+  <tr>
+    <th>Repository</th>
+    <th>Branch</th>
+    <th>Status</th>
+    <th>Homepage</th>
+  </tr>
+  <$list filter={{!!filter}}>
+    <$set name="owner" value="ustuehler">
+    <$set name="branch" value={{!!travis-branch}} emptyValue="master">
+    <$set name="url" value=<<homepage-url>> emptyValue=<<default-url>>>
+    <tr>
+      <td><$link><$view field="title"/></$link></td>
+      <td><a target="_" href=<<branch-url>>><$view field="travis-branch"><$text text="master"/></$view></a></td>
+      <td>{{||TravisCIBuildStatus}}</td>
+      <td><<homepage-url>></td>
+    </tr>
+    </$set></$set></$set>
+  </$list>
+</table>

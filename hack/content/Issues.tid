@@ -1,14 +1,32 @@
 caption: Known Issues
 created: 20171104022813172
 list-item-icon: bug_report
-modified: 20171104084003823
+modified: 20171105165957498
 span: 5
 tags: $:/tags/Drawer PublicSite
 title: Issues
 type: text/vnd.tiddlywiki
 
-Unsolved issues:
+\define unsolved-filter()
+[tag<currentTiddler>!has[draft.of]!sort[modified]]
+\end
 
-<<list-links "[tag<currentTiddler>!has[draft.of]!sort[modified]]">>
+\define unsolved-filter-any()
+$(unsolved-filter)$ +[limit[1]]
+\end
 
-{{RecentlySolvedIssues}}
+\define unsolved-issues()
+Unresolved issues:
+
+<$macrocall $name="list-links" filter=<<unsolved-filter>>/>
+\end
+
+\define no-unsolved-issues()
+There are no known issues right now. If you are experiencing an issue anyway, that would be unexpected and I'd like you to [[report it|ReportingIssues]].
+\end
+
+<$list filter=<<unsolved-filter-any>> emptyMessage=<<no-unsolved-issues>>>
+<<unsolved-issues>>
+</$list>
+
+{{RecentlyResolvedIssues}}

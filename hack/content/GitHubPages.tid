@@ -1,10 +1,9 @@
 caption: GitHub Pages
 created: 20171104174226419
 list-item-icon: cloud_upload
-modified: 20171105044019929
+modified: 20171105164839826
 span: 3
-tags: $:/tags/Drawer
 title: GitHubPages
 type: text/vnd.tiddlywiki
 
-{{TemporaryGitHubSettings}}
+''~GitHub Pages'' is a hosting service for static websites, offered for free by GitHub. This PublicSite is hosted on ~GitHub Pages.

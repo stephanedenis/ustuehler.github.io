@@ -1,0 +1,9 @@
+created: 20171104033053832
+modified: 20171105170020933
+tags: 
+title: RecentlyResolvedIssues
+type: text/vnd.tiddlywiki
+
+Recently resolved issues:
+
+<<list-links "[tag[ResolvedIssues]!has[draft.of]!sort[modified]first[5]]">>

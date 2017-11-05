@@ -1,7 +1,7 @@
 caption: Publishing Flow
 created: 20171104004643491
 list: 
-modified: 20171104015804626
+modified: 20171105164244061
 span: 5
 tags: PublicSite
 title: PublishingFlow
@@ -25,4 +25,6 @@ Now open http://localhost:8080/ in your browser and start making changes. Everyt
 
 ''Trouble Shooting''
 
-If your changes don't appear on the PublicSite, then you may experience the issue that I'm currently having with nodemon, where it doesn't seem to pick up any changes.  Switch to the terminal where you've started `hack/watch` and type `rs` followed by a carriage return.
+If your changes don't appear on the PublicSite, then you may experience the issue that I'm currently having with nodemon, where it doesn't seem to pick up any changes. Make sure that the full path to your working directory does not contain the substring `.git`. (I suppose this is/was a bug in one of the file-watching libraries used).
+
+If that doesn't help, switch to the terminal where you've started `hack/watch` and type `rs` followed by a carriage return.

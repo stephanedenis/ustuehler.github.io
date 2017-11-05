@@ -1,9 +1,9 @@
 created: 20171104032909970
-modified: 20171104033015223
+modified: 20171105165939070
 tags: 
-title: SolvedIssues
+title: ResolvedIssues
 type: text/vnd.tiddlywiki
 
-Solved issues:
+Resolved issues:
 
 <<list-links "[tag<currentTiddler>!has[draft.of]!sort[modified]]">>
