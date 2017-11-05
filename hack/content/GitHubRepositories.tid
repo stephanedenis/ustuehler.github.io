@@ -1,13 +1,15 @@
 created: 20171105023545660
 list: 
-modified: 20171105024024438
+modified: 20171105025213806
 tags: [[GitHub Pages]]
 title: GitHubRepositories
 type: text/vnd.tiddlywiki
 
 <<list-links "[list[]]">>
 
+<$github>
 <$button class="mdc-button mdc-button--raised">
-<$action-githublistrepos tiddler="GitHubRepositories"/>
+<$action-githublistrepos/>
 Refresh
 </$button>
+</$github>
