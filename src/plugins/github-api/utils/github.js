@@ -43,7 +43,7 @@ function getClient() {
 }
 
 /*
- * Get the current user, if username is null, or the given user
+ * Get the current user, if username is null, or the user with the given login name
  */
 function getUser(username) {
   return getClient().getUser(username);
