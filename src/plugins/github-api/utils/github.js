@@ -48,7 +48,6 @@ function getUser() {
 
 /**
  * List a user's public keys
- *
  * @see https://developer.github.com/v3/users/keys/#list-public-keys-for-a-user
  * @param {Requestable.callback} [cb] - will receive the list of keys
  * @return {Promise} - the promise for the http request
