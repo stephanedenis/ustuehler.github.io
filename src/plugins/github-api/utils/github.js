@@ -22,11 +22,11 @@ function getTemporarySetting(name, fallback) {
 };
 
 function getClientUserName() {
-  return this.getTemporarySetting("UserName", this.getSetting("username"));
+  return getTemporarySetting("UserName", getSetting("username"));
 }
 
 function getClientPassword() {
-  return this.getTemporarySetting("Password", this.getSetting("password"));
+  return getTemporarySetting("Password", getSetting("password"));
 }
 
 function getClient() {
