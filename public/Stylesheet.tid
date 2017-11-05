@@ -1,5 +1,5 @@
 created: 20171104024226128
-modified: 20171105183047671
+modified: 20171105183235637
 span: 6
 tags: PublicSite $:/tags/Stylesheet $:/tags/StyleSheet
 title: Stylesheet
@@ -47,5 +47,5 @@ type: text/css
 .tc-tiddler-body a:visited:not(.tc-tiddlylink),
 .tc-tiddler-preview-preview a:not(.tc-tiddlylink),
 .tc-tiddler-preview-preview a:visited:not(.tc-tiddlylink) {
-  color: #195ab5; /* A darker color of blue */
+  color: #4534ba; /* A darker version of blue with a tint of red */
 }
