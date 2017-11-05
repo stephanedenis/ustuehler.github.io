@@ -47,7 +47,7 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
 
 		/*
 		 * Render each key into our DOM node using the specifed template tiddler.
-     * Properties of the key are made available as local variables.
+     * Properties of the key are made available as temporary local variables.
      */
 		var lastChild = null;
 		keys.forEach((key) => {
