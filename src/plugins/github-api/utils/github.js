@@ -43,6 +43,7 @@ function getClient() {
 }
 
 function getUser() {
+  return getClient().getUser();
 }
 
 exports.github = {
