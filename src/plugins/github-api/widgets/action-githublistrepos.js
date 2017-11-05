@@ -86,6 +86,7 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
       return;
     }
 
+    console.log('There are ' + repos.length + ' repositories in the list');
     console.log(repos);
 
     var value = $tw.utils.stringifyList(repos);
