@@ -108,7 +108,7 @@ GitHubWriteFileWidget.prototype.invokeAction = function(triggeringWidget,event) 
   var repo = this.repo || (owner + '.github.io');;
   var path = this.path || this.computePathFromTiddler(tiddler);
 
-  var content = this.tiddlerContent(tiddler);
+  var content = this.content || this.tiddlerContent(tiddler);
   var message = this.message || ('Update ' + tiddler.fields.title);
 
   var repository = gh.getRepo(owner, repo);
