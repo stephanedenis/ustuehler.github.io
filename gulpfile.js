@@ -81,12 +81,16 @@ gulp.task('hack', ['build'], function() {
 	nodemon({
     script: 'index.js',
 		watch: ["*"]
-	}).on('restart', ['commit', 'push']);
+	}).on('restart', ['pull', 'commit', 'push']);
 });
 
 gulp.task("commit", [], shell.task([
   "git add -A",
   "git commit -a -m wip"
+]));
+
+gulp.task("pull", [], shell.task([
+  "git pull --rebase"
 ]));
 
 gulp.task("push", [], shell.task([
