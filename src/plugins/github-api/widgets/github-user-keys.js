@@ -40,11 +40,16 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
   $tw.utils.github.getUserKeys(this.user).then(function(keys) {
 		var domNode = self.domNode;
 
+		// Clear our DOM node
 		while (domNode.firstChild) {
 			domNode.removeChild(domNode.firstChild);
 		}
 
-		self.renderUserKeys(domNode, null);
+		// Render each key into our DOM node using the specifed template tiddler
+		var lastChild = null;
+		keys.forEach((key) => {
+			self.renderUserKey(domNode, lastChild, key);
+		});
 
 		$tw.utils.showSnackbar('Retrieved ' + keys.length + ' keys for ' + self.user + '.');
   }).catch(function(err) {
