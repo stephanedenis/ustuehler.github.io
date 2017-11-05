@@ -13,6 +13,14 @@ Provides GitHub utility functions under $tw.utils.github
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
+function getSetting(name, fallback) {
+  return $tw.wiki.getTiddlerText('$:/plugins/ustuehler/github-api/settings/' + name) || fallback;
+};
+
+function getTemporarySetting(name, fallback) {
+  return $tw.wiki.getTiddlerText('$:/temp/GitHub/' + name) || fallback;
+};
+
 function getClient() {
   var username = this.getTemporarySetting("UserName", this.getSetting("username"));
   var password = this.getTemporarySetting("Password", this.getSetting("password"));
