@@ -60,18 +60,17 @@ function getUser(username) {
  * to see if that has changed in the meantime.
  */
 function getUserKeys(username) {
-	var u = getUser(username);
-	var p = new Promise();
+	return new Promise((resolve, reject) => {
+		var u = getUser(username);
 
-	u._request('GET', u.__getScopedUrl('keys'), null, function(response, err) {
-		if (err) {
-			return p.reject(err);
-		} else {
-			return p.resolve(response.data);
-		}
-  });
-
-	return p;
+		u._request('GET', u.__getScopedUrl('keys'), null, function(response, err) {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(response.data);
+			}
+		});
+	});
 }
 
 exports.github = {
