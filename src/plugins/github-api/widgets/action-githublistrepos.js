@@ -107,6 +107,7 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
     if (filter.length > 0) {
       repoNames = $tw.wiki.filterTiddlers(value + ' +' + filter);
       value = $tw.utils.stringifyList(repoNames);
+      console.log('Reduced the list to ' + repoNames.length + ' repositories.');
     }
 
     console.log('Setting repository list to ' + value + '.');
