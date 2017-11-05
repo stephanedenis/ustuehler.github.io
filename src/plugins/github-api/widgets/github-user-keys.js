@@ -52,7 +52,7 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
      */
 		var lastChild = null;
 		keys.forEach((key) => {
-			lastChild = self.renderUserKey(domNode, lastChild, key);
+			lastChild = renderUserKey(domNode, lastChild, key);
 		});
 
 		$tw.utils.showSnackbar('Retrieved ' + keys.length + ' keys for ' + self.user + '.');
