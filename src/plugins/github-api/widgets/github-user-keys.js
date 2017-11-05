@@ -52,7 +52,7 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
      */
 		var lastChild = null;
 		keys.forEach((key) => {
-			lastChild = renderUserKey(domNode, lastChild, key);
+			lastChild = renderUserKey(this.document, domNode, lastChild, key);
 		});
 
 		$tw.utils.showSnackbar('Retrieved ' + keys.length + ' keys for ' + self.user + '.');
@@ -66,8 +66,8 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
   this.domNodes.push(domNode);
 };
 
-function renderUserKey(parent, nextSibling, key) {
-	var domNode = parent.createElement('p');
+function renderUserKey(document, parent, nextSibling, key) {
+	var domNode = document.createElement('p');
 	domNode.innerHTML = key.key;
 	parent.insertBefore(domNode, nextSibling);
 	return domNode;
