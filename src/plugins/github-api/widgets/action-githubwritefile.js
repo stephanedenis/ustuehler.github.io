@@ -81,6 +81,7 @@ GitHubWriteFileWidget.prototype.invokeAction = function(triggeringWidget,event) 
     */
   });
 
+  /*
   var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
   me.listNotifications(function(err, notifications) {
     // do some stuff
@@ -90,6 +91,7 @@ GitHubWriteFileWidget.prototype.invokeAction = function(triggeringWidget,event) 
     // look at all the starred repos!
     console.log(repos);
   });
+  */
 
   var tiddler = $tw.wiki.getTiddler(this.getVariable("currentTiddler"));
 

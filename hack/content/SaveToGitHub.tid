@@ -1,5 +1,5 @@
 created: 20171104231505296
-modified: 20171104234436793
+modified: 20171105000828690
 span: 4
 tags: [[GitHub Pages]]
 title: SaveToGitHub
@@ -19,7 +19,8 @@ type: text/vnd.tiddlywiki
 ''Step 3:''
 
 <$button class="mdc-button mdc-button--raised">
-<$set name="currentTiddler" value="$:/core/save/all">
+<$action-setfield $tiddler="$:/temp/GitHubPages/index.html" $field="text" $value={{$:/core/save/all}}/>
+<$set name="currentTiddler" value="$:/temp/GitHubPages/index.html">
 <$action-githubwritefile
   owner={{$:/config/GitHubPages/Save/Owner}}
   repo={{$:/config/GitHubPages/Save/Repo}}
