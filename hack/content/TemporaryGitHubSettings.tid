@@ -1,8 +1,12 @@
 created: 20171105010943183
-modified: 20171105043840907
+modified: 20171105224442364
 span: 4
 tags: [[GitHub Pages]] GitHubPagesSyncQueue
 title: TemporaryGitHubSettings
 type: text/vnd.tiddlywiki
 
 {{$:/plugins/ustuehler/github-api/status}}
+
+Password authentication won't work if you have 2-Factor Authentication enabled. Actually, never use your password, but generate a [[new token|https://github.com/settings/tokens]] and paste that into the password field above.
+
+If a Personal Access Token is used instead of a password, the username field can be left empty.

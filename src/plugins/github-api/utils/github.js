@@ -46,13 +46,31 @@ function getUser() {
   return getClient().getUser();
 }
 
+/**
+ * List the user's public keys
+ *
+ * This function is missing in the official API client for JavaScript.
+ * Check https://github.com/github-tools/github/blob/master/lib/User.js
+ * to see if that has changed in the meantime.
+ *
+ * @see https://developer.github.com/v3/gists/#list-a-users-gists
+ * @param {Requestable.callback} [cb] - will receive the list of gists
+ * @return {Promise} - the promise for the http request
+ */
+function getUserKeys(username, cb) {
+	var user = getUser(username);
+
+	return getClient()._request('GET', this.__getScopedUrl('keys'), null, cb);
+}
+
 exports.github = {
   getSetting:          getSetting,
   getTemporarySetting: getTemporarySetting,
   getClientUserName:   getClientUserName,
   getClientPassword:   getClientPassword,
   getClient:           getClient,
-  getUser:             getUser
+  getUser:             getUser,
+  getUserKeys:         getUserKeys
 };
 
 })(this);
