@@ -21,13 +21,18 @@ function getTemporarySetting(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/temp/GitHub/' + name) || fallback;
 };
 
-function getClient() {
-  var username = this.getTemporarySetting("UserName", this.getSetting("username"));
-  var password = this.getTemporarySetting("Password", this.getSetting("password"));
+function getClientUserName() {
+  return this.getTemporarySetting("UserName", this.getSetting("username"));
+}
 
+function getClientPassword() {
+  return this.getTemporarySetting("Password", this.getSetting("password"));
+}
+
+function getClient() {
   return new GitHub(
-    username: username,
-    password: password
+    username: getClientUserName(),
+    password: getClientPassword()
     /* also acceptable:
     token: 'MY_OAUTH_TOKEN'
     */
