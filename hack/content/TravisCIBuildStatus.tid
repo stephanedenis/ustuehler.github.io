@@ -1,0 +1,20 @@
+created: 20171105041450802
+modified: 20171105042857155
+span: 6
+title: TravisCIBuildStatus
+type: text/vnd.tiddlywiki
+
+\define travis-url(owner repo)
+https://travis-ci.org/$owner$/$repo$
+\end
+\define img(owner repo branch:"master")
+<a target="_" href=<<travis-url $owner$ $repo$>>>
+<img src="https://travis-ci.org/$owner$/$repo$.svg?branch=$branch$"/>
+</a>
+\end
+
+<$macrocall
+  $name="img"
+  owner="ustuehler"
+  branch={{!!travis-branch}}
+  repo=<<currentTiddler>>/>

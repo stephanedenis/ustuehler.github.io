@@ -1,7 +1,7 @@
 caption: Public Site
 created: 20171104000156141
 list-item-icon: public
-modified: 20171105021635640
+modified: 20171105044132874
 span: 4
 tags: $:/tags/Drawer
 title: PublicSite
@@ -13,7 +13,7 @@ url: https://ustuehler.github.io
 {{!!url}}<br>
 <$set name="url" value={{!!url}}><<hack-url>></$set>
 
-Merged PullRequests and commits on the `master` branch of the [[repository on GitHub|https://github.com/ustuehler/ustuehler.github.io]] are published automatically. This can take a few minutes, because the `index.html` page needs to be rebuilt by [[Travis CI|https://travis-ci.org/ustuehler/ustuehler.github.io]].
+Accepted PullRequests and commits on the `master` branch of the GitRepository are published automatically. This can take a few minutes, because the `index.html` page needs to be rebuilt by [[Travis CI|https://travis-ci.org/ustuehler/ustuehler.github.io]].
 
 An easier way to publish your changes rapidly from within ~TiddlyWiki is described in the PublishingFlow. For that you need commit access to your fork of the GitRepository.
 

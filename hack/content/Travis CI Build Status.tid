@@ -1,12 +1,16 @@
 created: 20171104131339557
-modified: 20171104192451589
-span: 4
+filter: ustuehler.github.io tw5-material tw5-elite tw5-github monkey git-cvs
+modified: 20171105044120090
+span: 2
 tags: 
 title: Travis CI Build Status
 type: text/vnd.tiddlywiki
 
-|!Project |!Branch |!Status |
-|ustuehler.growit.io |hack |<a target="_" href="https://travis-ci.org/ustuehler/ustuehler.github.io">[img[https://travis-ci.org/ustuehler/ustuehler.github.io.svg?branch=hack]]</a> |
-|tw5-material |master |<a target="_" href="https://travis-ci.org/ustuehler/tw5-material">[img[https://travis-ci.org/ustuehler/tw5-material.svg?branch=master]]</a> |
-
-{{$:/BuildInfo}}
+<table>
+<$list filter={{!!filter}}>
+  <tr>
+    <td><$link><$view field="title"/></$link></td>
+    <td>{{||TravisCIBuildStatus}}</td>
+  </tr>
+</$list>
+</table>

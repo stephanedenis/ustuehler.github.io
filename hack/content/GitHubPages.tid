@@ -1,9 +1,10 @@
+caption: GitHub Pages
 created: 20171104174226419
 list-item-icon: cloud_upload
-modified: 20171105023516378
+modified: 20171105044019929
 span: 3
 tags: $:/tags/Drawer
-title: GitHub Pages
+title: GitHubPages
 type: text/vnd.tiddlywiki
 
-<<list-links "[tag<currentTiddler>]">>
+{{TemporaryGitHubSettings}}
