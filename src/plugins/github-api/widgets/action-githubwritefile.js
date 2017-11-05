@@ -154,7 +154,7 @@ GitHubWriteFileWidget.prototype.renderTemplate = function(template) {
 };
 
 GitHubWriteFileWidget.prototype.getStatus = function(name, fallback) {
-  return $tw.wiki.getTiddlerText('$:/status/GitHub/' + name) || fallback;
+  return $tw.wiki.getTiddlerText('$:/temp/GitHub/' + name) || fallback;
 };
 
 GitHubWriteFileWidget.prototype.getSetting = function(name, fallback) {
