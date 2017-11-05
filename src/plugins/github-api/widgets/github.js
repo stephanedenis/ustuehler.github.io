@@ -84,15 +84,15 @@ GitHubWidget.prototype.getAttributeSetting = function(name) {
 }
 
 GitHubWidget.prototype.getAttributeStatus = function(name) {
-  var settingsTiddler = '$:/status/GitHub/' + name;
+  var settingsTiddler = '$:/temp/GitHub/' + name;
   return $tw.wiki.getTiddlerText(settingsTiddler);
 }
 
 GitHubWidget.prototype.setAttributeStatus = function(name, value) {
-  var statusTiddler = '$:/status/GitHub/' + name;
+  var tempTiddler = '$:/temp/GitHub/' + name;
   var options = {};
 
-  return $tw.wiki.setText(statusTiddler, 'text', undefined, value, options);
+  return $tw.wiki.setText(tempTiddler, 'text', undefined, value, options);
 }
 
 exports.github = GitHubWidget;
