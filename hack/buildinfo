@@ -77,7 +77,7 @@ created: $now
 modified: $now
 title: \$:/BuildInfo
 
-This TiddlyWiki edition was compiled on <\$view field="modified" format="date" template="DDD, MMM DDth YYYY at hh:0mm"/>.
+This TiddlyWiki edition was deployed on <\$view field="modified" format="date" template="DDD, MMM DDth YYYY at hh:0mm"/>.
 EOS
 )"
 
