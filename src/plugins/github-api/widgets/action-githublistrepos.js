@@ -112,7 +112,7 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
 
     console.log('Setting repository list to ' + value + '.');
     $tw.wiki.setText(title, field, undefined, value, options);
-    $tw.utils.showSnackbar('Found ' + repos.length + ' repositories.');
+    $tw.utils.showSnackbar('Found ' + repoNames.length + ' repositories.');
   });
 
   return true; // Action was invoked
