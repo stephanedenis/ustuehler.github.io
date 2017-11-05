@@ -112,7 +112,13 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
 
     console.log('Setting repository list to ' + value + '.');
     $tw.wiki.setText(title, field, undefined, value, options);
-    $tw.utils.showSnackbar('Found ' + repoNames.length + ' repositories.');
+
+    var message = 'Found ' + repoNames.length + ' repositories.';
+    if (repoNames.length != repos.length) {
+      message += ' Some were filtered.';
+    }
+
+    $tw.utils.showSnackbar(message);
   });
 
   return true; // Action was invoked
