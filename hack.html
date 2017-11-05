@@ -9866,7 +9866,7 @@ Upload
 <div created="20171104004132135" list-item-icon="search" modified="20171105044106153" span="4" tags="$:/tags/Drawer $:/tags/AdvancedSearch" title="Search" type="text/vnd.tiddlywiki">
 <pre>{{$:/core/ui/AdvancedSearch/Standard}}</pre>
 </div>
-<div created="20171104051037540" list-item-icon="search" modified="20171104084839883" span="3" tags="$:/tags/Drawer $:/tags/AdvancedSearch" title="Shadow Tiddlers" type="text/vnd.tiddlywiki">
+<div created="20171104051037540" list-item-icon="search" modified="20171105044956745" span="4" tags="$:/tags/Drawer $:/tags/AdvancedSearch" title="Shadow Tiddlers" type="text/vnd.tiddlywiki">
 <pre>{{$:/core/ui/AdvancedSearch/Shadows}}</pre>
 </div>
 <div caption="Similar Projects" created="20171104081510029" creator="ustuehler" link="SimilarProjects" modified="20171104081849775" modifier="ustuehler" span="4" tags="[[TiddlyWiki Links]]" title="SimilarProjects" type="text/vnd.tiddlywiki">
@@ -9907,7 +9907,7 @@ Upload
 
 ref: https://groups.google.com/forum/#!topic/tiddlywiki/gWRqpmZNg9k</pre>
 </div>
-<div created="20171104051012157" list-item-icon="search" modified="20171104084853680" span="3" tags="$:/tags/Drawer $:/tags/AdvancedSearch" title="System Tiddlers" type="text/vnd.tiddlywiki">
+<div created="20171104051012157" list-item-icon="search" modified="20171105044954849" span="4" tags="$:/tags/Drawer $:/tags/AdvancedSearch" title="System Tiddlers" type="text/vnd.tiddlywiki">
 <pre>{{$:/core/ui/AdvancedSearch/System}}</pre>
 </div>
 <div audio-url="http://94.176.104.15:8128/stream/1/" created="20171017150349582" creator="CMDR soda314" modified="20171104050148574" modifier="CMDR soda314" tags="Templates/View/Partial" template="Templates/View/Partial" title="Templates/Audio" type="text/vnd.tiddlywiki">
@@ -9933,14 +9933,20 @@ Your browser does not support the &lt;code&gt;audio&lt;/code&gt; element.
 <div created="20171104025047157" modified="20171104025140503" tags="PublicSite Issues" title="Travice CI isn't configured" type="text/vnd.tiddlywiki">
 <pre></pre>
 </div>
-<div created="20171104131339557" filter="ustuehler.github.io tw5-material tw5-elite tw5-github monkey git-cvs" modified="20171105044120090" span="2" tags="" title="Travis CI Build Status" type="text/vnd.tiddlywiki">
+<div created="20171104131339557" filter="ustuehler.github.io tw5-material tw5-elite tw5-github monkey git-cvs" modified="20171105045352928" span="4" tags="" title="Travis CI Build Status" type="text/vnd.tiddlywiki">
 <pre>&lt;table&gt;
-&lt;$list filter={{!!filter}}&gt;
   &lt;tr&gt;
-    &lt;td&gt;&lt;$link&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/td&gt;
-    &lt;td&gt;{{||TravisCIBuildStatus}}&lt;/td&gt;
+    &lt;th&gt;Repository&lt;/th&gt;
+    &lt;th&gt;Branch&lt;/th&gt;
+    &lt;th&gt;Status&lt;/th&gt;
   &lt;/tr&gt;
-&lt;/$list&gt;
+  &lt;$list filter={{!!filter}}&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;$link&gt;&lt;$view field=&quot;title&quot;/&gt;&lt;/$link&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;$view field=&quot;travis-branch&quot;&gt;&lt;$text text=&quot;master&quot;/&gt;&lt;/$view&gt;&lt;/td&gt;
+      &lt;td&gt;{{||TravisCIBuildStatus}}&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/$list&gt;
 &lt;/table&gt;</pre>
 </div>
 <div created="20171105041450802" modified="20171105042857155" span="6" title="TravisCIBuildStatus" type="text/vnd.tiddlywiki">

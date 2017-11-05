@@ -1,16 +1,22 @@
 created: 20171104131339557
 filter: ustuehler.github.io tw5-material tw5-elite tw5-github monkey git-cvs
-modified: 20171105044120090
-span: 2
+modified: 20171105045352928
+span: 4
 tags: 
 title: Travis CI Build Status
 type: text/vnd.tiddlywiki
 
 <table>
-<$list filter={{!!filter}}>
   <tr>
-    <td><$link><$view field="title"/></$link></td>
-    <td>{{||TravisCIBuildStatus}}</td>
+    <th>Repository</th>
+    <th>Branch</th>
+    <th>Status</th>
   </tr>
-</$list>
+  <$list filter={{!!filter}}>
+    <tr>
+      <td><$link><$view field="title"/></$link></td>
+      <td><$view field="travis-branch"><$text text="master"/></$view></td>
+      <td>{{||TravisCIBuildStatus}}</td>
+    </tr>
+  </$list>
 </table>
