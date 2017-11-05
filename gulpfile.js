@@ -81,7 +81,7 @@ gulp.task('hack', ['build'], function() {
 	nodemon({
     script: 'index.js',
 		watch: ["*"]
-	}).on('restart', ['pull', 'commit', 'push']);
+	}).on('restart', ['commit', 'pull', 'push']);
 });
 
 gulp.task("commit", [], shell.task([
