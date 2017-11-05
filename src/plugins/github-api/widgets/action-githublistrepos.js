@@ -38,6 +38,7 @@ Compute the internal state of the widget
 GitHubListReposWidget.prototype.execute = function() {
   this.tiddler = this.getAttribute("tiddler", this.getVariable("currentTiddler"));
   this.field = this.getAttribute("field", "list");
+  this.filter = this.getAttribute("filter", "");
 
   // Compute the internal state of child widgets.
   this.makeChildWidgets();
@@ -109,53 +110,12 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
   return true; // Action was invoked
 };
 
-GitHubListReposWidget.prototype.renderTemplate = function(template) {
-  var contentType = 'text/plain'
-  var options = {};
-
-  return this.wiki.renderTiddler(contentType,template,options);
-};
-
 GitHubListReposWidget.prototype.getTemporarySetting = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/temp/GitHub/' + name) || fallback;
 };
 
 GitHubListReposWidget.prototype.getSetting = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/plugins/ustuehler/github-api/settings/' + name) || fallback;
-};
-
-GitHubListReposWidget.prototype.computePathFromTiddler = function(tiddler) {
-  var pathPrefix = tiddler.fields['github-path-prefix'] || 'hack/content/';
-
-  if (tiddler.fields['github-path']) {
-    return pathPrefix + tiddler.fields['github-path'];
-  }
-
-  return pathPrefix + this.pathFromTitle(tiddler.fields.title);
-};
-
-GitHubListReposWidget.prototype.pathFromTitle = function(title) {
-  var re = /[^$A-Za-z0-9_ -]/g;
-  return title.replace(re, '_') + '.tid';
-};
-
-GitHubListReposWidget.prototype.tiddlerContent = function(tiddler) {
-  var fields = tiddler.fields;
-  var content = '';
-
-  // https://stackoverflow.com/questions/921789/how-to-loop-through-plain-javascript-object-with-objects-as-members
-	for (var field in fields) {
-		// skip loop if the property is from prototype
-		//if (!fields.hasOwnProperty(field)) continue;
-
-		if (field != 'text' && field != 'created' && field != 'modified' && field != 'bag' && field != 'revision') {
-			content += field + ': ' + tiddler.fields[field] + "\n";
-		}
-	}
-
-  content += "\n" + tiddler.fields.text;
-
-  return content;
 };
 
 /*
