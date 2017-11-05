@@ -92,6 +92,7 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
     console.log(repos);
 
     var list = [];
+
     for (var i in repos) {
       var fullName = repos[i].full_name;
 
