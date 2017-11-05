@@ -50,7 +50,7 @@ Selectively refreshes the widget if needed. Returns true if the widget or any of
 GitHubListReposWidget.prototype.refresh = function(changedTiddlers) {
   var changedAttributes = this.computeAttributes();
 
-  if (changedAttributes.tiddler || changedAttributes.field) {
+  if (changedAttributes.tiddler || changedAttributes.field || changedAttributes.filter) {
     this.refreshSelf();
     return true;
   }
@@ -66,6 +66,7 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
   var password = this.getTemporarySetting("Password", this.getSetting('password')); 
   var title = this.tiddler;
   var field = this.field;
+  var filter = this.filter;
   var self = this;
 
   console.log("GitHubListReposWidget.prototype.invokeAction");
@@ -101,6 +102,12 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
 
     var value = $tw.utils.stringifyList(repoNames);
     var options = {};
+
+    // Reduce the list by a filter
+    if (filter.length > 0) {
+      repoNames = $tw.wiki.filterTiddlers(value + ' +' + filter);
+      value = $tw.utils.stringifyList(repoNames);
+    }
 
     console.log('Setting repository list to ' + value + '.');
     $tw.wiki.setText(title, field, undefined, value, options);
