@@ -13,7 +13,15 @@ Provides GitHub utility functions under $tw.utils.github
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
+function getClient() {
+}
+
+function getUser() {
+}
+
 exports.github = {
+  getClient: getClient,
+  getUser: getUser
 };
 
 })(this);
