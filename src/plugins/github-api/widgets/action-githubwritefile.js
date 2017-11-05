@@ -148,8 +148,8 @@ GitHubWriteFileWidget.prototype.invokeAction = function(triggeringWidget,event) 
 };
 
 GitHubWriteFileWidget.prototype.renderTemplate = function(template) {
-  var options = {};
   var contentType = 'text/plain'
+  var options = {};
 
   return this.wiki.renderTiddler(contentType,template,options);
 };
