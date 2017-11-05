@@ -1,0 +1,7 @@
+created: 20171105011532209
+modified: 20171105012409972
+tags: [[GitHub Pages]] GitHubPagesSyncQueue
+title: PersistentGitHubSettings
+type: text/vnd.tiddlywiki
+
+{{$:/plugins/ustuehler/github-api/settings}}

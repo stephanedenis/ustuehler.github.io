@@ -1,22 +1,22 @@
 created: 20171104231505296
-modified: 20171105005536288
+modified: 20171105012334156
 span: 4
 tags: [[GitHub Pages]]
 title: SaveToGitHub
 type: text/vnd.tiddlywiki
 
-''Step 1: Provide authentication details''
+''Step 1: Provide a temporary personal access token''
 
-{{$:/plugins/ustuehler/github-api/settings}}
+{{TemporaryGitHubSettings}}
 
-''Step 2: Specify the destination''
+''Step 2: Specify the destination (path must already exist)''
 
 |<$link to="$:/config/GitHubPages/Save/Repo">~GitHub repository:</$link> |<$edit-text tiddler="$:/config/GitHubPages/Save/Repo" default="" tag="input"/> |
 |<$link to="$:/config/GitHubPages/Save/Owner">Repository owner:</$link> |<$edit-text tiddler="$:/config/GitHubPages/Save/Owner" default="" tag="input"/> |
 |<$link to="$:/config/GitHubPages/Save/Branch">Repository branch:</$link> |<$edit-text tiddler="$:/config/GitHubPages/Save/Branch" default="" tag="input"/> |
 |<$link to="$:/config/GitHubPages/Save/Path">Path within repository:</$link> |<$edit-text tiddler="$:/config/GitHubPages/Save/Path" default="" tag="input"/> |
 
-''Step 3:''
+''Step 3: Save this page in the specified destination''
 
 <$button class="mdc-button mdc-button--raised">
 <$action-githubwritefile
@@ -25,5 +25,5 @@ type: text/vnd.tiddlywiki
   repo={{$:/config/GitHubPages/Save/Repo}}
   branch={{$:/config/GitHubPages/Save/Branch}}
   path={{$:/config/GitHubPages/Save/Path}}/>
-Install
+Upload
 </$button>

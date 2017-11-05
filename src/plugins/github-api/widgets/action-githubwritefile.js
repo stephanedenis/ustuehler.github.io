@@ -134,7 +134,6 @@ GitHubWriteFileWidget.prototype.invokeAction = function(triggeringWidget,event) 
   console.log("committerName: " + this.committerName);
   console.log("committerEmail: " + this.committerEmail);
   console.log("message: " + message);
-  console.log("content: " + content);
 
   repository.writeFile(branch, path, content, message, options, function (err) {
     if (err) {
