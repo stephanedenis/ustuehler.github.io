@@ -39,8 +39,9 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
 Compute the internal state of the widget
 */
 GitHubUserKeysWidget.prototype.execute = function() {
-  this.defaultUser = this.getTemporarySetting("UserName", this.getSetting("username"));
-  this.user = this.getAttribute("user", this.defaultUser);
+  var defaultUser = this.getTemporarySetting("UserName", this.getSetting("username"));
+
+  this.user = this.getAttribute("user", defaultUser);
 
   // Compute the internal state of child widgets.
   this.makeChildWidgets();
@@ -52,7 +53,7 @@ Selectively refreshes the widget if needed. Returns true if the widget or any of
 GitHubUserKeysWidget.prototype.refresh = function(changedTiddlers) {
   var changedAttributes = this.computeAttributes();
 
-  if (changedAttributes.defaultUser || changedAttributes.user) {
+  if (changedAttributes.user) {
     this.refreshSelf();
     return true;
   }
