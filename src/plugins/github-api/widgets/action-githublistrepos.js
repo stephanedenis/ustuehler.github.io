@@ -89,7 +89,7 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
     var field = this.field;
     var value = $tw.utils.stringifyList(repos);
 
-    $tw.wiki.setText(title, field, undefined, value
+    $tw.wiki.setText(title, field, undefined, value);
   });
 
   return true; // Action was invoked
