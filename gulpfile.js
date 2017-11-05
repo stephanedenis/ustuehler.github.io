@@ -57,32 +57,32 @@ gulp.task("index.html", ['buildinfo', 'tiddlers', 'javascript'], shell.task([
   "tiddlywiki editions/public --build"
 ]));
 
+gulp.task("hack.html", ['buildinfo', 'tiddlers', 'javascript'], shell.task([
+  "tiddlywiki editions/hack-fs --build"
+]));
+
 gulp.task("build", [], function (cb) {
-  runSequence('clean', ['buildinfo', 'tiddlers', 'javascript', 'index.html'], cb)
+  runSequence('clean', ['index.html'], cb)
 });
 
 gulp.task("deploy", [], function (cb) {
-  runSequence('clean', ['build', 'hack.html'], cb)
+  runSequence('build', ['hack.html'], cb)
 });
 
 // ref: https://stackoverflow.com/questions/28048029/running-a-command-with-gulp-to-start-node-js-server
-gulp.task('server', function() {
+gulp.task('server', ['build'], function() {
 	nodemon({
     script: 'index.js',
 		watch: ["*"]
 	}).on('restart', ['build']);
 });
 
-gulp.task('hack', function() {
+gulp.task('hack', ['build'], function() {
 	nodemon({
     script: 'index.js',
 		watch: ["*"]
-	}).on('restart', ['build', 'hack.html', 'commit', 'push']);
+	}).on('restart', ['commit', 'push']);
 });
-
-gulp.task("hack.html", ['buildinfo', 'tiddlers', 'javascript'], shell.task([
-  "tiddlywiki editions/hack-fs --build"
-]));
 
 gulp.task("commit", [], shell.task([
   "git add -A",
