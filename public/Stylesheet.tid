@@ -1,5 +1,5 @@
 created: 20171104024226128
-modified: 20171105181651334
+modified: 20171105181728680
 span: 6
 tags: PublicSite $:/tags/Stylesheet $:/tags/StyleSheet
 title: Stylesheet
@@ -27,8 +27,8 @@ type: text/css
   transition: all 1s linear;
 }
 
-.tc-tiddler-frame:hover .tc-tiddler-body a,
-.tc-tiddler-frame:hover .tc-tiddler-preview-preview a {
+.tc-tiddler-frame:hover .tc-tiddler-body a.tc-tiddlylink,
+.tc-tiddler-frame:hover .tc-tiddler-preview-preview a.tc-tiddlylink {
   color: black;
   border-bottom: 1px solid;
   transition: all 1s linear;
