@@ -151,9 +151,7 @@ GitHubWriteFileWidget.prototype.renderTemplate = function(template) {
   var options = {};
   var contentType = 'text/plain'
 
-  var text = this.wiki.renderTiddler(contentType,template,options);
-
-	return text;
+  return this.wiki.renderTiddler(contentType,template,options);
 };
 
 GitHubWriteFileWidget.prototype.getStatus = function(name, fallback) {
