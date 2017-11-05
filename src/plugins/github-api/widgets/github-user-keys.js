@@ -64,6 +64,16 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
   this.domNodes.push(domNode);
 };
 
+function renderUserKey(parent, nextSibling, key) {
+	var domNode = parent.createElement('p');
+
+	domNode.innerHTML = key.key;
+
+	parent.insertBefore(domNode, nextSibling);
+
+	return domNode;
+}
+
 /*
 Compute the internal state of the widget
 */
