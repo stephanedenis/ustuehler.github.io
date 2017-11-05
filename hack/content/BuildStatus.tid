@@ -1,8 +1,8 @@
 caption: Build Status
 created: 20171104131339557
 filter: ustuehler.github.io tw5-material tw5-elite tw5-github monkey git-cvs tlsd openbsd-src openbsd-ports
-modified: 20171105173533304
-span: 5
+modified: 20171105180709634
+span: 3
 tags: 
 title: BuildStatus
 type: text/vnd.tiddlywiki
@@ -20,22 +20,26 @@ https://github.com/$(owner)$/$(currentTiddler)$
 \end
 
 <table>
-  <tr>
-    <th>Repository</th>
-    <th>Branch</th>
-    <th>Status</th>
-    <th>Homepage</th>
-  </tr>
+  <thead style="text-align: left;">
+    <tr>
+      <th></th>
+      <th>Repository</th>
+      <th>Branch</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
   <$list filter={{!!filter}}>
     <$set name="owner" value="ustuehler">
     <$set name="branch" value={{!!travis-branch}} emptyValue="master">
     <$set name="url" value=<<homepage-url>> emptyValue=<<default-url>>>
     <tr>
+      <td><a href=<<homepage-url>>><<material-icon "home">></a></td>
       <td><$link><$view field="title"/></$link></td>
       <td><a target="_" href=<<branch-url>>><$view field="travis-branch"><$text text="master"/></$view></a></td>
       <td>{{||TravisCIBuildStatus}}</td>
-      <td><<homepage-url>></td>
     </tr>
     </$set></$set></$set>
   </$list>
+  </tbody>
 </table>
