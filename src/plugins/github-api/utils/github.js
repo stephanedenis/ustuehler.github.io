@@ -42,6 +42,9 @@ function getClient() {
   });
 }
 
+/*
+ * Get the current user, if username is null, or the given user
+ */
 function getUser(username) {
   return getClient().getUser(username);
 }
