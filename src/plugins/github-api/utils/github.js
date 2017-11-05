@@ -64,8 +64,6 @@ function getUserKeys(username) {
 		var u = getUser(username);
 
 		u._request('GET', u.__getScopedUrl('keys'), null, function(err, response) {
-			console.log('err: ' + err);
-			console.log('response: ' + response);
 			if (err) {
 				reject(err);
 			} else {
