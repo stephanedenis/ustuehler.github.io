@@ -42,8 +42,8 @@ function getClient() {
   });
 }
 
-function getUser() {
-  return getClient().getUser();
+function getUser(username) {
+  return getClient().getUser(username);
 }
 
 /**
