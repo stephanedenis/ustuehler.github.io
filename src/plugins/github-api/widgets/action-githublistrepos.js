@@ -49,14 +49,7 @@ Selectively refreshes the widget if needed. Returns true if the widget or any of
 GitHubListReposWidget.prototype.refresh = function(changedTiddlers) {
   var changedAttributes = this.computeAttributes();
 
-  if (changedAttributes.template ||
-      changedAttributes.owner ||
-      changedAttributes.repo ||
-      changedAttributes.branch ||
-      changedAttributes.path ||
-      changedAttributes.message ||
-      changedAttributes.committerName ||
-      changedAttributes.committerEmail) {
+  if (changedAttributes.tiddler || changedAttributes.field) {
     this.refreshSelf();
     return true;
   }
