@@ -1,7 +1,7 @@
 caption: Build Status
 created: 20171104131339557
 filter: ustuehler.github.io tw5-material tw5-elite tw5-github monkey git-cvs tlsd openbsd-src openbsd-ports
-modified: 20171105180823093
+modified: 20171105191241379
 span: 3
 tags: 
 title: BuildStatus
@@ -11,20 +11,40 @@ type: text/vnd.tiddlywiki
 https://github.com/$(owner)$/$(currentTiddler)$/tree/$(branch)$
 \end
 
-\define homepage-url()
-{{!!url}}
-\end
-
 \define default-url()
 https://github.com/$(owner)$/$(currentTiddler)$
 \end
 
-<table>
+<style>
+table#build-status,
+table#build-status tr td {
+  border: none;
+}
+
+/* Insert some space between thead and tbody */
+table#build-status tbody tr:first-child td {
+  padding-top: .5em; /* half a line's height */
+}
+
+table#build-status tr td:nth-child(4) {
+  width: 50%;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+
+table#build-status tr td:last-child {
+ min-width: 100px;
+}
+</style>
+
+<table id="build-status" style="width: 100%;">
   <thead style="text-align: left;">
     <tr>
       <th></th>
       <th>Repository</th>
       <th>Branch</th>
+      <th></th>
       <th>Status</th>
     </tr>
   </thead>
@@ -34,9 +54,10 @@ https://github.com/$(owner)$/$(currentTiddler)$
     <$set name="branch" value={{!!travis-branch}} emptyValue="master">
     <$set name="url" value=<<homepage-url>> emptyValue=<<default-url>>>
     <tr>
-      <td><a target="_" href=<<homepage-url>>><<material-icon "home">></a></td>
+      <td><a target="_" href={{!!url}}><<material-icon "home">></a></td>
       <td><$link><$view field="title"/></$link></td>
       <td><a target="_" href=<<branch-url>>><$view field="travis-branch"><$text text="master"/></$view></a></td>
+      <td><!-- spacer to make the last column right-aligned --></td>
       <td>{{||TravisCIBuildStatus}}</td>
     </tr>
     </$set></$set></$set>
