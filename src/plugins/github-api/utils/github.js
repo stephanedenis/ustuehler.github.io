@@ -30,9 +30,12 @@ function getClientPassword() {
 }
 
 function getClient() {
+  var username = getClientUserName();
+  var password = getClientPassword();
+
   return new GitHub(
-    username: getClientUserName(),
-    password: getClientPassword()
+    username: username,
+    password: password,
     /* also acceptable:
     token: 'MY_OAUTH_TOKEN'
     */
