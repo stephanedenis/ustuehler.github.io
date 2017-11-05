@@ -1,23 +1,23 @@
 created: 20171104024226128
-modified: 20171104041336497
+modified: 20171105180952125
 span: 6
 tags: PublicSite $:/tags/Stylesheet $:/tags/StyleSheet
 title: Stylesheet
 type: text/css
 
 /*
- * TiddlyLinks in the tiddler body and preview area
+ * TiddlyLinks and external links in the tiddler body and preview area
  */
 
 .tc-tiddler-frame .tc-tiddler-body a,
-.tc-tiddler-frame .tc-tiddler-preview-preview a.tc-tiddlylink {
+.tc-tiddler-frame .tc-tiddler-preview-preview a{
   text-decoration: none;
   border-bottom: 1px solid rgba(255,255,255,0);
   transition: all 1s linear;
 }
 
 .tc-tiddler-frame:hover .tc-tiddler-body a,
-.tc-tiddler-frame:hover .tc-tiddler-preview-preview a.tc-tiddlylink {
+.tc-tiddler-frame:hover .tc-tiddler-preview-preview a {
   color: black;
   border-bottom: 1px solid;
   transition: all 1s linear;

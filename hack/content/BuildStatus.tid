@@ -1,7 +1,7 @@
 caption: Build Status
 created: 20171104131339557
 filter: ustuehler.github.io tw5-material tw5-elite tw5-github monkey git-cvs tlsd openbsd-src openbsd-ports
-modified: 20171105180709634
+modified: 20171105180823093
 span: 3
 tags: 
 title: BuildStatus
@@ -34,7 +34,7 @@ https://github.com/$(owner)$/$(currentTiddler)$
     <$set name="branch" value={{!!travis-branch}} emptyValue="master">
     <$set name="url" value=<<homepage-url>> emptyValue=<<default-url>>>
     <tr>
-      <td><a href=<<homepage-url>>><<material-icon "home">></a></td>
+      <td><a target="_" href=<<homepage-url>>><<material-icon "home">></a></td>
       <td><$link><$view field="title"/></$link></td>
       <td><a target="_" href=<<branch-url>>><$view field="travis-branch"><$text text="master"/></$view></a></td>
       <td>{{||TravisCIBuildStatus}}</td>
