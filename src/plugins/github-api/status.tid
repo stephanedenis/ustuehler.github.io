@@ -1,13 +1,13 @@
 created: 20171104082317886
-modified: 20171104145204093
+modified: 20171105015705195
 span: 12
 title: $:/plugins/ustuehler/github-api/status
 type: text/vnd.tiddlywiki
 
 <$github>
 
-|<$link to="$:/status/GitHub/UserName">~GitHub username:</$link> |<$edit-text tiddler="$:/status/GitHub/UserName" default={{$:/plugins/ustuehler/github-api/settings/username}} tag="input"/> |
-|<$link to="$:/status/GitHub/Password">~GitHub password:</$link> |<$edit-text tiddler="$:/status/GitHub/Password" default={{$:/plugins/ustuehler/github-api/settings/password}} tag="input" type="password"/> {{$:/status/GitHub/Password||$:/plugins/danielo/encryptTiddler/crypt-button}} |
-|<$link to="$:/status/GitHub/Branch">Default branch:</$link> |<$edit-text tiddler="$:/status/GitHub/Branch" default={{$:/plugins/ustuehler/github-api/settings/branch}} tag="input"/> |
+|<$link to="$:/temp/GitHub/UserName">~GitHub username:</$link> |<$edit-text tiddler="$:/temp/GitHub/UserName" default={{$:/plugins/ustuehler/github-api/settings/username}} tag="input"/> |
+|<$link to="$:/temp/GitHub/Password">~GitHub password:</$link> |<$edit-text tiddler="$:/temp/GitHub/Password" default={{$:/plugins/ustuehler/github-api/settings/password}} tag="input" type="password"/> |
+|<$link to="$:/temp/GitHub/Branch">Default branch:</$link> |<$edit-text tiddler="$:/temp/GitHub/Branch" default={{$:/plugins/ustuehler/github-api/settings/branch}} tag="input"/> |
 
 </$github>
