@@ -63,11 +63,11 @@ function getUserKeys(username) {
 	return new Promise((resolve, reject) => {
 		var u = getUser(username);
 
-		u._request('GET', u.__getScopedUrl('eys'), null, function(err, response) {
+		u._request('GET', u.__getScopedUrl('keys'), null, function(_, data, response) {
 			if (err) {
 				reject(err);
 			} else {
-				resolve(response.data);
+				resolve(data);
 			}
 		});
 	});
