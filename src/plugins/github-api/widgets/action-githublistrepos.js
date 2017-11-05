@@ -1,8 +1,8 @@
 /*\
-title: $:/plugins/ustuehler/github-api/widgets/action-githubwritefile.js
+title: $:/plugins/ustuehler/github-api/widgets/action-githublistrepos.js
 type: application/javascript
 module-type: widget
-caption: action-githubwritefile
+caption: action-githublistrepos
 
 Action widget that toggles the visibility of the first drawer found in the document
 
@@ -15,19 +15,19 @@ Action widget that toggles the visibility of the first drawer found in the docum
 
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
-var GitHubWriteFileWidget = function(parseTreeNode,options) {
+var GitHubListReposWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
 
 /*
 Inherit from the base widget class
 */
-GitHubWriteFileWidget.prototype = new Widget();
+GitHubListReposWidget.prototype = new Widget();
 
 /*
 Render this widget into the DOM
 */
-GitHubWriteFileWidget.prototype.render = function(parent,nextSibling) {
+GitHubListReposWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 };
@@ -35,15 +35,9 @@ GitHubWriteFileWidget.prototype.render = function(parent,nextSibling) {
 /*
 Compute the internal state of the widget
 */
-GitHubWriteFileWidget.prototype.execute = function() {
-  this.template = this.getAttribute("template");
-  this.owner = this.getAttribute("owner");
-  this.repo = this.getAttribute("repo");
-  this.branch = this.getAttribute("branch");
-  this.path = this.getAttribute("path");
-  this.message = this.getAttribute("message");
-  this.committerName = this.getAttribute("name", 'Uwe Stuehler');
-  this.committerEmail = this.getAttribute("email", 'ustuehler@growit.io');
+GitHubListReposWidget.prototype.execute = function() {
+  this.tiddler = this.getAttribute("tiddler", this.getVariable("currentTiddler"));
+  this.field = this.getAttribute("field", "list");
 
   // Compute the internal state of child widgets.
   this.makeChildWidgets();
@@ -52,7 +46,7 @@ GitHubWriteFileWidget.prototype.execute = function() {
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
-GitHubWriteFileWidget.prototype.refresh = function(changedTiddlers) {
+GitHubListReposWidget.prototype.refresh = function(changedTiddlers) {
   var changedAttributes = this.computeAttributes();
 
   if (changedAttributes.template ||
@@ -73,11 +67,11 @@ GitHubWriteFileWidget.prototype.refresh = function(changedTiddlers) {
 /*
  * Invoke the action associated with this widget
  */
-GitHubWriteFileWidget.prototype.invokeAction = function(triggeringWidget,event) {
+GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) {
   var username = this.getTemporarySetting("UserName", this.getSetting('username'));
   var password = this.getTemporarySetting("Password", this.getSetting('password')); 
 
-  console.log("GitHubWriteFileWidget.prototype.invokeAction");
+  console.log("GitHubListReposWidget.prototype.invokeAction");
   console.log(this);
 
   // basic auth
@@ -146,22 +140,22 @@ GitHubWriteFileWidget.prototype.invokeAction = function(triggeringWidget,event) 
   return true; // Action was invoked
 };
 
-GitHubWriteFileWidget.prototype.renderTemplate = function(template) {
+GitHubListReposWidget.prototype.renderTemplate = function(template) {
   var contentType = 'text/plain'
   var options = {};
 
   return this.wiki.renderTiddler(contentType,template,options);
 };
 
-GitHubWriteFileWidget.prototype.getTemporarySetting = function(name, fallback) {
+GitHubListReposWidget.prototype.getTemporarySetting = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/temp/GitHub/' + name) || fallback;
 };
 
-GitHubWriteFileWidget.prototype.getSetting = function(name, fallback) {
+GitHubListReposWidget.prototype.getSetting = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/plugins/ustuehler/github-api/settings/' + name) || fallback;
 };
 
-GitHubWriteFileWidget.prototype.computePathFromTiddler = function(tiddler) {
+GitHubListReposWidget.prototype.computePathFromTiddler = function(tiddler) {
   var pathPrefix = tiddler.fields['github-path-prefix'] || 'hack/content/';
 
   if (tiddler.fields['github-path']) {
@@ -171,12 +165,12 @@ GitHubWriteFileWidget.prototype.computePathFromTiddler = function(tiddler) {
   return pathPrefix + this.pathFromTitle(tiddler.fields.title);
 };
 
-GitHubWriteFileWidget.prototype.pathFromTitle = function(title) {
+GitHubListReposWidget.prototype.pathFromTitle = function(title) {
   var re = /[^$A-Za-z0-9_ -]/g;
   return title.replace(re, '_') + '.tid';
 };
 
-GitHubWriteFileWidget.prototype.tiddlerContent = function(tiddler) {
+GitHubListReposWidget.prototype.tiddlerContent = function(tiddler) {
   var fields = tiddler.fields;
   var content = '';
 
@@ -198,10 +192,10 @@ GitHubWriteFileWidget.prototype.tiddlerContent = function(tiddler) {
 /*
  * Don't allow actions to propagate, because we invoke actions ourself
  */
-GitHubWriteFileWidget.prototype.allowActionPropagation = function() {
+GitHubListReposWidget.prototype.allowActionPropagation = function() {
   return false;
 };
 
-exports["action-githubwritefile"] = GitHubWriteFileWidget;
+exports["action-githublistrepos"] = GitHubListReposWidget;
 
 })(this);
