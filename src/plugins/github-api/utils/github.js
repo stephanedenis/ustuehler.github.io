@@ -55,15 +55,17 @@ function getUser(username) {
  * @param {Requestable.callback} [cb] - will receive the list of keys
  * @return {Promise} - the promise for the http request
  *
- * This function is missing in the official API client for JavaScript.
- * Check https://github.com/github-tools/github/blob/master/lib/User.js
- * to see if that has changed in the meantime.
+ * This function is missing in the official API client for JavaScript.  Check
+ * https://github.com/github-tools/github/blob/master/lib/User.js to see if that
+ * has changed in the meantime.
  */
 function getUserKeys(username) {
 	return new Promise((resolve, reject) => {
 		var u = getUser(username);
 
 		u._request('GET', u.__getScopedUrl('keys'), null, function(response, err) {
+			console.log('response: ' + response);
+			console.log('err: ' + err);
 			if (err) {
 				reject(err);
 			} else {
