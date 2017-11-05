@@ -58,7 +58,7 @@ function getUser() {
  */
 function getUserKeys(username, cb) {
 	var user = getUser(username);
-	return ._request('GET', this.__getScopedUrl('keys'), null, cb);
+	return user._request('GET', user.__getScopedUrl('keys'), null, cb);
 }
 
 exports.github = {
