@@ -4,6 +4,7 @@
 	"tiddlywiki/tiddlyweb",
 	"tiddlywiki/filesystem",
         "tiddlywiki/highlight",
+	"tiddlywiki/railroad",
 	"ustuehler/github-api",
 	"ustuehler/github-pages",
 	"ustuehler/caption",
