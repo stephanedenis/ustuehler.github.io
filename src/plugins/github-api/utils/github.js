@@ -47,8 +47,12 @@ function getUser() {
 }
 
 exports.github = {
-  getClient: getClient,
-  getUser: getUser
+  getSetting:          getSetting,
+  getTemporarySetting: getTemporarySetting,
+  getClientUserName:   getClientUserName,
+  getClientPassword:   getClientPassword,
+  getClient:           getClient,
+  getUser:             getUser
 };
 
 })(this);
