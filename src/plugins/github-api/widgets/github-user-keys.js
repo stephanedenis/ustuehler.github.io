@@ -56,7 +56,7 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
 
 		$tw.utils.showSnackbar('Retrieved ' + keys.length + ' keys for ' + self.user + '.');
   }).catch(function(err) {
-		console.log(err);
+		console.log('getUserKeys: ' + err);
 		$tw.utils.showSnackbar('Failed to retrieve SSH public keys for ' + self.user + '.');
 	});
 
