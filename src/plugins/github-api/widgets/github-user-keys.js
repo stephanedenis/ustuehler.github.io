@@ -72,6 +72,8 @@ GitHubUserKeysWidget.prototype.invokeAction = function(triggeringWidget,event) {
   console.log("GitHubUserKeysWidget.prototype.invokeAction");
   console.log(self);
 
+  // TODO: move this code fragment to $tw.utils.github
+
   // basic auth
   var gh = new GitHub({
     username: username,
