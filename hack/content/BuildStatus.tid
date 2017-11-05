@@ -1,7 +1,7 @@
 caption: Build Status
 created: 20171104131339557
 filter: ustuehler.github.io tw5-material tw5-elite tw5-github monkey git-cvs tlsd openbsd-src openbsd-ports
-modified: 20171105191241379
+modified: 20171105191327219
 span: 3
 tags: 
 title: BuildStatus
@@ -17,6 +17,7 @@ https://github.com/$(owner)$/$(currentTiddler)$
 
 <style>
 table#build-status,
+table#build-status tr th,
 table#build-status tr td {
   border: none;
 }

@@ -1,10 +1,10 @@
+caption: TiddlyWiki Plugins
 created: 20171104065505356
-link: [[My Plugins]]
+link: TiddlyWikiPlugins
 list: $:/plugins/ustuehler/caption $:/plugins/ustuehler/github-api
 list-item-icon: extension
-modified: 20171104084444285
-tags: $:/tags/Drawer
-title: My Plugins
+modified: 20171105194530968
+title: TiddlyWikiPlugins
 type: text/vnd.tiddlywiki
 
 <ul>
