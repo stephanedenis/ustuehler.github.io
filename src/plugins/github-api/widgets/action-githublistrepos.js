@@ -63,6 +63,8 @@ GitHubListReposWidget.prototype.refresh = function(changedTiddlers) {
 GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) {
   var username = this.getTemporarySetting("UserName", this.getSetting('username'));
   var password = this.getTemporarySetting("Password", this.getSetting('password')); 
+  var title = this.tiddler;
+  var field = this.field;
   var self = this;
 
   console.log("GitHubListReposWidget.prototype.invokeAction");
@@ -86,8 +88,6 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
 
     console.log(repos);
 
-    var title = self.tiddler;
-    var field = self.field;
     var value = $tw.utils.stringifyList(repos);
 
     console.log('Setting repository list to ' + value);
