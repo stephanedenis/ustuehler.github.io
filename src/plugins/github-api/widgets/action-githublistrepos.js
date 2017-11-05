@@ -91,7 +91,14 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
     console.log('Found ' + repos.length + ' repositories.');
     console.log(repos);
 
-    var value = $tw.utils.stringifyList(repos);
+    var list = [];
+    for (var i in repos) {
+      var fullName = repos[i].full_name;
+
+      list.push(fullName);
+    }
+
+    var value = $tw.utils.stringifyList(list);
     var options = {};
 
     console.log('Setting repository list to ' + value + '.');
