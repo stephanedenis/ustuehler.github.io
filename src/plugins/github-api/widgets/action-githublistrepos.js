@@ -115,7 +115,7 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
 
     var message = 'Found ' + repoNames.length + ' repositories.';
     if (repoNames.length != repos.length) {
-      message += ' Some results were filtered.';
+      message += ' Filter rules were matched.';
     }
 
     $tw.utils.showSnackbar(message);
