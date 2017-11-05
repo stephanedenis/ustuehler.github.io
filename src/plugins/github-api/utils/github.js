@@ -61,6 +61,7 @@ function getUser(username) {
  */
 function getUserKeys(username, cb) {
 	var u = getUser(username);
+	console.log('cb:');
 	console.log(cb);
 	return u._request('GET', u.__getScopedUrl('keys'), null, function(response) {
 		return cb(response.data);
