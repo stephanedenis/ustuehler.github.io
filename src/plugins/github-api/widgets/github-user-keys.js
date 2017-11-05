@@ -45,7 +45,10 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
 			domNode.removeChild(domNode.firstChild);
 		}
 
-		// Render each key into our DOM node using the specifed template tiddler
+		/*
+		 * Render each key into our DOM node using the specifed template tiddler.
+     * Properties of the key are made available as local variables.
+     */
 		var lastChild = null;
 		keys.forEach((key) => {
 			self.renderUserKey(domNode, lastChild, key);
