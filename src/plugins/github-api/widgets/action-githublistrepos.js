@@ -90,6 +90,8 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
     var field = self.field;
     var value = $tw.utils.stringifyList(repos);
 
+    console.log('Setting repository list to ' + value);
+
     $tw.wiki.setText(title, field, undefined, value);
     $tw.utils.showSnackbar('Repository list updated.');
   });
