@@ -59,12 +59,16 @@ function getUser(username) {
  * Check https://github.com/github-tools/github/blob/master/lib/User.js
  * to see if that has changed in the meantime.
  */
-function getUserKeys(username, cb) {
+function getUserKeys(username) {
 	var u = getUser(username);
-	console.log('cb:');
-	console.log(cb);
-	return u._request('GET', u.__getScopedUrl('keys'), null, function(response) {
-		return cb(response.data);
+	var p = new Promise();
+
+	return u._request('GET', u.__getScopedUrl('keys'), null, function(response, err) {
+		if (err) {
+			return p.reject(err);
+		} else {
+			return p.resolve(response.data);
+		}
   });
 }
 
