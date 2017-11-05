@@ -73,15 +73,7 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
   console.log(self);
 
   // basic auth
-  var gh = new GitHub({
-    username: username,
-    password: password
-    /* also acceptable:
-    token: 'MY_OAUTH_TOKEN'
-    */
-  });
-
-  var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
+  var me = $tw.utils.getUser(); // no user specified defaults to the user for whom credentials were provided
 
   console.log('Listing GitHub repositories for authenticated user.');
   me.listRepos(function(err, repos) {
