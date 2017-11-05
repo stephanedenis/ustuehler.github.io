@@ -14,6 +14,16 @@ Provides GitHub utility functions under $tw.utils.github
 /*global $tw: false */
 
 function getClient() {
+  var username = this.getTemporarySetting("UserName", this.getSetting("username"));
+  var password = this.getTemporarySetting("Password", this.getSetting("password"));
+
+  return new GitHub(
+    username: username,
+    password: password
+    /* also acceptable:
+    token: 'MY_OAUTH_TOKEN'
+    */
+  );
 }
 
 function getUser() {
