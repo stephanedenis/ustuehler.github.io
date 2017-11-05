@@ -124,6 +124,8 @@ GitHubUserKeysWidget.prototype.invokeAction = function(triggeringWidget,event) {
   return true; // Action was invoked
 };
 
+// TODO: move getTemporarySetting and getSetting to $tw.utils.github
+
 GitHubUserKeysWidget.prototype.getTemporarySetting = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/temp/GitHub/' + name) || fallback;
 };
