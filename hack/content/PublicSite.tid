@@ -1,7 +1,7 @@
 caption: Public Site
 created: 20171104000156141
 list-item-icon: public
-modified: 20171105044132874
+modified: 20171105162250710
 span: 4
 tags: $:/tags/Drawer
 title: PublicSite
@@ -13,8 +13,10 @@ url: https://ustuehler.github.io
 {{!!url}}<br>
 <$set name="url" value={{!!url}}><<hack-url>></$set>
 
-Accepted PullRequests and commits on the `master` branch of the GitRepository are published automatically. This can take a few minutes, because the `index.html` page needs to be rebuilt by [[Travis CI|https://travis-ci.org/ustuehler/ustuehler.github.io]].
+The `hack` branch of the GitRepository triggers deployment. It can take a few minutes for changes to be visible on the live site as  `index.html` and a few other files have to be rebuilt.
 
-An easier way to publish your changes rapidly from within ~TiddlyWiki is described in the PublishingFlow. For that you need commit access to your fork of the GitRepository.
+Builds are handled by [[Travis CI|https://travis-ci.org/ustuehler/ustuehler.github.io]]. At the end of each build on the `hack` branch, Travis force-pushes the outcome to the `master` branch. Finally, GitHubPages deploys the `master` branch as a static site under the ''github.io'' domain.
 
-{{BuildInfo}}
+Publishing your changes rapidly from within ~TiddlyWiki is described in the PublishingFlow. For that you need commit access to your fork of the GitRepository, and a local installation of Node.js.
+
+{{$:/BuildInfo}}
