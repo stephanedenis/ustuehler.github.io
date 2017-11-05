@@ -80,6 +80,7 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
   });
 
   var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
+
   me.listRepos(function(err, repos) {
     if (err) {
       $tw.utils.showSnackbar("Error from GitHub: " + err);
