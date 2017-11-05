@@ -132,13 +132,6 @@ GitHubUserKeysWidget.prototype.getSetting = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/plugins/ustuehler/github-api/settings/' + name) || fallback;
 };
 
-/*
- * Don't allow actions to propagate, because we invoke actions ourself
- */
-GitHubUserKeysWidget.prototype.allowActionPropagation = function() {
-  return false;
-};
-
 exports["github-user-keys"] = GitHubUserKeysWidget;
 
 })(this);
