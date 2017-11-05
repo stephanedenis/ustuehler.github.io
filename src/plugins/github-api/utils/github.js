@@ -63,13 +63,15 @@ function getUserKeys(username) {
 	var u = getUser(username);
 	var p = new Promise();
 
-	return u._request('GET', u.__getScopedUrl('keys'), null, function(response, err) {
+	u._request('GET', u.__getScopedUrl('keys'), null, function(response, err) {
 		if (err) {
 			return p.reject(err);
 		} else {
 			return p.resolve(response.data);
 		}
   });
+
+	return p;
 }
 
 exports.github = {
