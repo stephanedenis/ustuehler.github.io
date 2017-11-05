@@ -66,11 +66,11 @@ function getUserKeys(username) {
 		u._request('GET', u.__getScopedUrl('keys'), null, function(err, response) {
 			console.log('err: ' + err);
 			console.log('response: ' + response);
-			//if (err) {
-		//		reject(err);
-		//	} else {
+			if (err) {
+				reject(err);
+			} else {
 				resolve(response.data);
-		//	}
+			}
 		});
 	});
 }
