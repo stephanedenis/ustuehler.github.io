@@ -90,6 +90,7 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
     var value = $tw.utils.stringifyList(repos);
 
     $tw.wiki.setText(title, field, undefined, value);
+    $tw.utils.showSnackbar('Repository list updated.');
   });
 
   return true; // Action was invoked
