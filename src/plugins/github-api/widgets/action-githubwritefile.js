@@ -74,8 +74,8 @@ GitHubWriteFileWidget.prototype.refresh = function(changedTiddlers) {
  * Invoke the action associated with this widget
  */
 GitHubWriteFileWidget.prototype.invokeAction = function(triggeringWidget,event) {
-  var username = this.getStatus("UserName", this.getSetting('username'));
-  var password = this.getStatus("Password", this.getSetting('password')); 
+  var username = this.getTemporarySetting("UserName", this.getSetting('username'));
+  var password = this.getTemporarySetting("Password", this.getSetting('password')); 
 
   console.log("GitHubWriteFileWidget.prototype.invokeAction");
   console.log(this);
@@ -104,7 +104,7 @@ GitHubWriteFileWidget.prototype.invokeAction = function(triggeringWidget,event) 
   var tiddler = $tw.wiki.getTiddler(this.getVariable("currentTiddler"));
 
   var owner = this.owner || username;
-  var branch = this.branch || this.getStatus('Branch', this.getSetting('branch'));
+  var branch = this.branch || this.getTemporarySetting('Branch', this.getSetting('branch'));
   var repo = this.repo || (owner + '.github.io');;
   var path = this.path || this.computePathFromTiddler(tiddler);
 
@@ -153,7 +153,7 @@ GitHubWriteFileWidget.prototype.renderTemplate = function(template) {
   return this.wiki.renderTiddler(contentType,template,options);
 };
 
-GitHubWriteFileWidget.prototype.getStatus = function(name, fallback) {
+GitHubWriteFileWidget.prototype.getTemporarySetting = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/temp/GitHub/' + name) || fallback;
 };
 
