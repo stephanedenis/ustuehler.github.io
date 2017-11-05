@@ -30,6 +30,9 @@ Render this widget into the DOM
 GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
+
+  // This widget is invisible, but its children may be visible
+  this.renderChildren(parent, nextSibling);
 };
 
 /*
