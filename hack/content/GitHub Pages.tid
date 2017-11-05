@@ -1,10 +1,9 @@
 created: 20171104174226419
 list-item-icon: cloud_upload
-modified: 20171104235214384
+modified: 20171105023516378
 span: 3
 tags: $:/tags/Drawer
 title: GitHub Pages
 type: text/vnd.tiddlywiki
 
-* SaveToGitHub
-* GitHubPagesSyncQueue
+<<list-links "[tag<currentTiddler>]">>

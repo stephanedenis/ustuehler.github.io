@@ -1,14 +1,14 @@
 caption: Public Site
 created: 20171104000156141
 list-item-icon: public
-modified: 20171104224920114
+modified: 20171105021635640
 span: 4
 tags: $:/tags/Drawer
 title: PublicSite
 type: text/vnd.tiddlywiki
 url: https://ustuehler.github.io
 
-\define hack-url() $(url)$/hack.html
+\define hack-url() $(url)$/hack
 
 {{!!url}}<br>
 <$set name="url" value={{!!url}}><<hack-url>></$set>
