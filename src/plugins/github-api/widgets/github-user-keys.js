@@ -66,11 +66,8 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
 
 function renderUserKey(parent, nextSibling, key) {
 	var domNode = parent.createElement('p');
-
 	domNode.innerHTML = key.key;
-
 	parent.insertBefore(domNode, nextSibling);
-
 	return domNode;
 }
 
