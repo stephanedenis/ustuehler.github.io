@@ -83,6 +83,8 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
       return;
     }
 
+    console.log(repos);
+
     var title = this.tiddler;
     var field = this.field;
     var value = $tw.utils.stringifyList(repos);
