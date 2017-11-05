@@ -30,7 +30,25 @@ Render this widget into the DOM
 GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
-  this.renderChildren(parent, nextSibling);
+
+  // Create the DOM node for this widget
+  var domNode = this.document.createElement('div');
+
+  // Fetch and render the user keys using the supplied template
+  var user = $tw.utils.github.getUser(this.user);
+  user.listKeys(function(err, keys) {
+    if (err) {
+      $tw.utils.showSnackbar('Failed to retrieve SSH public keys for ' + this.user + '.');
+    } else {
+      $tw.utils.showSnackbar('Retrieved ' + keys.length + ' keys for ' + this.user + '.');
+      console.log('Got user keys:');
+      console.log(keys);
+    }
+  });
+
+  parent.insertBefore(domNode, nextSibling);
+  this.renderChildren(domNode, null);
+  this.domNodes.push(domNode);
 };
 
 /*
