@@ -36,6 +36,7 @@ GitHubWriteFileWidget.prototype.render = function(parent,nextSibling) {
 Compute the internal state of the widget
 */
 GitHubWriteFileWidget.prototype.execute = function() {
+  this.content = this.getAttribute("content");
   this.owner = this.getAttribute("owner");
   this.repo = this.getAttribute("repo");
   this.branch = this.getAttribute("branch");
@@ -54,7 +55,7 @@ Selectively refreshes the widget if needed. Returns true if the widget or any of
 GitHubWriteFileWidget.prototype.refresh = function(changedTiddlers) {
   var changedAttributes = this.computeAttributes();
 
-  if (changedAttributes["class"] || changedAttributes.selector) {
+  if (changedAttributes.content || changedAttributes.owner || changedAttributes.repo || changedAttributes.branch || changedAttributes.path || changedAttributes.message || changedAttributes.committerName || changedAttributes.committerEmail) {
     this.refreshSelf();
     return true;
   }
