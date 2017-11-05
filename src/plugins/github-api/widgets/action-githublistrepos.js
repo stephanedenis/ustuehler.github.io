@@ -114,6 +114,10 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
     $tw.wiki.setText(title, field, undefined, value, options);
 
     var message = 'Found ' + repoNames.length + ' repositories.';
+    if (repoNames.length != repos.length) {
+      message = 'Found ' + repoNames.length + ' repositories matching the filter.';
+    }
+
     $tw.utils.showSnackbar(message);
   });
 
