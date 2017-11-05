@@ -1,5 +1,5 @@
 created: 20171104024226128
-modified: 20171105182614025
+modified: 20171105182809918
 span: 6
 tags: PublicSite $:/tags/Stylesheet $:/tags/StyleSheet
 title: Stylesheet
@@ -43,7 +43,9 @@ type: text/css
  * Make visited plain links indistinguishable from visited links, because the
  * default colors are horrible and I don't have an alternative now
  */
+.tc-tiddler-body a:not(.tc-tiddlylink),
 .tc-tiddler-body a:visited:not(.tc-tiddlylink),
+.tc-tiddler-preview-preview a:not(.tc-tiddlylink) {
 .tc-tiddler-preview-preview a:visited:not(.tc-tiddlylink) {
-  color: inherit;
+  color: blue;
 }
