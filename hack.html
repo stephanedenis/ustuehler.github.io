@@ -9792,7 +9792,7 @@ If you don't have write access to the GitRepository, please submit your changes 
 
 &lt;&lt;list-links &quot;[tag[SolvedIssues]!has[draft.of]!sort[modified]first[5]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20171104231505296" modified="20171105000828690" span="4" tags="[[GitHub Pages]]" title="SaveToGitHub" type="text/vnd.tiddlywiki">
+<div created="20171104231505296" modified="20171105001940822" span="4" tags="[[GitHub Pages]]" title="SaveToGitHub" type="text/vnd.tiddlywiki">
 <pre>''Step 1: Provide authentication details''
 
 {{$:/plugins/ustuehler/github-api/settings}}
@@ -9807,14 +9807,12 @@ If you don't have write access to the GitRepository, please submit your changes 
 ''Step 3:''
 
 &lt;$button class=&quot;mdc-button mdc-button--raised&quot;&gt;
-&lt;$action-setfield $tiddler=&quot;$:/temp/GitHubPages/index.html&quot; $field=&quot;text&quot; $value={{$:/core/save/all}}/&gt;
-&lt;$set name=&quot;currentTiddler&quot; value=&quot;$:/temp/GitHubPages/index.html&quot;&gt;
 &lt;$action-githubwritefile
+  content={{$:/core/save/all}}
   owner={{$:/config/GitHubPages/Save/Owner}}
   repo={{$:/config/GitHubPages/Save/Repo}}
   branch={{$:/config/GitHubPages/Save/Branch}}
   path={{$:/config/GitHubPages/Save/Path}}/&gt;
-&lt;/$set&gt;
 Install
 &lt;/$button&gt;</pre>
 </div>
