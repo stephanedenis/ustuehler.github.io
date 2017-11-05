@@ -52,7 +52,7 @@ Selectively refreshes the widget if needed. Returns true if the widget or any of
 GitHubUserKeysWidget.prototype.refresh = function(changedTiddlers) {
   var changedAttributes = this.computeAttributes();
 
-  if (changedAttributes.user) {
+  if (changedAttributes.defaultUser || changedAttributes.user) {
     this.refreshSelf();
     return true;
   }
