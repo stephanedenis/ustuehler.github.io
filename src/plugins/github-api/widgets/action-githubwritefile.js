@@ -126,8 +126,7 @@ GitHubWriteFileWidget.prototype.invokeAction = function(triggeringWidget,event) 
   }
 
   console.log("username: " + username);
-  //console.log("password: " + password.replace(/./g, '*'));
-  console.log("password: " + password);
+  console.log("password: " + password.replace(/./g, '*'));
   console.log("owner: " + owner);
   console.log("repo: " + repo);
   console.log("branch: " + branch);
