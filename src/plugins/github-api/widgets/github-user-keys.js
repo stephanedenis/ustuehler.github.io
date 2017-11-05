@@ -36,6 +36,7 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
 
   // Fetch and render the user keys using the supplied template
   var user = $tw.utils.github.getUser(this.user);
+  /*
   user.listKeys(function(err, keys) {
     if (err) {
       $tw.utils.showSnackbar('Failed to retrieve SSH public keys for ' + this.user + '.');
@@ -45,6 +46,7 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
       console.log(keys);
     }
   });
+  */
 
   parent.insertBefore(domNode, nextSibling);
   this.renderChildren(domNode, null);
