@@ -39,9 +39,8 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
 Compute the internal state of the widget
 */
 GitHubUserKeysWidget.prototype.execute = function() {
-  var defaultUser = this.getTemporarySetting("UserName", this.getSetting("username"));
-
-  this.user = this.getAttribute("user", defaultUser);
+  this.defaultUser = this.getTemporarySetting("UserName", this.getSetting("username"));
+  this.user = this.getAttribute("user", this.defaultUser);
 
   // Compute the internal state of child widgets.
   this.makeChildWidgets();
