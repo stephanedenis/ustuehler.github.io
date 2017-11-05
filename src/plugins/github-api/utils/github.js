@@ -33,13 +33,13 @@ function getClient() {
   var username = getClientUserName();
   var password = getClientPassword();
 
-  return new GitHub(
+  return new GitHub({
     username: username,
     password: password,
     /* also acceptable:
     token: 'MY_OAUTH_TOKEN'
     */
-  );
+  });
 }
 
 function getUser() {
