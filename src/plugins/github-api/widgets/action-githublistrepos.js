@@ -76,58 +76,18 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
     */
   });
 
-  /*
   var me = gh.getUser(); // no user specified defaults to the user for whom credentials were provided
-  me.listNotifications(function(err, notifications) {
-    // do some stuff
-    console.log(notifications);
-  });
-  me.listStarredRepos(function(err, repos) {
-    // look at all the starred repos!
-    console.log(repos);
-  });
-  */
-
-  var tiddler = $tw.wiki.getTiddler(this.getVariable("currentTiddler"));
-
-  var owner = this.owner || username;
-  var branch = this.branch || this.getTemporarySetting('Branch', this.getSetting('branch'));
-  var repo = this.repo || (owner + '.github.io');;
-  var path = this.path || this.computePathFromTiddler(tiddler);
-
-  var content = this.renderTemplate(this.template);
-  var message = this.message || ('Update ' + tiddler.fields.title);
-
-  var repository = gh.getRepo(owner, repo);
-
-  var options = {
-    committer: {
-      name: this.committerName,
-      email: this.committerEmail
-    }
-  };
-
-  if (!password) {
-    $tw.utils.error('Please set the password to a valid GitHub personal access token.');
-    return true; // Action was invoked
-  }
-
-  console.log("username: " + username);
-  console.log("password: " + password.replace(/./g, '*'));
-  console.log("owner: " + owner);
-  console.log("repo: " + repo);
-  console.log("branch: " + branch);
-  console.log("path: " + path);
-  console.log("committerName: " + this.committerName);
-  console.log("committerEmail: " + this.committerEmail);
-  console.log("message: " + message);
-
-  repository.writeFile(branch, path, content, message, options, function (err) {
+  me.listRepos(function(err, repos) {
     if (err) {
       $tw.utils.showSnackbar("Error from GitHub: " + err);
-    } else {
-      $tw.utils.showSnackbar('File uploaded: ' + path);
+      return;
     }
+
+    var title = this.tiddler;
+    var field = this.field;
+    var value = $tw.utils.stringifyList(repos);
+
+    $tw.wiki.setText(title, field, undefined, value
   });
 
   return true; // Action was invoked
