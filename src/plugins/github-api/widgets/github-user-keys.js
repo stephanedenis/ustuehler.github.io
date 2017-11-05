@@ -1,10 +1,10 @@
 /*\
-title: $:/plugins/ustuehler/github-api/widgets/action-githublistrepos.js
+title: $:/plugins/ustuehler/github-api/widgets/github-user-keys.js
 type: application/javascript
 module-type: widget
-caption: action-githublistrepos
+caption: github-user-keys
 
-Action widget that toggles the visibility of the first drawer found in the document
+Widget that renders the public keys for a given GitHub user
 
 \*/
 (function (global) {
