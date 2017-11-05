@@ -35,6 +35,7 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
 
   // Create the DOM node for this widget
   var domNode = this.document.createElement('div');
+	this.domNode = domNode;
 
   // Fetch and render the user keys using the supplied template
   $tw.utils.github.getUserKeys(this.user).then(function(keys) {
