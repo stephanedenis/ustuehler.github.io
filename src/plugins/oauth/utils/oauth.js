@@ -33,7 +33,7 @@ function initialise(options) {
   }
 
 	if (!urlParams) {
-		computeURLParams();
+		urlParams = computeURLParams();
   }
 
   for (var attr in options) {
