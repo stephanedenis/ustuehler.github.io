@@ -91,11 +91,16 @@ function callback() {
   // TODO: Set $:/status/OAuth/UserName et al
 }
 
+function getUserName() {
+  return 'Guest';
+}
+
 exports.oauth = {
 	getProvider: getProvider, // only for inspection
   initialise: initialise,
   requestToken: requestToken,
-  callback: callback
+  callback: callback,
+  getUserName: getUserName
 };
 
 })(this);
