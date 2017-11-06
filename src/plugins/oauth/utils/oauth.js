@@ -64,11 +64,11 @@ function getProvider() {
 		return github;
 	}
 
-  console.log("provider_id: " + config.provider_id);
-  console.log("authorization_url: " + config.authorization_url);
-
   // Load ClientOAuth2
   initialise();
+
+  console.log("provider_id: " + config.provider_id);
+  console.log("authorization_url: " + config.authorization_url);
 
   // TODO: use the querystring package (decode.js)
   var querystring = function() { return urlParams; };

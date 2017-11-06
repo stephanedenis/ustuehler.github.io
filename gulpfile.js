@@ -33,38 +33,31 @@ gulp.task("tiddlers", function (cb) {
 	], cb);
 })
 
+gulp.task("querystring", function (cb) {
+  pump([
+		gulp.src([
+      "node_modules/querystring/LICENSE"
+    ]),
+		gulp.dest("src/plugins/querystring/files/")
+	], cb);
+})
+
 gulp.task("oauth", function (cb) {
   pump([
 		gulp.src([
+      "node_modules/client-oauth2/src/LICENSE",
       "node_modules/client-oauth2/src/client-oauth2.js"
     ]),
 		gulp.dest("src/plugins/oauth/files/")
 	], cb);
 })
 
-/*
-gulp.task("querystring", function (cb) {
-  pump([
-		gulp.src([
-      "node_modules/querystring/decode.js"
-    ]),
-		gulp.dest("src/plugins/querystring/files/")
-	], cb);
-})
-*/
+gulp.task("browserify", ['querystring', 'oauth'], shell.task([
+  "browserify -o src/plugins/querystring/files/index.js node_modules/querystring/index.js",
+  "browserify -o src/plugins/oauth/files/client-oauth2.js node_modules/client-oauth2/src/client-oauth2.js"
+]));
 
-gulp.task("url", function (cb) {
-  pump([
-		gulp.src([
-      "node_modules/url/LICENSE",
-      "node_modules/url/url.js",
-      "node_modules/url/util.js"
-    ]),
-		gulp.dest("src/plugins/url/files/")
-	], cb);
-})
-
-gulp.task("javascript", ["oauth", "url"], function (cb) {
+gulp.task("javascript", ["browserify"], function (cb) {
   pump([
 		gulp.src(["src/**/*.js", "node_modules/tw5-material/src/**/*.js"]),
 		uglify({ compress: false, output: { comments: /^\\/ } }),
