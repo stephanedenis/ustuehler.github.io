@@ -80,7 +80,7 @@ function getProvider() {
       secret: config.client_secret
     },
     auth: {
-      tokenHost: 'https://github.com'
+      tokenHost: 'https://github.com',
       tokenPath: '/login/oauth/access_token',
       authorizePath: '/login/oauth/authorize'
     },
