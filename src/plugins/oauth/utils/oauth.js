@@ -120,15 +120,10 @@ function requestToken() {
     if (err) {
       console.log('openPopup (oauth-open): ' + err);
     } else {
-      //var base = window.location.href.replace(/\/*\?.*$/, '');
+      var base = window.location.href.replace(/\/*\?.*$/, '');
+      var uri = base + '?code=' + code + '&state=' + state;
 
-      console.log('Old location: ' + window.location.href);
-      console.log('New location: ' + window.location.href);
-      console.log(code);
-      //window.location.assign(base + '?code=' + code.code + '&state=' + code.state);
-      //console.log('New location: ' + window.location.href);
-
-      //callback();
+      callback(uri);
     }
 	});
 
