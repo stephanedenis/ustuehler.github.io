@@ -4,7 +4,7 @@
 			"file": "index.js",
 			"fields": {
 				"type": "application/javascript",
-				"title": "$:/plugins/ustuehler/oauth/simple-oauth2.js",
+				"title": "simple-oauth2.js",
 				"module-type": "library"
 			}
 		},{
