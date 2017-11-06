@@ -90,6 +90,7 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
  * Invoked by the action-githubauthcallback widget
  */
 function callback() {
+  console.log("GitHub called back! \\o/");
 }
 
 GitHubSignInWidget.prototype.getStatus = function(name, fallback) {
