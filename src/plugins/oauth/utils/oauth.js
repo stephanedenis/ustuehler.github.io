@@ -18,14 +18,15 @@ var urlParams;
 var defaultConfig = {
   provider_id: 'github',
   client_id: 'e31081bbe6c4c22c45a5',
+  client_secret: '',
   authorization_url: 'https://github.com/login/oauth/authorize',
   redirect_uri: 'https://ustuehler.github.io/hack/#GitHubAuthCallback'
 };
 
 // TODO: use embedded script rather than relying on <script> tag
-var SimpleOAuth2 = require("simple-oauth2");
-console.log('Loaded ClientOAuth2');
-console.log(ClientOAuth2);
+var OAuth2 = require("simple-oauth2");
+console.log('Loaded simple-oauth2');
+console.log(OAuth2);
 
 var github = null;
 var config = {};
@@ -64,7 +65,7 @@ function getProvider() {
 		return github;
 	}
 
-  // Load ClientOAuth2
+  // Load OAuth2
   initialise();
 
   console.log("provider_id: " + config.provider_id);
@@ -73,8 +74,11 @@ function getProvider() {
   // TODO: use the querystring package (decode.js)
   var querystring = function() { return urlParams; };
 
-	github = new ClientOAuth2({
-    clientId: config.client_id,
+	github = new OAuth2.create({
+    client: {
+      id: config.client_id,
+      secret: config.client_secret
+    },
     //clientSecret: config.client_secret,
     accessTokenUri: 'https://github.com/login/oauth/access_token', // XXX: hardcoded
     authorizationUri: config.authorization_url,
