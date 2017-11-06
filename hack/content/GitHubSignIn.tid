@@ -1,5 +1,5 @@
 created: 20171106112122119
-modified: 20171106145259985
+modified: 20171106182128465
 span: 4
 tags: GitHubOAuthLogin
 title: GitHubSignIn
@@ -12,6 +12,7 @@ Signing in with your GitHub account lets you synchronize your changes with the G
 ''Step 1: Obtain an OAuthClientID from ~GitHub''
 
 <a
+  target="_"
   href="https://github.com/settings/applications/new"
   class="mdc-button mdc-button--raised"
   style="color: white;"
