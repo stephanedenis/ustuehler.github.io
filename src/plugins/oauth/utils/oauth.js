@@ -37,7 +37,7 @@ var config = {};
 
 // initialise may be called multiple times, but must be called before requestToken()
 function initialise(options) {
-  options ||= null;
+  options ||= {};
 
 	if (!urlParams) {
 		urlParams = computeURLParams();
