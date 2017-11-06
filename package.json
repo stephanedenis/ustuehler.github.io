@@ -47,6 +47,7 @@
     "verbose": true,
     "ext": "js,tid,info,multids,json",
     "ignore": [
+      "node_modules/*",
       "editions/public/output",
       "editions/public/themes",
       "editions/public/plugins",

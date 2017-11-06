@@ -45,8 +45,7 @@ gulp.task("querystring", function (cb) {
 gulp.task("oauth", function (cb) {
   pump([
 		gulp.src([
-      "node_modules/client-oauth2/src/LICENSE",
-      "node_modules/client-oauth2/src/client-oauth2.js"
+      "node_modules/client-oauth2/src/LICENSE"
     ]),
 		gulp.dest("src/plugins/oauth/files/")
 	], cb);

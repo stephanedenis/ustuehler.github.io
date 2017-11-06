@@ -24,6 +24,8 @@ var defaultConfig = {
 
 // TODO: use embedded script rather than relying on <script> tag
 var ClientOAuth2 = require("client-oauth2");
+console.log('Loaded ClientOAuth2');
+console.log(ClientOAuth2);
 
 var github = null;
 var config = {};
