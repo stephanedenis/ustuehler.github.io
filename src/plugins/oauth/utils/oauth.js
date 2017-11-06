@@ -92,6 +92,13 @@ function getProvider() {
 	return github;
 }
 
+// Authorization uri definition
+const authorizationUri = github.authorizationCode.authorizeURL({
+  redirect_uri: 'http://localhost:8081',
+  scope: 'notifications',
+  state: '3(#0/!~',
+});
+
 function requestToken() {
   var provider = getProvider();
 
