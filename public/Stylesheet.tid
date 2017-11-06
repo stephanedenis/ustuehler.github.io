@@ -1,5 +1,5 @@
 created: 20171104024226128
-modified: 20171106024617252
+modified: 20171106025303226
 span: 6
 tags: PublicSite $:/tags/Stylesheet $:/tags/StyleSheet
 title: Stylesheet
@@ -22,6 +22,8 @@ type: text/css
  * Custom view templates should wrap their content in a <div> of class
  * "tc-tiddler-body" to apply this style.
  */
+
+{
 
 /* Disable underline and border for all three kinds of links */
 .tc-tiddler-body a,
@@ -51,4 +53,6 @@ type: text/css
 .tc-tiddler-preview-preview a:not(.tc-tiddlylink),
 .tc-tiddler-preview-preview a:visited:not(.tc-tiddlylink) {
   color: #4534ba; /* A darker blue that goes with the toolbar */
+}
+
 }
