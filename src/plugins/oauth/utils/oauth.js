@@ -131,6 +131,8 @@ function requestToken() {
 
 function jsonpRequest(uri, cb) {
   return new Promise(function(resolve, reject) {
+    var script;
+
     window.oauth2callback = function(response) {
       var meta = response.meta;
       var data = response.data;
