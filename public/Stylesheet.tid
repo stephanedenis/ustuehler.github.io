@@ -1,5 +1,5 @@
 created: 20171104024226128
-modified: 20171106024109606
+modified: 20171106024617252
 span: 6
 tags: PublicSite $:/tags/Stylesheet $:/tags/StyleSheet
 title: Stylesheet
@@ -16,13 +16,16 @@ type: text/css
  *
  * These styles are applied in two different locations:
  *
- * 1. Tiddler view (.tc-tiddler-view-frame)
- * 2. Preview area (.tc-tiddler-preview-preview)
+ * 1. Tiddler body in the ViewTemplate (.tc-tiddler-body)
+ * 2. Preview area in the EditTemplate (.tc-tiddler-preview-preview)
+ *
+ * Custom view templates should wrap their content in a <div> of class
+ * "tc-tiddler-body" to apply this style.
  */
 
 /* Disable underline and border for all three kinds of links */
-.tc-tiddler-frame .tc-tiddler-view-frame a,
-.tc-tiddler-frame .tc-tiddler-preview-preview a {
+.tc-tiddler-body a,
+.tc-tiddler-preview-preview a {
   text-decoration: none;
   border-bottom: 1px solid rgba(255,255,255,0);
   transition: all 1s linear;
@@ -32,7 +35,7 @@ type: text/css
  * Highlight internal links with an underline when the current tiddler is
  * being hovered over (using a bottom border, because it's more flexible)
  */
-.tc-tiddler-frame:hover .tc-tiddler-view-frame a.tc-tiddlylink,
+.tc-tiddler-frame:hover .tc-tiddler-body a.tc-tiddlylink,
 .tc-tiddler-frame:hover .tc-tiddler-preview-preview a.tc-tiddlylink {
   color: black;
   border-bottom: 1px solid;
@@ -43,8 +46,8 @@ type: text/css
  * Make visited plain links indistinguishable from visited links, because the
  * default colors are horrible and I don't have an alternative now
  */
-.tc-tiddler-view-frame a:not(.tc-tiddlylink),
-.tc-tiddler-view-frame a:visited:not(.tc-tiddlylink),
+.tc-tiddler-body a:not(.tc-tiddlylink),
+.tc-tiddler-body a:visited:not(.tc-tiddlylink),
 .tc-tiddler-preview-preview a:not(.tc-tiddlylink),
 .tc-tiddler-preview-preview a:visited:not(.tc-tiddlylink) {
   color: #4534ba; /* A darker blue that goes with the toolbar */
