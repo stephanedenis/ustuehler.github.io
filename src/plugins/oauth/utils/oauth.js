@@ -50,7 +50,7 @@ function getProvider() {
   console.log("provider_id: " + config.provider_id);
   console.log("authorization_url: " + config.authorization_url);
 
-  // Lazy initialisation
+  // Lazy initialisation to load the OAuth module
   initialise();
 
 	github = new OAuth.Provider({
