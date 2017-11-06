@@ -1,0 +1,21 @@
+created: 20171106093050020
+modified: 20171106094749544
+tags: TiddlyWikiPlugins
+title: OAuthPlugin
+type: text/vnd.tiddlywiki
+
+! Usage
+
+```
+$tw.utils.oauth.initialize('your_app_public_key');
+$tw.utils.oauth.popup('github');
+```
+
+Your ~GitHub OAuth applications:
+ [[https://github.com/settings/developers]]
+
+! Dependencies
+
+* https://github.com/oauth-io/oauth-js
+
+This plugin adds a `<script>` tag to load the dependency.
