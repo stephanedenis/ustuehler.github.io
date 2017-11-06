@@ -48,14 +48,8 @@ function requestToken() {
 	window.location.href = uri;
 }
 
-function popup() {
-  getClient().popup('github')
-  .done(function(result) {
-    $tw.utils.showSnackbar(result.access_token);
-  })
-  .fail(function(err) {
-    $tw.utils.showSnackbar(err);
-  });
+function callback(response) {
+	console.log('GitHub called back!');
 }
 
 exports.oauth = {
