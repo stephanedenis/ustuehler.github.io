@@ -91,7 +91,7 @@ function requestToken() {
 }
 
 function callback() {
-	// We use a new browser window to authenticate
+	// Using a browser window
 	return;
 
   var provider = getProvider();
