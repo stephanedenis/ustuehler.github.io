@@ -72,47 +72,6 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
   console.log("GitHubSignInWidget.prototype.invokeAction");
   console.log(self);
 
-  // basic auth
-  var me = $tw.utils.github.getUser(); // no user specified defaults to the user for whom credentials were provided
-
-  console.log('Listing ' + me.name + "'s GitHub repositories.");
-  me.listRepos(function(err, repos) {
-    if (err) {
-      $tw.utils.showSnackbar("Error from GitHub: " + err);
-      return;
-    }
-
-    console.log('Found ' + repos.length + ' repositories.');
-    console.log(repos);
-
-    var repoNames = [];
-
-    for (var i in repos) {
-      var fullName = repos[i].full_name;
-      repoNames.push(fullName);
-    }
-
-    var value = $tw.utils.stringifyList(repoNames);
-    var options = {};
-
-    // Reduce the list by a filter
-    if (filter.length > 0) {
-      repoNames = $tw.wiki.filterTiddlers(value + ' +' + filter);
-      value = $tw.utils.stringifyList(repoNames);
-      console.log('Reduced the list to ' + repoNames.length + ' repositories.');
-    }
-
-    console.log('Setting repository list to ' + value + '.');
-    $tw.wiki.setText(title, field, undefined, value, options);
-
-    var message = 'Found ' + repoNames.length + ' repositories.';
-    if (repoNames.length != repos.length) {
-      message = 'Found ' + repoNames.length + ' repositories matching the filter.';
-    }
-
-    $tw.utils.showSnackbar(message);
-  });
-
   return true; // Action was invoked
 };
 
