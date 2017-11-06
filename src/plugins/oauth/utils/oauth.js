@@ -15,13 +15,19 @@ Provides OAuth utility functions under $tw.utils.oauth
 
 let OAuth = require("$:/plugins/ustuehler/oauth/oauth2-client.js");
 
+var defaultConfig = {
+  client_id: 'e31081bbe6c4c22c45a5',
+  redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback'
+};
+
 var github = null;
-var client_id = 'e31081bbe6c4c22c45a5';
-var redirect_uri = 'https://ustuehler.github.io/#GitHubAuthCallback';
 
 function initialize(options) {
-  client_id = options.client_id;
-  redirect_uri = options.redirect_uri;
+  for (var attr in options) {
+    if (options.hasOWnProperty(attr)) {
+      config[attr] = options[attr];
+    }
+  }
 }
 
 function getProvider() {
