@@ -109,7 +109,11 @@ function callback() {
 
 			$tw.wiki.setText('$:/temp/GitHub/Password', 'text', undefined, user.accessToken);
 
-			$tw.utils.showSnackbar('Signed in with GitHub.')
+			if (res.status == 200) {
+				$tw.utils.showSnackbar('Signed in with GitHub.');
+			} else {
+				$tw.utils.showSnackbar('The access token is invalid.');
+			}
 		})
 	})
 
