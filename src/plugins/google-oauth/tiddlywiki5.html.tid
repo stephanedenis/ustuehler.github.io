@@ -1,5 +1,3 @@
-title: $:/plugins/ustuehler/github-api/tiddlywiki5.html
+title: $:/plugins/ustuehler/oauth/tiddlywiki5.html
 tags: $:/tags/RawMarkup
 
-<script type="text/javascript" src="https://unpkg.com/github-api/dist/GitHub.bundle.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/hubfs.js/index.js"></script>
