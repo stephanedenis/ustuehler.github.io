@@ -60,7 +60,7 @@ function getUser(username) {
  * if that was changed in the meantime.
  */
 function getUserKeys(username) {
-	return new Promise((resolve, reject) => {
+	return new Promise(function(resolve, reject) {
 		var u = getUser(username);
 
 		u._request('GET', u.__getScopedUrl('keys'), null, function(err, data, response) {
