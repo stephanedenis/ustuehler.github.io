@@ -13,6 +13,8 @@ Provides OAuth utility functions under $tw.utils.oauth
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
+var urlParams;
+
 var defaultConfig = {
   provider_id: 'github',
   client_id: 'e31081bbe6c4c22c45a5',
@@ -109,7 +111,6 @@ function getUserName() {
 }
 
 // ref: https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
-var urlParams;
 (window.onpopstate = function () {
 	var match,
 			pl     = /\+/g,  // Regex for replacing addition symbol with a space
