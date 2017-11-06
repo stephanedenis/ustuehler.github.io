@@ -30,7 +30,7 @@ function getClient() {
 }
 
 console.log('Loaded simple-oauth2');
-console.log(OAuth2);
+console.log(getClient());
 
 var github = null;
 var config = {};
