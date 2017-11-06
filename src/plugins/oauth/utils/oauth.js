@@ -25,6 +25,7 @@ var defaultConfig = {
 
 var OAuth2 = require('simple-oauth2');
 var openPopup = require('oauth-open');
+var jsonp = require('jsonp');
 
 function getClient() {
 	return OAuth2;
@@ -128,11 +129,19 @@ function requestToken() {
 	});
   */
 
-  jsonpRequest(uri).then(function(response) {
-    console.log("Got response:");
-    console.log(response);
+  jsonp(uri, opts, function(err, data) {
+    console.log("JSONP callbak invoked");
 
-    // TODO: window.location.assign(...)
+    if (err) {
+      console.log("Get error: " + err);
+      return;
+    }
+
+    console.log("Got data:");
+    console.log(data);
+    // TODO:
+    // window.location.assign(...)
+    // callback()
   });
 }
 
