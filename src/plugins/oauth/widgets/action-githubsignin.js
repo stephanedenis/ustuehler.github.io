@@ -78,7 +78,7 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
    * GitHub redirect back to this TiddlyWiki.
    *
    * Next, the action-githubauthcallback widget should be rendered somewhere on
-   * the page, which in turn fires the callback() function in this module.
+   * the page, which in turn invokes the callback() function in this module.
    */
   $tw.utils.oauth.requestToken();
   // notreached
@@ -87,7 +87,8 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
 };
 
 /*
- * Invoked by the action-
+ * Invoked by the action-githubauthcallback widget
+ */
 function callback() {
 }
 
