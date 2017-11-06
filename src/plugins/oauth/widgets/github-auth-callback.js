@@ -4,7 +4,7 @@ type: application/javascript
 module-type: widget
 caption: github-auth-callback
 
-Trigger the OAuth Flow callback function to complete the sign in with a GitHub account
+Complete the sign in with a GitHub account
 
 \*/
 (function (global) {
