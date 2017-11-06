@@ -92,20 +92,18 @@ function getProvider() {
 	return github;
 }
 
-// Authorization uri definition
-const authorizationUri = github.authorizationCode.authorizeURL({
-  redirect_uri: 'http://localhost:8081',
-  scope: 'notifications',
-  state: '3(#0/!~',
-});
-
 function requestToken() {
   var provider = getProvider();
 
+	// Authorization uri definition
+	var uri = provider.authorizationCode.authorizeURL({
+		redirect_uri: config.redirect_uri,
+		scope: 'notifications',
+		state: '3(#0/!~',
+	});
+
 	// Do the redirect
-	//window.location.href = provider.token.getUri();
-  console.log(provider);
-	window.open(provider.token.getUri());
+	window.location.href = uri;
 }
 
 function callback() {
