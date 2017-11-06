@@ -1,11 +1,11 @@
 created: 20171106112122119
-modified: 20171106132423078
+modified: 20171106134024440
 span: 11
 tags: GitHubOAuthLogin
 title: GitHubSignIn
 type: text/vnd.tiddlywiki
 
-<$github-signin client-id={{$:/config/GitHub/Client}}>
+<$github-signin>
 Signing in with your GitHub account lets you synchronize your changes with the GitRepository.
 
 ''Step 1: Obtain an OAuthClientID from ~GitHub''
