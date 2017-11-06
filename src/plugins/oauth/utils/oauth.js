@@ -81,7 +81,7 @@ function getProvider() {
     },
     auth: {
       //tokenHost: 'https://github.com/login/oauth/access_token',
-      tokenHost: 'https://github.com/login', // XXX: hardcoded
+      tokenHost: 'https://github.com/login' // XXX: hardcoded
     },
     authorizationUri: config.authorization_url,
     redirectUri: config.redirect_uri,
