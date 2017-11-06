@@ -108,6 +108,7 @@ function callback() {
 			console.log(res) //=> { body: { ... }, status: 200, headers: { ... } } 
 
 			$tw.wiki.setText('$:/temp/GitHub/Password', 'text', undefined, user.accessToken);
+		$tw.utils.showSnackbar('Signed in with GitHub account.')
 		})
 	})
 
