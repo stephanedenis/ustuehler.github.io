@@ -86,20 +86,8 @@ function getProvider() {
 function requestToken() {
   var provider = getProvider();
 
-	// Create a new request
-	var request = new ClientOAuth2.Request({
-		client_id: config.client_id,
-		redirect_uri: config.redirect_uri
-	});
-
-	// Give it to the provider
-	var uri = provider.requestToken(request);
-
-	// Later we need to check if the response was expected, so save the request
-	provider.remember(request);
-
 	// Do the redirect
-	window.location.href = uri;
+	window.location.href = provider.token.getUri;
 }
 
 function callback() {
