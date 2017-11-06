@@ -45,7 +45,7 @@ gulp.task("querystring", function (cb) {
 gulp.task("oauth", function (cb) {
   pump([
 		gulp.src([
-      "node_modules/client-oauth2/src/LICENSE"
+      "node_modules/simple-oauth2/src/LICENSE"
     ]),
 		gulp.dest("src/plugins/oauth/files/")
 	], cb);
@@ -53,7 +53,8 @@ gulp.task("oauth", function (cb) {
 
 gulp.task("browserify", ['querystring', 'oauth'], shell.task([
   "browserify -o src/plugins/querystring/files/index.js node_modules/querystring/index.js",
-  "browserify -o src/plugins/oauth/files/index.js node_modules/simple-oauth2/index.js"
+  //"browserify -o src/plugins/oauth/files/index.js node_modules/simple-oauth2/index.js",
+  "browserify -r 'simple-oauth2' -o src/plugins/oauth/files/index.js node_modules/simple-oauth2/index.js"
 ]));
 
 gulp.task("javascript", ["browserify"], function (cb) {

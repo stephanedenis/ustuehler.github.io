@@ -23,7 +23,7 @@ var defaultConfig = {
   redirect_uri: 'https://ustuehler.github.io/hack/#GitHubAuthCallback'
 };
 
-var OAuth2 = require('$:/plugins/ustuehler/oauth/simple-oauth2.js');
+var OAuth2 = require('simple-oauth2');
 
 function getClient() {
 	return OAuth2;
