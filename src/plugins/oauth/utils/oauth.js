@@ -70,9 +70,13 @@ function getProvider() {
   // Load ClientOAuth2
   initialise();
 
-	github = new ClientOAuth2.Provider({
-    id: config.provider_id,
-    authorization_url: config.authorization_url
+	github = new ClientOAuth2({
+    clientId: config.client_id;
+    //clientSecret: config.client_secret,
+    accessTokenUri: 'https://github.com/login/oauth/access_token',
+    authorizationUri: 'https://github.com/login/oauth/authorize',
+    redirectUri: 'http://localhost:8081',
+    scopes: ['notifications', 'gist']
   });
 
 	return github;
