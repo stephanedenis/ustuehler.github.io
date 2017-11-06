@@ -96,6 +96,21 @@ function callback() {
 
 	console.log('GitHub called back to:');
 	console.log(window.location.href);
+
+	githubAuth.token.getToken(uri).then(function (user) {
+		console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... } 
+
+		$tw.wiki.setText('$:/temp/GitHub/Password', 'text', undefined, user.accessToken);
+
+		// Make a request to the github API for the current user. 
+		return popsicle.request(user.sign({
+			method: 'get',
+			url: 'https://api.github.com/user'
+		})).then(function (res) {
+			console.log(res) //=> { body: { ... }, status: 200, headers: { ... } } 
+		})
+	})
+
 	//console.log(response);
 
   // TODO: Set $:/status/OAuth/UserName et al
