@@ -113,6 +113,7 @@ function requestToken() {
 	//window.location.href = uri;
   //
 	openPopup(uri, function(err, code) {
+    alert('in callbacl');
     if (err) {
       console.log('openPopup (oauth-open): ' + err);
     } else {
