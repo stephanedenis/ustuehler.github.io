@@ -106,8 +106,8 @@ function openPopup(options) {
 	that._oauthWindow = window.open(options.path, options.windowName, options.windowOptions);
 	that._oauthInterval = window.setInterval(function(){
 		if (that._oauthWindow.closed) {
-			window.clearInterval(that._oauthInterval);
-			options.callback(that._oauthWindow.location.href);
+			window.location.reload();
+			options.callback();
 		}
 	}, 1000);
 }
