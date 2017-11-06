@@ -117,6 +117,22 @@ function callback() {
 	console.log('GitHub called back to:');
 	console.log(uri);
 
+  provider.authorizationCode.getToken(options, function(error, result) {
+    if (error) {
+      console.error('Access Token Error', error.message);
+			$tw.utils.showSnackbar('Authentication failed');
+			return;
+    }
+
+    console.log('The resulting token: ', result);
+    const token = provider.accessToken.create(result);
+
+    return res
+      .status(200)
+      .json(token);
+  });
+
+/*
 	provider.token.getToken(uri).then(function (user) {
 		console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... } 
 
@@ -137,8 +153,10 @@ function callback() {
 			}
 		})
 	})
+*/
 }
 
+/*
 // ref: https://www.npmjs.com/package/client-oauth2
 window.oauth2Callback = function (uri) {
   var provider = getProvider();
@@ -168,6 +186,7 @@ window.oauth2Callback = function (uri) {
 		})
 	})
 }
+*/
 
 function getUserName() {
   return $tw.wiki.getTiddlerText('$:/status/OAuth/UserName');;
