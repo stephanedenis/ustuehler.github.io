@@ -77,8 +77,8 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
    * Redirect to GitHub, let GitHub authenticate the user, and finally, let
    * GitHub redirect back to this TiddlyWiki.
    *
-   * Next, the action-githubauthcallback widget should be rendered somewhere on
-   * the page, which in turn invokes the callback() function in this module.
+   * Next, the githubauthcallback widget should be rendered somewhere on the
+   * page, which in turn invokes the callback() function in this module.
    */
   $tw.utils.oauth.requestToken();
   // notreached
@@ -87,10 +87,10 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
 };
 
 /*
- * Invoked by the action-githubauthcallback widget
+ * Invoked by the githubauthcallback widget
  */
 function callback() {
-  console.log("GitHub called back! \\o/");
+  console.log("githubauthcallback called back! \\o/");
 }
 
 GitHubSignInWidget.prototype.getStatus = function(name, fallback) {
