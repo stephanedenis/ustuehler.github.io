@@ -129,6 +129,7 @@ function requestToken() {
 	});
   */
 
+  var opts = {};
   jsonp(uri, opts, function(err, data) {
     console.log("JSONP callbak invoked");
 
