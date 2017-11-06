@@ -34,6 +34,13 @@ gulp.task("clean", function (cb) {
   ], cb);
 });
 
+gulp.task("oauth-files", function (cb) {
+  pump([
+		gulp.src(["node_modules/@zalando/oauth2-client-js/dist/oauth2-client.js"]),
+		gulp.dest("src/plugins/oauth/files/")
+	], cb);
+})
+
 gulp.task("tiddlers", function (cb) {
   pump([
 		gulp.src(["src/**", "node_modules/tw5-material/src/**", "!**/*.js"]),
