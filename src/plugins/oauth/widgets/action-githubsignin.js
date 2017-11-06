@@ -67,8 +67,6 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
   console.log("GitHubSignInWidget.prototype.invokeAction");
   console.log(self);
 
-  $tw.utils.oauth.initialize();
-
   /*
    * Redirect to GitHub, let GitHub authenticate the user, and finally, let
    * GitHub redirect back to this TiddlyWiki.
@@ -76,6 +74,7 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
    * Next, the githubauthcallback widget should be rendered somewhere on the
    * page, which in turn invokes the callback() function in this module.
    */
+  $tw.utils.oauth.initialize();
   $tw.utils.oauth.requestToken();
   // notreached
 
