@@ -1,10 +1,10 @@
 /*\
-title: $:/plugins/ustuehler/github-api/widgets/action-githublistrepos.js
+title: $:/plugins/ustuehler/github/widgets/action-githubsignin.js
 type: application/javascript
 module-type: widget
-caption: action-githublistrepos
+caption: action-githubsignin
 
-Action widget that toggles the visibility of the first drawer found in the document
+Trigger the OAuth Flow to sign in with a GitHub account
 
 \*/
 (function (global) {
