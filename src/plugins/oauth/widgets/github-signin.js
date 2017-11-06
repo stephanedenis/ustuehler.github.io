@@ -31,9 +31,6 @@ GitHubSignInWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
-  // Complete the sign-in flow, if we were redirected here by the OAuth provider
-  $tw.utils.oauth.callback();
-
   if (!$tw.utils.oauth.getUserName()) {
     this.renderChildren(parent, nextSibling);
   }
