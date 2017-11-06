@@ -131,6 +131,7 @@ function callback() {
 		//$tw.wiki.setText('$:/temp/GitHub/UserName', 'text', undefined, );
 		//$tw.wiki.setText('$:/status/OAuth/UserName', 'text', undefined, user.username);
 
+		$tw.utils.showSnackbar('Signed in with GitHub.');
     return;
   });
 
