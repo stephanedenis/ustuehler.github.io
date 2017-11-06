@@ -70,6 +70,9 @@ function getProvider() {
   // Load ClientOAuth2
   initialise();
 
+  // TODO: use the querystring package (decode.js)
+  var querystring = function() { return urlParams; };
+
 	github = new ClientOAuth2({
     clientId: config.client_id,
     //clientSecret: config.client_secret,

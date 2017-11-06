@@ -37,6 +37,7 @@
     "hubfs.js": "^1.0.0",
     "nodemon": "^1.12.1",
     "pump": "^1.0.2",
+    "querystring": "^0.2.0",
     "run-sequence": "^2.2.0",
     "tiddlywiki": "^5.1.14",
     "tw5-material": "git+https://git@github.com/ustuehler/tw5-material.git"
