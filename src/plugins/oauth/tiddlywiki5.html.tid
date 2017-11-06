@@ -1,3 +1,4 @@
 title: $:/plugins/ustuehler/oauth/tiddlywiki5.html
 tags: $:/tags/RawMarkup
 
+<script src="https://unpkg.com/oauthio-web@0.6.1/dist/oauth.min.js"></script>
