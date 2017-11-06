@@ -128,7 +128,8 @@ function requestToken() {
 	//window.location.href = uri;
 	openPopup({
 		path: uri,
-		windowName: 'GitHubSignIn'
+		windowName: 'GitHubSignIn',
+    callback: callback
 	});
 }
 
