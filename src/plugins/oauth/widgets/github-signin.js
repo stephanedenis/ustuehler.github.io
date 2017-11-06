@@ -31,9 +31,9 @@ GitHubSignInWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
-  //if (!$tw.utils.oauth.getUserName()) {
+  if (!$tw.utils.oauth.getUserName()) {
     this.renderChildren(parent, nextSibling);
-  //}
+  }
 };
 
 /*
