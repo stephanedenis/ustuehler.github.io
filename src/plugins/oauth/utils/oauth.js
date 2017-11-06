@@ -91,11 +91,12 @@ function requestToken() {
 }
 
 function callback() {
+	// We use a new browser window to authenticate
+	return;
+
   var provider = getProvider();
 	var uri = window.location.href;
   //var response = provider.parse(window.location.href);
-
-	return;
 
 	console.log('GitHub called back to:');
 	console.log(uri);
