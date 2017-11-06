@@ -74,7 +74,7 @@ function getProvider() {
     clientId: config.client_id,
     //clientSecret: config.client_secret,
     accessTokenUri: 'https://github.com/login/oauth/access_token',
-    authorizationUri: 'https://github.com/login/oauth/authorize',
+    authorizationUri: config.authorization_url,
     redirectUri: config.redirect_uri,
     scopes: ['notifications', 'gist']
   });
