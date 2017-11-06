@@ -31,6 +31,12 @@ GitHubAuth.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
+  // Ensure that the OAuth provider redirects the user back to this location
+  var base_uri = window.location.href.replace(/\?.*$/, '');
+  $tw.utils.oauth.initialize({
+    redirect_uri: base_uri + '#GitHubAuthCallback'
+  });
+
   // Complete the sign-in flow, if we were redirected here by the OAuth provider
   $tw.utils.oauth.callback();
 
@@ -44,12 +50,6 @@ GitHubAuth.prototype.execute = function() {
   /*
   this.errorTemplate = this.getAttribute("errorTemplate", this.getVariable("errorTemplate"));
   */
-
-  // Ensure that the OAuth provider redirects the user back to this location
-  var base_uri = window.location.href.replace(/\?.*$/, '');
-  $tw.utils.oauth.initialize({
-    redirect_uri: base_uri + '#GitHubAuthCallback'
-  });
 
   // Compute the internal state of child widgets.
   this.makeChildWidgets();
