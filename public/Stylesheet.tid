@@ -1,5 +1,5 @@
 created: 20171104024226128
-modified: 20171106025303226
+modified: 20171106025328030
 span: 6
 tags: PublicSite $:/tags/Stylesheet $:/tags/StyleSheet
 title: Stylesheet
@@ -23,7 +23,7 @@ type: text/css
  * "tc-tiddler-body" to apply this style.
  */
 
-{
+.body {
 
 /* Disable underline and border for all three kinds of links */
 .tc-tiddler-body a,
