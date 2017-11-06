@@ -2,7 +2,7 @@ audio-autoplay: no
 audio-url: http://ice1.somafm.com/groovesalad-128-mp3
 created: 20171017150349582
 creator: CMDR soda314
-modified: 20171106063842592
+modified: 20171106064308467
 modifier: CMDR soda314
 span: 12
 tags: Templates/View/Partial
@@ -14,17 +14,12 @@ type: text/vnd.tiddlywiki
 [all[current]field:audio-autoplay[yes]]
 \end
 \define audio-widget(autoplay:"")
-autoplay: $autoplay$<br>
-src: {{!!audio-url}}<br>
-
 <audio src={{!!audio-url}} controls="controls" $autoplay$>
 Your browser does not support the <code>audio</code> element.
 </audio>
 \end
 
 ''{{!!title}}'' is an audio-only stream. If the stream does not start playing immediately, hit the play button. Close this tiddler to force the playback to stop.
-
-<!-- DEBUG: --> audio attributes <<audio-attributes>>
 
 <$list
   variable=""
