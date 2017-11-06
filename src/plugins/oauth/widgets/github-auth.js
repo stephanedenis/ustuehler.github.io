@@ -15,19 +15,19 @@ Implements the complete flow of signing in with a GitHub account
 
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
-var GitHubAuth = function(parseTreeNode,options) {
+var GitHubAuthWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
 
 /*
 Inherit from the base widget class
 */
-GitHubAuth.prototype = new Widget();
+GitHubAuthWidget.prototype = new Widget();
 
 /*
 Render this widget into the DOM
 */
-GitHubAuth.prototype.render = function(parent,nextSibling) {
+GitHubAuthWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
@@ -40,7 +40,7 @@ GitHubAuth.prototype.render = function(parent,nextSibling) {
 /*
 Compute the internal state of the widget
 */
-GitHubAuth.prototype.execute = function() {
+GitHubAuthWidget.prototype.execute = function() {
   /*
   this.errorTemplate = this.getAttribute("errorTemplate", this.getVariable("errorTemplate"));
   */
@@ -52,7 +52,7 @@ GitHubAuth.prototype.execute = function() {
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
-GitHubAuth.prototype.refresh = function(changedTiddlers) {
+GitHubAuthWidget.prototype.refresh = function(changedTiddlers) {
   /*
   var changedAttributes = this.computeAttributes();
 
@@ -65,6 +65,6 @@ GitHubAuth.prototype.refresh = function(changedTiddlers) {
   return this.refreshChildren(changedTiddlers);
 };
 
-exports["github-auth"] = GitHubAuth;
+exports["github-auth"] = GitHubAuthWidget;
 
 })(this);
