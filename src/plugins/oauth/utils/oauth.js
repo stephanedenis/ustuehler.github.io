@@ -146,6 +146,7 @@ function requestToken() {
   });
 }
 
+/*
 function jsonpRequest(uri) {
   return new Promise(function(resolve, reject) {
     var script;
@@ -171,6 +172,7 @@ function jsonpRequest(uri) {
     script.src = uri;
   });
 }
+*/
 
 function callback() {
   var provider = getProvider();
