@@ -23,9 +23,10 @@ var defaultConfig = {
   redirect_uri: 'https://ustuehler.github.io/hack/#GitHubAuthCallback'
 };
 
-// TODO: use embedded script rather than relying on <script> tag
+var OAuth2 = require("simple-oauth2.js");
+
 function getClient() {
-	return require("simple-oauth2.js");
+	return OAuth2;
 }
 
 console.log('Loaded simple-oauth2');
