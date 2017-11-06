@@ -22,16 +22,12 @@ var defaultConfig = {
   redirect_uri: 'https://ustuehler.github.io/hack/#GitHubAuthCallback'
 };
 
-var ClientOAuth2 = null;
+var ClientOAuth2 = require("$:/plugins/ustuehler/oauth/client-oauth2.js");
 var github = null;
 var config = {};
 
 // initialise may be called multiple times, but must be called before requestToken()
 function initialise(options) {
-  if (!ClientOAuth2) {
-    ClientOAuth2 = require("$:/plugins/ustuehler/oauth/client-oauth2.js");
-  }
-
 	if (!urlParams) {
 		urlParams = computeURLParams();
   }
