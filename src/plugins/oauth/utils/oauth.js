@@ -127,10 +127,6 @@ function requestToken() {
     }
 	});
   */
-
-  script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = uri + '?callback=oauth2callback';
 }
 
 function jsonpRequest(uri, cb) {
@@ -148,6 +144,9 @@ function jsonpRequest(uri, cb) {
   //}
 
   return new Promise(function(resolve, reject) {
+    script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = uri + '?callback=oauth2callback';
   });
 }
 
