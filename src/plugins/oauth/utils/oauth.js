@@ -98,6 +98,7 @@ function getProvider() {
 
 var popupWindow;
 
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/open
 function openPopup(uri) {
   popupWindow = window.open(
     uri,
