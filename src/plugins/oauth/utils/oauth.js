@@ -130,9 +130,7 @@ function requestToken() {
 }
 
 function jsonpRequest(uri, cb) {
-
-  // TODO
-  //if (window.oauth2callback === 'undefined') {
+  return new Promise(function(resolve, reject) {
     window.oauth2callback = function(response) {
       var meta = response.meta;
       var data = response.data;
@@ -140,10 +138,10 @@ function jsonpRequest(uri, cb) {
       console.log('oauth2callback response meta + data:');
       console.log(meta);
       console.log(data);
-    }
-  //}
 
-  return new Promise(function(resolve, reject) {
+      resolve();
+    }
+
     script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = uri + '?callback=oauth2callback';
