@@ -103,7 +103,7 @@ function requestToken() {
 }
 
 function callback() {
-  //var provider = getProvider();
+  var provider = getProvider();
   //var response = provider.parse(window.location.href);
 
 	console.log('GitHub called back to:');
