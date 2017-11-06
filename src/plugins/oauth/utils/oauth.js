@@ -79,8 +79,10 @@ function getProvider() {
       id: config.client_id,
       secret: config.client_secret
     },
-    //clientSecret: config.client_secret,
-    accessTokenUri: 'https://github.com/login/oauth/access_token', // XXX: hardcoded
+    auth: {
+      //tokenHost: 'https://github.com/login/oauth/access_token',
+      tokenHost: 'https://github.com/login', // XXX: hardcoded
+    },
     authorizationUri: config.authorization_url,
     redirectUri: config.redirect_uri,
     scopes: ['token', 'notifications', 'gist']
