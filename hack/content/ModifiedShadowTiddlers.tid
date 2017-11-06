@@ -1,0 +1,9 @@
+created: 20171106053418357
+list: ModifiedCoreTiddlers ModifiedPluginTiddlers ModifiedThemeTiddlers
+modified: 20171106054021523
+title: ModifiedShadowTiddlers
+type: text/vnd.tiddlywiki
+
+<$list filter='[list[]]'>
+<b><<currentTiddler>></b><br><$transclude/>
+</$list>

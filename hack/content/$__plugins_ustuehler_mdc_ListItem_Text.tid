@@ -1,0 +1,12 @@
+created: 20171106052205421
+modified: 20171106052206541
+tags: 
+title: $:/plugins/ustuehler/mdc/ListItem/Text
+type: text/vnd.tiddlywiki
+
+<$transclude field="caption" mode="inline">
+
+<$view field="title"/>
+
+</$transclude>
+

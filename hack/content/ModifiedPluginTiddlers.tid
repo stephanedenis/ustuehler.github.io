@@ -1,0 +1,8 @@
+created: 20171106052647416
+list: 
+modified: 20171106063939637
+tags: ModifiedShadowTiddlers
+title: ModifiedPluginTiddlers
+type: text/vnd.tiddlywiki
+
+<<list-links '[all[tiddlers]is[shadow]prefix[$:/plugins/]]'>>
