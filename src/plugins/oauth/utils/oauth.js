@@ -106,7 +106,7 @@ function callback() {
   //var provider = getProvider();
   //var response = provider.parse(window.location.href);
 
-	console.log('GitHub called back!');
+	console.log('GitHub called back to:');
 	console.log(window.location.href);
 	//console.log(response);
 
