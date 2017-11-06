@@ -120,7 +120,7 @@ function requestToken() {
     if (err) {
       console.log('openPopup (oauth-open): ' + err);
     } else {
-      var base = window.location.href.replace(/\/*\?.*$/, '');
+      //var base = window.location.href.replace(/\/*\?.*$/, '');
 
       console.log('New location: ' + window.location.href);
       console.log(code);
