@@ -109,7 +109,7 @@ function callback() {
 
 			if (res.status == 200) {
 				$tw.wiki.setText('$:/temp/GitHub/Password', 'text', undefined, user.accessToken);
-				$tw.wiki.setText('$:/status/OAuth/UserName', 'text', undefined, user.email);
+				$tw.wiki.setText('$:/status/OAuth/UserName', 'text', undefined, user.username);
 
 				$tw.utils.showSnackbar('Signed in with GitHub.');
 			} else {
