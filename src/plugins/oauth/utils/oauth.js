@@ -52,7 +52,9 @@ function initialise(options) {
 }
 
 function getDefaultRedirectURI() {
-  return window.location.href.replace(/\/*\?.*$/, '') + '#GitHubAuthCallback';
+  var baseURI = window.location.href.replace(/\/*\?.*$/, '');
+
+  return baseURI + '#GitHubAuthCallback';
 }
 
 function getProvider() {
