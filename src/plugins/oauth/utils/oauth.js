@@ -33,8 +33,8 @@ function getClient() {
 function requestToken() {
 	// Create a new request
 	var request = new OAuth.Request({
-		client_id: 'e31081bbe6c4c22c45a5', // FIXME
-		redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback' // FIXME
+		client_id: 'e31081bbe6c4c22c45a5', // FIXME: don't hardcode stuff!
+		redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback' // FIXME: don't hardcode stuff!
 	});
 
 	// Give it to the provider
