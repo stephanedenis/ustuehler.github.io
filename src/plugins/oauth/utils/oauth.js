@@ -79,8 +79,10 @@ function requestToken() {
 
 function callback() {
   var provider = getProvider();
+  var response = google.parse(window.location.hash);
 
 	console.log('GitHub called back!');
+	console.log(response);
 
   // TODO: Set $:/status/OAuth/UserName et al
 }
