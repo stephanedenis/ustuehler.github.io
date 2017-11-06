@@ -47,7 +47,7 @@ function initialise(options) {
   }
 }
 
-function defaultRedirectURIFromWindow() {
+function defaultRedirectURI() {
   var baseURI = window.location.href.replace(/\/*\?.*$/, '');
 
   return baseURI + '#GitHubAuthCallback';
