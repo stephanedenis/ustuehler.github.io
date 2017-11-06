@@ -64,8 +64,7 @@ function requestToken() {
 	// Give it to the provider
 	var uri = provider.requestToken(request);
 
-	// Later we need to check if the response was expected
-	// so save the request
+	// Later we need to check if the response was expected, so save the request
 	provider.remember(request);
 
 	// Do the redirect
