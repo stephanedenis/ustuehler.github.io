@@ -53,7 +53,7 @@ function getProvider() {
 }
 
 function requestToken() {
-  let gthub = getProvider();
+  let provider = getProvider();
 
 	// Create a new request
 	var request = new OAuth.Request({
@@ -62,11 +62,11 @@ function requestToken() {
 	});
 
 	// Give it to the provider
-	var uri = github.requestToken(request);
+	var uri = provider.requestToken(request);
 
 	// Later we need to check if the response was expected
 	// so save the request
-	github.remember(request);
+	provider.remember(request);
 
 	// Do the redirect
 	window.location.href = uri;
