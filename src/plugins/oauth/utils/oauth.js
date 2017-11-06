@@ -13,6 +13,8 @@ Provides OAuth utility functions under $tw.utils.oauth
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
+let OAuth = require("$:/plugins/ustuehler/oauth/oauth2-client.js");
+
 var github = null;
 var client_id = 'e31081bbe6c4c22c45a5';
 var redirect_uri = 'https://ustuehler.github.io/#GitHubAuthCallback';
@@ -21,8 +23,6 @@ function getClient() {
 	if (github) {
 		return github;
 	}
-
-	let OAuth = require("$:/plugins/ustuehler/oauth/oauth2-client.js");
 
 	github = new OAuth.Provider({
 		id: 'github',
