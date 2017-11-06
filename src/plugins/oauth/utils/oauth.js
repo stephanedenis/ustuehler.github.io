@@ -59,7 +59,7 @@ function callback() {
 }
 
 exports.oauth = {
-	getProvider: getProvider, // for inspection
+	getProvider: getProvider, // only for inspection
   initialize: initialize,
   requestToken: requestToken,
   callback: callback
