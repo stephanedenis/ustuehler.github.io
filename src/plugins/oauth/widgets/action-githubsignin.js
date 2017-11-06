@@ -117,7 +117,7 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
 };
 
 GitHubSignInWidget.prototype.getTemporarySetting = function(name, fallback) {
-  return $tw.wiki.getTiddlerText('$:/temp/OAuth/' + name) || fallback;
+  return $tw.wiki.getTiddlerText('$:/status/OAuth/' + name) || fallback;
 };
 
 GitHubSignInWidget.prototype.getSetting = function(name, fallback) {
