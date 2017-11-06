@@ -11,7 +11,7 @@
 			"file": "decode.js",
 			"fields": {
 				"type": "application/javascript",
-				"title": "$:/plugins/ustuehler/oauth/querystring",
+				"title": "$:/plugins/ustuehler/oauth/querystring.js",
 				"module-type": "library"
 			}
 		},{
