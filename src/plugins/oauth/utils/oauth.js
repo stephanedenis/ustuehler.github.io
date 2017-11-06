@@ -22,7 +22,9 @@ var defaultConfig = {
   redirect_uri: 'https://ustuehler.github.io/hack/#GitHubAuthCallback'
 };
 
-var ClientOAuth2 = require("$:/plugins/ustuehler/oauth/client-oauth2.js");
+//var ClientOAuth2 = require("$:/plugins/ustuehler/oauth/client-oauth2.js");
+var ClientOAuth2 = require('client-oauth2')
+
 var github = null;
 var config = {};
 
