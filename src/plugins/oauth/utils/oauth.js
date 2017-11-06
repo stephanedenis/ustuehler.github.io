@@ -135,6 +135,7 @@ function requestToken() {
 
 function jsonpRequest(uri, cb) {
 
+  // TODO
   //if (window.oauth2callback === 'undefined') {
     window.oauth2callback = function(response) {
       var meta = response.meta;
