@@ -43,7 +43,10 @@ gulp.task("tiddlers", function (cb) {
 
 gulp.task("oauth-files", function (cb) {
   pump([
-		gulp.src(["node_modules/client-oauth2/src/client-oauth2.js"]),
+		gulp.src([
+      "node_modules/client-oauth2/src/client-oauth2.js",
+      "node_modules/querystring/decode.js"
+    ]),
 		gulp.dest("src/plugins/oauth/files/")
 	], cb);
 })
