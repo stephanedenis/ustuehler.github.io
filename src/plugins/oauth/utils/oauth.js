@@ -24,7 +24,7 @@ var defaultConfig = {
 };
 
 var OAuth2 = require('simple-oauth2');
-//var openPopup = require('oauth-open');
+var openPopup = require('oauth-open');
 //var jsonp = require('jsonp');
 
 function getClient() {
@@ -112,7 +112,6 @@ function requestToken() {
 	// Do the redirect
 	//window.location.href = uri;
   //
-  /*
 	openPopup(uri, function(err, code) {
     if (err) {
       console.log('openPopup (oauth-open): ' + err);
@@ -121,13 +120,12 @@ function requestToken() {
 
       console.log('New location: ' + window.location.href);
       console.log(code);
-      window.location.assign(base + '?code=' + code.code + '&state=' + code.state);
+      //window.location.assign(base + '?code=' + code.code + '&state=' + code.state);
       //console.log('New location: ' + window.location.href);
 
-      callback();
+      //callback();
     }
 	});
-  */
 
   /*
   var opts = { name: 'github' };
