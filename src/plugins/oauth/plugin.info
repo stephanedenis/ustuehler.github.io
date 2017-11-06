@@ -1,8 +1,8 @@
 {
-	"title": "$:/plugins/ustuehler/google-oauth",
+	"title": "$:/plugins/ustuehler/oauth",
 	"version": "0.1.0",
 	"core-version": ">=5.1.14",
 	"author": "Uwe Stuehler",
-	"description": "Google's OAuth client library",
+	"description": "OAuth integrations",
 	"list": "readme usage license"
 }
