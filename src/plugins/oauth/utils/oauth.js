@@ -24,6 +24,7 @@ var defaultConfig = {
 };
 
 var OAuth2 = require('simple-oauth2');
+var openPopup = require('./oauth-open');
 
 function getClient() {
 	return OAuth2;
@@ -96,21 +97,6 @@ function getProvider() {
 	return github;
 }
 
-// ref: https://www.sitepoint.com/oauth-popup-window/
-function openPopup(options) {
-	options.windowName = options.windowName ||  'ConnectWithOAuth'; // should not include space for IE
-	options.windowOptions = options.windowOptions || 'location=0,status=0,width=800,height=400';
-	options.callback = options.callback || function(){ window.location.reload(); };
-	var that = this;
-	console.log(options.path);
-	that._oauthWindow = window.open(options.path, options.windowName, options.windowOptions);
-	that._oauthInterval = window.setInterval(function(){
-		if (that._oauthWindow.closed) {
-			options.callback();
-		}
-	}, 1000);
-}
-
 function requestToken() {
   var provider = getProvider();
 	var self = this;
@@ -124,19 +110,17 @@ function requestToken() {
 
 	// Do the redirect
 	//window.location.href = uri;
-	openPopup({
-		path: uri,
-		windowName: 'GitHubSignIn',
-    callback: function() {
-			var href = self._oauthWindow.location.href;
-			console.log(href);
-			console.log(self._oauthWindow);
-			console.log(eslf);
+	openPopup(uri, function(err, code) {
+    if (err) {
+      console.log('openPopup (oauth-open): ' + err);
+    } else {
+      var base = window.location.href.replace(/\/*\?.*$/, '');
 
-			window.location.assign(href);
-			window.location.reload();
-			callback();
-		}
+      window.location.assign(base + '?code=' + code);
+      console.log('New location: ' + window.location.href);
+
+      callback();
+    }
 	});
 }
 

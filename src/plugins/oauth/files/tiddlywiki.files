@@ -8,6 +8,13 @@
 				"module-type": "library"
 			}
 		},{
+			"file": "oauth-open.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "oauth-open.js",
+				"module-type": "library"
+			}
+		},{
 			"file": "LICENSE",
 			"fields": {
 				"type": "text/plain",
