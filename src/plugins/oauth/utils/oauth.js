@@ -20,6 +20,11 @@ var defaultConfig = {
   redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback'
 };
 
+var githubProvider = {
+  id: 'github',
+  authorization_url: 'https://github.com/login/oauth/authorize'
+};
+
 var github = null;
 var config = {};
 
@@ -42,10 +47,7 @@ function getProvider() {
 		return github;
 	}
 
-	github = new OAuth.Provider({
-		id: 'github',
-		authorization_url: 'https://github.com/login/oauth/authorize'
-	});
+	github = new OAuth.Provider(githubProvider);
 
 	return github;
 }
