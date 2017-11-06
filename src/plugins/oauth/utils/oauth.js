@@ -127,9 +127,11 @@ function callback() {
     console.log('The resulting token: ', result);
     const token = provider.accessToken.create(result);
 
-    return res
-      .status(200)
-      .json(token);
+		$tw.wiki.setText('$:/temp/GitHub/Password', 'text', undefined, token);
+		//$tw.wiki.setText('$:/temp/GitHub/UserName', 'text', undefined, );
+		//$tw.wiki.setText('$:/status/OAuth/UserName', 'text', undefined, user.username);
+
+    return;
   });
 
 /*
