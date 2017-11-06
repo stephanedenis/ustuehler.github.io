@@ -72,6 +72,8 @@ function requestToken() {
 }
 
 function callback() {
+  let provider = getProvider();
+
 	console.log('GitHub called back!');
 }
 
