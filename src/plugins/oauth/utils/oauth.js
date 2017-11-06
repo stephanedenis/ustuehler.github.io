@@ -33,8 +33,8 @@ function getClient() {
 function requestToken() {
 	// Create a new request
 	var request = new OAuth.Request({
-		client_id: 'e31081bbe6c4c22c45a5',
-		redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback''
+		client_id: 'e31081bbe6c4c22c45a5', // FIXME
+		redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback' // FIXME
 	});
 
 	// Give it to the provider
@@ -53,11 +53,9 @@ function callback(response) {
 }
 
 exports.oauth = {
+	getClient: getClient // internal
   requestToken: requestToken,
-  callback: callback,
-
-	// internal
-	getClient: getClient
+  callback: callback
 };
 
 })(this);
