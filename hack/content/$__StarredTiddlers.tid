@@ -1,7 +1,7 @@
 created: 20171103230141129
 creator: ustuehler
-list: BuildStatus PublicSite Search Radio GitHubOAuthLogin [[Adding integrations to GitHub]] TiddlyWikiPlugins OAuthPlugin
-modified: 20171106104918887
+list: BuildStatus PublicSite Search Radio GitHubOAuthLogin [[Adding integrations to GitHub]] TiddlyWikiPlugins OAuthPlugin GitHubSignInButton
+modified: 20171106111014528
 modifier: ustuehler
 tags: 
 title: $:/StarredTiddlers

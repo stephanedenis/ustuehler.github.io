@@ -1,7 +1,9 @@
 created: 20171106105123638
-modified: 20171106105140307
+modified: 20171106111141503
 tags: OAuthPlugin
 title: GitHubAuthCallback
 type: text/vnd.tiddlywiki
 
-GitHub called back! \o/
+<$github-auth-callback>
+Welcome back, {{$:/status/OAuth/UserName}}!
+</$github-auth-callback>
