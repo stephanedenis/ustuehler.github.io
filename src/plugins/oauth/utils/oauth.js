@@ -138,7 +138,11 @@ function requestToken() {
   }
 
   console.log('Old location: ' + window.location.ref);
-  window.location.assign(uri + '?callback=oauth2callback');
+
+  script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = uri + '?callback=oauth2callback'
+
   console.log('New location: ' + window.location.ref);
 }
 
