@@ -1,5 +1,5 @@
 created: 20171106093050020
-modified: 20171106104615023
+modified: 20171106105105909
 tags: TiddlyWikiPlugins
 title: OAuthPlugin
 type: text/vnd.tiddlywiki
@@ -8,7 +8,8 @@ type: text/vnd.tiddlywiki
 
 ```javascript
 $tw.utils.oauth.initialize({
-  client_id: 'your-client-id'
+  client_id: 'your-client-id',
+  redirect_uri: 'https://tiddlywiki.example.net/#GitHubAuthCallback'
 });
 
 if (!token) {

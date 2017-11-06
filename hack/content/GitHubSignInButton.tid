@@ -1,0 +1,10 @@
+created: 20171106105209461
+modified: 20171106105424749
+tags: OAuthPlugin
+title: GitHubSignInButton
+type: text/vnd.tiddlywiki
+
+<$button class="mdc-button mdc-button--raised">
+<$action-githubsignin/>
+Sign in
+</$button>
