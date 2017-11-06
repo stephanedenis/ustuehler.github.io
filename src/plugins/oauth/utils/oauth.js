@@ -111,7 +111,6 @@ function requestToken() {
 function callback() {
   var provider = getProvider();
 	var uri = window.location.href;
-  //var response = provider.parse(window.location.href);
 
 	console.log('GitHub called back to:');
 	console.log(uri);
