@@ -53,7 +53,7 @@ gulp.task("oauth", function (cb) {
 
 gulp.task("browserify", ['querystring', 'oauth'], shell.task([
   "browserify -o src/plugins/querystring/files/index.js node_modules/querystring/index.js",
-  "browserify -o src/plugins/oauth/files/client-oauth2.js node_modules/client-oauth2/src/client-oauth2.js"
+  "browserify -o src/plugins/oauth/files/index.js node_modules/simple-oauth2/index.js"
 ]));
 
 gulp.task("javascript", ["browserify"], function (cb) {
