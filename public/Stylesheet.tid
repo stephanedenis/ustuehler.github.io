@@ -1,5 +1,5 @@
 created: 20171104024226128
-modified: 20171106023826806
+modified: 20171106024109606
 span: 6
 tags: PublicSite $:/tags/Stylesheet $:/tags/StyleSheet
 title: Stylesheet
@@ -21,7 +21,7 @@ type: text/css
  */
 
 /* Disable underline and border for all three kinds of links */
-.tc-tiddler-frame .tc-tiddler-body a,
+.tc-tiddler-frame .tc-tiddler-view-frame a,
 .tc-tiddler-frame .tc-tiddler-preview-preview a {
   text-decoration: none;
   border-bottom: 1px solid rgba(255,255,255,0);
@@ -32,7 +32,7 @@ type: text/css
  * Highlight internal links with an underline when the current tiddler is
  * being hovered over (using a bottom border, because it's more flexible)
  */
-.tc-tiddler-frame:hover .tc-tiddler-body a.tc-tiddlylink,
+.tc-tiddler-frame:hover .tc-tiddler-view-frame a.tc-tiddlylink,
 .tc-tiddler-frame:hover .tc-tiddler-preview-preview a.tc-tiddlylink {
   color: black;
   border-bottom: 1px solid;
