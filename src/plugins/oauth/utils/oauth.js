@@ -140,6 +140,7 @@ function jsonpRequest(uri, cb) {
       console.log(data);
 
       resolve();
+      // or reject();
     }
 
     script = document.createElement('script');
