@@ -147,7 +147,6 @@ function jsonpRequest(uri, cb) {
     }
   //}
 
-  console.log('Old location: ' + window.location.ref);
   return new Promise(function(resolve, reject) {
   });
 }
