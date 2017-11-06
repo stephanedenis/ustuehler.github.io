@@ -77,7 +77,7 @@ function getProvider() {
     accessTokenUri: 'https://github.com/login/oauth/access_token', // XXX: hardcoded
     authorizationUri: config.authorization_url,
     redirectUri: config.redirect_uri,
-    scopes: ['notifications', 'gist']
+    scopes: ['token', 'notifications', 'gist']
   });
 
 	return github;
@@ -88,6 +88,7 @@ function requestToken() {
 
 	// Do the redirect
 	//window.location.href = provider.token.getUri();
+token
 	window.open(provider.token.getUri());
 }
 
