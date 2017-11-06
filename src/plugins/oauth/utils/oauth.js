@@ -24,7 +24,8 @@ var defaultConfig = {
 };
 
 // TODO: use embedded script rather than relying on <script> tag
-var OAuth2 = require("simple-oauth2");
+var OAuth2 = require("simple-oauth2.js");
+
 console.log('Loaded simple-oauth2');
 console.log(OAuth2);
 
