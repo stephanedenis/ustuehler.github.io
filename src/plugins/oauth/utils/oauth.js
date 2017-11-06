@@ -23,6 +23,7 @@ function popup() {
     $tw.utils.showSnackbar(result.access_token);
   })
   .fail(function(err) {
+    $tw.utils.showSnackbar(err);
   });
 }
 
