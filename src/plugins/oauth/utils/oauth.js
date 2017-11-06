@@ -25,7 +25,7 @@ var defaultConfig = {
 
 var OAuth2 = require('simple-oauth2');
 var openPopup = require('oauth-open');
-var jsonp = require('jsonp');
+//var jsonp = require('jsonp');
 
 function getClient() {
 	return OAuth2;
@@ -117,7 +117,6 @@ function requestToken() {
    * Workaround #1: Popup window
   */
 	openPopup(uri, function(err, code) {
-    alert('in callbacl');
     if (err) {
       console.log('openPopup (oauth-open): ' + err);
     } else {
