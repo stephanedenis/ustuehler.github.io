@@ -53,6 +53,7 @@ function callback(response) {
 }
 
 exports.oauth = {
+	getClient: getClient,
   requestToken: requestToken,
   callback: callback
 };
