@@ -80,8 +80,9 @@ function getProvider() {
       secret: config.client_secret
     },
     auth: {
-      //tokenHost: 'https://github.com/login/oauth/access_token',
-      tokenHost: 'https://github.com/login' // XXX: hardcoded
+      tokenHost: 'https://github.com/login'
+      tokenPath: '/login/oauth/access_token',
+      authorizePath: '/login/oauth/authorize'
     },
     authorizationUri: config.authorization_url,
     redirectUri: config.redirect_uri,
