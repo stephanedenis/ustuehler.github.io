@@ -51,7 +51,7 @@ GitHubUserKeysWidget.prototype.render = function(parent,nextSibling) {
      * Properties of the key are made available as temporary local variables.
      */
 		var lastChild = null;
-		keys.forEach((key) => {
+		keys.forEach(function(key) {
 			lastChild = renderUserKey(self.document, domNode, lastChild, key);
 		});
 
