@@ -1,8 +1,8 @@
 /*\
-title: $:/plugins/ustuehler/oauth/widgets/github-auth-callback.js
+title: $:/plugins/ustuehler/oauth/widgets/github-auth.js
 type: application/javascript
 module-type: widget
-caption: github-auth-callback
+caption: github-auth
 
 Implements the complete flow of signing in with a GitHub account
 
@@ -62,6 +62,6 @@ GitHubAuth.prototype.refresh = function(changedTiddlers) {
   return this.refreshChildren(changedTiddlers);
 };
 
-exports["github-auth-callback"] = GitHubAuth;
+exports["github-auth"] = GitHubAuth;
 
 })(this);
