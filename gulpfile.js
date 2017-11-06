@@ -43,7 +43,7 @@ gulp.task("tiddlers", function (cb) {
 
 gulp.task("oauth-files", function (cb) {
   pump([
-		gulp.src(["node_modules/@zalando/oauth2-client-js/dist/oauth2-client.js"]),
+		gulp.src(["node_modules/client-oauth2/src/client-oauth2.js"]),
 		gulp.dest("src/plugins/oauth/files/")
 	], cb);
 })

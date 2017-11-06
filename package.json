@@ -23,6 +23,7 @@
   "homepage": "https://github.com/ustuehler/ustuehler.github.io#readme",
   "dependencies": {
     "@zalando/oauth2-client-js": "0.0.18",
+    "client-oauth2": "^4.1.0",
     "github": "^12.0.1",
     "gulp": "^3.9.1",
     "gulp-batch": "^1.0.5",
