@@ -152,9 +152,12 @@ function jsonpRequest(uri) {
       // TODO: on error: reject();
     }
 
+    uri = uri + '?callback=oauth2callback';
+
+    console.log('Redirect location: ' + uri);
     script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = uri + '?callback=oauth2callback';
+    script.src = uri;
   });
 }
 
