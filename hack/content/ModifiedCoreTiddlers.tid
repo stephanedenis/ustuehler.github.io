@@ -1,9 +1,9 @@
-created: 20171106082148728
-filter: [all[tiddlers]is[shadow]prefix[$:/themes/]sort[title]]
+created: 20171106082108495
+filter: [all[tiddlers]is[shadow]prefix[$:/core/]sort[title]]
 list: 
-modified: 20171106084215187
+modified: 20171106084200668
 tags: FilterTiddlers ModifiedShadowTiddlers
-title: ModifiedThemeTiddlers
+title: ModifiedCoreTiddlers
 type: text/vnd.tiddlywiki
 
 <ul>

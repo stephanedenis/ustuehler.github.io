@@ -1,20 +1,18 @@
+button-message: tm-new-tiddler
 caption: List Item
 created: 20171025232245094
 link-to: 
 list-item-icon: list
 mdc-class: mdc-list-item
-modified: 20171106052223767
+modified: 20171106080500246
+span: 12
 tags: 
 title: $:/plugins/ustuehler/mdc/ListItem
 type: text/vnd.tiddlywiki
 
-<$set name="link-to" value={{!!link-to}} emptyValue=<<currentTiddler>>>
-
-<$link to=<<link-to>> class={{$:/plugins/ustuehler/mdc/ListItem!!mdc-class}}>
-
-{{||$:/plugins/ustuehler/mdc/ListItem/StartDetail}}
-{{||$:/plugins/ustuehler/mdc/ListItem/Text}}
-
-</$link>
-
-</$set>
+<$list
+  variable=""
+  filter="[all[current]has[button-message]limit[1]]"
+  emptyMessage={{$:/plugins/ustuehler/mdc/ListItem/Link}}>
+{{||$:/plugins/ustuehler/mdc/ListItem/Button}}
+</$list>

@@ -1,0 +1,28 @@
+button-message: tm-new-tiddler
+caption: List Item Button
+created: 20171106072746491
+list-item-icon: list
+mdc-class: mdc-list-item
+modified: 20171106075336578
+span: 12
+tags: 
+title: $:/plugins/ustuehler/mdc/ListItem/Button
+type: text/vnd.tiddlywiki
+
+<$set name="mdc-class" value={{$:/plugins/ustuehler/mdc/ListItem!!mdc-class}}>
+<$set name="class" value={{!!button-class}} emptyValue="tc-btn-hidden tc-tiddlylink $(mdc-class)$">
+<$set name="message" value={{!!button-message}} emptyValue="">
+
+<$button
+  message=<<message>>
+  class=<<class>>
+  style="width: 100%;">
+
+<$transclude tiddler="$:/plugins/ustuehler/mdc/ListItem/StartDetail" mode="inline"/>
+<$transclude tiddler="$:/plugins/ustuehler/mdc/ListItem/Text" mode="inline"/>
+
+</$button>
+
+</$set>
+</$set>
+</$set>

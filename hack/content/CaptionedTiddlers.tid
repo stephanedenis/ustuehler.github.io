@@ -1,0 +1,18 @@
+caption: tiddlers that have a caption field
+created: 20171106083039857
+filter: [all[tiddlers]has[caption]sort[title]]
+list: 
+modified: 20171106084514721
+span: 6
+tags: FilterTiddlers
+title: CaptionedTiddlers
+type: text/vnd.tiddlywiki
+
+<table>
+<$list filter={{!!filter}}>
+<tr>
+<td><$link><$text text={{!!title}}/></$link></td>
+<td><$edit-text size="40" field="caption"/></td>
+</tr>
+</$list>
+</table>

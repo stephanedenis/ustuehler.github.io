@@ -1,12 +1,24 @@
 created: 20171106052205421
-modified: 20171106052206541
+list-item-text: <$button message="tm-new-tiddler" class="tc-btn-hidden">{{!!title}}</$button> 
+modified: 20171106072141366
+span: 12
 tags: 
 title: $:/plugins/ustuehler/mdc/ListItem/Text
 type: text/vnd.tiddlywiki
 
+\define list-item-text-filter()
+[all[current]get[list-item-text]]
+\end
+\define list-item-text-default()
 <$transclude field="caption" mode="inline">
 
 <$view field="title"/>
 
 </$transclude>
-
+\end
+<$list
+  variable="text"
+  filter=<<list-item-text-filter>>
+  emptyMessage=<<list-item-text-default>> >
+<<text>>
+</$list>

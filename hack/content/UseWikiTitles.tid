@@ -1,0 +1,10 @@
+caption: Use WikiTitles
+created: 20171106082315888
+modified: 20171106083012338
+tags: StyleGuide
+title: UseWikiTitles
+type: text/vnd.tiddlywiki
+
+Unless the tiddler has a well-defined other purpose that requires a specific title formatting, its `title` field should be in CamelCase. This makes tittler titles easier to reference and remember.
+
+If the tiddler is meant to be displayed directly, set the `caption` field, instead.

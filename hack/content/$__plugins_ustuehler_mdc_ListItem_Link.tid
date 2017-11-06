@@ -1,0 +1,22 @@
+caption: List Item
+created: 20171106072157283
+link-to: 
+list-item-icon: list
+mdc-class: mdc-list-item
+modified: 20171106075248760
+span: 12
+tags: 
+title: $:/plugins/ustuehler/mdc/ListItem/Link
+type: text/vnd.tiddlywiki
+
+<$set name="link-to" value={{!!link-to}} emptyValue=<<currentTiddler>>>
+
+<$link to=<<link-to>> class={{$:/plugins/ustuehler/mdc/ListItem!!mdc-class}}>
+
+<!-- The text should be centered vertically with CSS -->
+<$transclude tiddler="$:/plugins/ustuehler/mdc/ListItem/StartDetail" mode="inline"/>
+<$transclude tiddler="$:/plugins/ustuehler/mdc/ListItem/Text" mode="inline"/>
+
+</$link>
+
+</$set>

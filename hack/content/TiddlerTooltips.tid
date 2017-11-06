@@ -1,0 +1,9 @@
+caption: tooltip field for WikiLinks
+created: 20171106084622194
+list: 
+modified: 20171106090159439
+tags: MissingFeatures
+title: TiddlerTooltips
+type: text/vnd.tiddlywiki
+
+The `link` widget and automatic WikiLinks expansion should use the value of the current tiddler's TooltipField as the link's tooltip.

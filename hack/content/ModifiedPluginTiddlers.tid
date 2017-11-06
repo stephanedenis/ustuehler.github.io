@@ -1,8 +1,13 @@
 created: 20171106052647416
+filter: [all[tiddlers]is[shadow]prefix[$:/plugins/]sort[title]]
 list: 
-modified: 20171106063939637
-tags: ModifiedShadowTiddlers
+modified: 20171106083838260
+tags: FilterTiddlers ModifiedShadowTiddlers
 title: ModifiedPluginTiddlers
 type: text/vnd.tiddlywiki
 
-<<list-links '[all[tiddlers]is[shadow]prefix[$:/plugins/]]'>>
+<ul>
+<$list filter={{!!filter}}>
+<li><$link><$text text={{!!title}}/></$link></li>
+</$list>
+</ul>

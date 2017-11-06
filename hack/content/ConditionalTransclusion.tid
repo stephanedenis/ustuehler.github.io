@@ -1,0 +1,13 @@
+caption: Conditional transclusion
+created: 20171106075419218
+modified: 20171106080133578
+tags: $:/tags/TextEditor/Snippet
+title: ConditionalTransclusion
+type: text/vnd.tiddlywiki
+
+<$list
+  variable=""
+  filter="[all[current]has[caption]limit[1]]"
+  emptyMessage={{TiddlerHasNoCaptionTemplate}}>
+{{TiddlerHasCaptionTemplate}}
+</$list>

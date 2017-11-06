@@ -1,10 +1,17 @@
+button-message: tm-new-tiddler
 caption: New Tiddler
 created: 20171106045642624
 list-before: $:/themes/ustuehler/material/ui/DrawerTemplate/Bottom
 list-item-icon: add
-modified: 20171106063958852
+list-item-text: <$button message="tm-new-tiddler" class="tc-btn-hidden tc-tiddlylink">{{!!caption}}</$button>
+modified: 20171106074029531
 tags: $:/tags/DrawerTemplate
 title: NewTiddlerListItem
 type: text/vnd.tiddlywiki
 
+<!--
+
 {{NewTiddlerButton||$:/plugins/ustuehler/mdc/ListItem}}
+
+-->
+{{||$:/plugins/ustuehler/mdc/ListItem}}

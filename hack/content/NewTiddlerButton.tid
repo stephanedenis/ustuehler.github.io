@@ -1,7 +1,9 @@
 caption: New Tiddler
 created: 20171106020007649
+list-before: 
 list-item-icon: add
-modified: 20171106050905745
+list-item-text: <$button message="tm-new-tiddler" class="tc-btn-hidden">{{!!caption}}</$button> 
+modified: 20171106071052466
 title: NewTiddlerButton
 type: text/vnd.tiddlywiki
 

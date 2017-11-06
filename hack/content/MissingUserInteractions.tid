@@ -1,0 +1,12 @@
+caption: Missing User Interactions
+created: 20171106080620895
+modified: 20171106090145551
+tags: MissingFeatures
+title: MissingUserInteractions
+type: text/vnd.tiddlywiki
+
+Tiddlers tagged with <<tag>> describe some useful user interactions which are not well supported in this TiddlyWiki edition.
+
+These should be implemented through plugins providing new message handlers akin to `tm-new-tiddler`.
+
+See also the already <<tag ImplementedFeatures>>.

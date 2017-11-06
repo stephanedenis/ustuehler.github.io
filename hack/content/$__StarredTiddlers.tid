@@ -1,7 +1,7 @@
 created: 20171103230141129
 creator: ustuehler
-list: BuildStatus PublicSite Search Radio ModifiedPluginTiddlers NewTiddlerListItem NewTiddlerButton $:/plugins/ustuehler/mdc/ListItem
-modified: 20171106064348698
+list: BuildStatus PublicSite Search Radio GitHubOAuthLogin
+modified: 20171106090221606
 modifier: ustuehler
 tags: 
 title: $:/StarredTiddlers
