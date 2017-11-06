@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/ustuehler/github/widgets/action-githubsignin.js
+title: $:/plugins/ustuehler/oauth/widgets/action-githubsignin.js
 type: application/javascript
 module-type: widget
 caption: action-githubsignin
@@ -15,19 +15,19 @@ Trigger the OAuth Flow to sign in with a GitHub account
 
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
-var GitHubListReposWidget = function(parseTreeNode,options) {
+var GitHubSignInWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
 
 /*
 Inherit from the base widget class
 */
-GitHubListReposWidget.prototype = new Widget();
+GitHubSignInWidget.prototype = new Widget();
 
 /*
 Render this widget into the DOM
 */
-GitHubListReposWidget.prototype.render = function(parent,nextSibling) {
+GitHubSignInWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 };
@@ -35,7 +35,7 @@ GitHubListReposWidget.prototype.render = function(parent,nextSibling) {
 /*
 Compute the internal state of the widget
 */
-GitHubListReposWidget.prototype.execute = function() {
+GitHubSignInWidget.prototype.execute = function() {
   this.tiddler = this.getAttribute("tiddler", this.getVariable("currentTiddler"));
   this.field = this.getAttribute("field", "list");
   this.filter = this.getAttribute("filter", "");
@@ -47,7 +47,7 @@ GitHubListReposWidget.prototype.execute = function() {
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
-GitHubListReposWidget.prototype.refresh = function(changedTiddlers) {
+GitHubSignInWidget.prototype.refresh = function(changedTiddlers) {
   var changedAttributes = this.computeAttributes();
 
   if (changedAttributes.tiddler || changedAttributes.field || changedAttributes.filter) {
@@ -61,7 +61,7 @@ GitHubListReposWidget.prototype.refresh = function(changedTiddlers) {
 /*
  * Invoke the action associated with this widget
  */
-GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) {
+GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
   var username = this.getTemporarySetting("UserName", this.getSetting('username'));
   var password = this.getTemporarySetting("Password", this.getSetting('password')); 
   var title = this.tiddler;
@@ -69,7 +69,7 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
   var filter = this.filter;
   var self = this;
 
-  console.log("GitHubListReposWidget.prototype.invokeAction");
+  console.log("GitHubSignInWidget.prototype.invokeAction");
   console.log(self);
 
   // basic auth
@@ -116,21 +116,21 @@ GitHubListReposWidget.prototype.invokeAction = function(triggeringWidget,event) 
   return true; // Action was invoked
 };
 
-GitHubListReposWidget.prototype.getTemporarySetting = function(name, fallback) {
+GitHubSignInWidget.prototype.getTemporarySetting = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/temp/GitHub/' + name) || fallback;
 };
 
-GitHubListReposWidget.prototype.getSetting = function(name, fallback) {
+GitHubSignInWidget.prototype.getSetting = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/plugins/ustuehler/github-api/settings/' + name) || fallback;
 };
 
 /*
  * Don't allow actions to propagate, because we invoke actions ourself
  */
-GitHubListReposWidget.prototype.allowActionPropagation = function() {
+GitHubSignInWidget.prototype.allowActionPropagation = function() {
   return false;
 };
 
-exports["action-githublistrepos"] = GitHubListReposWidget;
+exports["action-githubsignin"] = GitHubSignInWidget;
 
 })(this);
