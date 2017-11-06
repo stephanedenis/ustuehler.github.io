@@ -67,12 +67,6 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
   console.log("GitHubSignInWidget.prototype.invokeAction");
   console.log(self);
 
-  // Ensure that the OAuth provider redirects the user back to this location
-  var base_uri = window.location.href.replace(/\?.*$/, '');
-  $tw.utils.oauth.initialise({
-    redirect_uri: base_uri + '#GitHubAuthCallback'
-  });
-
   /*
    * Redirect to GitHub, let GitHub authenticate the user, and finally, let
    * GitHub redirect back to this TiddlyWiki.
