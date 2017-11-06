@@ -1,5 +1,5 @@
 created: 20171106112122119
-modified: 20171106182128465
+modified: 20171106225009060
 span: 4
 tags: GitHubOAuthLogin
 title: GitHubSignIn
@@ -16,7 +16,12 @@ Signing in with your GitHub account lets you synchronize your changes with the G
   href="https://github.com/settings/applications/new"
   class="mdc-button mdc-button--raised"
   style="color: white;"
->Open ~GitHub</a>
+>New Application</a>
+<a
+  target="_"
+  href="https://github.com/settings/developers"
+  class="mdc-button"
+>View Applications</a>
 
 ''Step 2: Specify the OAuth settings for this application''
 
