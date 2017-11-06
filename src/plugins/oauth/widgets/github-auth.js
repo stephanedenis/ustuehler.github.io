@@ -31,6 +31,9 @@ GitHubAuth.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
+  // Complete the sign-in flow, if one is active
+  $tw.utils.oauth.callback();
+
   this.renderChildren(parent, nextSibling);
 };
 
