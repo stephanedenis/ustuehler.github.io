@@ -22,8 +22,8 @@ var defaultConfig = {
   redirect_uri: 'https://ustuehler.github.io/hack/#GitHubAuthCallback'
 };
 
+// TODO: use embedded script rather than relying on <script> tag
 //var ClientOAuth2 = require("$:/plugins/ustuehler/oauth/client-oauth2.js");
-var ClientOAuth2 = require('client-oauth2');
 
 var github = null;
 var config = {};
