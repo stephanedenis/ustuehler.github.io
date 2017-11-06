@@ -1,7 +1,8 @@
 caption: Build Status
 created: 20171104131339557
-filter: ustuehler.github.io tw5-plugins tw5-material tw5-elite tw5-github monkey git-cvs tlsd openbsd-src openbsd-ports
-modified: 20171106042001740
+filter: ustuehler.github.io tw5-plugins tw5-themes tw5-material monkey git-cvs tlsd openbsd-src openbsd-ports
+list-before: $:/plugins
+modified: 20171106045036139
 span: 3
 tags: 
 title: BuildStatus
