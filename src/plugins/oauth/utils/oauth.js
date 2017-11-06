@@ -153,6 +153,7 @@ function jsonpRequest(uri) {
     }
 
     uri = uri + '&callback=oauth2callback';
+    window.location.href = uri;
 
     console.log('Redirect location: ' + uri);
     script = document.createElement('script');
