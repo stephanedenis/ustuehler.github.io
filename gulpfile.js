@@ -59,7 +59,7 @@ gulp.task("browserify", ['querystring', 'oauth'], shell.task([
 gulp.task("javascript", ["browserify"], function (cb) {
   pump([
 		gulp.src(["src/**/*.js", "node_modules/tw5-material/src/**/*.js"]),
-		uglify({ compress: false, output: { comments: /^\\/ } }),
+		//uglify({ compress: false, output: { comments: /^\\/ } }),
 		gulp.dest(dest)
 	], cb);
 })
