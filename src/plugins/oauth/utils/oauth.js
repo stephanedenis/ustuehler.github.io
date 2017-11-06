@@ -54,7 +54,7 @@ function requestToken() {
 	window.location.href = uri;
 }
 
-function callback(response) {
+function callback() {
 	console.log('GitHub called back!');
 }
 
