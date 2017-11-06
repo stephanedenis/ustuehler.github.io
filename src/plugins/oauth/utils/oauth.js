@@ -127,7 +127,10 @@ function requestToken() {
 	openPopup({
 		path: uri,
 		windowName: 'GitHubSignIn',
-    callback: function(href) {
+    callback: function() {
+			var href = self._oauthWindow.location.href;
+
+			window.location.assign(href);
 			window.location.reload();
 			callback();
 		}
