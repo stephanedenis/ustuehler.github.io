@@ -21,6 +21,7 @@ var redirect_uri = 'https://ustuehler.github.io/#GitHubAuthCallback';
 
 function initialize(options) {
   client_id = options.client_id;
+  redirect_uri = options.redirect_uri;
 }
 
 function getProvider() {
