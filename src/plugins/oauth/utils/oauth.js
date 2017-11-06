@@ -118,7 +118,7 @@ function requestToken() {
 
       console.log('New location: ' + window.location.href);
       console.log(code);
-      //window.location.assign(base + '?code=' + code);
+      window.location.assign(base + '?code=' + code.code + '&state=' code.state);
       //console.log('New location: ' + window.location.href);
 
       callback();
