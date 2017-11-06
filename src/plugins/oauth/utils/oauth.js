@@ -33,20 +33,19 @@ function getClient() {
 function requestToken() {
 	// Create a new request
 	var request = new OAuth.Request({
-			client_id: 'e31081bbe6c4c22c45a5',
-			redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback''
+		client_id: 'e31081bbe6c4c22c45a5',
+		redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback''
 	});
 
 	// Give it to the provider
-	var uri = google.requestToken(request);
+	var uri = github.requestToken(request);
 
 	// Later we need to check if the response was expected
 	// so save the request
-	google.remember(request);
+	github.remember(request);
 
 	// Do the redirect
 	window.location.href = uri;
-
 }
 
 function popup() {
