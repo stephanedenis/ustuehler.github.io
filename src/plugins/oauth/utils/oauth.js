@@ -21,6 +21,7 @@ var defaultConfig = {
 };
 
 var github = null;
+var config = {};
 
 function initialize(options) {
   for (var attr in options) {
