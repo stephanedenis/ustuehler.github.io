@@ -67,6 +67,12 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
   console.log("GitHubSignInWidget.prototype.invokeAction");
   console.log(self);
 
+  /*
+   * $tw.utils.oauth.initialize({
+   *   ...
+   * });
+   */
+
   return true; // Action was invoked
 };
 
