@@ -68,7 +68,7 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
   console.log(self);
 
   // Can be called multiple times, but must be called before requestToken()
-  $tw.utils.oauth.initialize();
+  $tw.utils.oauth.initialise();
 
   /*
    * Redirect to GitHub, let GitHub authenticate the user, and finally, let
