@@ -49,7 +49,7 @@ function getProvider() {
 
 	github = new OAuth.Provider({
     id: config.provider_id,
-    authorization_url: config._authorization_url
+    authorization_url: config.authorization_url
   });
 
 	return github;
