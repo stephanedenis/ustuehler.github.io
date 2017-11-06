@@ -19,7 +19,7 @@ var github = null;
 var client_id = 'e31081bbe6c4c22c45a5';
 var redirect_uri = 'https://ustuehler.github.io/#GitHubAuthCallback';
 
-function getClient() {
+function getProvider() {
 	if (github) {
 		return github;
 	}
@@ -59,8 +59,8 @@ function callback() {
 }
 
 exports.oauth = {
-	getClient: getClient, // internal
   initialize: initialize,
+	getProvider: getProvider,
   requestToken: requestToken,
   callback: callback
 };
