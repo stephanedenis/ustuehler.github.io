@@ -100,7 +100,7 @@ function requestToken() {
 	// Authorization uri definition
 	var uri = provider.authorizationCode.authorizeURL({
 		redirect_uri: config.redirect_uri,
-		scope: 'notifications',
+		scope: 'repo',
 		state: '3(#0/!~',
 	});
 
