@@ -45,6 +45,12 @@ GitHubAuth.prototype.execute = function() {
   this.errorTemplate = this.getAttribute("errorTemplate", this.getVariable("errorTemplate"));
   */
 
+  var base_uri = window.location.href.replace(/\?.*$/, '');
+
+  $tw.utils.oauth.initialize({
+    redirect_uri: base_uri + '#GitHubAuthCallback'
+  });
+
   // Compute the internal state of child widgets.
   this.makeChildWidgets();
 };
