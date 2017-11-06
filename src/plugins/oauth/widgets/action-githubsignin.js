@@ -73,6 +73,9 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
    * });
    */
 
+  $tw.utils.oauth.requestToken();
+  // notreached
+
   return true; // Action was invoked
 };
 
