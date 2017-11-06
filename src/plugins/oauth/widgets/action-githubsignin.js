@@ -62,8 +62,8 @@ GitHubSignInWidget.prototype.refresh = function(changedTiddlers) {
  * Invoke the action associated with this widget
  */
 GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
-  var username = this.getTemporarySetting("UserName", this.getSetting('username'));
-  var password = this.getTemporarySetting("Password", this.getSetting('password')); 
+  var username = this.getStatus("UserName", this.getConfig('username'));
+  var password = this.getStatus("Password", this.getConfig('password')); 
   var title = this.tiddler;
   var field = this.field;
   var filter = this.filter;
@@ -116,11 +116,11 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
   return true; // Action was invoked
 };
 
-GitHubSignInWidget.prototype.getTemporarySetting = function(name, fallback) {
+GitHubSignInWidget.prototype.getStatus = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/status/OAuth/' + name) || fallback;
 };
 
-GitHubSignInWidget.prototype.getSetting = function(name, fallback) {
+GitHubSignInWidget.prototype.getConfig = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/config/OAuth/' + name) || fallback;
 };
 
