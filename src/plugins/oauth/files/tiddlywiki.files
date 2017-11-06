@@ -6,9 +6,7 @@
 				"type": "application/javascript",
 				"title": "$:/plugins/ustuehler/oauth/simple-oauth2.js",
 				"module-type": "library"
-			},
-			"prefix": "(function() {\n",
-			"suffix": "})();\n"
+			}
 		},{
 			"file": "LICENSE",
 			"fields": {
