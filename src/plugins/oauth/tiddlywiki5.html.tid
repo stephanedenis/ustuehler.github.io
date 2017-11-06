@@ -1,4 +1,5 @@
 title: $:/plugins/ustuehler/oauth/tiddlywiki5.html
 tags: $:/tags/RawMarkup
 
+<script type="text/javascript" src="https://unpkg.com/querystring/querystring.js"></script>
 <script type="text/javascript" src="https://unpkg.com/client-oauth2/client-oauth2.js"></script>
