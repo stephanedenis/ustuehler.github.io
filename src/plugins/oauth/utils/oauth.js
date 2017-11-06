@@ -103,11 +103,12 @@ function requestToken() {
 }
 
 function callback() {
-  var provider = getProvider();
-  var response = provider.parse(window.location.href);
+  //var provider = getProvider();
+  //var response = provider.parse(window.location.href);
 
 	console.log('GitHub called back!');
-	console.log(response);
+	console.log(window.location.href);
+	//console.log(response);
 
   // TODO: Set $:/status/OAuth/UserName et al
   //$tw.wiki.setText('$:/status/OAuth/UserName', 'text', undefined, response.???);
