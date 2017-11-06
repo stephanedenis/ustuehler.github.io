@@ -92,7 +92,7 @@ function callback() {
 }
 
 function getUserName() {
-  return 'Visitor';
+  return 'Anonymous';
 }
 
 exports.oauth = {
