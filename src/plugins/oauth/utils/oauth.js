@@ -53,6 +53,8 @@ function getProvider() {
 }
 
 function requestToken() {
+  let gthub = getProvider();
+
 	// Create a new request
 	var request = new OAuth.Request({
 		client_id: client_id,
