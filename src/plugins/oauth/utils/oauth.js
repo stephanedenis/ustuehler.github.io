@@ -131,8 +131,9 @@ function requestToken() {
     }
 	});
   var checkChildWindow = function() {
-    if (window.location.href.indexOf(config.redirect_uri) == 0) {
+    if (childWindow.location.href.indexOf(config.redirect_uri) == 0) {
       console.log('at redirect URI');
+      childWindow.close();
     } else {
       console.log('still NOT at redirect URI');
       setTimeout(checkChildWindow, 1000);
