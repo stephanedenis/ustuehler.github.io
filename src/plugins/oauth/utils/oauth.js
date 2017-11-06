@@ -115,6 +115,7 @@ function requestToken() {
 
   /*
    * Workaround #1: Popup window
+  */
 	openPopup(uri, function(err, code) {
     alert('in callbacl');
     if (err) {
@@ -130,7 +131,6 @@ function requestToken() {
       //callback();
     }
 	});
-  */
 
   /*
    * Workaround #2: JSNOP
