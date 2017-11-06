@@ -18,10 +18,7 @@ let OAuth = require("$:/plugins/ustuehler/oauth/oauth2-client.js");
 var defaultConfig = {
   client_id: 'e31081bbe6c4c22c45a5',
   redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback'
-};
-
-var githubProvider = {
-  id: 'github',
+  provider_id: 'github',
   authorization_url: 'https://github.com/login/oauth/authorize'
 };
 
@@ -48,8 +45,8 @@ function getProvider() {
 	}
 
 	github = new OAuth.Provider({
-    id: config.provider_id || githubProvider.id,
-    authorization_url: config._authorization_url || githubProvider.authorization_url
+    id: config.provider_id,
+    authorization_url: config._authorization_url
   });
 
 	return github;
