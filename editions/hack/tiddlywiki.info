@@ -9,6 +9,7 @@
 	"ustuehler/github-pages",
 	"ustuehler/oauth",
 	"ustuehler/querystring",
+	"ustuehler/url",
 	"ustuehler/caption",
 	"ustuehler/mdc-web-cdn",
 	"ustuehler/mdc",

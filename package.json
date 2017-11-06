@@ -40,7 +40,8 @@
     "querystring": "^0.2.0",
     "run-sequence": "^2.2.0",
     "tiddlywiki": "^5.1.14",
-    "tw5-material": "git+https://git@github.com/ustuehler/tw5-material.git"
+    "tw5-material": "git+https://git@github.com/ustuehler/tw5-material.git",
+    "url": "^0.11.0"
   },
   "nodemonConfig": {
     "verbose": true,

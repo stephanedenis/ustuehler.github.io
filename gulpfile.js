@@ -53,7 +53,17 @@ gulp.task("querystring", function (cb) {
 })
 */
 
-gulp.task("javascript", ["oauth"], function (cb) {
+gulp.task("url", function (cb) {
+  pump([
+		gulp.src([
+      "node_modules/url/LICENSE",
+      "node_modules/url/url.js"
+    ]),
+		gulp.dest("src/plugins/url/files/")
+	], cb);
+})
+
+gulp.task("javascript", ["oauth", "url"], function (cb) {
   pump([
 		gulp.src(["src/**/*.js", "node_modules/tw5-material/src/**/*.js"]),
 		uglify({ compress: false, output: { comments: /^\\/ } }),

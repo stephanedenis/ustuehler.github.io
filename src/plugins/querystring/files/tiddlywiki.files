@@ -25,7 +25,7 @@
 			"file": "LICENSE",
 			"fields": {
 				"type": "text/plain",
-				"title": "$:/plugins/ustuehler/oauth/license"
+				"title": "$:/plugins/ustuehler/querystring/license"
 			}
 		}
 	]
