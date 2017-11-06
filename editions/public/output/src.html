@@ -8463,8 +8463,15 @@ Error message and password prompt
             &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
             &quot;text&quot;: &quot;&lt;$button tooltip={{$:/language/Buttons/GitHubWriteFile/Hint}} aria-label={{$:/language/Buttons/GitHubWriteFile/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;\n&lt;$github&gt;\n  &lt;$action-githubwritefile branch={{$:/plugins/ustuehler/github-api/settings/branch}}/&gt;\n&lt;/$github&gt;\n&lt;$list filter=\&quot;[&lt;tv-config-toolbar-icons&gt;prefix[yes]]\&quot;&gt;\n&lt;&lt;material-icon \&quot;cloud_upload\&quot;&gt;&gt;\n&lt;/$list&gt;\n&lt;$list filter=\&quot;[&lt;tv-config-toolbar-text&gt;prefix[yes]]\&quot;&gt;\n&lt;span class=\&quot;tc-btn-text\&quot;&gt;&lt;$text text={{$:/language/Buttons/GitHubWriteFile/Caption}}/&gt;&lt;/span&gt;\n&lt;/$list&gt;\n&lt;/$button&gt;&quot;
         },
+        &quot;$:/plugins/ustuehler/github-api/utils/github.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/ustuehler/github-api/utils/github.js\ntype: application/javascript\nmodule-type: utils\ncaption: github\n\nProvides GitHub utility functions under $tw.utils.github\n\n\\*/\n(function(e){\&quot;use strict\&quot;;function t(e,t){return $tw.wiki.getTiddlerText(\&quot;$:/plugins/ustuehler/github-api/settings/\&quot;+e)||t}function n(e,t){return $tw.wiki.getTiddlerText(\&quot;$:/temp/GitHub/\&quot;+e)||t}function r(){return n(\&quot;UserName\&quot;,t(\&quot;username\&quot;))}function i(){return n(\&quot;Password\&quot;,t(\&quot;password\&quot;))}function u(){var e=r();var t=i();return new GitHub({username:e,password:t})}function s(e){return u().getUser(e)}function o(e){return new Promise(function(t,n){var r=s(e);r._request(\&quot;GET\&quot;,r.__getScopedUrl(\&quot;keys\&quot;),null,function(e,r,i){if(e){n(e)}else{t(r)}})})}exports.github={getSetting:t,getTemporarySetting:n,getClientUserName:r,getClientPassword:i,getClient:u,getUser:s,getUserKeys:o}})(this);&quot;,
+            &quot;title&quot;: &quot;$:/plugins/ustuehler/github-api/utils/github.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;utils&quot;,
+            &quot;caption&quot;: &quot;github&quot;
+        },
         &quot;$:/plugins/ustuehler/github-api/widgets/action-githublistrepos.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/ustuehler/github-api/widgets/action-githublistrepos.js\ntype: application/javascript\nmodule-type: widget\ncaption: action-githublistrepos\n\nAction widget that toggles the visibility of the first drawer found in the document\n\n\\*/\n(function(t){\&quot;use strict\&quot;;var e=require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;var i=function(t,e){this.initialise(t,e)};i.prototype=new e;i.prototype.render=function(t,e){this.computeAttributes();this.execute()};i.prototype.execute=function(){this.tiddler=this.getAttribute(\&quot;tiddler\&quot;,this.getVariable(\&quot;currentTiddler\&quot;));this.field=this.getAttribute(\&quot;field\&quot;,\&quot;list\&quot;);this.filter=this.getAttribute(\&quot;filter\&quot;,\&quot;\&quot;);this.makeChildWidgets()};i.prototype.refresh=function(t){var e=this.computeAttributes();if(e.tiddler||e.field||e.filter){this.refreshSelf();return true}return this.refreshChildren(t)};i.prototype.invokeAction=function(t,e){var i=this.getTemporarySetting(\&quot;UserName\&quot;,this.getSetting(\&quot;username\&quot;));var r=this.getTemporarySetting(\&quot;Password\&quot;,this.getSetting(\&quot;password\&quot;));var o=this.tiddler;var s=this.field;var n=this.filter;var l=this;console.log(\&quot;GitHubListReposWidget.prototype.invokeAction\&quot;);console.log(l);var u=new GitHub({username:i,password:r});var g=u.getUser();console.log(\&quot;Listing GitHub repositories for authenticated user.\&quot;);g.listRepos(function(t,e){if(t){$tw.utils.showSnackbar(\&quot;Error from GitHub: \&quot;+t);return}console.log(\&quot;Found \&quot;+e.length+\&quot; repositories.\&quot;);console.log(e);var i=[];for(var r in e){var l=e[r].full_name;i.push(l)}var u=$tw.utils.stringifyList(i);var g={};if(n.length&gt;0){i=$tw.wiki.filterTiddlers(u+\&quot; +\&quot;+n);u=$tw.utils.stringifyList(i);console.log(\&quot;Reduced the list to \&quot;+i.length+\&quot; repositories.\&quot;)}console.log(\&quot;Setting repository list to \&quot;+u+\&quot;.\&quot;);$tw.wiki.setText(o,s,undefined,u,g);var h=\&quot;Found \&quot;+i.length+\&quot; repositories.\&quot;;if(i.length!=e.length){h=\&quot;Found \&quot;+i.length+\&quot; repositories matching the filter.\&quot;}$tw.utils.showSnackbar(h)});return true};i.prototype.getTemporarySetting=function(t,e){return $tw.wiki.getTiddlerText(\&quot;$:/temp/GitHub/\&quot;+t)||e};i.prototype.getSetting=function(t,e){return $tw.wiki.getTiddlerText(\&quot;$:/plugins/ustuehler/github-api/settings/\&quot;+t)||e};i.prototype.allowActionPropagation=function(){return false};exports[\&quot;action-githublistrepos\&quot;]=i})(this);&quot;,
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/ustuehler/github-api/widgets/action-githublistrepos.js\ntype: application/javascript\nmodule-type: widget\ncaption: action-githublistrepos\n\nAction widget that toggles the visibility of the first drawer found in the document\n\n\\*/\n(function(t){\&quot;use strict\&quot;;var e=require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;var i=function(t,e){this.initialise(t,e)};i.prototype=new e;i.prototype.render=function(t,e){this.computeAttributes();this.execute()};i.prototype.execute=function(){this.tiddler=this.getAttribute(\&quot;tiddler\&quot;,this.getVariable(\&quot;currentTiddler\&quot;));this.field=this.getAttribute(\&quot;field\&quot;,\&quot;list\&quot;);this.filter=this.getAttribute(\&quot;filter\&quot;,\&quot;\&quot;);this.makeChildWidgets()};i.prototype.refresh=function(t){var e=this.computeAttributes();if(e.tiddler||e.field||e.filter){this.refreshSelf();return true}return this.refreshChildren(t)};i.prototype.invokeAction=function(t,e){var i=this.getTemporarySetting(\&quot;UserName\&quot;,this.getSetting(\&quot;username\&quot;));var r=this.getTemporarySetting(\&quot;Password\&quot;,this.getSetting(\&quot;password\&quot;));var o=this.tiddler;var s=this.field;var n=this.filter;var l=this;console.log(\&quot;GitHubListReposWidget.prototype.invokeAction\&quot;);console.log(l);var u=$tw.utils.github.getUser();console.log(\&quot;Listing \&quot;+u.name+\&quot;'s GitHub repositories.\&quot;);u.listRepos(function(t,e){if(t){$tw.utils.showSnackbar(\&quot;Error from GitHub: \&quot;+t);return}console.log(\&quot;Found \&quot;+e.length+\&quot; repositories.\&quot;);console.log(e);var i=[];for(var r in e){var l=e[r].full_name;i.push(l)}var u=$tw.utils.stringifyList(i);var g={};if(n.length&gt;0){i=$tw.wiki.filterTiddlers(u+\&quot; +\&quot;+n);u=$tw.utils.stringifyList(i);console.log(\&quot;Reduced the list to \&quot;+i.length+\&quot; repositories.\&quot;)}console.log(\&quot;Setting repository list to \&quot;+u+\&quot;.\&quot;);$tw.wiki.setText(o,s,undefined,u,g);var h=\&quot;Found \&quot;+i.length+\&quot; repositories.\&quot;;if(i.length!=e.length){h=\&quot;Found \&quot;+i.length+\&quot; repositories matching the filter.\&quot;}$tw.utils.showSnackbar(h)});return true};i.prototype.getTemporarySetting=function(t,e){return $tw.wiki.getTiddlerText(\&quot;$:/temp/GitHub/\&quot;+t)||e};i.prototype.getSetting=function(t,e){return $tw.wiki.getTiddlerText(\&quot;$:/plugins/ustuehler/github-api/settings/\&quot;+t)||e};i.prototype.allowActionPropagation=function(){return false};exports[\&quot;action-githublistrepos\&quot;]=i})(this);&quot;,
             &quot;title&quot;: &quot;$:/plugins/ustuehler/github-api/widgets/action-githublistrepos.js&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
             &quot;module-type&quot;: &quot;widget&quot;,
@@ -8479,6 +8486,13 @@ Error message and password prompt
             &quot;created&quot;: &quot;20171104100223686&quot;,
             &quot;modified&quot;: &quot;20171104111838015&quot;,
             &quot;span&quot;: &quot;9&quot;
+        },
+        &quot;$:/plugins/ustuehler/github-api/widgets/github-user-keys.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/ustuehler/github-api/widgets/github-user-keys.js\ntype: application/javascript\nmodule-type: widget\ncaption: github-user-keys\n\nWidget that renders the public keys for a given GitHub user\n\n\\*/\n(function(e){\&quot;use strict\&quot;;var t=require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;var r=function(e,t){this.initialise(e,t)};r.prototype=new t;r.prototype.render=function(e,t){var r=this;this.computeAttributes();this.execute();var s=this.document.createElement(\&quot;div\&quot;);this.domNode=s;$tw.utils.github.getUserKeys(this.user).then(function(e){var t=r.domNode;while(t.firstChild){t.removeChild(t.firstChild)}var s=null;e.forEach(function(e){s=i(r.document,t,s,e)});$tw.utils.showSnackbar(\&quot;Retrieved \&quot;+e.length+\&quot; keys for \&quot;+r.user+\&quot;.\&quot;)}).catch(function(e){console.log(\&quot;getUserKeys: \&quot;+e);$tw.utils.showSnackbar(\&quot;Failed to retrieve SSH public keys for \&quot;+r.user+\&quot;.\&quot;)});e.insertBefore(s,t);this.renderChildren(s,null);this.domNodes.push(s)};function i(e,t,r,i){var s=e.createElement(\&quot;p\&quot;);s.innerHTML=i.key;t.insertBefore(s,r);return s}r.prototype.execute=function(){var e=this.getTemporarySetting(\&quot;UserName\&quot;,this.getSetting(\&quot;username\&quot;));this.user=this.getAttribute(\&quot;user\&quot;,e);this.makeChildWidgets()};r.prototype.refresh=function(e){var t=this.computeAttributes();if(t.user){this.refreshSelf();return true}return this.refreshChildren(e)};r.prototype.getTemporarySetting=function(e,t){return $tw.wiki.getTiddlerText(\&quot;$:/temp/GitHub/\&quot;+e)||t};r.prototype.getSetting=function(e,t){return $tw.wiki.getTiddlerText(\&quot;$:/plugins/ustuehler/github-api/settings/\&quot;+e)||t};exports[\&quot;github-user-keys\&quot;]=r})(this);&quot;,
+            &quot;title&quot;: &quot;$:/plugins/ustuehler/github-api/widgets/github-user-keys.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;widget&quot;,
+            &quot;caption&quot;: &quot;github-user-keys&quot;
         },
         &quot;$:/plugins/ustuehler/github-api/widgets/github&quot;: {
             &quot;text&quot;: &quot;/*\\\ntitle: $:/plugins/ustuehler/github-api/widgets/github.js\ntype: application/javascript\nmodule-type: widget\n\nInvisible GitHub API widget\n\n\\*/\n(function(){\&quot;use strict\&quot;;var t=require(\&quot;$:/core/modules/widgets/widget.js\&quot;).widget;var e=function(t,e){this.initialise(t,e)};e.prototype=new t;e.prototype.render=function(t,e){this.computeAttributes();this.execute();this.renderChildren(t,e)};e.prototype.readSetting=function(t){self.wiki.setText(\&quot;$:/plugins/ustuehler/github-api/settings/username\&quot;,\&quot;text\&quot;,undefined,attribute,options)};e.prototype.execute=function(){this.username=this.getAttribute(\&quot;username\&quot;,this.getAttributeSetting(\&quot;username\&quot;));this.password=this.getAttribute(\&quot;password\&quot;,this.getAttributeSetting(\&quot;password\&quot;));if(!this.username){this.username=this.getAttributeStatus(\&quot;UserName\&quot;)}if(!this.password){this.password=this.getAttributeStatus(\&quot;Password\&quot;)}this.setVariable(\&quot;github-username\&quot;,this.username);this.setVariable(\&quot;github-password\&quot;,this.password);this.makeChildWidgets()};e.prototype.refresh=function(t){var e=this.computeAttributes();if(e.username||e.password){this.refreshSelf();return true}return this.refreshChildren(t)};e.prototype.getAttributeSetting=function(t){var e=\&quot;$:/plugins/ustuehler/github/settings/\&quot;+t;return $tw.wiki.getTiddlerText(e)};e.prototype.getAttributeStatus=function(t){var e=\&quot;$:/temp/GitHub/\&quot;+t;return $tw.wiki.getTiddlerText(e)};e.prototype.setAttributeStatus=function(t,e){var i=\&quot;$:/temp/GitHub/\&quot;+t;var s={};return $tw.wiki.setText(i,\&quot;text\&quot;,undefined,e,s)};exports.github=e})();&quot;,
@@ -9331,23 +9345,53 @@ Error message and password prompt
 <div created="20171103225727541" modified="20171103225728650" title="$:/view" type="text/vnd.tiddlywiki">
 <pre>muuri</pre>
 </div>
-<div created="20171104024226128" modified="20171104041336497" span="6" tags="PublicSite $:/tags/Stylesheet $:/tags/StyleSheet" title="Stylesheet" type="text/css">
+<div created="20171104024226128" modified="20171106041712143" span="6" tags="PublicSite $:/tags/Stylesheet $:/tags/StyleSheet" title="Stylesheet" type="text/css">
 <pre>/*
- * TiddlyLinks in the tiddler body and preview area
+ * Links in the tiddler view and preview area
+ *
+ * This stylesheet section covers three kinds of links:
+ *
+ * 1. Internal links generated by the link widget (.tc-tiddlylink)
+ * 2. External links generated by WikiText (.tc-tiddlylink.tc-tiddlylink-external)
+ * 3. Plain links created with the &lt;a&gt; tag (:not(.tc-tiddlylink))
+ *
+ * These styles are applied in two different locations:
+ *
+ * 1. Tiddler body in the ViewTemplate (.tc-tiddler-body)
+ * 2. Preview area in the EditTemplate (.tc-tiddler-preview-preview)
+ *
+ * Custom view templates should wrap their content in a &lt;div&gt; of class
+ * &quot;tc-tiddler-body&quot; to apply this style.
  */
 
+/* Disable underline and border for all three kinds of links */
 .tc-tiddler-frame .tc-tiddler-body a,
-.tc-tiddler-frame .tc-tiddler-preview-preview a.tc-tiddlylink {
+.tc-tiddler-frame .tc-tiddler-preview-preview a {
   text-decoration: none;
   border-bottom: 1px solid rgba(255,255,255,0);
   transition: all 1s linear;
 }
 
-.tc-tiddler-frame:hover .tc-tiddler-body a,
+/*
+ * Highlight internal links with an underline when the current tiddler is
+ * being hovered over (using a bottom border, because it's more flexible)
+ */
+.tc-tiddler-frame:hover .tc-tiddler-body a.tc-tiddlylink,
 .tc-tiddler-frame:hover .tc-tiddler-preview-preview a.tc-tiddlylink {
   color: black;
   border-bottom: 1px solid;
   transition: all 1s linear;
+}
+
+/*
+ * Make visited plain links indistinguishable from visited links, because the
+ * default colors are horrible and I don't have an alternative now
+ */
+.tc-tiddler-frame .tc-tiddler-body a:not(.tc-tiddlylink),
+.tc-tiddler-frame .tc-tiddler-body a:visited:not(.tc-tiddlylink),
+.tc-tiddler-frame .tc-tiddler-preview-preview a:not(.tc-tiddlylink),
+.tc-tiddler-frame .tc-tiddler-preview-preview a:visited:not(.tc-tiddlylink) {
+  color: #4534ba; /* A darker blue that goes with the toolbar */
 }</pre>
 </div>
 <div created="20171103225806836" creator="ustuehler" list="tiddlywiki.com tw5-material" modified="20171104074233770" modifier="ustuehler" span="4" title="TiddlyWiki Links" type="text/vnd.tiddlywiki" view-style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/TiddlyWiki_Icon.png/1145px-TiddlyWiki_Icon.png);   background-size: cover; background-repeat: no-repeat; background-position: center; background-color: #f0f0f0;">
