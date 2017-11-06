@@ -130,7 +130,7 @@ function requestToken() {
   */
 
   var opts = {};
-  jsonp(uri, opts, function(err, data) {
+  var cancel = jsonp(uri, opts, function(err, data) {
     console.log("JSONP callbak invoked");
 
     if (err) {
@@ -144,6 +144,8 @@ function requestToken() {
     // window.location.assign(...)
     // callback()
   });
+
+  return cancel; // Invoke cancel function to stop the request
 }
 
 /*
