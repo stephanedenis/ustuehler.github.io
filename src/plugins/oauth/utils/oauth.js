@@ -75,6 +75,8 @@ function callback() {
   let provider = getProvider();
 
 	console.log('GitHub called back!');
+
+  // TODO: Set $:/status/OAuth/UserName et al
 }
 
 exports.oauth = {
