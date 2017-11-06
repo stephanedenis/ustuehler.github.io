@@ -8,6 +8,7 @@ Provides OAuth utility functions under $tw.utils.oauth
 
 \*/
 (function (global) {
+if (typeof window !== 'undefined') {
 
 "use strict";
 /*jslint node: true, browser: true */
@@ -137,4 +138,5 @@ exports.oauth = {
   getUserName: getUserName
 };
 
+}
 })(this);
