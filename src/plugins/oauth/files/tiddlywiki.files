@@ -4,7 +4,7 @@
 			"file": "client-oauth2.js",
 			"fields": {
 				"type": "application/javascript",
-				"title": "$:/plugins/ustuehler/oauth/client-oauth2.js",
+				"title": "client-oauth2.js",
 				"module-type": "library"
 			}
 		},{
