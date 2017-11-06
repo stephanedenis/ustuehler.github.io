@@ -1,8 +1,8 @@
 /*\
-title: $:/plugins/ustuehler/oauth/widgets/action-githubsignin.js
+title: $:/plugins/ustuehler/oauth/widgets/github-auth-callback.js
 type: application/javascript
 module-type: widget
-caption: action-githubsignin
+caption: github-auth-callback
 
 Trigger the OAuth Flow to sign in with a GitHub account
 
