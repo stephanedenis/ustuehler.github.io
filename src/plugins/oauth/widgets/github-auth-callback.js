@@ -95,21 +95,6 @@ function callback() {
   // TODO: Set $:/status/OAuth/UserName et al
 }
 
-GitHubAuthCallback.prototype.getStatus = function(name, fallback) {
-  return $tw.wiki.getTiddlerText('$:/status/OAuth/' + name) || fallback;
-};
-
-GitHubAuthCallback.prototype.getConfig = function(name, fallback) {
-  return $tw.wiki.getTiddlerText('$:/config/OAuth/' + name) || fallback;
-};
-
-/*
- * Don't allow actions to propagate, because we invoke actions ourself
- */
-GitHubAuthCallback.prototype.allowActionPropagation = function() {
-  return false;
-};
-
 exports["github-auth-callback"] = GitHubAuthCallback;
 
 })(this);
