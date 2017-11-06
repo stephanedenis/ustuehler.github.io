@@ -127,9 +127,14 @@ function requestToken() {
     }
 	});
   */
+
+  jsonRequest(uri).then(function(response) {
+    console.log("Got response:");
+    console.log(response);
+  });
 }
 
-function jsonpRequest(uri, cb) {
+function jsonpRequest(uri) {
   return new Promise(function(resolve, reject) {
     var script;
 
@@ -141,7 +146,7 @@ function jsonpRequest(uri, cb) {
       console.log(meta);
       console.log(data);
 
-      resolve();
+      resolve(response);
       // TODO: on error: reject();
     }
 
