@@ -128,7 +128,7 @@ function requestToken() {
 	});
   */
 
-  jsonRequest(uri).then(function(response) {
+  jsonpRequest(uri).then(function(response) {
     console.log("Got response:");
     console.log(response);
 
