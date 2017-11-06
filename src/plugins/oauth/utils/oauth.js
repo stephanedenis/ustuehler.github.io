@@ -44,6 +44,9 @@ function getProvider() {
 		return github;
 	}
 
+  console.log("provider_id: " + config.provider_id);
+  console.log("authorization_url: " + config.authorization_url);
+
 	github = new OAuth.Provider({
     id: config.provider_id,
     authorization_url: config._authorization_url
