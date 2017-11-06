@@ -128,20 +128,27 @@ function requestToken() {
 	});
   */
 
-  window.oauth2callback = function(response) {
-    var meta = response.meta;
-    var data = response.data;
-
-    console.log('oauth2callback response meta + data:');
-    console.log(meta);
-    console.log(data);
-  }
-
-  console.log('Old location: ' + window.location.ref);
-
   script = document.createElement('script');
   script.type = 'text/javascript';
   script.src = uri + '?callback=oauth2callback';
+}
+
+function jsonpRequest(uri, cb) {
+
+  //if (window.oauth2callback === 'undefined') {
+    window.oauth2callback = function(response) {
+      var meta = response.meta;
+      var data = response.data;
+
+      console.log('oauth2callback response meta + data:');
+      console.log(meta);
+      console.log(data);
+    }
+  //}
+
+  console.log('Old location: ' + window.location.ref);
+  return new Promise(function(resolve, reject) {
+  });
 }
 
 function callback() {
