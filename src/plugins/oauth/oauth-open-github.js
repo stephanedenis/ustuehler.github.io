@@ -39,12 +39,14 @@ function poll(popup, fn) {
   var done = once(fn);
 
   var intervalId = setInterval(function polling() {
-    console.log("polling...");
-
     try {
       var documentOrigin = document.location.host;
       var popupWindowOrigin = popup.location.host;
     } catch (e) {};
+
+    console.log("polling...");
+    console.log("documentOrigin: " + documentOrigin);
+    console.log("popupWindowOrigin: " + popupWindowOrigin);
 
     if (popupWindowOrigin === documentOrigin && (popup.location.search || popup.location.hash)) {
       var queryParams = popup.location.search.substring(1).replace(/\/$/, '');
