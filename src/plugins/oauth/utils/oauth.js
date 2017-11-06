@@ -33,10 +33,8 @@ function initialise(options) {
   }
 
   for (var attr in defaultConfig) {
-    if (defaultConfig.hasOwnProperty(attr)) {
-      if (!onfig[attr]) {
-        config[attr] = defaultConfig[attr];
-      }
+    if (!config[attr] && defaultConfig.hasOwnProperty(attr)) {
+      config[attr] = defaultConfig[attr];
     }
   }
 }
