@@ -60,8 +60,8 @@ function requestToken() {
 
 	// Create a new request
 	var request = new OAuth.Request({
-		client_id: client_id,
-		redirect_uri: redirect_uri
+		client_id: config.client_id,
+		redirect_uri: config.redirect_uri
 	});
 
 	// Give it to the provider
