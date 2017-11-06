@@ -73,7 +73,7 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
    * });
    */
 
-  // Redirect to GitHub and then let GitHub redirect back to us
+  // Redirect to GitHub, authorize the user, and then let GitHub redirect back to us
   $tw.utils.oauth.requestToken();
   // notreached
 
