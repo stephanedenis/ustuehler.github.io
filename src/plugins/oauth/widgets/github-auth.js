@@ -34,7 +34,9 @@ GitHubAuthWidget.prototype.render = function(parent,nextSibling) {
   // Complete the sign-in flow, if we were redirected here by the OAuth provider
   $tw.utils.oauth.callback();
 
-  this.renderChildren(parent, nextSibling);
+  if ($tw.utils.oauth.getUserName()) {
+    this.renderChildren(parent, nextSibling);
+  }
 };
 
 /*
