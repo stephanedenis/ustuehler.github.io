@@ -110,6 +110,8 @@ function requestToken() {
 
 	// Do the redirect
 	//window.location.href = uri;
+  //
+  /*
 	openPopup(uri, function(err, code) {
     if (err) {
       console.log('openPopup (oauth-open): ' + err);
@@ -124,6 +126,20 @@ function requestToken() {
       callback();
     }
 	});
+  */
+
+  window.oauth2callback = function(response) {
+    var meta = response.meta;
+    var data = response.data;
+
+    console.log('oauth2callback response meta + data:');
+    console.log(meta);
+    console.log(data);
+  }
+
+  console.log('Old location: ' + window.location.ref);
+  window.location.assign(uri + '?callback=oauth2callback');
+  console.log('New location: ' + window.location.ref);
 }
 
 function callback() {
