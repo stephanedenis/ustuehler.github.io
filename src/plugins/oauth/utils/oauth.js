@@ -89,8 +89,6 @@ function getProvider() {
       tokenPath: '/login/oauth/access_token',
       authorizePath: '/login/oauth/authorize'
     },
-    authorizationUri: config.authorization_url,
-    redirectUri: config.redirect_uri,
     scopes: ['token', 'notifications', 'gist']
   });
 
