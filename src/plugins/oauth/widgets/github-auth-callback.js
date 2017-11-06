@@ -15,19 +15,19 @@ Trigger the OAuth Flow to sign in with a GitHub account
 
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
-var GitHubSignInWidget = function(parseTreeNode,options) {
+var GitHubAuthCallback = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
 
 /*
 Inherit from the base widget class
 */
-GitHubSignInWidget.prototype = new Widget();
+GitHubAuthCallback.prototype = new Widget();
 
 /*
 Render this widget into the DOM
 */
-GitHubSignInWidget.prototype.render = function(parent,nextSibling) {
+GitHubAuthCallback.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 };
@@ -35,7 +35,7 @@ GitHubSignInWidget.prototype.render = function(parent,nextSibling) {
 /*
 Compute the internal state of the widget
 */
-GitHubSignInWidget.prototype.execute = function() {
+GitHubAuthCallback.prototype.execute = function() {
   this.tiddler = this.getAttribute("tiddler", this.getVariable("currentTiddler"));
   this.field = this.getAttribute("field", "list");
   this.filter = this.getAttribute("filter", "");
@@ -47,7 +47,7 @@ GitHubSignInWidget.prototype.execute = function() {
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
-GitHubSignInWidget.prototype.refresh = function(changedTiddlers) {
+GitHubAuthCallback.prototype.refresh = function(changedTiddlers) {
   var changedAttributes = this.computeAttributes();
 
   if (changedAttributes.tiddler || changedAttributes.field || changedAttributes.filter) {
@@ -61,10 +61,10 @@ GitHubSignInWidget.prototype.refresh = function(changedTiddlers) {
 /*
  * Invoke the action associated with this widget
  */
-GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
+GitHubAuthCallback.prototype.invokeAction = function(triggeringWidget,event) {
   var self = this;
 
-  console.log("GitHubSignInWidget.prototype.invokeAction");
+  console.log("GitHubAuthCallback.prototype.invokeAction");
   console.log(self);
 
   /*
@@ -95,21 +95,21 @@ function callback() {
   // TODO: Set $:/status/OAuth/UserName et al
 }
 
-GitHubSignInWidget.prototype.getStatus = function(name, fallback) {
+GitHubAuthCallback.prototype.getStatus = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/status/OAuth/' + name) || fallback;
 };
 
-GitHubSignInWidget.prototype.getConfig = function(name, fallback) {
+GitHubAuthCallback.prototype.getConfig = function(name, fallback) {
   return $tw.wiki.getTiddlerText('$:/config/OAuth/' + name) || fallback;
 };
 
 /*
  * Don't allow actions to propagate, because we invoke actions ourself
  */
-GitHubSignInWidget.prototype.allowActionPropagation = function() {
+GitHubAuthCallback.prototype.allowActionPropagation = function() {
   return false;
 };
 
-exports["action-githubsignin"] = GitHubSignInWidget;
+exports["github-auth-callback"] = GitHubAuthCallback;
 
 })(this);
