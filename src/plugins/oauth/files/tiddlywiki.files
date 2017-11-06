@@ -1,0 +1,18 @@
+{
+	"tiddlers": [
+		{
+			"file": "oauth2-client.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/ustuehler/oauth/oauth2-client.js",
+				"module-type": "library"
+			}
+		},{
+			"file": "LICENSE",
+			"fields": {
+				"type": "text/plain",
+				"title": "$:/plugins/ustuehler/oauth/license"
+			}
+		}
+	]
+}

@@ -14,7 +14,12 @@ Provides OAuth utility functions under $tw.utils.oauth
 /*global $tw: false */
 
 function getClient() {
-  return OAuth;
+  var OAuth = require("$:/plugins/ustuehler/oauth/oauth2-client.js");
+  var github = new OAuth.Provider({
+    id: 'github',
+    authorization_url: 'https://github.com/login/oauth/authorize'
+  });
+
 }
 
 function popup() {
