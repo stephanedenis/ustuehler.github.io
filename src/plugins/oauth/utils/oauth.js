@@ -97,7 +97,7 @@ function callback() {
 	console.log('GitHub called back to:');
 	console.log(window.location.href);
 
-	githubAuth.token.getToken(uri).then(function (user) {
+	provider.token.getToken(uri).then(function (user) {
 		console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... } 
 
 		// Make a request to the github API for the current user. 
