@@ -24,7 +24,9 @@ var defaultConfig = {
 };
 
 // TODO: use embedded script rather than relying on <script> tag
-var OAuth2 = require("simple-oauth2.js");
+function getClient() {
+	return require("simple-oauth2.js");
+}
 
 console.log('Loaded simple-oauth2');
 console.log(OAuth2);
@@ -211,6 +213,7 @@ function computeURLParams() {
 }
 
 exports.oauth = {
+	getClient: getClient,
 	getProvider: getProvider, // only for inspection
   initialise: initialise,
   requestToken: requestToken,
