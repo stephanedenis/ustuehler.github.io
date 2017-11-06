@@ -109,9 +109,6 @@ function requestToken() {
 }
 
 function callback() {
-	// Using a browser window
-	return;
-
   var provider = getProvider();
 	var uri = window.location.href;
   //var response = provider.parse(window.location.href);
