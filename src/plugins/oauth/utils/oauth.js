@@ -24,8 +24,14 @@ var github = null;
 var config = {};
 
 function initialize(options) {
+  for (var attr in defaultConfig) {
+    if (defaultConfig.hasownproperty(attr)) {
+      config[attr] = defaultConfig[attr];
+    }
+  }
+
   for (var attr in options) {
-    if (options.hasOWnProperty(attr)) {
+    if (options.hasownproperty(attr)) {
       config[attr] = options[attr];
     }
   }
