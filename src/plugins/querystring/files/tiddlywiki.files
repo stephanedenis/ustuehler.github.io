@@ -1,10 +1,24 @@
 {
 	"tiddlers": [
 		{
+			"file": "index.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "querystring/index.js",
+				"module-type": "library"
+			}
+		},{
+			"file": "encode.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "querystring/encode.js",
+				"module-type": "library"
+			}
+		},{
 			"file": "decode.js",
 			"fields": {
 				"type": "application/javascript",
-				"title": "querystring.js",
+				"title": "querystring/decode.js",
 				"module-type": "library"
 			}
 		},{
