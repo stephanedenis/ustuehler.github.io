@@ -129,6 +129,9 @@ function requestToken() {
 		windowName: 'GitHubSignIn',
     callback: function() {
 			var href = self._oauthWindow.location.href;
+			console.log(href);
+			console.log(self._oauthWindow);
+			console.log(eslf);
 
 			window.location.assign(href);
 			window.location.reload();
