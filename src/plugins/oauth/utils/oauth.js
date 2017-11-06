@@ -96,8 +96,6 @@ function getProvider() {
 	return github;
 }
 
-var popupWindow;
-
 // ref: https://www.sitepoint.com/oauth-popup-window/
 function openPopup(options) {
 	options.windowName = options.windowName ||  'ConnectWithOAuth'; // should not include space for IE
@@ -116,6 +114,7 @@ function openPopup(options) {
 
 function requestToken() {
   var provider = getProvider();
+	var self = this;
 
 	// Authorization uri definition
 	var uri = provider.authorizationCode.authorizeURL({
@@ -129,7 +128,10 @@ function requestToken() {
 	openPopup({
 		path: uri,
 		windowName: 'GitHubSignIn',
-    callback: callback
+    callback: function(href) {
+			window.location.assign(href);
+			callback();
+		}
 	});
 }
 
