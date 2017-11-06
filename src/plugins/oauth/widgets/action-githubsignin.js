@@ -69,7 +69,7 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
 
   // Ensure that the OAuth provider redirects the user back to this location
   var base_uri = window.location.href.replace(/\?.*$/, '');
-  $tw.utils.oauth.initialize({
+  $tw.utils.oauth.initialise({
     redirect_uri: base_uri + '#GitHubAuthCallback'
   });
 
