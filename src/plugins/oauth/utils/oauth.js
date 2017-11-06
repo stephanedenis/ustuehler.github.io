@@ -24,7 +24,7 @@ var defaultConfig = {
 };
 
 var OAuth2 = require('simple-oauth2');
-var openPopup = require('./oauth-open');
+var openPopup = require('oauth-open');
 
 function getClient() {
 	return OAuth2;
@@ -116,8 +116,10 @@ function requestToken() {
     } else {
       var base = window.location.href.replace(/\/*\?.*$/, '');
 
-      window.location.assign(base + '?code=' + code);
       console.log('New location: ' + window.location.href);
+      console.log(code);
+      //window.location.assign(base + '?code=' + code);
+      //console.log('New location: ' + window.location.href);
 
       callback();
     }
