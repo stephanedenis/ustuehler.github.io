@@ -2,7 +2,7 @@ audio-url: http://94.176.104.15:8128/stream/1/
 created: 20171104035735903
 creator: CMDR soda314
 list-item-icon: queue_music
-modified: 20171106064242480
+modified: 20171106064920298
 modifier: CMDR soda314
 span: 4
 tags: $:/tags/Drawer
@@ -29,7 +29,6 @@ type: text/vnd.tiddlywiki
 </$select>
 
 <$list filter="[<state>get[text]] -[<radio-off>]">
-<!-- DEBUG: --> radio <<audio-attributes>>
 <$transclude tiddler="Templates/Audio" mode="block"/>
 <$transclude mode="block"/>
 </$list>
