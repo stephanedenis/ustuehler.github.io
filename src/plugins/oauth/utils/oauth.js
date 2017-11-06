@@ -93,6 +93,8 @@ function requestToken() {
 
 function callback() {
   var provider = getProvider();
+  console.log('window.location.hash:');
+  console.log(window.location.hash);
   var response = provider.parse(window.location.hash);
 
 	console.log('GitHub called back!');
