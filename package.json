@@ -36,6 +36,7 @@
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
     "hubfs.js": "^1.0.0",
+    "jsonp": "^0.2.1",
     "nodemon": "^1.12.1",
     "oauth-open": "^1.0.3",
     "pump": "^1.0.2",
