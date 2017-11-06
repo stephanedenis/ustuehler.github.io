@@ -39,6 +39,8 @@ function poll(popup, fn) {
   var done = once(fn);
 
   var intervalId = setInterval(function polling() {
+    console.log("polling...");
+
     try {
       var documentOrigin = document.location.host;
       var popupWindowOrigin = popup.location.host;
