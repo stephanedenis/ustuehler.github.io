@@ -17,7 +17,7 @@ var defaultConfig = {
   provider_id: 'github',
   client_id: 'e31081bbe6c4c22c45a5',
   authorization_url: 'https://github.com/login/oauth/authorize',
-  redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback'
+  redirect_uri: 'https://ustuehler.github.io/hack/#GitHubAuthCallback'
 };
 
 var OAuth = null;
