@@ -2,11 +2,36 @@ audio-url: http://94.176.104.15:8128/stream/1/
 created: 20171104035735903
 creator: CMDR soda314
 list-item-icon: queue_music
-modified: 20171105180721536
+modified: 20171106035958383
 modifier: CMDR soda314
 span: 4
 tags: $:/tags/Drawer
 title: Radio
 type: text/vnd.tiddlywiki
 
-{{Deep Mix Moscow Radio||Templates/Audio}}
+\define radio-off() Off
+\define radio-default() $(radio-off)$
+\define radio-template() Templates/Audio
+\define radio-filter()
+[<radio-off>]
+ [all[tiddlers]!prefix[Radio]suffix[Radio]sort[title]]
+\end
+
+<!-- Originally, this tiddler was just {{DeepMixMoscowRadio||Templates/Audio}} -->
+
+<$set name="state" value=<<qualify '$:/temp/Radio'>>>
+
+<$select tiddler=<<state>> default=<<radio-default>>>
+<$list filter=<<radio-filter>>>
+<option value=<<currentTiddler>>><$view field='caption'><<currentTiddler>></$view></option>
+</$list>
+</$select>
+
+<$list filter="[<state>get[text]] -[<radio-off>]">
+
+<$transclude tiddler=<<radio-template>>/>
+
+<$transclude mode="block"/>
+
+</$list>
+</$set>

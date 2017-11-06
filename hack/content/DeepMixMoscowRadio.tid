@@ -1,12 +1,13 @@
 audio-url: http://94.176.104.15:8128/stream/1/
+caption: DeepMix Moscow
 created: 20171017150230489
 creator: CMDR soda314
 ed-planet: Earth
 ed-system: Sol
-modified: 20171104035851415
+modified: 20171106034601250
 modifier: CMDR soda314
 template: Templates/Audio
-title: Deep Mix Moscow Radio
+title: DeepMixMoscowRadio
 type: text/vnd.tiddlywiki
 
 See http://deepmix.ru/ for other streaming and/or download options.
