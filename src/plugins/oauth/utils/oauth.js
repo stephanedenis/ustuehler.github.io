@@ -53,8 +53,8 @@ function callback(response) {
 }
 
 exports.oauth = {
-  getClient: getClient,
-  popup: popup
+  requestToken: requestToken,
+  callback: callback
 };
 
 })(this);
