@@ -112,7 +112,7 @@ function requestToken() {
 	// Do the redirect
 	window.location.href = uri;
 
-  // If it fails because of CORS... (net::ERR_ABORTED)
+  // If it fails because of CORS (net::ERR_ABORTED)...
 
   /*
    * Workaround #1: Popup window
