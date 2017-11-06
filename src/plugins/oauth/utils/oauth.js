@@ -24,8 +24,8 @@ var defaultConfig = {
 };
 
 var OAuth2 = require('simple-oauth2');
-var openPopup = require('oauth-open');
-var jsonp = require('jsonp');
+//var openPopup = require('oauth-open');
+//var jsonp = require('jsonp');
 
 function getClient() {
 	return OAuth2;
@@ -129,6 +129,7 @@ function requestToken() {
 	});
   */
 
+  /*
   var opts = { name: 'github' };
 
   var cancel = jsonp(uri, opts, function(err, data) {
@@ -145,6 +146,7 @@ function requestToken() {
     // window.location.assign(...)
     // callback()
   });
+  */
 }
 
 /*
