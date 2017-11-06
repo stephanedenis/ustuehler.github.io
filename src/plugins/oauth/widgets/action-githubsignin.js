@@ -91,7 +91,8 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
  */
 function callback() {
   console.log("githubauthcallback called back! \\o/");
-  // Set $:/status/OAuth/UserName et al
+
+  // TODO: Set $:/status/OAuth/UserName et al
 }
 
 GitHubSignInWidget.prototype.getStatus = function(name, fallback) {
