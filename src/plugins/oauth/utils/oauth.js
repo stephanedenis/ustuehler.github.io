@@ -128,7 +128,7 @@ function requestToken() {
 		path: uri,
 		windowName: 'GitHubSignIn',
     callback: function(href) {
-			window.location.assign(href);
+			window.location.reload();
 			callback();
 		}
 	});
