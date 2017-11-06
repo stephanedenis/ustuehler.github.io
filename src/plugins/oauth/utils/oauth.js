@@ -95,6 +95,8 @@ function callback() {
 	var uri = window.location.href;
   //var response = provider.parse(window.location.href);
 
+	return;
+
 	console.log('GitHub called back to:');
 	console.log(uri);
 
@@ -122,18 +124,32 @@ function callback() {
 
 // ref: https://www.npmjs.com/package/client-oauth2
 window.oauth2Callback = function (uri) {
-  githubAuth.token.getToken(uri)
-    .then(function (user) {
-      console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... } 
- 
-      // Make a request to the github API for the current user. 
-      return popsicle.request(user.sign({
-        method: 'get',
-        url: 'https://api.github.com/user'
-      })).then(function (res) {
-        console.log(res) //=> { body: { ... }, status: 200, headers: { ... } } 
-      })
-    })
+  var provider = getProvider();
+  //var response = provider.parse(window.location.href);
+
+	console.log('GitHub called back to:');
+	console.log(uri);
+
+	provider.token.getToken(uri).then(function (user) {
+		console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... } 
+
+		// Make a request to the github API for the current user. 
+		return popsicle.request(user.sign({
+			method: 'get',
+			url: 'https://api.github.com/user'
+		})).then(function (res) {
+			console.log(res) //=> { body: { ... }, status: 200, headers: { ... } } 
+
+			if (res.status == 200) {
+				$tw.wiki.setText('$:/temp/GitHub/Password', 'text', undefined, user.accessToken);
+				$tw.wiki.setText('$:/status/OAuth/UserName', 'text', undefined, user.username);
+
+				$tw.utils.showSnackbar('Signed in with GitHub.');
+			} else {
+				$tw.utils.showSnackbar('The access token is invalid.');
+			}
+		})
+	})
 }
 
 function getUserName() {
