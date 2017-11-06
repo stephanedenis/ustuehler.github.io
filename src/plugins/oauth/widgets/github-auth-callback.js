@@ -15,19 +15,19 @@ Implements the complete flow of signing in with a GitHub account
 
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
-var GitHubAuthCallback = function(parseTreeNode,options) {
+var GitHubAuth = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
 
 /*
 Inherit from the base widget class
 */
-GitHubAuthCallback.prototype = new Widget();
+GitHubAuth.prototype = new Widget();
 
 /*
 Render this widget into the DOM
 */
-GitHubAuthCallback.prototype.render = function(parent,nextSibling) {
+GitHubAuth.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
@@ -37,7 +37,7 @@ GitHubAuthCallback.prototype.render = function(parent,nextSibling) {
 /*
 Compute the internal state of the widget
 */
-GitHubAuthCallback.prototype.execute = function() {
+GitHubAuth.prototype.execute = function() {
   /*
   this.errorTemplate = this.getAttribute("errorTemplate", this.getVariable("errorTemplate"));
   */
@@ -49,7 +49,7 @@ GitHubAuthCallback.prototype.execute = function() {
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
-GitHubAuthCallback.prototype.refresh = function(changedTiddlers) {
+GitHubAuth.prototype.refresh = function(changedTiddlers) {
   /*
   var changedAttributes = this.computeAttributes();
 
@@ -62,6 +62,6 @@ GitHubAuthCallback.prototype.refresh = function(changedTiddlers) {
   return this.refreshChildren(changedTiddlers);
 };
 
-exports["github-auth-callback"] = GitHubAuthCallback;
+exports["github-auth-callback"] = GitHubAuth;
 
 })(this);
