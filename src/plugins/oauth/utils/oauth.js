@@ -73,7 +73,7 @@ function getProvider() {
 	github = new ClientOAuth2({
     clientId: config.client_id,
     //clientSecret: config.client_secret,
-    accessTokenUri: 'https://github.com/login/oauth/access_token',
+    accessTokenUri: 'https://github.com/login/oauth/access_token', // XXX: hardcoded
     authorizationUri: config.authorization_url,
     redirectUri: config.redirect_uri,
     scopes: ['notifications', 'gist']
