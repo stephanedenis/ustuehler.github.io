@@ -117,11 +117,11 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
 };
 
 GitHubSignInWidget.prototype.getTemporarySetting = function(name, fallback) {
-  return $tw.wiki.getTiddlerText('$:/temp/GitHub/' + name) || fallback;
+  return $tw.wiki.getTiddlerText('$:/temp/OAuth/' + name) || fallback;
 };
 
 GitHubSignInWidget.prototype.getSetting = function(name, fallback) {
-  return $tw.wiki.getTiddlerText('$:/plugins/ustuehler/github-api/settings/' + name) || fallback;
+  return $tw.wiki.getTiddlerText('$:/config/OAuth/' + name) || fallback;
 };
 
 /*
