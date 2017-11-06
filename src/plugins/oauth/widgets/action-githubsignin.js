@@ -67,8 +67,11 @@ GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
   console.log("GitHubSignInWidget.prototype.invokeAction");
   console.log(self);
 
-  // Can be called multiple times, but must be called before requestToken()
-  $tw.utils.oauth.initialise();
+  // Ensure that the OAuth provider redirects the user back to this location
+  var base_uri = window.location.href.replace(/\?.*$/, '');
+  $tw.utils.oauth.initialize({
+    redirect_uri: base_uri + '#GitHubAuthCallback'
+  });
 
   /*
    * Redirect to GitHub, let GitHub authenticate the user, and finally, let

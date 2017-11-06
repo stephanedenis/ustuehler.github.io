@@ -24,6 +24,7 @@ var OAuth = null;
 var github = null;
 var config = {};
 
+// Can be called multiple times, but must be called before requestToken()
 function initialise(options) {
   if (!OAuth) {
     OAuth = require("$:/plugins/ustuehler/oauth/oauth2-client.js");
