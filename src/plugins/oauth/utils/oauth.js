@@ -47,7 +47,10 @@ function getProvider() {
 		return github;
 	}
 
-	github = new OAuth.Provider(githubProvider);
+	github = new OAuth.Provider({
+    id: config.provider_id || githubProvider.id,
+    authorization_url: config._authorization_url || githubProvider.authorization_url
+  });
 
 	return github;
 }
