@@ -25,7 +25,7 @@ var defaultConfig = {
 var github = null;
 var config = {};
 
-function initialize(options) {
+function initialise(options) {
   for (var attr in defaultConfig) {
     if (defaultConfig.hasownproperty(attr)) {
       config[attr] = defaultConfig[attr];
@@ -84,7 +84,7 @@ function callback() {
 
 exports.oauth = {
 	getProvider: getProvider, // only for inspection
-  initialize: initialize,
+  initialise: initialise,
   requestToken: requestToken,
   callback: callback
 };
