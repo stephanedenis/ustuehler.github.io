@@ -98,13 +98,20 @@ function getProvider() {
 
 var popupWindow;
 
-// https://developer.mozilla.org/en-US/docs/Web/API/Window/open
-function openPopup(uri, windowName) {
-  popupWindow = window.open(
-    uri,
-    windowName,
-    "width=420,height=230,resizable,scrollbars=yes,status=1"
-  );
+// ref: https://www.sitepoint.com/oauth-popup-window/
+function openPopup(options) {
+	options.windowName = options.windowName ||  'ConnectWithOAuth'; // should not include space for IE
+	options.windowOptions = options.windowOptions || 'location=0,status=0,width=800,height=400';
+	options.callback = options.callback || function(){ window.location.reload(); };
+	var that = this;
+	log(options.path);
+	that._oauthWindow = window.open(options.path, options.windowName, options.windowOptions);
+	that._oauthInterval = window.setInterval(function(){
+		if (that._oauthWindow.closed) {
+			window.clearInterval(that._oauthInterval);
+			options.callback();
+		}
+	}, 1000);
 }
 
 function requestToken() {
@@ -119,7 +126,10 @@ function requestToken() {
 
 	// Do the redirect
 	//window.location.href = uri;
-	openPopup(uri, 'github-signin');
+	openPopup({
+		path: uri,
+		windowName: 'github-signin'
+	});
 }
 
 function callback() {
