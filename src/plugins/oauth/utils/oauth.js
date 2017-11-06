@@ -141,9 +141,7 @@ function requestToken() {
 
   script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src = uri + '?callback=oauth2callback'
-
-  console.log('New location: ' + window.location.ref);
+  script.src = uri + '?callback=oauth2callback';
 }
 
 function callback() {
