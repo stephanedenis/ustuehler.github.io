@@ -88,8 +88,7 @@ function getProvider() {
       tokenHost: 'https://github.com',
       tokenPath: '/login/oauth/access_token',
       authorizePath: '/login/oauth/authorize'
-    },
-    scopes: ['token', 'notifications', 'gist']
+    }
   });
 
 	return github;
