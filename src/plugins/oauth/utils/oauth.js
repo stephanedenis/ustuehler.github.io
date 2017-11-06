@@ -22,14 +22,14 @@ var defaultConfig = {
   redirect_uri: 'https://ustuehler.github.io/hack/#GitHubAuthCallback'
 };
 
-var OAuth = null;
+var ClientOAuth2 = null;
 var github = null;
 var config = {};
 
 // initialise may be called multiple times, but must be called before requestToken()
 function initialise(options) {
-  if (!OAuth) {
-    OAuth = require("$:/plugins/ustuehler/oauth/oauth2-client.js");
+  if (!ClientOAuth2) {
+    ClientOAuth2 = require("$:/plugins/ustuehler/oauth/client-oauth2.js");
   }
 
 	if (!urlParams) {
@@ -67,10 +67,10 @@ function getProvider() {
   console.log("provider_id: " + config.provider_id);
   console.log("authorization_url: " + config.authorization_url);
 
-  // Load OAuth module
+  // Load ClientOAuth2
   initialise();
 
-	github = new OAuth.Provider({
+	github = new ClientOAuth2.Provider({
     id: config.provider_id,
     authorization_url: config.authorization_url
   });
@@ -82,7 +82,7 @@ function requestToken() {
   var provider = getProvider();
 
 	// Create a new request
-	var request = new OAuth.Request({
+	var request = new ClientOAuth2.Request({
 		client_id: config.client_id,
 		redirect_uri: config.redirect_uri
 	});
