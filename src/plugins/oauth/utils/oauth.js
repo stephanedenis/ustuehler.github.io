@@ -109,6 +109,7 @@ function callback() {
 
 			if (res.status == 200) {
 				$tw.wiki.setText('$:/temp/GitHub/Password', 'text', undefined, user.accessToken);
+				$tw.wiki.setText('$:/status/OAuth/UserName', 'text', undefined, user.email);
 
 				$tw.utils.showSnackbar('Signed in with GitHub.');
 			} else {
@@ -116,11 +117,6 @@ function callback() {
 			}
 		})
 	})
-
-	//console.log(response);
-
-  // TODO: Set $:/status/OAuth/UserName et al
-  //$tw.wiki.setText('$:/status/OAuth/UserName', 'text', undefined, response.???);
 }
 
 function getUserName() {
