@@ -25,7 +25,7 @@ var defaultConfig = {
 
 var OAuth2 = require('simple-oauth2');
 var openPopup = require('oauth-open');
-//var jsonp = require('jsonp');
+var jsonp = require('jsonp');
 
 function getClient() {
 	return OAuth2;
@@ -111,7 +111,10 @@ function requestToken() {
 
 	// Do the redirect
 	//window.location.href = uri;
-  //
+  // Doesn't work because of CORS...
+
+  /*
+   * Workaround #1: Popup window
 	openPopup(uri, function(err, code) {
     alert('in callbacl');
     if (err) {
@@ -127,8 +130,10 @@ function requestToken() {
       //callback();
     }
 	});
+  */
 
   /*
+   * Workaround #2: JSNOP
   var opts = { name: 'github' };
 
   var cancel = jsonp(uri, opts, function(err, data) {
