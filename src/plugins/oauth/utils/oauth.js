@@ -54,7 +54,7 @@ function callback(response) {
 }
 
 exports.oauth = {
-	getClient: getClient // internal
+	getClient: getClient, // internal
   requestToken: requestToken,
   callback: callback
 };
