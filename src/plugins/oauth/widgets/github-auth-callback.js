@@ -4,7 +4,7 @@ type: application/javascript
 module-type: widget
 caption: github-auth-callback
 
-Implement the complete flow of signing in with a GitHub account
+Implements the complete flow of signing in with a GitHub account
 
 \*/
 (function (global) {
