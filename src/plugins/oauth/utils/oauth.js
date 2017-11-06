@@ -17,7 +17,7 @@ let OAuth = require("$:/plugins/ustuehler/oauth/oauth2-client.js");
 
 var defaultConfig = {
   client_id: 'e31081bbe6c4c22c45a5',
-  redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback'
+  redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback',
   provider_id: 'github',
   authorization_url: 'https://github.com/login/oauth/authorize'
 };
