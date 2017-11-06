@@ -31,7 +31,7 @@ GitHubAuth.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
-  // Complete the sign-in flow, if we were redirected here
+  // Complete the sign-in flow, if we were redirected here by the OAuth provider
   $tw.utils.oauth.callback();
 
   this.renderChildren(parent, nextSibling);
