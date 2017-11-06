@@ -26,14 +26,6 @@ gulp.task("clean", function (cb) {
   ], cb);
 });
 
-gulp.task("clean", function (cb) {
-  pump([
-	  gulp.src([dest + "/themes", dest + "/plugins"], {read: false}),
-    clean()
-	  // no target
-  ], cb);
-});
-
 gulp.task("tiddlers", function (cb) {
   pump([
 		gulp.src(["src/**", "node_modules/tw5-material/src/**", "!**/*.js"]),
@@ -50,6 +42,7 @@ gulp.task("oauth", function (cb) {
 	], cb);
 })
 
+/*
 gulp.task("querystring", function (cb) {
   pump([
 		gulp.src([
@@ -58,6 +51,7 @@ gulp.task("querystring", function (cb) {
 		gulp.dest("src/plugins/querystring/files/")
 	], cb);
 })
+*/
 
 gulp.task("javascript", ["oauth"], function (cb) {
   pump([

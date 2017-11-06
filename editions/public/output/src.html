@@ -8849,10 +8849,10 @@ Error message and password prompt
 <div author="Uwe Stuehler" core-version="&gt;=5.1.14" dependents="" description="query string decoding library" list="readme usage license" plugin-type="plugin" title="$:/plugins/ustuehler/querystring" type="application/json" version="0.1.0">
 <pre>{
     &quot;tiddlers&quot;: {
-        &quot;$:/plugins/ustuehler/querystring/index.js&quot;: {
+        &quot;querystring.js&quot;: {
             &quot;text&quot;: &quot;\&quot;use strict\&quot;;function hasOwnProperty(e,r){return Object.prototype.hasOwnProperty.call(e,r)}module.exports=function(e,r,t,n){r=r||\&quot;&amp;\&quot;;t=t||\&quot;=\&quot;;var s={};if(typeof e!==\&quot;string\&quot;||e.length===0){return s}var o=/\\+/g;e=e.split(r);var a=1e3;if(n&amp;&amp;typeof n.maxKeys===\&quot;number\&quot;){a=n.maxKeys}var i=e.length;if(a&gt;0&amp;&amp;i&gt;a){i=a}for(var p=0;p&lt;i;++p){var f=e[p].replace(o,\&quot;%20\&quot;),u=f.indexOf(t),l,y,c,d;if(u&gt;=0){l=f.substr(0,u);y=f.substr(u+1)}else{l=f;y=\&quot;\&quot;}c=decodeURIComponent(l);d=decodeURIComponent(y);if(!hasOwnProperty(s,c)){s[c]=d}else if(Array.isArray(s[c])){s[c].push(d)}else{s[c]=[s[c],d]}}return s};&quot;,
             &quot;type&quot;: &quot;application/javascript&quot;,
-            &quot;title&quot;: &quot;$:/plugins/ustuehler/querystring/index.js&quot;,
+            &quot;title&quot;: &quot;querystring.js&quot;,
             &quot;module-type&quot;: &quot;library&quot;
         },
         &quot;$:/plugins/ustuehler/oauth/license&quot;: {
