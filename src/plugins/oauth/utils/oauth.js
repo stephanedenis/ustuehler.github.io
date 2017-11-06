@@ -40,9 +40,7 @@ function initialise(options) {
   defaultConfig.client_id = $tw.wiki.getTiddlerText('$:/config/OAuth/ClientID') ||
     defaultConfig.client_id;
   defaultConfig.redirect_uri = $tw.wiki.getTiddlerText('$:/config/OAuth/RedirectURI') ||
-    defaultConfig.redirect_uri ||
-    window.location.href.replace(/);
-    defaultRedirectURI();
+    getRedirectURIFromWindow();
 
   for (var attr in defaultConfig) {
     if (!config[attr] && defaultConfig.hasOwnProperty(attr)) {
