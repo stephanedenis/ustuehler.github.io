@@ -4,7 +4,7 @@
 			"file": "decode.js",
 			"fields": {
 				"type": "application/javascript",
-				"title": "$:/plugins/ustuehler/querystring/index.js",
+				"title": "querystring.js",
 				"module-type": "library"
 			}
 		},{
