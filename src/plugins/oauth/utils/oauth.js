@@ -32,6 +32,10 @@ function initialise(options) {
     OAuth = require("$:/plugins/ustuehler/oauth/oauth2-client.js");
   }
 
+	if (!urlParams) {
+		computeURLParams();
+  }
+
   for (var attr in options) {
     if (options.hasOwnProperty(attr)) {
       config[attr] = options[attr];
