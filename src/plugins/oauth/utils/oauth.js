@@ -122,6 +122,7 @@ function requestToken() {
     } else {
       //var base = window.location.href.replace(/\/*\?.*$/, '');
 
+      console.log('Old location: ' + window.location.href);
       console.log('New location: ' + window.location.href);
       console.log(code);
       //window.location.assign(base + '?code=' + code.code + '&state=' + code.state);
@@ -180,11 +181,11 @@ function jsonpRequest(uri) {
 }
 */
 
-function callback() {
+function callback(uri) {
   var provider = getProvider();
-	var uri = window.location.href;
   var options = {};
 
+	uri = uri || window.location.href;
 	console.log('GitHub called back to:');
 	console.log(uri);
 
