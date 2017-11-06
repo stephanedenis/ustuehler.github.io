@@ -127,12 +127,10 @@ function requestToken() {
 	openPopup({
 		path: uri,
 		windowName: 'GitHubSignIn',
-/*
     callback: function(href) {
 			window.location.assign(href);
 			callback();
 		}
-*/
 	});
 }
 
