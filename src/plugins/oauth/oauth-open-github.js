@@ -47,6 +47,8 @@ function poll(popup, fn) {
     console.log("polling...");
     console.log("documentOrigin: " + documentOrigin);
     console.log("popupWindowOrigin: " + popupWindowOrigin);
+    console.log("popup.location.search: " + popup.location.search);
+    console.log("popup.location.hash: " + popup.location.hash);
 
     if (popupWindowOrigin === documentOrigin && (popup.location.search || popup.location.hash)) {
       var queryParams = popup.location.search.substring(1).replace(/\/$/, '');
