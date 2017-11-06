@@ -18,7 +18,7 @@ function getClient() {
 }
 
 function popup() {
-  getClient().popup()
+  getClient().popup('github')
   .done(function(result) {
     $tw.utils.showSnackbar(result.access_token);
   })
