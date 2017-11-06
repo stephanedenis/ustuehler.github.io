@@ -87,7 +87,8 @@ function requestToken() {
   var provider = getProvider();
 
 	// Do the redirect
-	window.location.href = provider.token.getUri();
+	//window.location.href = provider.token.getUri();
+	window.open(provider.token.getUri());
 }
 
 function callback() {
