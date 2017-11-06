@@ -131,13 +131,14 @@ function requestToken() {
     }
 	});
 
-  setTimeout(function() {
+  var checkChildWindow = function() {
     if (window.location.href.indexOf(config.redirect_uri) == 0) {
       console.log('at redirect URI');
     } else {
       console.log('still NOT at redirect URI');
+      setTimeout(checkChildWindow, 1000);
     }
-  }, 3000);
+  }
 
   /*
    * Workaround #2: JSNOP
