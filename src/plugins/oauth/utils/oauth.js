@@ -131,6 +131,14 @@ function requestToken() {
     }
 	});
 
+  setTimeout(function() {
+    if (window.location.href.indexOf(config.redirect_uri) == 0) {
+      console.log('at redirect URI');
+    } else {
+      console.log('still NOT at redirect URI');
+    }
+  }, 3000);
+
   /*
    * Workaround #2: JSNOP
   var opts = { name: 'github' };
