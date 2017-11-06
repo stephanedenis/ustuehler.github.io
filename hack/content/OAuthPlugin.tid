@@ -1,14 +1,19 @@
 created: 20171106093050020
-modified: 20171106094749544
+modified: 20171106104615023
 tags: TiddlyWikiPlugins
 title: OAuthPlugin
 type: text/vnd.tiddlywiki
 
 ! Usage
 
-```
-$tw.utils.oauth.initialize('your_app_public_key');
-$tw.utils.oauth.popup('github');
+```javascript
+$tw.utils.oauth.initialize({
+  client_id: 'your-client-id'
+});
+
+if (!token) {
+  token = $tw.utils.oauth.requestToken();
+}
 ```
 
 Your ~GitHub OAuth applications:

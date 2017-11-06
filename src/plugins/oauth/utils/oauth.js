@@ -14,6 +14,8 @@ Provides OAuth utility functions under $tw.utils.oauth
 /*global $tw: false */
 
 var github = null;
+var client_id = 'e31081bbe6c4c22c45a5';
+var redirect_uri = 'https://ustuehler.github.io/#GitHubAuthCallback';
 
 function getClient() {
 	if (github) {
@@ -30,12 +32,15 @@ function getClient() {
 	return github;
 }
 
+function initialize(options) {
+  client_id = options.client_id;
+}
+
 function requestToken() {
 	// Create a new request
 	var request = new OAuth.Request({
-		// XXX: don't hardcode stuff
-		client_id: 'e31081bbe6c4c22c45a5',
-		redirect_uri: 'https://ustuehler.github.io/#GitHubAuthCallback'
+		client_id: client_id,
+		redirect_uri: redirect_uri
 	});
 
 	// Give it to the provider
@@ -55,6 +60,7 @@ function callback(response) {
 
 exports.oauth = {
 	getClient: getClient, // internal
+  initialize: initialize,
   requestToken: requestToken,
   callback: callback
 };

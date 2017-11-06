@@ -1,9 +1,9 @@
 caption: TiddlyWiki Plugins
 created: 20171104065505356
 link: TiddlyWikiPlugins
-list: $:/plugins/ustuehler/caption $:/plugins/ustuehler/github-api
+list: $:/plugins/ustuehler/caption $:/plugins/ustuehler/github-api $:/plugins/ustuehler/oauth
 list-item-icon: extension
-modified: 20171105194530968
+modified: 20171106104202130
 title: TiddlyWikiPlugins
 type: text/vnd.tiddlywiki
 
