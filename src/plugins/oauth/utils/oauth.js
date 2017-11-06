@@ -99,10 +99,10 @@ function getProvider() {
 var popupWindow;
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/open
-function openPopup(uri) {
+function openPopup(uri, windowName) {
   popupWindow = window.open(
     uri,
-    'github-signin',
+    windowName,
     "width=420,height=230,resizable,scrollbars=yes,status=1"
   );
 }
@@ -119,7 +119,7 @@ function requestToken() {
 
 	// Do the redirect
 	//window.location.href = uri;
-	window.open(uri, 'github-signin');
+	openPopup(uri, 'github-signin');
 }
 
 function callback() {
