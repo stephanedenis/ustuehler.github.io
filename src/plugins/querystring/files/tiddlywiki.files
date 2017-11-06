@@ -1,10 +1,10 @@
 {
 	"tiddlers": [
 		{
-			"file": "client-oauth2.js",
+			"file": "decode.js",
 			"fields": {
 				"type": "application/javascript",
-				"title": "$:/plugins/ustuehler/oauth/client-oauth2.js",
+				"title": "$:/plugins/ustuehler/querystring/index.js",
 				"module-type": "library"
 			}
 		},{

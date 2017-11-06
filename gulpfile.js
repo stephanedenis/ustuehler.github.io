@@ -41,17 +41,25 @@ gulp.task("tiddlers", function (cb) {
 	], cb);
 })
 
-gulp.task("oauth-files", function (cb) {
+gulp.task("oauth", function (cb) {
   pump([
 		gulp.src([
-      "node_modules/client-oauth2/src/client-oauth2.js",
-      "node_modules/querystring/decode.js"
+      "node_modules/client-oauth2/src/client-oauth2.js"
     ]),
 		gulp.dest("src/plugins/oauth/files/")
 	], cb);
 })
 
-gulp.task("javascript", ["oauth-files"], function (cb) {
+gulp.task("querystring", function (cb) {
+  pump([
+		gulp.src([
+      "node_modules/querystring/decode.js"
+    ]),
+		gulp.dest("src/plugins/querystring/files/")
+	], cb);
+})
+
+gulp.task("javascript", ["oauth"], function (cb) {
   pump([
 		gulp.src(["src/**/*.js", "node_modules/tw5-material/src/**/*.js"]),
 		uglify({ compress: false, output: { comments: /^\\/ } }),
