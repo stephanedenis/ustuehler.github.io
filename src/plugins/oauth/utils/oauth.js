@@ -23,7 +23,7 @@ var defaultConfig = {
 };
 
 //var ClientOAuth2 = require("$:/plugins/ustuehler/oauth/client-oauth2.js");
-var ClientOAuth2 = require('client-oauth2');
+var ClientOAuth2 = require('client-oauth2x');
 
 var github = null;
 var config = {};
