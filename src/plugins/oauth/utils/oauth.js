@@ -110,7 +110,6 @@ function getUserName() {
 
 // ref: https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
 var urlParams;
-
 (window.onpopstate = function () {
 	var match,
 			pl     = /\+/g,  // Regex for replacing addition symbol with a space
