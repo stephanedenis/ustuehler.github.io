@@ -62,11 +62,6 @@ GitHubSignInWidget.prototype.refresh = function(changedTiddlers) {
  * Invoke the action associated with this widget
  */
 GitHubSignInWidget.prototype.invokeAction = function(triggeringWidget,event) {
-  var username = this.getStatus("UserName", this.getConfig('username'));
-  var password = this.getStatus("Password", this.getConfig('password')); 
-  var title = this.tiddler;
-  var field = this.field;
-  var filter = this.filter;
   var self = this;
 
   console.log("GitHubSignInWidget.prototype.invokeAction");
