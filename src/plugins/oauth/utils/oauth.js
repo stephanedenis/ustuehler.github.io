@@ -77,8 +77,9 @@ function getProvider() {
 
   // TODO: use the querystring package (decode.js)
   var querystring = function() { return urlParams; };
+	var client = getClient();
 
-	github = OAuth2.create({
+	github = client.create({
     client: {
       id: config.client_id,
       secret: config.client_secret
