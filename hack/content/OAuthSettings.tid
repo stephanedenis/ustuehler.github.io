@@ -1,0 +1,12 @@
+created: 20171106130832630
+modified: 20171106131232542
+title: OAuthSettings
+type: text/vnd.tiddlywiki
+
+|<$link to="$:/config/OAuth/ClientID">Client ID:</$link> |<$edit-text tiddler="$:/config/OAuth/ClientID" default="" tag="input"/> |
+
+<!--
+
+|<$link to="$:/config/OAuth/RedirectURI">Redirect URI:</$link> |<$edit-text tiddler="$:/config/OAuth/RedirectURI" default="" tag="input"/> |
+
+-->

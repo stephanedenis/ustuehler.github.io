@@ -2,7 +2,7 @@ audio-url: http://94.176.104.15:8128/stream/1/
 created: 20171104035735903
 creator: CMDR soda314
 list-item-icon: queue_music
-modified: 20171106064920298
+modified: 20171106130543795
 modifier: CMDR soda314
 span: 4
 tags: $:/tags/Drawer
@@ -10,9 +10,8 @@ title: Radio
 type: text/vnd.tiddlywiki
 
 \define audio-attributes() autoplay
-\define radio-off() Off
-\define radio-default() $(radio-off)$
 \define radio-template() Templates/Audio
+\define radio-off() Off
 \define radio-filter()
 [<radio-off>]
  [all[tiddlers]!prefix[Radio]suffix[Radio]sort[title]]
@@ -21,16 +20,18 @@ type: text/vnd.tiddlywiki
 <!-- Originally, this tiddler was just {{DeepMixMoscowRadio||Templates/Audio}} -->
 
 <$set name="state" value=<<qualify '$:/temp/Radio'>>>
+<$set name="default" value={{$:/config/Radio/Default}}>
 
-<$select tiddler=<<state>> default=<<radio-default>>>
+<$select tiddler=<<state>> default={{$:/config/Radio/Default}}>
 <$list filter=<<radio-filter>>>
 <option value=<<currentTiddler>>><$view field='caption'><<currentTiddler>></$view></option>
 </$list>
 </$select>
 
-<$list filter="[<state>get[text]] -[<radio-off>]">
+<$list filter="[<state>get[text]append<default>first[]] -[<radio-off>]">
 <$transclude tiddler="Templates/Audio" mode="block"/>
 <$transclude mode="block"/>
 </$list>
 
+</$set>
 </$set>

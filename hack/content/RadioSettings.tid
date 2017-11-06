@@ -1,0 +1,16 @@
+created: 20171106124951608
+modified: 20171106125227227
+title: RadioSettings
+type: text/vnd.tiddlywiki
+
+\define radio-off() Off
+\define radio-filter()
+[<radio-off>]
+ [all[tiddlers]!prefix[Radio]suffix[Radio]sort[title]]
+\end
+
+Default station or ''Off'': <$select tiddler="$:/config/Radio/Default" default={{$:/config/Radio/Default}}>
+<$list filter=<<radio-filter>>>
+<option value=<<currentTiddler>>><$view field='caption'><<currentTiddler>></$view></option>
+</$list>
+</$select>

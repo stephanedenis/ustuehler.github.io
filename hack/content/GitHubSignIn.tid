@@ -1,9 +1,26 @@
 created: 20171106112122119
-modified: 20171106112531248
+modified: 20171106132423078
+span: 11
 tags: GitHubOAuthLogin
 title: GitHubSignIn
 type: text/vnd.tiddlywiki
 
+<$github-signin client-id={{$:/config/GitHub/Client}}>
 Signing in with your GitHub account lets you synchronize your changes with the GitRepository.
 
+''Step 1: Obtain an OAuthClientID from ~GitHub''
+
+<a
+  href="https://github.com/settings/applications/new"
+  class="mdc-button mdc-button--raised"
+  style="color: white;"
+>Open ~GitHub</a>
+
+''Step 2: Specify the OAuth settings for this application''
+
+<$link to="OAuthSettings" class="mdc-button mdc-button--raised"/>
+
+''Step 3: Sign in with your ~GitHub account''
+
 {{GitHubSignInButton}}
+</$github-signin>
