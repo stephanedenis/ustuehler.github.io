@@ -129,7 +129,8 @@ function requestToken() {
 	});
   */
 
-  var opts = {};
+  var opts = { name: 'github' };
+
   var cancel = jsonp(uri, opts, function(err, data) {
     console.log("JSONP callback invoked");
 
