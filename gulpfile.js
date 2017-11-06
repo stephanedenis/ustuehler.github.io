@@ -57,7 +57,8 @@ gulp.task("url", function (cb) {
   pump([
 		gulp.src([
       "node_modules/url/LICENSE",
-      "node_modules/url/url.js"
+      "node_modules/url/url.js",
+      "node_modules/url/util.js"
     ]),
 		gulp.dest("src/plugins/url/files/")
 	], cb);

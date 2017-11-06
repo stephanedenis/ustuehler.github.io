@@ -4,7 +4,14 @@
 			"file": "url.js",
 			"fields": {
 				"type": "application/javascript",
-				"title": "url.js",
+				"title": "url/index.js",
+				"module-type": "library"
+			}
+		},{
+			"file": "util.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "url/util.js",
 				"module-type": "library"
 			}
 		},{
