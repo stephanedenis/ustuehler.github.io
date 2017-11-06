@@ -99,7 +99,7 @@ function requestToken() {
 
 function callback() {
   var provider = getProvider();
-  var response = provider.parse(urlParams);
+  var response = provider.parse(urlParams.code);
 
 	console.log('GitHub called back!');
 	console.log(response);
