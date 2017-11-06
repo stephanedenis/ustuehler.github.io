@@ -152,7 +152,7 @@ function jsonpRequest(uri) {
       // TODO: on error: reject();
     }
 
-    uri = uri + '?callback=oauth2callback';
+    uri = uri + '&callback=oauth2callback';
 
     console.log('Redirect location: ' + uri);
     script = document.createElement('script');
