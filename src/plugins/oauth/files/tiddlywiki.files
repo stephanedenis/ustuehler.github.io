@@ -7,6 +7,8 @@
 				"title": "simple-oauth2.js",
 				"module-type": "library"
 			}
+			"prefix": "(function() {\n",
+			"suffix": "})();\n"
 		},{
 			"file": "LICENSE",
 			"fields": {
