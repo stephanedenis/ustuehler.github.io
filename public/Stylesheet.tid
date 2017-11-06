@@ -1,12 +1,12 @@
 created: 20171104024226128
-modified: 20171105183346391
+modified: 20171106023826806
 span: 6
 tags: PublicSite $:/tags/Stylesheet $:/tags/StyleSheet
 title: Stylesheet
 type: text/css
 
 /*
- * Links in the tiddler body and preview area
+ * Links in the tiddler view and preview area
  *
  * This stylesheet section covers three kinds of links:
  *
@@ -43,8 +43,8 @@ type: text/css
  * Make visited plain links indistinguishable from visited links, because the
  * default colors are horrible and I don't have an alternative now
  */
-.tc-tiddler-body a:not(.tc-tiddlylink),
-.tc-tiddler-body a:visited:not(.tc-tiddlylink),
+.tc-tiddler-view-frame a:not(.tc-tiddlylink),
+.tc-tiddler-view-frame a:visited:not(.tc-tiddlylink),
 .tc-tiddler-preview-preview a:not(.tc-tiddlylink),
 .tc-tiddler-preview-preview a:visited:not(.tc-tiddlylink) {
   color: #4534ba; /* A darker blue that goes with the toolbar */

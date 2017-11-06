@@ -1,0 +1,22 @@
+created: 20171106020959899
+list-before: $:/themes/ustuehler/material/ui/ViewToolbar
+modified: 20171106022621480
+tags: Issues
+title: ViewTemplateIssues
+type: text/vnd.tiddlywiki
+
+\define ViewToolbarTiddler() $:/themes/ustuehler/material/ui/ViewToolbar
+\define ViewToolbarCaption() ViewToolbar
+
+! Issue
+
+Tiddlers that are tagged with <<tag $:/tags/ViewTemplate>> may be rendered after the Material theme's <$link to=<<ViewToolbarTiddler>>><$text text=<<ViewToolbarCaption>>/>
+</$link>.
+
+! Possible Cause
+
+The Material theme doesn't ensure that it's own <$text text=<<ViewToolbarCaption>>/> comes last in the list of tiddlers tagged with <<tag $:/tags/ViewTemplate>>.
+
+! Workaround
+
+Set the `list-before` field in your own view template tiddlers to <code><$text text=<<ViewToolbarTiddler>>/></code>.
