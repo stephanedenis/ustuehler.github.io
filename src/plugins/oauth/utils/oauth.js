@@ -96,6 +96,16 @@ function getProvider() {
 	return github;
 }
 
+var popupWindow;
+
+function openPopup(uri) {
+  popupWindow = window.open(
+    uri,
+    'github-signin',
+    "width=420,height=230,resizable,scrollbars=yes,status=1"
+  );
+}
+
 function requestToken() {
   var provider = getProvider();
 
