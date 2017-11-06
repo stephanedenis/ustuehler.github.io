@@ -110,12 +110,14 @@ function requestToken() {
 	});
 
 	// Do the redirect
-	//window.location.href = uri;
-  // Doesn't work because of CORS...
+	window.location.href = uri;
+
+  // May not work because of CORS...
 
   /*
    * Workaround #1: Popup window
   */
+  /*
 	openPopup(uri, function(err, code) {
     if (err) {
       console.log('openPopup (oauth-open): ' + err);
@@ -126,6 +128,7 @@ function requestToken() {
       callback(uri);
     }
 	});
+  */
 
   /*
    * Workaround #2: JSNOP

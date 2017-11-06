@@ -1,5 +1,5 @@
 created: 20171106112122119
-modified: 20171106225009060
+modified: 20171106235636573
 span: 4
 tags: GitHubOAuthLogin
 title: GitHubSignIn
@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 
 Signing in with your GitHub account lets you synchronize your changes with the GitRepository.
 
-''Step 1: Obtain an OAuthClientID from ~GitHub''
+''Step 1: Obtain a client ID and secret''
 
 <a
   target="_"
@@ -23,7 +23,7 @@ Signing in with your GitHub account lets you synchronize your changes with the G
   class="mdc-button"
 >View Applications</a>
 
-''Step 2: Specify the OAuth settings for this application''
+''Step 2: Set client ID and secret for this application''
 
 <$button
   to="OAuthSettings"
