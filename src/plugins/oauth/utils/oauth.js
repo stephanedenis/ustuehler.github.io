@@ -107,7 +107,8 @@ function requestToken() {
 	});
 
 	// Do the redirect
-	window.location.href = uri;
+	//window.location.href = uri;
+	window.open(uri, 'github-signin');
 }
 
 function callback() {
