@@ -120,6 +120,22 @@ function callback() {
 	})
 }
 
+// ref: https://www.npmjs.com/package/client-oauth2
+window.oauth2Callback = function (uri) {
+  githubAuth.token.getToken(uri)
+    .then(function (user) {
+      console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... } 
+ 
+      // Make a request to the github API for the current user. 
+      return popsicle.request(user.sign({
+        method: 'get',
+        url: 'https://api.github.com/user'
+      })).then(function (res) {
+        console.log(res) //=> { body: { ... }, status: 200, headers: { ... } } 
+      })
+    })
+}
+
 function getUserName() {
   return $tw.wiki.getTiddlerText('$:/status/OAuth/UserName');;
 }
