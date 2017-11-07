@@ -321,6 +321,10 @@ function registerAuthStateListener() {
 	});
 }
 
+initialize().then(function() {
+  registerAuthStateListener();
+});
+
 exports.firebaseui = {
   initialise: initialise,
 
