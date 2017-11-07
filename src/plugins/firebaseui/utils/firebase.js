@@ -49,7 +49,7 @@ var allScriptsReady = function() {
   }
 
   return new Promise(function(resolve, reject) {
-    // Invoke the poller function immediately, and then via timeout
+    // Invoke the poller function once, and then via timeout
     (var poller = function() {
       if (allReady()) {
         resolve(scriptNodes);
