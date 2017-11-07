@@ -1,0 +1,22 @@
+created: 20171107041333834
+list-before: $:/themes/ustuehler/material/ui/ViewToolbar
+modified: 20171107041733323
+tags: $:/tags/ViewTemplate
+title: CurrentUserTemplate
+type: text/vnd.tiddlywiki
+
+\define github-repo-owner() ustuehler
+\define github-repo-name() $(currentTiddler)$
+\define github-repo-fullname() $(github-repo-owner)$/$(github-repo-name)$
+\define github-repo-url()
+https://github.com/$(github-repo-owner)$/$(github-repo-name)$
+\end
+\define is-current-user-filter()
+[<currentTiddler>field:title<currentUser>]
+\end
+
+<$list filter=<<is-current-user-filter>>>
+<div class="tc-tiddler-body">
+''{{$:/status/OAuth/User!!caption}}'' is you.
+</div>
+</$list>

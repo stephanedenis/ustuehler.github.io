@@ -1,0 +1,10 @@
+created: 20171107040451261
+modified: 20171107041200902
+tags: 
+title: YourProfilePicture
+type: text/vnd.tiddlywiki
+
+<img
+  src={{$:/status/OAuth/User!!photo-url}}
+  title={{$:/status/OAuth/User!!email}}
+  alt={{$:/status/OAuth/User!!email}}/>
