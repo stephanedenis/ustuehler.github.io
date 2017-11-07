@@ -123,7 +123,7 @@ function requestToken() {
       console.log('openPopup (oauth-open): ' + err);
     } else {
       var base = window.location.href.replace(/\/*\?.*$/, '');
-      var uri = base + '?code=' + code.code + '&state=' + code.state;
+      var uri = base + '?code=' + code.code;
 
       callback(uri);
     }
