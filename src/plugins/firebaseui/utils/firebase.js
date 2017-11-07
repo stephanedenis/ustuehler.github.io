@@ -57,7 +57,7 @@ var allScriptsReady = function() {
         timeout -= interval;
         setTimeout(poller, interval);
       } else {
-        reject(new Error('Firebase <script> tags were not loaded in time'));
+        reject(new Error('Firebase <script> tags could not be loaded in time'));
       }
     })();
   });
