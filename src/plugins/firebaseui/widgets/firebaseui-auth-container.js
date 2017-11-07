@@ -36,12 +36,6 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
-  var domNode = document.createElement('div');
-  domNode.setAttribute('id', 'firebaseui-auth-container');
-
-	// Initialize the FirebaseUI Widget using Firebase.
-	$tw.utils.firebaseui.start('#firebaseui-auth-container', firebaseUIConfig);
-
   parent.insertBefore(domNode, nextSibling);
   this.renderChildren(domNode, null);
   this.domNodes.push(domNode);
