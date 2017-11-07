@@ -37,8 +37,8 @@ function allScriptsReady() {
 }
 
 /*
- * initialise resolves as soon as all Firebase components are loaded and
- * initialised
+ * initialise resolves as soon as the required Firebase components are loaded
+ * and initialised
  */
 function initialise() {
   return new Promise(function(resolve, reject) {
