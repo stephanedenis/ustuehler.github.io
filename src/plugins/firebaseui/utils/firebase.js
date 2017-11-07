@@ -54,9 +54,10 @@ var allScriptsReady = function() {
       if (allReady()) {
         resolve(scriptNodes);
       } else if (timeout > 0) {
-      } else {
         timeout -= interval;
         setTimeout(poller, interval);
+      } else {
+        reject(new Error('Timeout waiting for Firebase <script> tags to load'));
       }
     })();
   });
