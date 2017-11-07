@@ -7,7 +7,7 @@ caption: firebaseui-auth-container
 Implements the complete flow of signing in with a GitHub account
 
 \*/
-(function (global) { if (typeof firebase !== 'undefined') {
+(function (global) {
 
 "use strict";
 /*jslint node: true, browser: true */
@@ -133,4 +133,4 @@ FirebaseUIAuthContainerWidget.prototype.refresh = function(changedTiddlers) {
 
 exports["firebaseui-auth-container"] = FirebaseUIAuthContainerWidget;
 
-}})(this);
+})(this);
