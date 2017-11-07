@@ -313,7 +313,7 @@ function registerAuthStateListener() {
 			//document.getElementById('account-details').textContent = 'null';
 		}
 	}, function(error) {
-    console.log('Error in signin flow.')
+    console.log('Error in sign-in flow.')
 		console.log(error);
 	});
 }
