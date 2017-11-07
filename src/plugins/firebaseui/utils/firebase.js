@@ -27,29 +27,29 @@ var status = {
   ready: false
 };
 
-// Returns the collection of <script> nodes that are related to this plugin
-var pluginScriptNodes = function() {
-  var domNodes = [];
-
-  document.head
-    .querySelectorAll('script')
-    .forEach(function(x) {
-      if (x.src.indexOf("/firebasejs/") > 0) {
-        domNodes.push(x);
-      }
-    });
-
-  return domNodes;
-};
-
 /*
  * allScriptsReady resolves as soon as the required Firebase components
  * referenced in the HTML <head> are loaded.  The promise applies only to
  * <script> tags, so non-Firebase CSS may not be fully loaded yet.
  */
 var allScriptsReady = function() {
+  var scriptNodes = pluginScriptNodes();
+  var allReady = true;
+
+  if (scriptNodes.length == 0) {
+    throw new Error('No <script> tags for Firebase?');
+  }
+
   return new Promise(function(resolve, reject) {
-    
+    scriptNodes.forEach(function(domNode) {
+      allReady = allReady && domNode.ready;
+    });
+
+    if (allReady) {
+      resolve(scriptNodes);
+    } else {
+      reject('Missing script nodes.');
+    }
     //addEventListenerOnce(script, listener);
     // TODO: detect when all relevant <script> tags in the <head> are loaded
     resolve();
@@ -77,6 +77,21 @@ exports.firebase = {
 /*
 ** Private utility functions for this module
 */
+
+// Returns the collection of <script> nodes that are related to this plugin
+var pluginScriptNodes = function() {
+  var domNodes = [];
+
+  document.head
+    .querySelectorAll('script')
+    .forEach(function(x) {
+      if (x.src.indexOf("/firebasejs/") > 0) {
+        domNodes.push(x);
+      }
+    });
+
+  return domNodes;
+};
 
 // ref: https://stackoverflow.com/questions/3393686/only-fire-an-event-once
 var addEventListenerOnce = function(target, type, listener) {
