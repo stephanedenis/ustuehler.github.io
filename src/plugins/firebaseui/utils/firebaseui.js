@@ -81,26 +81,14 @@ function registerAuthStateListener() {
 
 			user.getIdToken().then(function(accessToken) {
         setText('$:/status/OAuth/User', 'uid', undefined, uid);
-        setText('$:/status/OAuth/User', 'provider', undefined, 'github');
         setText('$:/status/OAuth/User', 'email', undefined, email);
+        setText('$:/status/OAuth/User', 'email-verified', undefined, emailVerified);
+        setText('$:/status/OAuth/User', 'phone-number', undefined, phoneNumber);
         setText('$:/status/OAuth/User', 'photo-url', undefined, photoURL);
         setText('$:/status/OAuth/User', 'caption', undefined, displayName);
+        setText('$:/status/OAuth/Provider', 'type', undefined, 'text/plain');
+        setText('$:/status/OAuth/Provider', 'text', undefined, providerData);
         setText('$:/temp/OAuth/AccessToken', 'text', undefined, accessToken);
-
-        /*
-				document.getElementById('sign-in-status').textContent = 'Signed in';
-				document.getElementById('sign-in').textContent = 'Sign out';
-				document.getElementById('account-details').textContent = JSON.stringify({
-					displayName: displayName,
-					email: email,
-					emailVerified: emailVerified,
-					phoneNumber: phoneNumber,
-					photoURL: photoURL,
-					uid: uid,
-					accessToken: accessToken,
-					providerData: providerData
-				}, null, '  ');
-        */
 			});
 		} else {
       console.log('User is signed out.')
