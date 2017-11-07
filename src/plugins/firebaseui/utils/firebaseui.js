@@ -80,6 +80,9 @@ function registerAuthStateListener() {
 			var providerData = user.providerData;
 
 			user.getIdToken().then(function(accessToken) {
+        setText('$:/temp/OAuth/Provider', 'type', undefined, 'text/plain');
+        setText('$:/temp/OAuth/Provider', 'text', undefined, providerData);
+
         setText('$:/status/OAuth/User', 'uid', undefined, uid);
         setText('$:/status/OAuth/User', 'email', undefined, email);
         setText('$:/status/OAuth/User', 'email-verified', undefined, emailVerified);
@@ -88,8 +91,6 @@ function registerAuthStateListener() {
         setText('$:/status/OAuth/User', 'caption', undefined, displayName);
 
         setText('$:/temp/OAuth/AccessToken', 'text', undefined, accessToken);
-        setText('$:/temp/OAuth/Provider', 'type', undefined, 'text/plain');
-        setText('$:/temp/OAuth/Provider', 'text', undefined, providerData);
 			});
 		} else {
       $tw.wiki.deleteTiddler('$:/status/OAuth/User');
