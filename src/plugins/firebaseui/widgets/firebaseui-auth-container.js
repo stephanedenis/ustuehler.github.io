@@ -56,6 +56,7 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 	var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 	if (!initialized) {
+		initialized = true;
 		addAuthStateListener();
 	}
 
@@ -67,7 +68,7 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
   this.domNodes.push(domNode);
 };
 
-FirebaseUIAuthContainerWidget.prototype.addAuthStateListener = function() {
+FirebaseUIAuthContainerWidget.prototype.registerAuthStateListener = function() {
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			// User is signed in.
