@@ -21,6 +21,7 @@ following occurrances.
 // HTML id attribute for the FirebaseUI auth container element
 const FIREBASEUI_AUTH_CONTAINER_ID = 'firebaseui-auth-container';
 
+// Base widget
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
 var FirebaseUIAuthContainerWidget = function(parseTreeNode,options) {
