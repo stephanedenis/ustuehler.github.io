@@ -81,6 +81,7 @@ function registerAuthStateListener() {
 
 			user.getIdToken().then(function(accessToken) {
         setText('$:/status/OAuth/User', 'provider', undefined, 'github');
+        setText('$:/status/OAuth/User', 'uid', undefined, uid);
         setText('$:/status/OAuth/User', 'email', undefined, email);
         setText('$:/status/OAuth/User', 'photo-url', undefined, photoURL);
         setText('$:/status/OAuth/User', 'caption', undefined, displayName);
