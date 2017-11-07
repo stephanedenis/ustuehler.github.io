@@ -51,7 +51,7 @@ FirebaseUIAuthContainerWidget.prototype.registerAuthStateListener = function() {
 			var phoneNumber = user.phoneNumber;
 			var providerData = user.providerData;
 			user.getIdToken().then(function(accessToken) {
-        console.log('User token: ' + accessToken);
+        console.log('Access token: ' + accessToken);
         /*
 				document.getElementById('sign-in-status').textContent = 'Signed in';
 				document.getElementById('sign-in').textContent = 'Sign out';
