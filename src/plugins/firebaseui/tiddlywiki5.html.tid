@@ -1,9 +1,5 @@
 title: $:/plugins/ustuehler/oauth/tiddlywiki5.html
 tags: $:/tags/RawMarkup
 
-<!-- <script type="text/javascript" src="https://unpkg.com/querystring/index.js"></script> -->
-<!-- <script type="text/javascript" src="https://unpkg.com/client-oauth2/src/client-oauth2.js"></script> -->
-
-<!-- <script type="text/javascript" src="https://unpkg.com/simple-oauth2@1.4.0/index.js"></script> -->
-
-<script type="text/javascript" src="https://gist.githubusercontent.com/ustuehler/680d4b671442699d6d46a1a5f8acf22e/raw/3377b127ba8b08a2498e1ef46ea8bc94d4f8b97b/test.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
