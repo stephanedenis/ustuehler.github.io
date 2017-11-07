@@ -27,7 +27,8 @@ exports.firebase = {
   getStatus: function() { return status; },
   initialise: function() {
     return new Promise(function(resolve, reject) {
-      reject('TODO: how can we detect when firebase has finished loading asynchronously?');
+      // FIXME: detect when firebase resources have finished loading
+      resolve();
     });
   }
 };
