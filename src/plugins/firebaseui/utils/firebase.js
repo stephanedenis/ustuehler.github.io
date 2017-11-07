@@ -33,6 +33,8 @@ var status = {
  * <script> tags, so non-Firebase CSS may not be fully loaded yet.
  */
 var allScriptsReady = function() {
+  var timeout = 60000; // one minute
+  var interval = 500; // polling frequency in milliseconds
   var scriptNodes = pluginScriptNodes();
   var allReady = function() {
     var r = true;
@@ -47,14 +49,15 @@ var allScriptsReady = function() {
   }
 
   return new Promise(function(resolve, reject) {
-    if (allReady()) {
-      resolve(scriptNodes);
-    } else {
-      // TODO: use addEventListenerOnce to wait for a onreadystatechange event
-      setTimeout(function() {
-        
-      }, 500);
-    }
+    (var poller = function() {
+      if (allReady()) {
+        resolve(scriptNodes);
+      } else if (timeout > 0) {
+      } else {
+        timeout -= interval;
+        setTimeout(poller, interval);
+      }
+    })();
   });
 };
 
