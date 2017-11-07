@@ -51,6 +51,8 @@ FirebaseUIAuthContainerWidget.prototype.registerAuthStateListener = function() {
 			var phoneNumber = user.phoneNumber;
 			var providerData = user.providerData;
 			user.getIdToken().then(function(accessToken) {
+        console.log('User token: ' + accessToken);
+        /*
 				document.getElementById('sign-in-status').textContent = 'Signed in';
 				document.getElementById('sign-in').textContent = 'Sign out';
 				document.getElementById('account-details').textContent = JSON.stringify({
@@ -63,9 +65,10 @@ FirebaseUIAuthContainerWidget.prototype.registerAuthStateListener = function() {
 					accessToken: accessToken,
 					providerData: providerData
 				}, null, '  ');
+        */
 			});
 		} else {
-      console.log('User is signed out.');
+      console.log('User is signed out.')
 			//document.getElementById('sign-in-status').textContent = 'Signed out';
 			//document.getElementById('sign-in').textContent = 'Sign in';
 			//document.getElementById('account-details').textContent = 'null';
