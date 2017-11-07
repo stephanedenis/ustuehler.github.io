@@ -36,8 +36,9 @@ exports.firebase = {
   getStatus: function() { return status; },
   initialise: function() {
     return new Promise(function(resolve, reject) {
-      // FIXME: detect when firebase resources have finished loading
-      resolve();
+      allScriptsReady()
+      .then(resolve)
+      .catch(reject);
     });
   }
 };
