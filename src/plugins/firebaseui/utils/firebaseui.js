@@ -130,7 +130,7 @@ function registerAuthStateListener() {
 	});
 }
 
-// Reveal the Firebase UI and begin the sign-in flow, if needed
+// Reveal Firebase UI and begin the sign-in flow if the user is signed out
 function startUI(selector) {
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
   var uiConfig = getUIConfig();
