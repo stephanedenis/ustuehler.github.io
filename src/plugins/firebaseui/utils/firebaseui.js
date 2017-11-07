@@ -288,6 +288,7 @@ function registerAuthStateListener() {
 			var uid = user.uid;
 			var phoneNumber = user.phoneNumber;
 			var providerData = user.providerData;
+
 			user.getIdToken().then(function(accessToken) {
         console.log('User is signed out.')
         console.log('Access token: ' + accessToken);
