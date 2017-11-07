@@ -1,8 +1,8 @@
 /*\
-title: $:/plugins/ustuehler/oauth/widgets/github-signin.js
+title: $:/plugins/ustuehler/oauth/widgets/firebaseui-auth-container.js
 type: application/javascript
 module-type: widget
-caption: github-signin
+caption: firebaseui-auth-container
 
 Implements the complete flow of signing in with a GitHub account
 
@@ -15,31 +15,33 @@ Implements the complete flow of signing in with a GitHub account
 
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
-var GitHubSignInWidget = function(parseTreeNode,options) {
+var FirebaseUIAuthContainerWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
 
 /*
 Inherit from the base widget class
 */
-GitHubSignInWidget.prototype = new Widget();
+FirebaseUIAuthContainerWidget.prototype = new Widget();
 
 /*
 Render this widget into the DOM
 */
-GitHubSignInWidget.prototype.render = function(parent,nextSibling) {
+FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
-  if (!$tw.utils.oauth.getUserName()) {
-    this.renderChildren(parent, nextSibling);
-  }
+  var domNode = document.createElement('div');
+  domNode.setAttribute('id', 'firebaseui-auth-container');
+  parent.insertBefore(domNode, nextSibling);
+  this.renderChildren(domNode, null);
+  this.domNodes.push(domNode);
 };
 
 /*
 Compute the internal state of the widget
 */
-GitHubSignInWidget.prototype.execute = function() {
+FirebaseUIAuthContainerWidget.prototype.execute = function() {
   /*
   this.errorTemplate = this.getAttribute("errorTemplate", this.getVariable("errorTemplate"));
   */
@@ -51,7 +53,7 @@ GitHubSignInWidget.prototype.execute = function() {
 /*
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
-GitHubSignInWidget.prototype.refresh = function(changedTiddlers) {
+FirebaseUIAuthContainerWidget.prototype.refresh = function(changedTiddlers) {
   /*
   var changedAttributes = this.computeAttributes();
 
@@ -64,6 +66,6 @@ GitHubSignInWidget.prototype.refresh = function(changedTiddlers) {
   return this.refreshChildren(changedTiddlers);
 };
 
-exports["github-signin"] = GitHubSignInWidget;
+exports["firebaseui-auth-container"] = FirebaseUIAuthContainerWidget;
 
 })(this);
