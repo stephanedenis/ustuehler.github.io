@@ -33,14 +33,18 @@ function getUIConfig() {
 
 function initialise(options) {
   return new Promise(function(resolve, reject) {
+    var tries = 120;
     var poll;
-    
+
     poll = function() {
       if (typeof(firebase) !== 'undefined') {
         resolve();
+      } else if (tries < 1) {
+        reject();
+      } else {
+        // Try again later...
+        setTimeout(poll, 500);
       }
-
-      setTimeout(poll, 500);
     }
 
 };
