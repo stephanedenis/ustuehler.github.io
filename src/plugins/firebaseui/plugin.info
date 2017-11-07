@@ -3,6 +3,6 @@
 	"version": "0.1.0",
 	"core-version": ">=5.1.14",
 	"author": "Uwe Stuehler",
-	"description": "Firebase UI library",
+	"description": "FirebaseUI for Web - Auth",
 	"list": "readme usage license"
 }
