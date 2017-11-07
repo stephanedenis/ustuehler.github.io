@@ -4,7 +4,10 @@ type: application/javascript
 module-type: widget
 caption: firebaseui-auth-container
 
-Implements the complete flow of signing in with a GitHub account
+Renders the FirebaseUI widget. This widget is a singleton. There can only be
+one instance of it. Trying to render more than one instance of this widget
+anywhere in the DOM will result in an error message being rendered for the
+second and all following instances.
 
 \*/
 (function (global) {
