@@ -79,7 +79,7 @@ function initialise(options) {
 
     // Check for progress in the initialisation of Firebase and FirebaseUI
     poll = function() {
-      if (ready()) {
+      if (dependenciesReady()) {
         // Complete the initialisation of this module
         registerAuthStateListener();
         resolve();
