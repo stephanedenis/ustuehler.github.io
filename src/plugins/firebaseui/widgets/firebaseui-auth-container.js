@@ -9,11 +9,6 @@ Implements the complete flow of signing in with a GitHub account
 \*/
 (function (global) {
 
-// Under nodejs
-if (typeof firebaseui === 'undefined') {
-	return;
-}
-
 "use strict";
 /*jslint node: true, browser: true */
 /*global $tw: false */
