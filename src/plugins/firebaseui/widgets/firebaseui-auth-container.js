@@ -64,7 +64,7 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 /*
  * Auth
  */
-FirebaseUIAuthContainerWidget.prototype.handleSignIn = function() {
+FirebaseUIAuthContainerWidget.prototype.signInHandler = function() {
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			// User is signed in.
