@@ -38,7 +38,9 @@ function initialise(options) {
         resolve();
       }
 
-  setTimeout(loader, 500);
+      setTimeout(poll, 500);
+    }
+
 };
 setTimeout(loader, 500);
   });
