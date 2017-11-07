@@ -18,12 +18,13 @@ function defaultRedirectURI() {
 
 // FirebaseUI config.
 function getUIConfig() {
+  // 'https://ustuehler.girhub.io/#SignInSuccess'
   var signInSuccessUrl = window.location.href.replace(/\/*\?.*$/, '');
   signInSuccessUrl = signInSuccessUrl+ '#SignInSuccess';
 
   return {
     // TODO: 
-    signInSuccessUrl: signInSuccessUrl; // 'https://ustuehler.girhub.io/#SignInSuccess',
+    signInSuccessUrl: signInSuccessUrl;
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
       //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
