@@ -292,6 +292,7 @@ function registerAuthStateListener() {
 			user.getIdToken().then(function(accessToken) {
         console.log('User is signed out.')
         console.log('Access token: ' + accessToken);
+
         /*
 				document.getElementById('sign-in-status').textContent = 'Signed in';
 				document.getElementById('sign-in').textContent = 'Sign out';
@@ -309,6 +310,7 @@ function registerAuthStateListener() {
 			});
 		} else {
       console.log('User is signed out.')
+
 			//document.getElementById('sign-in-status').textContent = 'Signed out';
 			//document.getElementById('sign-in').textContent = 'Sign in';
 			//document.getElementById('account-details').textContent = 'null';
