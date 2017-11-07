@@ -59,6 +59,7 @@ function defaultRedirectURI() {
   return baseURI + '#GitHubAuthCallback';
 }
 
+/*
 function getProvider() {
 	if (github) {
 		return github;
@@ -88,7 +89,9 @@ function getProvider() {
 
 	return github;
 }
+*/
 
+/*
 function requestToken() {
   var provider = getProvider();
   var redirect_uri = config.redirect_uri;
@@ -102,6 +105,7 @@ function requestToken() {
 		scope: 'gists,repo',
 		state: '3(#0/!~',
 	});
+*/
 
 	// Do the redirect
 	//window.location.href = uri;
@@ -111,6 +115,7 @@ function requestToken() {
   /*
    * Workaround #1: Popup window
   */
+  /*
 	openPopup(uri, function(err, code) {
     if (err) {
       console.log('openPopup (oauth-open): ' + err);
@@ -125,6 +130,7 @@ function requestToken() {
       callback(uri);
     }
 	});
+  */
 
   /*
    * Workaround #2: JSNOP
