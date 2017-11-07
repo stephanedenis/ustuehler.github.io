@@ -36,7 +36,7 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
-  $tw.utils.firebase.initialize().then(function(firebase, ui) {
+  $tw.utils.firebase.initialise().then(function(firebase, ui) {
     this.renderChildren(parent, nextSibling);
   });
 };
