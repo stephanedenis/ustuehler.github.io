@@ -268,6 +268,7 @@ function initialise(options) {
       } else {
         // Try again later...
         setTimeout(poll, 500);
+        tries -= 1;
       }
     };
 
