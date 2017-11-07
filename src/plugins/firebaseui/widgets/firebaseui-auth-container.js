@@ -7,9 +7,9 @@ caption: firebaseui-auth-container
 The firebaseui-auth-container widget renders the container element that is
 required by FirebaseUI.
 
-Attempting to render more than one instance of this widget anywhere in the DOM
-will result in an error message being rendered for the second and all following
-instances.
+Attempting to render more than one occurrances of this widget anywhere in the
+DOM will result in an error message being rendered for the second and all
+following occurrances.
 
 \*/
 (function (global) {
