@@ -264,7 +264,7 @@ function initialise(options) {
       if (typeof(firebase) !== 'undefined') {
         resolve();
       } else if (tries < 1) {
-        reject('gave up');
+        reject('gave up waiting for firebaseui to load');
       } else {
         // Try again later...
         setTimeout(poll, 500);
