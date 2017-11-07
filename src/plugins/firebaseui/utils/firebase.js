@@ -49,18 +49,19 @@ var allScriptsReady = function() {
   }
 
   return new Promise(function(resolve, reject) {
-    var poller;
-    // Invoke the poller function once, and then via timeout
-    (poller = function() {
+    var poll = function() {
       var now = Date.now();
       if (allReady()) {
         resolve(scriptNodes);
       } else if (now < deadline) {
-        setTimeout(poller, Math.min(deadline - now, interval));
+        setTimeout(poll, Math.min(deadline - now, interval));
       } else {
         reject(new Error('Firebase <script> tags could not be loaded in time'));
       }
-    })();
+    };
+
+    // Invoke the poller function once, and then via timeout
+    poll();
   });
 };
 
