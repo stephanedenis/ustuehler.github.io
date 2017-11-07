@@ -1,10 +1,24 @@
 title: $:/plugins/ustuehler/firebaseui/tiddlywiki5.html
 tags: $:/tags/RawMarkup
 
-<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-auth.js"></script>
 <!-- <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-storage.js"></script> -->
-<script src="https://www.gstatic.com/firebasejs/4.6.0/init.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/init.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBi0evv3BXi4d34P85PcDxlBLnvmjZuEZI",
+    authDomain: "tw5-github.firebaseapp.com",
+    databaseURL: "https://tw5-github.firebaseio.com",
+    projectId: "tw5-github",
+    storageBucket: "tw5-github.appspot.com",
+    messagingSenderId: "898278138051"
+  };
+  firebase.initializeApp(config);
+</script>
 
 <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
