@@ -72,6 +72,7 @@ function registerAuthStateListener() {
 		if (user) {
 			// User is signed in.
 			var displayName = user.displayName;
+      var firstName = user.displayName.split(' ')[0];
 			var email = user.email;
 			var emailVerified = user.emailVerified;
 			var photoURL = user.photoURL;

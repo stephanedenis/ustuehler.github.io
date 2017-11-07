@@ -1,6 +1,6 @@
 created: 20171107031951443
-modified: 20171107034304957
+modified: 20171107040241955
 title: SignInSuccess
 type: text/vnd.tiddlywiki
 
-Welcome, <<currentUser>>.
+Welcome, {{$:/status/OAuth/User!!caption}}.
