@@ -30,7 +30,7 @@ var status = {
 /*
  * allScriptsReady resolves as soon as the required Firebase components
  * referenced in the HTML <head> are loaded.  The promise applies only to
- * <script> tags, so CSS may not be fully loaded yet.
+ * <script> tags, so non-Firebase CSS may not be fully loaded yet.
  */
 var allScriptsReady = function() {
   return new Promise(function(resolve, reject) {
