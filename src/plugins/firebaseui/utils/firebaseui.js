@@ -13,9 +13,6 @@ Provides FirebaseUI functions under $tw.utils.firebaseui
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
-function defaultRedirectURI() {
-}
-
 // FirebaseUI config.
 function getUIConfig() {
   // 'https://ustuehler.girhub.io/#SignInSuccess'
@@ -38,7 +35,8 @@ function getUIConfig() {
       //firebase.auth.PhoneAuthProvider.PROVIDER_ID
     ],
     // Terms of service url.
-    tosUrl: tosUrl
+    tosUrl: tosUrl,
+    signInFlow: 'popup'
   };
 }
 
