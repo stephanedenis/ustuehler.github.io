@@ -41,18 +41,17 @@ function allScriptsReady() {
  * initialised
  */
 function initialise() {
+  return new Promise(function(resolve, reject) {
+    allScriptsReady()
+    .then(resolve)
+    .catch(reject);
+  });
 }
 
 exports.firebase = {
   getStatus: function() { return status; },
   getConfig: function() { return config; },
-  initialise: function() {
-    return new Promise(function(resolve, reject) {
-      allScriptsReady()
-      .then(resolve)
-      .catch(reject);
-    });
-  }
+  initialise: initialise
 };
 
 }})(this);
