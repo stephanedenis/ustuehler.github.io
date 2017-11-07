@@ -34,21 +34,27 @@ var status = {
  */
 var allScriptsReady = function() {
   var scriptNodes = pluginScriptNodes();
-  var allReady = true;
+  var allReady = function() {
+    var r = true;
+    scriptNodes.forEach(function(domNode) {
+      r = r && domNode.ready;
+    });
+    return r;
+  }
 
   if (scriptNodes.length == 0) {
     throw new Error('No <script> tags for Firebase?');
   }
 
   return new Promise(function(resolve, reject) {
-    scriptNodes.forEach(function(domNode) {
-      allReady = allReady && domNode.ready;
-    });
 
     if (allReady) {
       resolve(scriptNodes);
     } else {
-      reject('Missing script nodes.');
+      // TODO: use addEventListenerOnce to wait for a onreadystatechange event
+      setTimeout(function() {
+        
+      }, 1000);
     }
     //addEventListenerOnce(script, listener);
     // TODO: detect when all relevant <script> tags in the <head> are loaded
