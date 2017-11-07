@@ -103,10 +103,9 @@ function registerAuthStateListener() {
 	});
 }
 
-function start(selector) {
+function startUI(selector) {
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
   var uiConfig = getUIConfig();
-  var uiContainer = document.querySelector(selector);
 
   ui.start(selector, uiConfig);
 }
@@ -118,8 +117,8 @@ initialise().then(function() {
 
 exports.firebaseui = {
   initialise: initialise,
-  start: function(containerSelector) {
-    initialise().then(start);
+  start: function(selector) {
+    initialise().then(startUI);
   },
 };
 
