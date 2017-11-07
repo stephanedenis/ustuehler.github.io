@@ -15,13 +15,12 @@ Provides FirebaseUI functions under $tw.utils.firebaseui
 
 // getUIConfig generates a configuration hash for Firebase UI.
 function getUIConfig() {
-  // 'https://ustuehler.girhub.io/#SignInSuccess'
-
-  // 'https://ustuehler.girhub.io/#SignInSuccess'
-  var tosUrl = window.location.href.replace(/\/*\?.*$/, '');
-  tosUrl = tosUrl + '#TermsOfService';
+  var signInFlow = 'popup';
+  var signInSuccessUrl = this.getSignInSuccessUrl();
+  var tosUrl = this.getTermsOfServiceUrl();
 
   return {
+    signInFlow: signInFlow,
     signInSuccessUrl: signInSuccessUrl,
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
@@ -32,9 +31,7 @@ function getUIConfig() {
       //firebase.auth.EmailAuthProvider.PROVIDER_ID,
       //firebase.auth.PhoneAuthProvider.PROVIDER_ID
     ],
-    // Terms of service url.
-    tosUrl: tosUrl,
-    signInFlow: 'popup'
+    tosUrl: tosUrl
   };
 }
 
@@ -46,7 +43,7 @@ function getSignInSuccessUrl() {
   return this.getBaseUrl() + '#SignInSuccess';
 }
 
-function getTosUrl() {
+function getTermsOfServiceUrl() {
   return this.getBaseUrl() + '#TermsOfService';
 }
 
