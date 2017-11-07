@@ -24,7 +24,7 @@ var status = {
 };
 
 exports.firebase = {
-  getStatus: function() { return status; }
+  getStatus: function() { return status; },
   initialise: function() {
     return new Promise(function(resolve, reject) {
       reject('TODO: how can we detect when firebase has finished loading asynchronously?');
