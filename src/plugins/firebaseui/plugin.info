@@ -1,8 +1,8 @@
 {
-	"title": "$:/plugins/ustuehler/url",
+	"title": "$:/plugins/ustuehler/firebaseui",
 	"version": "0.1.0",
 	"core-version": ">=5.1.14",
 	"author": "Uwe Stuehler",
-	"description": "URL handling library",
+	"description": "Firebase UI library",
 	"list": "readme usage license"
 }
