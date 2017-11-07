@@ -8,7 +8,7 @@ Provides utility functions under $tw.utils.firebase, handles the initialisation
 of Firebase, and dispatches Firebase-related events such as auth state changes.
 
 This module is only available if the window variable is defined, because it
-doesn't have any useful functionality, otherwise.
+doesn't serve any useful purpose, otherwise.
 
 \*/
 (function (global) { if (typeof window !== 'undefined') {
