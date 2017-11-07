@@ -176,6 +176,9 @@ function jsonpRequest(uri) {
 */
 
 function callback(uri) {
+  console.log('$tw.utils.firebaseui.callback() is obsolete');
+  return;
+  /*
   var provider = getProvider();
   var options = {};
 
@@ -200,6 +203,7 @@ function callback(uri) {
 		$tw.utils.showSnackbar('Signed in with GitHub.');
     return;
   });
+*/
 
 /*
 	provider.token.getToken(uri).then(function (user) {
