@@ -13,4 +13,7 @@ Provides utility functions under $tw.utils.firebase
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
+exports.firebase = {
+};
+
 }})(this);
