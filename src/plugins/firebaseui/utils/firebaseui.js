@@ -79,7 +79,7 @@ function initialise(options) {
 
     // Check for progress in the initialisation of Firebase and FirebaseUI
     poll = function() {
-      if (typeof(firebase) !== 'undefined' && typeof(firebaseui) !== 'undefined') {
+      if (ready()) {
         // Complete the initialisation of this module
         registerAuthStateListener();
         resolve();
@@ -96,6 +96,11 @@ function initialise(options) {
     // Poll once and start the polling interval timer, if needed
     poll();
   });
+}
+
+// Check if all initialisation preconditions are fullfilled
+function dependenciesReady() {
+  return typeof(firebase) !== 'undefined' && typeof(firebaseui) !== 'undefined';
 }
 
 /*
