@@ -13,9 +13,9 @@ Provides FirebaseUI functions under $tw.utils.firebaseui
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
-// getUIConfig generates a configuration hash for Firebase UI.
+// getUIConfig generates a configuration hash for Firebase UI
 function getUIConfig() {
-  var signInFlow = 'popup';
+  var signInFlow = this.getSignInFlow();
   var signInSuccessUrl = this.getSignInSuccessUrl();
   var tosUrl = this.getTermsOfServiceUrl();
 
@@ -35,6 +35,7 @@ function getUIConfig() {
   };
 }
 
+// getBaseUrl infers the wiki's base URL from the current window location
 function getBaseUrl() {
   return window.location.href.replace(/\/*\?.*$/, '');
 }
@@ -45,6 +46,16 @@ function getSignInSuccessUrl() {
 
 function getTermsOfServiceUrl() {
   return this.getBaseUrl() + '#TermsOfService';
+}
+
+/*
+ * getSignInFlow is supposed to determine whether the 'popup' or 'redierct'
+ * flow should be used for sign-in. The redirect flow relies on Cross-Origin
+ * Resource Sharing policy, which is sometimes hard to control, so we use
+ * 'popup' instead until there's a reason to support 'redirect' as well.
+ */
+function getSignInFlow() {
+  return 'popup';
 }
 
 function getUserName() {
