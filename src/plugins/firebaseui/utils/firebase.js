@@ -17,7 +17,7 @@ doesn't serve any useful purpose, otherwise.
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
-// The state of Firebase as observed and interpreted by this module
+// Current runtime status of the Firebase component in this plugin
 var status = {
   ready: false
 };
