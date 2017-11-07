@@ -5,4 +5,4 @@ modified: 20171101205007857
 tags: $:/tags/Macro
 type: text/vnd.tiddlywiki
 
-\define currentUserRef() {{$:/status/OAuth/User!!email}}
+\define currentUserTiddler() $:/status/OAuth/User
