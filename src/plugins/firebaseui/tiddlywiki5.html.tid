@@ -21,7 +21,7 @@ var firebaseUIConfig = {
 };
 
 var loader = function() {
-  setTimeout(loader, 100);
+  setTimeout(loader, 500);
 };
 
 setTimeout(loader, 500);
