@@ -37,7 +37,7 @@ function getUIConfig() {
 
 // getBaseUrl infers the wiki's base URL from the current window location
 function getBaseUrl() {
-  // XXX: There is certainly a configuration parameter which we can read, or another function in core that we can use, instead of looking at window.location
+  // XXX: There is certainly a configuration parameter which we can read, or another function in core that we can use, instead of looking at window.location.
   return window.location.href.replace(/\/*\?.*$/, '');
 }
 
