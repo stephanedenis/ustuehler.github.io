@@ -55,7 +55,7 @@ var allScriptsReady = function() {
       if (allReady()) {
         resolve(scriptNodes);
       } else if (now < deadline) {
-        setTimeout(poller, Math.min(interval, deadline - now));
+        setTimeout(poller, Math.min(deadline - now, interval));
       } else {
         reject(new Error('Firebase <script> tags could not be loaded in time'));
       }
