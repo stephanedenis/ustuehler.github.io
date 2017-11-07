@@ -54,7 +54,7 @@ var allScriptsReady = function() {
       // TODO: use addEventListenerOnce to wait for a onreadystatechange event
       setTimeout(function() {
         
-      }, 1000);
+      }, 500);
     }
     //addEventListenerOnce(script, listener);
     // TODO: detect when all relevant <script> tags in the <head> are loaded
