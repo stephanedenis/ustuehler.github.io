@@ -1,0 +1,17 @@
+created: 20171107191908460
+modified: 20171107200900614
+span: 12
+tags: OAuthPlugin
+title: FirebaseUIPlugin/RawMarkup
+type: text/vnd.tiddlywiki
+
+<$importvariables filter="FirebaseUIPlugin">
+<!--
+
+All the macros defined in the FirebaseUIPlugin tiddler are available here.
+
+-->
+The <$link to="$(pluginTiddler tiddlywiki5.html)$" tooltip=<<pluginTiddler tiddlywiki5.html>>>tiddlywiki5.html</$link> tiddler is tagged with <<tag $:/tags/RawMarkup>> to add new `<script>` and `<link>` tags to the HTML page header.
+
+<code><pre><$view tiddler=<<pluginTiddler tiddlywiki5.html>>/></pre></code>
+</$importvariables>

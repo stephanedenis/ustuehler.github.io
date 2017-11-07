@@ -1,0 +1,14 @@
+caption: Tiddler Widget
+created: 20171107195124158
+modified: 20171107195758752
+tags: OAuthPlugin
+title: TiddlerWidget
+type: text/vnd.tiddlywiki
+
+\define tiddlywikiLink(title:"HelloThere") [[$title$|http://tiddlywiki.com/#$title$]] on tiddlywiki.com
+
+The ''~TiddlerWidget'' sets the value of the `currentTiddler` variable.
+
+The same technique should also be used for the `currentUser` variable introduced by the OAuthPlugin.
+
+See <<tiddlywikiLink TiddlerWidget>> for more information.
