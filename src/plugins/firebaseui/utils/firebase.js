@@ -33,8 +33,8 @@ var status = {
  * <script> tags, so non-Firebase CSS may not be fully loaded yet.
  */
 var allScriptsReady = function() {
-  var timeout = 60000; // one minute
-  var interval = 500; // polling frequency in milliseconds
+  var deadline = Date.now() + 60000; // one minute from now
+  var interval = 500; // affects the polling frequency
   var scriptNodes = pluginScriptNodes();
   var allReady = function() {
     var r = true;
@@ -51,11 +51,11 @@ var allScriptsReady = function() {
   return new Promise(function(resolve, reject) {
     // Invoke the poller function once, and then via timeout
     (var poller = function() {
+      var now = Date.now();
       if (allReady()) {
         resolve(scriptNodes);
-      } else if (timeout > 0) {
-        timeout -= interval;
-        setTimeout(poller, interval);
+      } else if (now < deadline) {
+        setTimeout(poller, Math.min(interval, deadline - now));
       } else {
         reject(new Error('Firebase <script> tags could not be loaded in time'));
       }
