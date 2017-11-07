@@ -65,10 +65,10 @@ FirebaseUIAuthContainerWidget.prototype.registerAuthStateListener = function() {
 				}, null, '  ');
 			});
 		} else {
-			// User is signed out.
-			document.getElementById('sign-in-status').textContent = 'Signed out';
-			document.getElementById('sign-in').textContent = 'Sign in';
-			document.getElementById('account-details').textContent = 'null';
+      console.log('User is signed out.');
+			//document.getElementById('sign-in-status').textContent = 'Signed out';
+			//document.getElementById('sign-in').textContent = 'Sign in';
+			//document.getElementById('account-details').textContent = 'null';
 		}
 	}, function(error) {
 		console.log(error);
