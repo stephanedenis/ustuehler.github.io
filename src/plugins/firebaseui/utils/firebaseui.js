@@ -264,7 +264,7 @@ function initialise(options) {
       if (typeof(firebase) !== 'undefined') {
         resolve();
       } else if (tries < 1) {
-        reject();
+        reject('gave up');
       } else {
         // Try again later...
         setTimeout(poll, 500);
