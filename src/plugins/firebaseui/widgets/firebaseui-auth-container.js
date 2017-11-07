@@ -4,7 +4,8 @@ type: application/javascript
 module-type: widget
 caption: firebaseui-auth-container
 
-The firebaseui-auth-container widget renders the required FirebaseUI container.
+The firebaseui-auth-container widget renders the container element that is
+required by FirebaseUI, and ensures that FirebaseUI is initialised.
 
 Attempting to render more than one instance of this widget anywhere in the DOM
 will result in an error message being rendered for the second and all following
