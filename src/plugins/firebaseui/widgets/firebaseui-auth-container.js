@@ -36,48 +36,10 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
-  this.renderChildren(parent, nextSibling);
+  $tw.utils.firebase.initialize().then(function(firebase, ui) {
+    this.renderChildren(parent, nextSibling);
+  });
 };
-
-FirebaseUIAuthContainerWidget.prototype.registerAuthStateListener = function() {
-	firebase.auth().onAuthStateChanged(function(user) {
-		if (user) {
-			// User is signed in.
-			var displayName = user.displayName;
-			var email = user.email;
-			var emailVerified = user.emailVerified;
-			var photoURL = user.photoURL;
-			var uid = user.uid;
-			var phoneNumber = user.phoneNumber;
-			var providerData = user.providerData;
-			user.getIdToken().then(function(accessToken) {
-        console.log('User logged in.');
-        console.log('Access token: ' + accessToken);
-        /*
-				document.getElementById('sign-in-status').textContent = 'Signed in';
-				document.getElementById('sign-in').textContent = 'Sign out';
-				document.getElementById('account-details').textContent = JSON.stringify({
-					displayName: displayName,
-					email: email,
-					emailVerified: emailVerified,
-					phoneNumber: phoneNumber,
-					photoURL: photoURL,
-					uid: uid,
-					accessToken: accessToken,
-					providerData: providerData
-				}, null, '  ');
-        */
-			});
-		} else {
-      console.log('User is signed out.')
-			//document.getElementById('sign-in-status').textContent = 'Signed out';
-			//document.getElementById('sign-in').textContent = 'Sign in';
-			//document.getElementById('account-details').textContent = 'null';
-		}
-	}, function(error) {
-		console.log(error);
-	});
-}
 
 /*
 Compute the internal state of the widget
@@ -106,10 +68,6 @@ FirebaseUIAuthContainerWidget.prototype.refresh = function(changedTiddlers) {
 
   return this.refreshChildren(changedTiddlers);
 };
-
-window.addEventListener('load', function() {
-	registerAuthStateListener();
-});
 
 exports["firebaseui-auth-container"] = FirebaseUIAuthContainerWidget;
 
