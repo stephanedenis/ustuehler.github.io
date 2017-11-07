@@ -1,0 +1,5 @@
+title: $:/plugins/ustuehler/firebaseui/readme
+
+''[[FirebaseUI]]'' is an open-source JavaScript library that provides customisable bindings on top of the [[Firebase SDK]] to eliminate boilerplate code and to promote best practices.
+
+This plugin loads the FirebaseUI via CDN, so it makes TiddlyWiki no longer be fully self-contained.
