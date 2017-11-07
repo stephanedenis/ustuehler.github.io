@@ -33,11 +33,13 @@ FirebaseUIAuthContainerWidget.prototype = new Widget();
 Render this widget into the DOM
 */
 FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
+  var self = this;
+
 	this.computeAttributes();
 	this.execute();
 
   $tw.utils.firebase.initialise().then(function(firebase, ui) {
-    this.renderChildren(parent, nextSibling);
+    self.renderChildren(parent, nextSibling);
   });
 };
 
