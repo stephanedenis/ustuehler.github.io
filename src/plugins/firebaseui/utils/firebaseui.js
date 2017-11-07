@@ -33,7 +33,9 @@ function getUIConfig() {
 
 function initialise(options) {
   return new Promise(function(resolve, reject) {
-    var poll = function() {
+    var poll;
+    
+    poll = function() {
       if (typeof(firebase) !== 'undefined') {
         resolve();
       }
