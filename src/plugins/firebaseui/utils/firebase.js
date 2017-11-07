@@ -37,8 +37,8 @@ function allScriptsReady() {
 }
 
 exports.firebase = {
-  getConfig: function() { return config; },
   getStatus: function() { return status; },
+  getConfig: function() { return config; },
   initialise: function() {
     return new Promise(function(resolve, reject) {
       allScriptsReady()
