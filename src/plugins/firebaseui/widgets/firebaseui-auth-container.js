@@ -24,6 +24,7 @@ const FIREBASEUI_AUTH_CONTAINER_ID = 'firebaseui-auth-container';
 // Base widget
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
+// Constructor for this widget
 var FirebaseUIAuthContainerWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
