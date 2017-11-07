@@ -90,8 +90,8 @@ function initialise(options) {
       }
     };
 
-    // Set the initial timeout
-    setTimeout(poll, 500);
+    // Poll once and start the polling interval timer, if needed
+    poll();
   });
 }
 
