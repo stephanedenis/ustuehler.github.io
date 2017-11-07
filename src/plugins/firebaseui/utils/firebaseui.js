@@ -98,9 +98,13 @@ function initialise(options) {
   });
 }
 
-// registerAuthStateListener is called by initialise()
+/*
+ * registerAuthStateListener observes Auth State Changed events from Firebase
+ * and reflects the changes in a set of system tiddlers.  The handler function
+ * stays registered at all times.
+ */
 function registerAuthStateListener() {
-  // XXX: Does this listener have to be removed again?
+  // XXX: 
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			// User is signed in.
