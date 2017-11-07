@@ -75,15 +75,19 @@ var initialise = function() {
   });
 };
 
-initialise().then(function() {
-  console.log('Firebase initialised');
-});
+/*
+** Module exports and initialisation
+*/
 
 exports.firebase = {
   getStatus: function() { return status; },
   getConfig: function() { return config; },
   initialise: initialise
 };
+
+initialise().then(function() {
+  console.log('Firebase initialised');
+});
 
 /*
 ** Private utility functions for this module
