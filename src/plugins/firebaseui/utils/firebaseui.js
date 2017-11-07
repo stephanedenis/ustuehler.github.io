@@ -78,19 +78,18 @@ function registerAuthStateListener() {
 			var uid = user.uid;
 			var phoneNumber = user.phoneNumber;
 			var providerData = user.providerData;
-      var setText = $tw.wiki.setText;
 
 			user.getIdToken().then(function(accessToken) {
-        setText('$:/temp/OAuth/Provider', 'type', undefined, 'text/plain');
-        setText('$:/temp/OAuth/Provider', 'text', undefined, providerData);
-        setText('$:/temp/OAuth/AccessToken', 'text', undefined, accessToken);
+        $tw.wiki.setText('$:/temp/OAuth/Provider', 'type', undefined, 'text/plain');
+        $tw.wiki.setText('$:/temp/OAuth/Provider', 'text', undefined, providerData);
+        $tw.wiki.setText('$:/temp/OAuth/AccessToken', 'text', undefined, accessToken);
 
-        setText('$:/status/OAuth/User', 'uid', undefined, uid);
-        setText('$:/status/OAuth/User', 'email', undefined, email);
-        setText('$:/status/OAuth/User', 'email-verified', undefined, emailVerified);
-        setText('$:/status/OAuth/User', 'phone-number', undefined, phoneNumber);
-        setText('$:/status/OAuth/User', 'photo-url', undefined, photoURL);
-        setText('$:/status/OAuth/User', 'caption', undefined, displayName);
+        $tw.wiki.setText('$:/status/OAuth/User', 'uid', undefined, uid);
+        $tw.wiki.setText('$:/status/OAuth/User', 'email', undefined, email);
+        $tw.wiki.setText('$:/status/OAuth/User', 'email-verified', undefined, emailVerified);
+        $tw.wiki.setText('$:/status/OAuth/User', 'phone-number', undefined, phoneNumber);
+        $tw.wiki.setText('$:/status/OAuth/User', 'photo-url', undefined, photoURL);
+        $tw.wiki.setText('$:/status/OAuth/User', 'caption', undefined, displayName);
 			});
 		} else {
       $tw.wiki.deleteTiddler('$:/temp/OAuth/AccessToken');
