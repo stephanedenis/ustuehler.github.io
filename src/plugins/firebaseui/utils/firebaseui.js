@@ -13,10 +13,17 @@ Provides FirebaseUI functions under $tw.utils.firebaseui
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
+function defaultRedirectURI() {
+}
+
 // FirebaseUI config.
 function getUIConfig() {
+  var baseURI = window.location.href.replace(/\/*\?.*$/, '');
+  return baseURI + '#SignInSuccess';
+
   return {
-    signInSuccessUrl: 'https://ustuehler.girhub.io/#SignInSuccess',
+    // TODO: 
+    signInSuccessUrl: signInSuccessUrl; // 'https://ustuehler.girhub.io/#SignInSuccess',
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
       //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -51,12 +58,6 @@ function initialise(options) {
     // Set the initial timeout
     setTimeout(poll, 500);
   });
-}
-
-function defaultRedirectURI() {
-  var baseURI = window.location.href.replace(/\/*\?.*$/, '');
-
-  return baseURI + '#GitHubAuthCallback';
 }
 
 /*
