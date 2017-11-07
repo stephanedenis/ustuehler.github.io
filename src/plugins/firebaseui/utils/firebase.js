@@ -28,10 +28,9 @@ var status = {
 };
 
 /*
- * allScriptsReady resolves as soon as all the scripts referenced in the HTML
- * <head> are loaded.  It's necessary because this plugin adds new <script>
- * tags to the HTML page <head> element.  This promise only looks for <script>
- * tags, so CSS may not be fully loaded yet.
+ * allScriptsReady resolves as soon as the required Firebase components
+ * referenced in the HTML <head> are loaded.  The promise applies only to
+ * <script> tags, so CSS may not be fully loaded yet.
  */
 var allScriptsReady = function() {
   return new Promise(function(resolve, reject) {
