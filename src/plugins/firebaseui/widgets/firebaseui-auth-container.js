@@ -57,7 +57,7 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 
 	if (!initialized) {
 		initialized = true;
-		addAuthStateListener();
+		registerAuthStateListener();
 	}
 
 	// The start method will wait until the DOM is loaded.
