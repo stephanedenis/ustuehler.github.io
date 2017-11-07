@@ -96,7 +96,7 @@ initialise().then(function() {
 */
 
 // Returns the collection of <script> nodes that are related to this plugin
-var pluginScriptNodes = function() {
+function pluginScriptNodes() {
   var domNodes = [];
 
   document.head
