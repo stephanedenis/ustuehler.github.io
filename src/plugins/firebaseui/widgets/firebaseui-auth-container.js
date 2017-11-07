@@ -36,6 +36,9 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 
   var domNode = document.createElement('div');
   domNode.setAttribute('id', id);
+
+  parent.insertBefore(domNode, nextSibling);
+  this.renderChildren(domNode, null);
   this.domNodes.push(domNode);
 
   console.log('starting UI for #' + id);
