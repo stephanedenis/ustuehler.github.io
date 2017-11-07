@@ -75,6 +75,10 @@ var initialise = function() {
   });
 };
 
+initialise().then(function() {
+  console.log('Firebase initialised');
+});
+
 exports.firebase = {
   getStatus: function() { return status; },
   getConfig: function() { return config; },
