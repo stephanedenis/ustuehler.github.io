@@ -26,9 +26,10 @@ exports.params = [];
  */
 exports.run = function(defaultClass) {
   if (typeof(firebase) === 'undefined') {
-    $tw.utils.error('firebase is undefined in currentUser macro');
+    $tw.utils.error('currentUser: firebase is undefined');
   }
-  return firebase.;
+
+  return firebase.auth().currentUser.email;;
 };
 
 })();
