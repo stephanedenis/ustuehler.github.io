@@ -20,13 +20,13 @@ var FirebaseUIAuthContainerWidget = function(parseTreeNode,options) {
 };
 
 /*
-Inherit from the base widget class
-*/
+ * Inherit from the base widget class
+ */
 FirebaseUIAuthContainerWidget.prototype = new Widget();
 
 /*
-Render this widget into the DOM
-*/
+ * Render this widget into the DOM
+ */
 FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
   var self = this;
 
@@ -46,30 +46,17 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 };
 
 /*
-Compute the internal state of the widget
-*/
+ * Compute the internal state of the widget
+ */
 FirebaseUIAuthContainerWidget.prototype.execute = function() {
-  /*
-  this.errorTemplate = this.getAttribute("errorTemplate", this.getVariable("errorTemplate"));
-  */
-
   // Compute the internal state of child widgets.
   this.makeChildWidgets();
 };
 
 /*
-Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
-*/
+ * Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
+ */
 FirebaseUIAuthContainerWidget.prototype.refresh = function(changedTiddlers) {
-  /*
-  var changedAttributes = this.computeAttributes();
-
-  if (changedAttributes.tiddler || changedAttributes.field || changedAttributes.filter) {
-    this.refreshSelf();
-    return true;
-  }
-  */
-
   return this.refreshChildren(changedTiddlers);
 };
 
