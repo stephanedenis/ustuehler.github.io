@@ -155,8 +155,8 @@ function requestToken() {
     // window.location.assign(...)
     // callback()
   });
-  */
 }
+  */
 
 /*
 function jsonpRequest(uri) {
