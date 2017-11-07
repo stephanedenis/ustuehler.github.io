@@ -61,10 +61,7 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
   this.domNodes.push(domNode);
 };
 
-/*
- * Auth
- */
-FirebaseUIAuthContainerWidget.prototype.signInHandler = function() {
+FirebaseUIAuthContainerWidget.prototype.addAuthStateListener = function() {
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			// User is signed in.
