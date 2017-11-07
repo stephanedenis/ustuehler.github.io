@@ -80,8 +80,11 @@ function registerAuthStateListener() {
 			var providerData = user.providerData;
 
 			user.getIdToken().then(function(accessToken) {
-        console.log('User is signed out.')
-        console.log('Access token: ' + accessToken);
+        setText('$:/status/OAuth/User', 'provider', undefined, 'github');
+        setText('$:/status/OAuth/User', 'email', undefined, email);
+        setText('$:/status/OAuth/User', 'photo-url', undefined, photoURL);
+        setText('$:/status/OAuth/User', 'caption', undefined, displayName);
+        setText('$:/temp/OAuth/AccessToken', 'text', undefined, accessToken);
 
         /*
 				document.getElementById('sign-in-status').textContent = 'Signed in';
