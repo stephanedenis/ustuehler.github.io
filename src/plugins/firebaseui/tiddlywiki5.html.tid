@@ -3,7 +3,8 @@ tags: $:/tags/RawMarkup
 
 <!--
 
-Only load the components which we can currently make use of in this plugin.
+Only load the components which we can currently make use of in this plugin, and
+then initialise them automatically.
 
 -->
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
