@@ -17,11 +17,11 @@ doesn't serve any useful purpose, otherwise.
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
-// Current configuration of the Firebase subsystem in this plugin
+// Current configuration of the Firebase component in this plugin
 var config = {
 };
 
-// Current status of the Firebase subsystem in this plugin
+// Current status of the Firebase component in this plugin
 var status = {
   ok: true,
   ready: false
