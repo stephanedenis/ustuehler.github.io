@@ -20,9 +20,12 @@ var firebaseUIConfig = {
   tosUrl: 'https://ustuehler.girhub.io/#TermsOfService'
 };
 
-var loader = function() {
+var firebaseUILoader = function() {
+  if (typeof(firebase) !== 'undefined' && firebase.callback) {
+  }
+
   setTimeout(loader, 500);
 };
-
 setTimeout(loader, 500);
+
 </script>
