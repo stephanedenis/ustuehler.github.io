@@ -1,7 +1,10 @@
-created: 20171107012710729
-modified: 20171107012826112
-tags: FirebaseUIPlugin
+created: 20171107044732067
+list-before: $:/core/ui/PageTemplate/topleftbar
+modified: 20171107045129902
+tags: $:/tags/PageTemplate
 title: FirebaseUIAuthContainer
 type: text/vnd.tiddlywiki
 
-<$firebaseui-auth-container/>
+<div style="min-height: 400px;">
+<div id="firebaseui-auth-container"/>
+</div>

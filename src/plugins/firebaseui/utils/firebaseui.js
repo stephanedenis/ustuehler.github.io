@@ -13,11 +13,21 @@ Provides FirebaseUI functions under $tw.utils.firebaseui
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
-// FirebaseUI config.
+function getBaseUrl() {
+  return window.location.href.replace(/\/*\?.*$/, '');
+}
+
+function getSignInSuccessUrl() {
+  return this.getBaseUrl() + '#SignInSuccess';
+}
+
+function getTosUrl() {
+  return this.getBaseUrl() + '#TermsOfService';
+}
+
+// getUIConfig generates a configuration hash for Firebase UI.
 function getUIConfig() {
   // 'https://ustuehler.girhub.io/#SignInSuccess'
-  var signInSuccessUrl = window.location.href.replace(/\/*\?.*$/, '');
-  signInSuccessUrl = signInSuccessUrl + '#SignInSuccess';
 
   // 'https://ustuehler.girhub.io/#SignInSuccess'
   var tosUrl = window.location.href.replace(/\/*\?.*$/, '');

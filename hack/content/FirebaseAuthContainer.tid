@@ -1,0 +1,11 @@
+created: 20171107012710729
+modified: 20171107044515485
+tags: FirebaseUIPlugin
+title: FirebaseAuthContainer
+type: text/vnd.tiddlywiki
+
+The following widget use should be part of the PageTemplate.
+
+```
+<$firebaseui-auth-container/>
+```
