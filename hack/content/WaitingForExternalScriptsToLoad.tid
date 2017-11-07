@@ -1,0 +1,9 @@
+created: 20171107210920121
+modified: 20171107211617521
+tags: TiddlyWikiPluginDevelopment
+title: WaitingForExternalScriptsToLoad
+type: text/vnd.tiddlywiki
+
+When loading external resources required by TiddlyWiki plugins, we want be able to verify that the external resources have finished loading before we start using them.
+
+In case of external JavaScript resources, this is simply because the code is otherwise unavailable, and users don't like it when random errors about undefined symbols pop up in their face.
