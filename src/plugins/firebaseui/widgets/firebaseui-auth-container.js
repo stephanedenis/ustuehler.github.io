@@ -33,7 +33,13 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
-  self.renderChildren(parent, nextSibling);
+  var domNode = document.createElement('div');
+  domNode.setAttribute('id', 'firebaseui-auth-container');
+
+  parent.insertBefore(domNode, nextSibling);
+  self.renderChildren(domNode, null);
+  this.domNodes.push(domNode);
+  this.domNode = domNode;
 };
 
 /*
