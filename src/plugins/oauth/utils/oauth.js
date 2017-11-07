@@ -124,6 +124,9 @@ function requestToken() {
     if (err) {
       console.log('openPopup (oauth-open): ' + err);
     } else {
+      console.log('openPopup callback fired:');
+      console.log(code);
+
       //var base = window.location.href.replace(/\/*\?.*$/, '');
       //var uri = base + '?code=' + code.code;
       var uri = window.location.href;
