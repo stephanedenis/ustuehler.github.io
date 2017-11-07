@@ -29,13 +29,14 @@ FirebaseUIAuthContainerWidget.prototype = new Widget();
  */
 FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
   var self = this;
+  var qualify = Date.now() + '';
+  var id = 'firebaseui-auth-container-' + qualify;
 
 	this.computeAttributes();
 	this.execute();
 
   var domNode = document.createElement('div');
-  var qualify = Date.now() + '';
-  domNode.setAttribute('id', 'firebaseui-auth-container-' + qualify);
+  domNode.setAttribute('id', id);
 
   parent.insertBefore(domNode, nextSibling);
   self.renderChildren(domNode, null);
