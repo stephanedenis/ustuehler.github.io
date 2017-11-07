@@ -148,6 +148,7 @@ initialise().then(function() {
   registerAuthStateListener();
 });
 
+// Exported functions should ensure proper initialisation, if necessary
 exports.firebaseui = {
   initialise: initialise,
   start: function(selector) {
