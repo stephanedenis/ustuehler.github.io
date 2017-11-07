@@ -280,7 +280,7 @@ exports.firebaseui = {
   initialise: initialise,
 
   show: function() {
-    initialize().then(function(firebase) {
+    initialise().then(function(firebase) {
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       var uiConfig = getUIConfig();
 
