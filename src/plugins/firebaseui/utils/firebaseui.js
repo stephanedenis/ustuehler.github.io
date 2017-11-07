@@ -46,9 +46,12 @@ function initialise(options) {
         // Try again later...
         setTimeout(poll, 500);
       }
-    }
-  }
-};
+    };
+
+    // Set the initial timeout
+    setTimeout(poll, 500);
+  });
+}
 
 function defaultRedirectURI() {
   var baseURI = window.location.href.replace(/\/*\?.*$/, '');
