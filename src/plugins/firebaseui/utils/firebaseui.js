@@ -31,6 +31,7 @@ function getUIConfig() {
   };
 }
 
+// Wait until the firebase <script> tag is loaded
 function initialise(options) {
   return new Promise(function(resolve, reject) {
     var tries = 120;
@@ -46,8 +47,9 @@ function initialise(options) {
         setTimeout(poll, 500);
       }
     }
-
+  }
 };
+
 setTimeout(loader, 500);
   });
 }
