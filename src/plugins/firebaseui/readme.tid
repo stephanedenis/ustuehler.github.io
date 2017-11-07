@@ -4,4 +4,4 @@ title: $:/plugins/ustuehler/firebaseui/readme
 
 The only part of ~FirebaseUI that this plugin exposes is the sign-in flow, if there even are other parts to it.  (As of late 2017, only authentication seems to be implemented in ~FirebaseUI.)
 
-This plugin loads the ~Firebase and ~FirebaseUI assets from a CDN, so it makes TiddlyWiki not be fully self-contained anymore. Essentially, it  will break when you have no Internet connection.
+This plugin loads the ~Firebase and ~FirebaseUI assets from a CDN, so it makes TiddlyWiki not be fully self-contained anymore. Essentially, it  will require an Internet connection to load.
