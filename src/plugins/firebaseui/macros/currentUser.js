@@ -26,7 +26,7 @@ exports.params = [];
  */
 exports.run = function(defaultClass) {
   if (typeof(firebase) === 'undefined') {
-    $tw.utils.showSnackbar('Error in currentUser: firebase is undefined');
+    $tw.utils.showSnackbar('Error in currentUser macro: firebase is undefined');
     return '';
   }
 
