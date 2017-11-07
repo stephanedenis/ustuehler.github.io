@@ -16,11 +16,14 @@ doesn't have any useful functionality, otherwise.
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
-var 
+// The state of Firebase as observed and interpreted by this module
+var status = {
+  ready: false
+};
 
 exports.firebase = {
-  ready: function() {
-    status.
+  getStatus: function() {
+    return status;
   }
 };
 
