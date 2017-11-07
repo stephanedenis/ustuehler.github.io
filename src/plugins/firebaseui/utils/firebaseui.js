@@ -79,7 +79,7 @@ function initialise(options) {
 
     // Check for progress in the initialisation of Firebase and FirebaseUI
     poll = function() {
-      if (typeof(firebase) !== 'undefined') {
+      if (typeof(firebase) !== 'undefined' && typeof(firebaseui) !== 'undefined') {
         // Complete the initialisation of this module
         registerAuthStateListener();
         resolve();
@@ -100,11 +100,9 @@ function initialise(options) {
 
 /*
  * registerAuthStateListener observes Auth State Changed events from Firebase
- * and reflects the changes in a set of system tiddlers.  The handler function
- * is never deregistered again.
+ * and reflects the changes in a set of system tiddlers.
  */
 function registerAuthStateListener() {
-  // XXX: 
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			// User is signed in.
