@@ -321,7 +321,7 @@ function registerAuthStateListener() {
 	});
 }
 
-initialize().then(function() {
+initialise().then(function() {
   console.log("Starting auth state listener.");
   registerAuthStateListener();
 });
