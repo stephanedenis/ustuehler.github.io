@@ -78,6 +78,7 @@ function registerAuthStateListener() {
 			var uid = user.uid;
 			var phoneNumber = user.phoneNumber;
 			var providerData = user.providerData;
+      var setText = $tw.wiki.setText;
 
 			user.getIdToken().then(function(accessToken) {
         setText('$:/temp/OAuth/Provider', 'type', undefined, 'text/plain');
