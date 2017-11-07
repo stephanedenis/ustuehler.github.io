@@ -1,10 +1,10 @@
 /*\
-title: $:/plugins/ustuehler/github-api/utils/oauth.js
+title: $:/plugins/ustuehler/github-api/utils/firebaseui.js
 type: application/javascript
 module-type: utils
-caption: oauth
+caption: firebaseui
 
-Provides OAuth utility functions under $tw.utils.oauth
+Provides FirebaseUI functions under $tw.utils.firebaseui
 
 \*/
 (function (global) { if (typeof window !== 'undefined') {
@@ -13,53 +13,25 @@ Provides OAuth utility functions under $tw.utils.oauth
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
-var urlParams;
-
-var defaultConfig = {
-  provider_id: 'github',
-  client_id: 'e31081bbe6c4c22c45a5',
-  client_secret: '419168692184321b9b3f5e0d2561f83e90255af5',
-  authorization_url: 'https://github.com/login/oauth/authorize',
-  redirect_uri: 'https://ustuehler.github.io/hack/#GitHubAuthCallback'
-};
-
-var OAuth2 = require('simple-oauth2');
-var openPopup = require('oauth-open');
-//var jsonp = require('jsonp');
-
-function getClient() {
-	return OAuth2;
+// FirebaseUI config.
+function getUIConfig() {
+  return {
+    signInSuccessUrl: 'https://ustuehler.girhub.io/#SignInSuccess',
+    signInOptions: [
+      // Leave the lines as is for the providers you want to offer your users.
+      //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+      //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+      firebase.auth.GithubAuthProvider.PROVIDER_ID
+      //firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+    ],
+    // Terms of service url.
+    tosUrl: 'https://ustuehler.girhub.io/#TermsOfService'
+  };
 }
 
-console.log('Loaded simple-oauth2');
-console.log(getClient());
-
-var github = null;
-var config = {};
-
-// initialise may be called multiple times, but must be called before requestToken()
 function initialise(options) {
-  options = options || {};
-
-	if (!urlParams) {
-		urlParams = computeURLParams();
-  }
-
-  for (var attr in options) {
-    if (options.hasOwnProperty(attr)) {
-      config[attr] = options[attr];
-    }
-  }
-
-  // Update hardcoded defaults to current configuration
-  defaultConfig.client_id = $tw.wiki.getTiddlerText('$:/config/OAuth/ClientID') || defaultConfig.client_id;
-  defaultConfig.redirect_uri = $tw.wiki.getTiddlerText('$:/config/OAuth/RedirectURI') || defaultRedirectURI();
-
-  for (var attr in defaultConfig) {
-    if (!config[attr] && defaultConfig.hasOwnProperty(attr)) {
-      config[attr] = defaultConfig[attr];
-    }
-  }
 }
 
 function defaultRedirectURI() {
@@ -270,27 +242,8 @@ function getUserName() {
   return $tw.wiki.getTiddlerText('$:/status/OAuth/UserName');;
 }
 
-// ref: https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
-function computeURLParams() {
-	var match,
-			pl     = /\+/g,  // Regex for replacing addition symbol with a space
-			search = /([^&=]+)=?([^&]*)/g,
-			decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-			query  = window.location.search.substring(1);
-
-	var urlParams = {};
-	while (match = search.exec(query))
-		 urlParams[decode(match[1])] = decode(match[2]);
-	return urlParams;
-}
-
-exports.oauth = {
-	getClient: getClient,
-	getProvider: getProvider, // only for inspection
-  initialise: initialise,
-  requestToken: requestToken,
-  callback: callback,
-  getUserName: getUserName
+exports.firebaseui = {
+  initialise: initialise
 };
 
 }})(this);
