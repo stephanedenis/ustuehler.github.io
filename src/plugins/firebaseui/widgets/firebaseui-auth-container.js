@@ -29,9 +29,7 @@ var FirebaseUIAuthContainerWidget = function(parseTreeNode,options) {
 	this.initialise(parseTreeNode,options);
 };
 
-/*
- * Inherit from the base widget class
- */
+// Inherit from the base widget class
 FirebaseUIAuthContainerWidget.prototype = new Widget();
 
 /*
