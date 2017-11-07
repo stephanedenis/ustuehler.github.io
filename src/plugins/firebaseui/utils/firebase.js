@@ -23,6 +23,15 @@ var status = {
   ready: false
 };
 
+/*
+ * Resolves as soon as all the scripts in the HTML head are ready. This is
+ * necessary because this plugin adds <script> tags to the page template.
+ *
+ * Note that we ignore <link> tags here, so CSS may not be fully loaded yet.
+ */
+function allScriptsReady() {
+}
+
 exports.firebase = {
   getStatus: function() { return status; },
   initialise: function() {
