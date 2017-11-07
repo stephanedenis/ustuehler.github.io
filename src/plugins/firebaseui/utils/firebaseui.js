@@ -84,7 +84,7 @@ function initialise(options) {
         registerAuthStateListener();
         resolve();
       } else if (tries < 1) {
-        // Fail the initialisation of this module
+        // Indicate failure to initialise this module
         reject('gave up waiting for FirebaseUI to become ready');
       } else {
         // Try again later...
