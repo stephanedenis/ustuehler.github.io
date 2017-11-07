@@ -17,8 +17,9 @@ doesn't serve any useful purpose, otherwise.
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
-// Current runtime status of the Firebase subsystem in this plugin
+// Current status of the Firebase subsystem in this plugin
 var status = {
+  ok: true,
   ready: false
 };
 
