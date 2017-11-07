@@ -10,7 +10,6 @@ for the second and all following instances.
 
 \*/
 (function (global) {
-
 "use strict";
 /*jslint node: true, browser: true */
 /*global $tw: false */
