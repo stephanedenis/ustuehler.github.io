@@ -1,8 +1,0 @@
-title: $:/plugins/ustuehler/firebaseui/macros/currentUser
-caption: currentUser
-created: 20171025225118792
-modified: 20171101205007857
-tags: $:/tags/Macro
-type: text/vnd.tiddlywiki
-
-\define currentUserTiddler() $:/status/OAuth/User
