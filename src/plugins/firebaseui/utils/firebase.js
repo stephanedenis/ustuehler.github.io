@@ -43,12 +43,11 @@ var allScriptsReady = function() {
   }
 
   if (scriptNodes.length == 0) {
-    throw new Error('No <script> tags for Firebase?');
+    throw new Error('No <script> tags for Firebase in the DOM?');
   }
 
   return new Promise(function(resolve, reject) {
-
-    if (allReady) {
+    if (allReady()) {
       resolve(scriptNodes);
     } else {
       // TODO: use addEventListenerOnce to wait for a onreadystatechange event
@@ -56,9 +55,6 @@ var allScriptsReady = function() {
         
       }, 500);
     }
-    //addEventListenerOnce(script, listener);
-    // TODO: detect when all relevant <script> tags in the <head> are loaded
-    resolve();
   });
 };
 
