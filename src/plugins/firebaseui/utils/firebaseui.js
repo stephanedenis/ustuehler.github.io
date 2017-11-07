@@ -77,9 +77,10 @@ function initialise(options) {
     var tries = 120;
     var poll;
 
-    // Check for progress in the initialisation of Firebase and FirebaseUI.
+    // Check for progress in the initialisation of Firebase and FirebaseUI
     poll = function() {
       if (typeof(firebase) !== 'undefined') {
+        // Complete the initialisation procedure
         registerAuthStateListener();
         resolve();
       } else if (tries < 1) {
