@@ -1,4 +1,4 @@
-title: $:/plugins/ustuehler/oauth/tiddlywiki5.html
+title: $:/plugins/ustuehler/firebaseui/tiddlywiki5.html
 tags: $:/tags/RawMarkup
 
 <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
