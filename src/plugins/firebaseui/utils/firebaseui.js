@@ -130,6 +130,7 @@ function registerAuthStateListener() {
 	});
 }
 
+// Reveal the Firebase UI and begin the sign-in flow, if needed
 function startUI(selector) {
   var ui = new firebaseui.auth.AuthUI(firebase.auth());
   var uiConfig = getUIConfig();
@@ -151,6 +152,7 @@ initialise().then(function() {
 // Exported functions should ensure proper initialisation, if necessary
 exports.firebaseui = {
   initialise: initialise,
+
   start: function(selector) {
     initialise().then(function(selector) {
       startUI(selector);
