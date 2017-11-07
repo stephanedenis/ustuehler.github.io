@@ -52,7 +52,9 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
   this.renderChildren(domNode, null);
   this.domNodes.push(domNode);
 
-  // "Start" the FirebaseUI
+  // "Start" the FirebaseUI. This will insert additional DOM nodes into the
+  // container element to let the user start the sign-in flow, unless the user
+  // is already signed in.
   this.log('Starting the FirebaseUI in #' + FIREBASEUI_AUTH_CONTAINER_ID);
   $tw.utils.firebaseui.start('#' + FIREBASEUI_AUTH_CONTAINER_ID);
 };
