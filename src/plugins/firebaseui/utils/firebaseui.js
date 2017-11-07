@@ -32,6 +32,16 @@ function getUIConfig() {
 }
 
 function initialise(options) {
+  return new Promise(function(resolve, reject) {
+    var poll = function() {
+      if (typeof(firebase) !== 'undefined') {
+        resolve();
+      }
+
+  setTimeout(loader, 500);
+};
+setTimeout(loader, 500);
+  });
 }
 
 function defaultRedirectURI() {
