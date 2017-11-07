@@ -13,6 +13,22 @@ Implements the complete flow of signing in with a GitHub account
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
+// FirebaseUI config.
+var uiConfig = {
+  signInSuccessUrl: 'https://ustuehler.girhub.io/#SignInSuccess',
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+    //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+    firebase.auth.GithubAuthProvider.PROVIDER_ID
+    //firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+  ],
+  // Terms of service url.
+  tosUrl: 'https://ustuehler.girhub.io/#TermsOfService'
+};
+
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
 
 var FirebaseUIAuthContainerWidget = function(parseTreeNode,options) {
@@ -33,6 +49,12 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 
   var domNode = document.createElement('div');
   domNode.setAttribute('id', 'firebaseui-auth-container');
+
+	// Initialize the FirebaseUI Widget using Firebase.
+	var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+	// The start method will wait until the DOM is loaded.
+	ui.start('#firebaseui-auth-container', uiConfig);
 
   parent.insertBefore(domNode, nextSibling);
   this.renderChildren(domNode, null);
