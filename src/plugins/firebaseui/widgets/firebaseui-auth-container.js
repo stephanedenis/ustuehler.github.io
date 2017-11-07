@@ -18,9 +18,7 @@ following occurrances.
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
-// HTML id attribute for the FirebaseUI auth container element. Changing the
-// value here and in stylesheets that use the old value should be sufficient,
-// as there should be no further references to it.
+// HTML id attribute for the FirebaseUI auth container element
 const FIREBASEUI_AUTH_CONTAINER_ID = 'firebaseui-auth-container';
 
 var Widget = require("$:/core/modules/widgets/widget.js").widget;
