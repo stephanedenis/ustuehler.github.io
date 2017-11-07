@@ -15,9 +15,16 @@ Alternatively, we could load everything.  That would be useful if we wanted to
 expose the Firebase library to users of this plugin, however the only goal for
 this plugin, for the moment, is to handle authentication with OAuth 2.0.
 
--->
-<!-- <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
 
+Once everything is loaded, automatically initialize Firebase. The configuration
+for this app can be found on the Authentication screen in the Firebase Console
+at https://console.firebase.google.com. Use the "Web Setup" button to reveal it,
+then copy & paste the snippet to replace the <script> tag below.
+
+PLEASE CREATE YOUR OWN APPLICATION ON FIREBASE, IF YOU WANT FORK THIS PLUGIN!
+
+-->
 <script>
   // Initialize Firebase
   var config = {
