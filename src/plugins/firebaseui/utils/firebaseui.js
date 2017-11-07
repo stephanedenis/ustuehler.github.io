@@ -18,8 +18,8 @@ function defaultRedirectURI() {
 
 // FirebaseUI config.
 function getUIConfig() {
-  var baseURI = window.location.href.replace(/\/*\?.*$/, '');
-  return baseURI + '#SignInSuccess';
+  var signInSuccessUrl = window.location.href.replace(/\/*\?.*$/, '');
+  signInSuccessUrl = signInSuccessUrl+ '#SignInSuccess';
 
   return {
     // TODO: 
