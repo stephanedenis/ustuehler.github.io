@@ -287,7 +287,7 @@ exports.firebaseui = {
 
       ui.start('#firebaseui-auth-container', uiConfig);
 
-      uiContainer.style.display = 'absolute';
+      uiContainer.style.display = 'block';
     });
   },
 
