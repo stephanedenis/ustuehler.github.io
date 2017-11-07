@@ -100,6 +100,7 @@ function initialise(options) {
 
 // registerAuthStateListener is called by initialise()
 function registerAuthStateListener() {
+  // XXX: Does this listener have to be removed again?
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
 			// User is signed in.
