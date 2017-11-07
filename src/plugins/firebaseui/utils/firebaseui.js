@@ -79,9 +79,10 @@ function initialise(options) {
 
     poll = function() {
       if (typeof(firebase) !== 'undefined') {
+        registerAuthStateListener();
         resolve();
       } else if (tries < 1) {
-        reject('gave up waiting for firebaseui to load');
+        reject('gave up waiting for FirebaseUI to become ready');
       } else {
         // Try again later...
         setTimeout(poll, 500);
@@ -94,6 +95,7 @@ function initialise(options) {
   });
 }
 
+// registerAuthStateListener is called by initialise()
 function registerAuthStateListener() {
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
@@ -144,10 +146,7 @@ function startUI(selector) {
  * has to complete first, as that guarantees that the symbols "firebase" and
  * "firebaseui" are defined everywhere.
  */
-initialise().then(function() {
-  console.log("Starting auth state listener.");
-  registerAuthStateListener();
-});
+initialise();
 
 // Exported functions should ensure proper initialisation, if necessary
 exports.firebaseui = {
