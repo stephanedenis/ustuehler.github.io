@@ -33,24 +33,24 @@ var status = {
  * the HTML page <head> element.  This promise only looks for <script> tags, so
  * CSS may not be fully loaded yet.
  */
-function allScriptsReady() {
+var allScriptsReady = function() {
   return new Promise(function(resolve, reject) {
     // TODO: detect when all relevant <script> tags in the <head> are loaded
     resolve();
   });
-}
+};
 
 /*
  * initialise resolves as soon as the required Firebase components are loaded
  * and initialised
  */
-function initialise() {
+var initialise = function() {
   return new Promise(function(resolve, reject) {
     allScriptsReady()
     .then(resolve)
     .catch(reject);
   });
-}
+};
 
 exports.firebase = {
   getStatus: function() { return status; },
