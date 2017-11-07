@@ -91,11 +91,9 @@ function registerAuthStateListener() {
         setText('$:/temp/OAuth/AccessToken', 'text', undefined, accessToken);
 			});
 		} else {
-      console.log('User is signed out.')
-
-			//document.getElementById('sign-in-status').textContent = 'Signed out';
-			//document.getElementById('sign-in').textContent = 'Sign in';
-			//document.getElementById('account-details').textContent = 'null';
+      $tw.wiki.deleteTiddler('$:/temp/OAuth/AccessToken');
+      $tw.wiki.deleteTiddler('$:/status/OAuth/User');
+      $tw.wiki.deleteTiddler('$:/status/OAuth/Provider');
 		}
 	}, function(error) {
     console.log('Error in sign-in flow.')
