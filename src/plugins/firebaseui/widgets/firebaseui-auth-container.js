@@ -29,8 +29,7 @@ FirebaseUIAuthContainerWidget.prototype = new Widget();
  */
 FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
   var self = this;
-  var qualify = Date.now() + '';
-  var id = 'firebaseui-auth-container-' + qualify;
+  var id = 'firebaseui-auth-container';
 
 	this.computeAttributes();
 	this.execute();
