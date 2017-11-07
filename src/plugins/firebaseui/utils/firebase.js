@@ -28,12 +28,19 @@ var status = {
 };
 
 /*
- * allScriptsReady is a promise which resolves as soon as all the scripts in
- * the HTML head are ready.  It's made necessary because this plugin adds new
- * <script> tags to the HTML page <head> element.  This promise only looks for
- * <script> tags, so CSS may not be fully loaded yet.
+ * allScriptsReady resolves as soon as all the scripts in the HTML head are
+ * ready.  It's made necessary because this plugin adds new <script> tags to
+ * the HTML page <head> element.  This promise only looks for <script> tags, so
+ * CSS may not be fully loaded yet.
  */
 function allScriptsReady() {
+}
+
+/*
+ * initialise resolves as soon as all Firebase components are loaded and
+ * initialised
+ */
+function initialise() {
 }
 
 exports.firebase = {
