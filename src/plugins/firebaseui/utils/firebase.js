@@ -27,6 +27,21 @@ var status = {
   ready: false
 };
 
+// Returns the collection of <script> nodes that are related to this plugin
+var pluginScriptNodes = function() {
+  var domNodes = [];
+
+  document.head
+    .querySelectorAll('script')
+    .forEach(function(x) {
+      if (x.src.indexOf("/firebasejs/") > 0) {
+        domNodes.push(x);
+      }
+    });
+
+  return domNodes;
+};
+
 /*
  * allScriptsReady resolves as soon as the required Firebase components
  * referenced in the HTML <head> are loaded.  The promise applies only to
@@ -34,6 +49,8 @@ var status = {
  */
 var allScriptsReady = function() {
   return new Promise(function(resolve, reject) {
+    
+    //addEventListenerOnce(script, listener);
     // TODO: detect when all relevant <script> tags in the <head> are loaded
     resolve();
   });
@@ -55,6 +72,18 @@ exports.firebase = {
   getStatus: function() { return status; },
   getConfig: function() { return config; },
   initialise: initialise
+};
+
+/*
+** Private utility functions for this module
+*/
+
+// ref: https://stackoverflow.com/questions/3393686/only-fire-an-event-once
+var addEventListenerOnce = function(target, type, listener) {
+  target.addEventListener(type, function fn(event) {
+    target.removeEventListener(type, fn);
+    listener(event);
+  });
 };
 
 }})(this);
