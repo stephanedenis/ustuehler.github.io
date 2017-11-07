@@ -19,8 +19,6 @@ doesn't serve any useful purpose, otherwise.
 
 // Current configuration of the Firebase subsystem in this plugin
 var config = {
-  ok: true,
-  ready: false
 };
 
 // Current status of the Firebase subsystem in this plugin
