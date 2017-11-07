@@ -111,6 +111,15 @@ function registerAuthStateListener() {
 	});
 }
 
+function start() {
+  var ui = new firebaseui.auth.AuthUI(firebase.auth());
+  var uiConfig = getUIConfig();
+  var uiContainer = document.querySelector('#firebaseui-auth-container');
+
+  uiContainer.style.display = 'block';
+  ui.start('#firebaseui-auth-container', uiConfig);
+}
+
 initialise().then(function() {
   console.log("Starting auth state listener.");
   registerAuthStateListener();
@@ -118,17 +127,10 @@ initialise().then(function() {
 
 exports.firebaseui = {
   initialise: initialise,
+  start: start,
 
   show: function() {
-    initialise().then(function() {
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
-      var uiConfig = getUIConfig();
-      var uiContainer = document.querySelector('#firebaseui-auth-container');
-
-      ui.start('#firebaseui-auth-container', uiConfig);
-
-      uiContainer.style.display = 'block';
-    });
+    initialise().then(start);
   },
 
   hide: function() {
