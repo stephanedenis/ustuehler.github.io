@@ -1,8 +1,8 @@
 /*\
-title: $:/plugins/ustuehler/firebaseui/utils/firebase.js
+title: $:/plugins/ustuehler/firebaseui/utils/loader.js
 type: application/javascript
 module-type: utils
-caption: firebase
+caption: jjloader
 
 Provides utility functions under $tw.utils.firebase, handles the initialisation
 of Firebase, and dispatches Firebase-related events such as auth state changes.
