@@ -20,7 +20,11 @@ function defaultRedirectURI() {
 function getUIConfig() {
   // 'https://ustuehler.girhub.io/#SignInSuccess'
   var signInSuccessUrl = window.location.href.replace(/\/*\?.*$/, '');
-  signInSuccessUrl = signInSuccessUrl+ '#SignInSuccess';
+  signInSuccessUrl = signInSuccessUrl + '#SignInSuccess';
+
+  // 'https://ustuehler.girhub.io/#SignInSuccess'
+  var tosUrl = window.location.href.replace(/\/*\?.*$/, '');
+  tosUrl = tosUrl + '#TermsOfService';
 
   return {
     signInSuccessUrl: signInSuccessUrl;
@@ -34,7 +38,7 @@ function getUIConfig() {
       //firebase.auth.PhoneAuthProvider.PROVIDER_ID
     ],
     // Terms of service url.
-    tosUrl: 'https://ustuehler.girhub.io/#TermsOfService'
+    tosUrl: tosUrl
   };
 }
 
