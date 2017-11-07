@@ -101,7 +101,7 @@ function initialise(options) {
 /*
  * registerAuthStateListener observes Auth State Changed events from Firebase
  * and reflects the changes in a set of system tiddlers.  The handler function
- * stays registered at all times.
+ * is never deregistered again.
  */
 function registerAuthStateListener() {
   // XXX: 
