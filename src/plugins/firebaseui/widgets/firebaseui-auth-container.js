@@ -132,6 +132,11 @@ FirebaseUIAuthContainerWidget.prototype.refresh = function(changedTiddlers) {
   return this.refreshChildren(changedTiddlers);
 };
 
+window.addEventListener('load', function() {
+	initApp()
+});
+
+
 exports["firebaseui-auth-container"] = FirebaseUIAuthContainerWidget;
 
 })(this);
