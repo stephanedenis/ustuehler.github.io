@@ -284,6 +284,7 @@ exports.firebaseui = {
     initialise().then(function(firebase) {
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       var uiConfig = getUIConfig();
+      var uiContainer = document.querySelector('#firebaseui-auth-container');
 
       ui.start('#firebaseui-auth-container', uiConfig);
 
@@ -292,7 +293,7 @@ exports.firebaseui = {
   },
 
   hide: function() {
-    var uiContainer = document.querySelector('.firebaseui-auth-container');
+    var uiContainer = document.querySelector('#firebaseui-auth-container');
 
     uiContainer.style.display = 'none';
   }
