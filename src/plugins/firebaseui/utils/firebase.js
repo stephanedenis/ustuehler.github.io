@@ -34,6 +34,10 @@ var status = {
  * CSS may not be fully loaded yet.
  */
 function allScriptsReady() {
+  return new Promise(function(resolve, reject) {
+    // TODO: detect when all <script> tags in the <head> are loaded
+    resolve();
+  });
 }
 
 /*
