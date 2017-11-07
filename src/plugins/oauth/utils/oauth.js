@@ -65,7 +65,7 @@ function initialise(options) {
 function defaultRedirectURI() {
   var baseURI = window.location.href.replace(/\/*\?.*$/, '');
 
-  return baseURI; // + '#GitHubAuthCallback';
+  return baseURI + '#GitHubAuthCallback';
 }
 
 function getProvider() {
@@ -100,11 +100,14 @@ function getProvider() {
 
 function requestToken() {
   var provider = getProvider();
+  var redirect_uri = config.redirect_uri;
 	var self = this;
+
+  console.log('redirect_uri: ' + redirect_uri);
 
 	// Authorization uri definition
 	var uri = provider.authorizationCode.authorizeURL({
-		redirect_uri: config.redirect_uri,
+		redirect_uri: redirect_uri,
 		scope: 'gists,repo',
 		state: '3(#0/!~',
 	});
