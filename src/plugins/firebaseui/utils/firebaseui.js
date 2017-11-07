@@ -118,7 +118,9 @@ initialise().then(function() {
 exports.firebaseui = {
   initialise: initialise,
   start: function(selector) {
-    initialise().then(startUI);
+    initialise().then(function(selector) {
+      startUI(selector);
+    });
   },
 };
 
