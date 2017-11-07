@@ -1,0 +1,4 @@
+title: $:/plugins/ustuehler/firebaseui/container
+tags: $:/tags/PageTemplate
+
+<div id="firebaseui-auth-container"></div>
