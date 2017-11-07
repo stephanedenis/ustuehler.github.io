@@ -50,10 +50,6 @@ function initialise(options) {
   }
 };
 
-setTimeout(loader, 500);
-  });
-}
-
 function defaultRedirectURI() {
   var baseURI = window.location.href.replace(/\/*\?.*$/, '');
 
