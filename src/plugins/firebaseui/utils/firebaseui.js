@@ -80,7 +80,7 @@ function initialise(options) {
     // Check for progress in the initialisation of Firebase and FirebaseUI
     poll = function() {
       if (typeof(firebase) !== 'undefined') {
-        // Complete the FirebaseUI initialisation
+        // Complete the initialisation of this module
         registerAuthStateListener();
         resolve();
       } else if (tries < 1) {
