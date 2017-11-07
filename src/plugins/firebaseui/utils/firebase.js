@@ -23,9 +23,7 @@ var status = {
 
 exports.firebase = {
   // only for manual introspection
-  getStatus: function() {
-    return status;
-  }
+  getStatus: function() { return status; }
 };
 
 }})(this);
