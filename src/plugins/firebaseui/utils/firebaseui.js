@@ -27,7 +27,7 @@ function getUIConfig() {
   tosUrl = tosUrl + '#TermsOfService';
 
   return {
-    signInSuccessUrl: signInSuccessUrl;
+    signInSuccessUrl: signInSuccessUrl,
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
       //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
