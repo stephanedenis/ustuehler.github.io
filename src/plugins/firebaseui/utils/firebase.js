@@ -17,6 +17,12 @@ doesn't serve any useful purpose, otherwise.
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
+// Current configuration of the Firebase subsystem in this plugin
+var config = {
+  ok: true,
+  ready: false
+};
+
 // Current status of the Firebase subsystem in this plugin
 var status = {
   ok: true,
@@ -34,6 +40,7 @@ function allScriptsReady() {
 
 exports.firebase = {
   getStatus: function() { return status; },
+  getConfig: function() { return config; },
   initialise: function() {
     return new Promise(function(resolve, reject) {
       allScriptsReady()
