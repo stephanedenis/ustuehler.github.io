@@ -1,10 +1,10 @@
 /*\
-title: $:/plugins/ustuehler/github-api/utils/firebaseui.js
+title: $:/plugins/ustuehler/firebaseui/utils/firebase.js
 type: application/javascript
 module-type: utils
-caption: firebaseui
+caption: firebase
 
-Provides FirebaseUI functions under $tw.utils.firebaseui
+Provides utility functions under $tw.utils.firebase
 
 \*/
 (function (global) { if (typeof window !== 'undefined') {
