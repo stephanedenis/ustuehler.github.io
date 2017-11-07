@@ -1,10 +1,9 @@
 /*\
-title: $:/plugins/ustuehler/muuri/macros/grid-item-class.js
+title: $:/plugins/ustuehler/firebaseui/macros/currentUser.js
 type: application/javascript
 module-type: macro
 tags: $:/tags/Macro
 
-Macro to generate a list of CSS classes for the curren tiddler view
+Expands to the currently authenticated user or empty if the user isn't authanticated
 
 \*/
-(function(){"use strict";exports.name="grid-item-class";exports.params=[{name:"default",default:"grid-item-content"}];exports.run=function(e){var r=this.wiki.getTiddler(this.getVariable("currentTiddler"));var i=e;if(!r){return i}var t=r.fields["view-class"];if(t){i+=" "+t}var a=r.fields["span"];if(a){i+=" span-"+a}return i}})();
