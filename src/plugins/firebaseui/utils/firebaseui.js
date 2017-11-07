@@ -266,9 +266,14 @@ exports.firebaseui = {
       var uiConfig = getUIConfig();
 
       ui.start('#firebaseui-auth-container', uiConfig);
+
+      uiContainer.style.display = 'absolute';
     });
   },
   hide: function() {
+    var uiContainer = document.querySelector('.firebaseui-auth-container');
+
+    uiContainer.style.display = 'none';
   }
 };
 
