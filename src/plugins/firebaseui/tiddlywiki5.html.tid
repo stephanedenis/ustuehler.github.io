@@ -7,7 +7,7 @@ tags: $:/tags/RawMarkup
 <script type="text/javascript">
 	// FirebaseUI config.
 	var uiConfig = {
-		signInSuccessUrl: 'https://ustuehler.girhub.io/#SignInSuccess
+		signInSuccessUrl: 'https://ustuehler.girhub.io/#SignInSuccess',
 		signInOptions: [
 			// Leave the lines as is for the providers you want to offer your users.
 			firebase.auth.GoogleAuthProvider.PROVIDER_ID,
