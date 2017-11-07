@@ -87,14 +87,14 @@ function registerAuthStateListener() {
         setText('$:/status/OAuth/User', 'photo-url', undefined, photoURL);
         setText('$:/status/OAuth/User', 'caption', undefined, displayName);
 
+        setText('$:/temp/OAuth/AccessToken', 'text', undefined, accessToken);
         setText('$:/temp/OAuth/Provider', 'type', undefined, 'text/plain');
         setText('$:/temp/OAuth/Provider', 'text', undefined, providerData);
-        setText('$:/temp/OAuth/AccessToken', 'text', undefined, accessToken);
 			});
 		} else {
-      $tw.wiki.deleteTiddler('$:/temp/OAuth/AccessToken');
       $tw.wiki.deleteTiddler('$:/status/OAuth/User');
-      $tw.wiki.deleteTiddler('$:/status/OAuth/Provider');
+      $tw.wiki.deleteTiddler('$:/temp/OAuth/AccessToken');
+      $tw.wiki.deleteTiddler('$:/temp/OAuth/Provider');
 		}
 	}, function(error) {
     console.log('Error in sign-in flow.')
