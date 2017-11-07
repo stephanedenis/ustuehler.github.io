@@ -41,10 +41,18 @@ function getBaseUrl() {
   return window.location.href.replace(/\/*\?.*$/, '');
 }
 
+/*
+ * getSignInSuccessUrl returns the URL to which the user will be redirected
+ * after she signed in.
+ */
 function getSignInSuccessUrl() {
   return this.getBaseUrl() + '#SignInSuccess';
 }
 
+/*
+ * getTermsOfServiceUrl returns the URL for the "Terms of Service" link in
+ * Firebase UI.
+ */
 function getTermsOfServiceUrl() {
   return this.getBaseUrl() + '#TermsOfService';
 }
@@ -129,6 +137,12 @@ function startUI(selector) {
   ui.start(selector, uiConfig);
 }
 
+/*
+ * Register a global listener for auth state change events. The listener will
+ * mirror any auth state changes in a set of system tiddlers.  Initialisation
+ * has to complete first, as that guarantees that the symbols "firebase" and
+ * "firebaseui" are defined everywhere.
+ */
 initialise().then(function() {
   console.log("Starting auth state listener.");
   registerAuthStateListener();
