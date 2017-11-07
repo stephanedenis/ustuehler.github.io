@@ -37,6 +37,7 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 
   var domNode = document.createElement('div');
   domNode.setAttribute('id', id);
+  this.domNodes.push(domNode);
 
   $tw.utils.firebaseui.start('#' + id);
 };
