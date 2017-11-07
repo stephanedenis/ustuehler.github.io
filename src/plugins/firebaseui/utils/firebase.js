@@ -4,7 +4,8 @@ type: application/javascript
 module-type: utils
 caption: firebase
 
-Provides utility functions under $tw.utils.firebase
+Provides utility functions under $tw.utils.firebase. This module is only
+available if the window variable is defined.
 
 \*/
 (function (global) { if (typeof window !== 'undefined') {
@@ -13,7 +14,12 @@ Provides utility functions under $tw.utils.firebase
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
+var 
+
 exports.firebase = {
+  ready: function() {
+    status.
+  }
 };
 
 }})(this);
