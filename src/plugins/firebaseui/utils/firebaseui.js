@@ -127,17 +127,9 @@ initialise().then(function() {
 
 exports.firebaseui = {
   initialise: initialise,
-  start: start,
-
-  show: function() {
+  start: function() {
     initialise().then(start);
   },
-
-  hide: function() {
-    var uiContainer = document.querySelector('#firebaseui-auth-container');
-
-    uiContainer.style.display = 'none';
-  }
 };
 
 }})(this);
