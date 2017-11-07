@@ -113,14 +113,13 @@ function requestToken() {
 	});
 
 	// Do the redirect
-	window.location.href = uri;
+	//window.location.href = uri;
 
   // If it fails because of CORS (net::ERR_ABORTED)...
 
   /*
    * Workaround #1: Popup window
   */
-  /*
 	openPopup(uri, function(err, code) {
     if (err) {
       console.log('openPopup (oauth-open): ' + err);
@@ -131,7 +130,6 @@ function requestToken() {
       callback(uri);
     }
 	});
-  */
 
   /*
    * Workaround #2: JSNOP
