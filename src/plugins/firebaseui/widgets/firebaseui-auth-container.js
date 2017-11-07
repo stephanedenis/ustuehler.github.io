@@ -36,9 +36,7 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 	this.computeAttributes();
 	this.execute();
 
-  parent.insertBefore(domNode, nextSibling);
-  this.renderChildren(domNode, null);
-  this.domNodes.push(domNode);
+  this.renderChildren(parent, nextSibling);
 };
 
 FirebaseUIAuthContainerWidget.prototype.registerAuthStateListener = function() {
