@@ -3,6 +3,9 @@ tags: $:/tags/RawMarkup
 
 <!--
 
+Load Firebase
+=============
+
 ref: https://firebase.google.com/docs/web/setup
 
 Selectively load the Firebase components which this plugin can currently make
@@ -25,7 +28,7 @@ for this app can be found on the Authentication screen in the Firebase Console
 at https://console.firebase.google.com. Use the "Web Setup" button to reveal it,
 then copy & paste the snippet to replace the <script> tag below.
 
-PLEASE CREATE YOUR OWN APPLICATION ON FIREBASE, IF YOU WANT FORK THIS PLUGIN!
+PLEASE CREATE YOUR OWN APPLICATION ON FIREBASE, IF YOU ARE FORKING THIS PLUGIN!
 
 -->
 <script>
@@ -40,6 +43,13 @@ PLEASE CREATE YOUR OWN APPLICATION ON FIREBASE, IF YOU WANT FORK THIS PLUGIN!
   };
   firebase.initializeApp(config);
 </script>
+<!--
 
+Load FirebaseUI
+===============
+
+-->
 <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
+<script>
+</script>
