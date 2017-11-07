@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/ustuehler/oauth/widgets/firebaseui-auth-container.js
+title: $:/plugins/ustuehler/firebaseui/widgets/firebaseui-auth-container.js
 type: application/javascript
 module-type: widget
 caption: firebaseui-auth-container
