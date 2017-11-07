@@ -35,7 +35,7 @@ var status = {
  */
 function allScriptsReady() {
   return new Promise(function(resolve, reject) {
-    // TODO: detect when all <script> tags in the <head> are loaded
+    // TODO: detect when all relevant <script> tags in the <head> are loaded
     resolve();
   });
 }
