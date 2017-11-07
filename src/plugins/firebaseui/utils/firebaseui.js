@@ -259,7 +259,17 @@ function getUserName() {
 }
 
 exports.firebaseui = {
-  initialise: initialise
+  initialise: initialise,
+  show: function() {
+    initialize().then(function() {
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      var uiConfig = getUIConfig();
+
+      ui.start('#firebaseui-auth-container', uiConfig);
+    });
+  },
+  hide: function() {
+  }
 };
 
 }})(this);
