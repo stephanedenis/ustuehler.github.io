@@ -23,7 +23,6 @@ function getUIConfig() {
   signInSuccessUrl = signInSuccessUrl+ '#SignInSuccess';
 
   return {
-    // TODO: 
     signInSuccessUrl: signInSuccessUrl;
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
