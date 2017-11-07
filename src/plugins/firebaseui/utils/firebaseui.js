@@ -86,8 +86,8 @@ function registerAuthStateListener() {
         setText('$:/status/OAuth/User', 'phone-number', undefined, phoneNumber);
         setText('$:/status/OAuth/User', 'photo-url', undefined, photoURL);
         setText('$:/status/OAuth/User', 'caption', undefined, displayName);
-        setText('$:/status/OAuth/Provider', 'type', undefined, 'text/plain');
-        setText('$:/status/OAuth/Provider', 'text', undefined, providerData);
+        setText('$:/temp/OAuth/Provider', 'type', undefined, 'text/plain');
+        setText('$:/temp/OAuth/Provider', 'text', undefined, providerData);
         setText('$:/temp/OAuth/AccessToken', 'text', undefined, accessToken);
 			});
 		} else {
