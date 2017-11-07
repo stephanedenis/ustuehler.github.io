@@ -116,7 +116,6 @@ function start() {
   var uiConfig = getUIConfig();
   var uiContainer = document.querySelector('#firebaseui-auth-container');
 
-  uiContainer.style.display = 'block';
   ui.start('#firebaseui-auth-container', uiConfig);
 }
 
