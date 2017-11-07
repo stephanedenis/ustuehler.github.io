@@ -42,28 +42,6 @@ function getUIConfig() {
   };
 }
 
-// Wait until the firebase <script> tag is loaded
-function initialise(options) {
-  return new Promise(function(resolve, reject) {
-    var tries = 120;
-    var poll;
-
-    poll = function() {
-      if (typeof(firebase) !== 'undefined') {
-        resolve();
-      } else if (tries < 1) {
-        reject();
-      } else {
-        // Try again later...
-        setTimeout(poll, 500);
-      }
-    };
-
-    // Set the initial timeout
-    setTimeout(poll, 500);
-  });
-}
-
 /*
 function getProvider() {
 	if (github) {
@@ -276,10 +254,33 @@ function getUserName() {
   return $tw.wiki.getTiddlerText('$:/status/OAuth/UserName');;
 }
 
+// Wait until the firebase <script> tag is loaded
+function initialise(options) {
+  return new Promise(function(resolve, reject) {
+    var tries = 120;
+    var poll;
+
+    poll = function() {
+      if (typeof(firebase) !== 'undefined') {
+        resolve();
+      } else if (tries < 1) {
+        reject();
+      } else {
+        // Try again later...
+        setTimeout(poll, 500);
+      }
+    };
+
+    // Set the initial timeout
+    setTimeout(poll, 500);
+  });
+}
+
 exports.firebaseui = {
   initialise: initialise,
+
   show: function() {
-    initialize().then(function() {
+    initialize().then(function(firebase) {
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       var uiConfig = getUIConfig();
 
@@ -288,6 +289,7 @@ exports.firebaseui = {
       uiContainer.style.display = 'absolute';
     });
   },
+
   hide: function() {
     var uiContainer = document.querySelector('.firebaseui-auth-container');
 
