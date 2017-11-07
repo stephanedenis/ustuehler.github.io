@@ -133,7 +133,7 @@ FirebaseUIAuthContainerWidget.prototype.refresh = function(changedTiddlers) {
 };
 
 window.addEventListener('load', function() {
-	initApp()
+	registerAuthStateListener();
 });
 
 
