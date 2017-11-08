@@ -1,8 +1,570 @@
 title: firebaseui/v0.1.0-current
 caption: >0.1.0
 tags: $:/tags/ReleaseNotes
-created: 20171108065218
-modified: 20171108065218
-released: 20171108065218
+created: 20171108134022
+modified: 20171108134022
+released: 20171108134022
 
-No changes between version 0.1.0 and HEAD.
+Changes between version 0.1.0 and HEAD:
+
+```
+new file mode 100644
+--- /dev/null
++++ b/src/plugins/firebaseui/UserViewTemplate.tid
+@@ -0,0 +1,10 @@
++title: $:/plugins/ustuehler/firebaseui/UserViewTemplate
++
++|!UID |{{$:/status/OAuth/User!!uid}} |
++|!Display Name |{{$:/status/OAuth/User!!display-name}} |
++|!Email Address |{{$:/status/OAuth/User!!email}} |
++|!Email Verified |{{$:/status/OAuth/User!!email-verified}} |
++|!Phone Number |{{$:/status/OAuth/User!!phone-number}} |
++|!Photo URL |{{$:/status/OAuth/User!!photo-url}} |
++|!Access Token |$:/temp/OAuth/AccessToken |
++|!Provider Data |$:/status/OAuth/Provider |
+\ No newline at end of file
+--- a/src/plugins/firebaseui/tiddlywiki5.html.tid
++++ b/src/plugins/firebaseui/tiddlywiki5.html.tid
+@@ -1,39 +1,6 @@
+ title: $:/plugins/ustuehler/firebaseui/tiddlywiki5.html
+ tags: $:/tags/RawMarkup
+ 
+-<!--
+-
+-Load Firebase
+-=============
+-
+-ref: https://firebase.google.com/docs/web/setup
+-
+-Selectively load the Firebase components which this plugin can currently make
+-use of, and then initialise them automatically.
+-
+--->
+-<script class="firebase" src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
+-<script class="firebase" src="https://www.gstatic.com/firebasejs/4.6.1/firebase-auth.js"></script>
+-<!--
+-
+-Alternatively, we could load everything.  That would be useful if we wanted to
+-expose the Firebase library to users of this plugin, however the only goal for
+-this plugin, for the moment, is to handle authentication with OAuth 2.0.
+-
+-<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+--->
+-<!--
+-
+-Load FirebaseUI
+-===============
+-
+--->
++<!-- FirebaseUI -->
+ <script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
+-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
+-<!--
+-
+--->
+-<script>
+-  // Initialize FirebaseUI
+-  //TODO
+-</script>
+\ No newline at end of file
++<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />
+\ No newline at end of file
+deleted file mode 100644
+--- a/src/plugins/firebaseui/utils/firebase.js
++++ /dev/null
+@@ -1,175 +0,0 @@
+-/*\
+-title: $:/plugins/ustuehler/firebaseui/utils/firebase.js
+-type: application/javascript
+-module-type: utils
+-caption: firebase
+-
+-Provides utility functions under $tw.utils.firebase, handles the initialisation
+-of Firebase, and dispatches Firebase-related events such as auth state changes.
+-
+-This module is only available if the window variable is defined, because it
+-doesn't serve any useful purpose, otherwise.
+-
+-\*/
+-(function (global) { if (typeof window !== 'undefined') {
+-
+-"use strict";
+-/*jslint node: true, browser: true */
+-/*global $tw: false */
+-
+-/*
+-** Firebase application configuration
+-*/
+-
+-/*
+- * The configuration for this app can be found on the Authentication screen in
+- * the Firebase Console at https://console.firebase.google.com. Use the "Web
+- * Setup" button to reveal it, then copy & paste the values below.
+- */
+-var config = {
+-  apiKey: "AIzaSyBi0evv3BXi4d34P85PcDxlBLnvmjZuEZI",
+-  authDomain: "tw5-github.firebaseapp.com",
+-  databaseURL: "https://tw5-github.firebaseio.com",
+-  projectId: "tw5-github",
+-  storageBucket: "tw5-github.appspot.com",
+-  messagingSenderId: "898278138051"
+-};
+-
+-/*
+-** Current status of this plugin component
+-*/
+-
+-var status = {
+-  ok: true,
+-  ready: false,
+-  error: null,
+-  initialising: false
+-};
+-
+-var initialisingStatus = function() {
+-  return {
+-    ok: status.ok,
+-    ready: status.ready,
+-    initialising: true,
+-    error: status.error
+-  };
+-};
+-
+-var readyStatus = function() {
+-  return {
+-    ok: true,
+-    ready: true,
+-    initialising: false,
+-    error: null
+-  };
+-};
+-
+-var errorStatus = function(error) {
+-  return {
+-    ok: false,
+-    ready: false,
+-    initialising: false,
+-    error: error
+-  };
+-};
+-
+-/*
+-** Module functions
+-*/
+-
+-// Resolves when all required Firebase components are loaded
+-var requireFirebase = function() {
+-  // TODO
+-};
+-
+-// ref: https://stackoverflow.com/questions/3393686/only-fire-an-event-once
+-var addEventListenerOnce = function(target, type, listener) {
+-  target.addEventListener(type, function fn(event) {
+-    target.removeEventListener(type, fn);
+-    listener(event);
+-  });
+-};
+-
+-// firebaseIsReady resolves as soon as the firebase-app.js script is loaded
+-var firebaseIsReady = function() {
+-  var deadline = Date.now() + 60000; // one minute from now
+-  var interval = 500; // affects the polling frequency
+-  var allReady = function() {
+-    return typeof window.firebase !== 'undefined';
+-  }
+-
+-  return new Promise(function(resolve, reject) {
+-    var poll = function() {
+-      var now = Date.now();
+-      if (allReady()) {
+-        resolve();
+-      } else if (now < deadline) {
+-        setTimeout(poll, Math.min(deadline - now, interval));
+-      } else {
+-        reject(new Error('Firebase <script> tags was not loaded in time'));
+-      }
+-    };
+-
+-    // Invoke the poller function once, and then via timeout, maybe
+-    poll();
+-  });
+-};
+-
+-var readyEventListeners = [];
+-
+-var addReadyEventListener = function(listener) {
+-  readyEventListeners.push(listener);
+-};
+-
+-var dispatchReadyEvent = function() {
+-  while (readyEventListeners.length > 0) {
+-    var listener = readyEventListeners.pop();
+-    listener();
+-  }
+-};
+-
+-/*
+- * initialise resolves as soon as the required Firebase components are loaded
+- * and initialised
+- */
+-var initialise = function() {
+-  return new Promise(function(resolve, reject) {
+-    if (status.initialising) {
+-      addReadyEventListener(resolve);
+-      return;
+-    }
+-
+-    status = initialisingStatus();
+-    firebaseIsReady()
+-    .then(function() {
+-      // Initialise Firebase
+-      firebase.initializeApp(config); // XXX: only once?
+-      status = readyStatus();
+-      resolve(firebase);
+-      // Notify other callers of initialise
+-      dispatchReadyEvent();
+-    })
+-    .catch(function(err) {
+-      // Disable this component of the plugin
+-      status = errorStatus(err);
+-      reject(err);
+-    });
+-  });
+-};
+-
+-/*
+-** Module exports and initialisation
+-*/
+-
+-exports.firebase = {
+-  initialise: initialise,
+-
+-  // for debugging
+-  status: function() { return status; },
+-};
+-
+-initialise().then(function() {
+-  console.log('Firebase initialised');
+-});
+-
+-}})(this);
+--- a/src/plugins/firebaseui/utils/firebaseui.js
++++ b/src/plugins/firebaseui/utils/firebaseui.js
+@@ -14,15 +14,41 @@ Provides FirebaseUI functions under $tw.utils.firebaseui
+ /*global $tw: false */
+ 
+ /*
++** Constants
++*/
++
++const USER_NAME_FIELD = 'display-name';
++const USER_NAME_ANONYMOUS = 'anonymous';
++
++const STATUS_USER_TIDDLER = '$:/status/OAuth/User';
++const STATUS_PROVIDER_TIDDLER = '$:/status/OAuth/Provider';
++
++const TEMP_ACCESS_TOKEN_TIDDLER = '$:/temp/OAuth/AccessToken';
++
++const CURRENT_USER_TEMPLATE = '$:/plugins/ustuehler/firebaseui/UserViewTemplate';
++
++/*
+ ** Current state of this plugin component
+ */
+ 
+ var state = {
+ 	readyEventListeners: [],
+ 	signInSuccessListeners: [],
++  firebase: null,
+   authUI: null
+ };
+ 
++var addReadyEventListener = function(listener) {
++  state.readyEventListeners.push(listener);
++};
++
++var dispatchReadyEvent = function() {
++  while (state.readyEventListeners.length > 0) {
++    var listener = state.readyEventListeners.pop();
++    listener();
++  }
++};
++
+ function getAuthUI() {
+   if (!state.authUI) {
+     state.authUI = new firebaseui.auth.AuthUI(firebase.auth());
+@@ -42,23 +68,12 @@ function dispatchSignInSuccessEvent() {
+ 	state.signInSuccessListeners = [];
+ }
+ 
+-var addReadyEventListener = function(listener) {
+-  state.readyEventListeners.push(listener);
+-};
+-
+-var dispatchReadyEvent = function() {
+-  while (state.readyEventListeners.length > 0) {
+-    var listener = state.readyEventListeners.pop();
+-    listener();
+-  }
+-};
+-
+ /*
+ ** FirebaseUI configuration
+ */
+ 
+-// getUIConfig generates a configuration hash for Firebase UI
+-function getUIConfig() {
++// getAuthUIConfig generates a configuration hash for Firebase UI
++function getAuthUIConfig() {
+   var signInFlow = getSignInFlow();
+   var signInSuccessUrl = getSignInSuccessUrl();
+   var tosUrl = getTermsOfServiceUrl();
+@@ -123,17 +138,19 @@ function getSignInFlow() {
+ 
+ var status = {
+   ok: true,
+-  ready: false,
+   error: null,
+-  initialising: false
++  ready: false,
++  initialising: false,
++  signedIn: false
+ };
+ 
+ var initialisingStatus = function() {
+   return {
+     ok: status.ok,
++    error: status.error,
+     ready: status.ready,
+     initialising: true,
+-    error: status.error
++    signedIn: status.signedIn
+   };
+ };
+ 
+@@ -142,7 +159,8 @@ var readyStatus = function() {
+     ok: true,
+     ready: true,
+     initialising: false,
+-    error: null
++    error: null,
++    signedIn: status.signedIn
+   };
+ };
+ 
+@@ -151,7 +169,28 @@ var errorStatus = function(error) {
+     ok: false,
+     ready: false,
+     initialising: false,
+-    error: error
++    error: error,
++    signedIn: status.signedIn
++  };
++};
++
++var signedInStatus = function() {
++  return {
++    ok: status.ok,
++    error: status.error,
++    ready: status.ready,
++    initialising: status.initialising,
++    signedIn: true
++  };
++};
++
++var signedOutStatus = function() {
++  return {
++    ok: status.ok,
++    error: status.error,
++    ready: status.ready,
++    initialising: status.initialising,
++    signedIn: false
+   };
+ };
+ 
+@@ -159,60 +198,93 @@ var errorStatus = function(error) {
+ ** Module functions
+ */
+ 
+-function getUserName() {
+-  return $tw.wiki.getTiddlerText('$:/status/OAuth/UserName');;
++/*
++ * addAuthStateChangedListener observes Auth State Changed events from Firebase
++ * and reflects the changes in a set of system tiddlers.
++ */
++function addAuthStateChangedListener(listener) {
++	state.firebase.auth().onAuthStateChanged(function(user) {
++    if (user) {
++      // User is signed in.
++      listener({
++        'display-name': user.displayName,
++        'first-name': user.displayName.split(' ')[0],
++        'uid': user.uid,
++        'email': user.email,
++        'email-verified': user.emailVerified,
++        'photo-url': user.photoURL,
++        'phone-number': user.phoneNumber
++      }, user);
++    } else {
++      // User is signed out.
++      listener(null);
++    }
++  });
+ }
+ 
+-// Check if all initialisation preconditions are fullfilled
+-function dependenciesReady() {
+-  return typeof(firebase) !== 'undefined' && typeof(firebaseui) !== 'undefined';
++// Updates the tiddler that holds information about the authenticated user
++function setCurrentUser(user, accessToken, firebaseUser) {
++  $tw.wiki.deleteTiddler(STATUS_PROVIDER_TIDDLER);
++
++  if (user) {
++    // User is signed in.
++    status = signedInStatus();
++
++    for (var field in user) {
++      if (user.hasOwnProperty(field)) {
++        $tw.wiki.setText(STATUS_USER_TIDDLER, field, undefined, user[field]);
++      }
++    }
++
++    $tw.wiki.setText(TEMP_ACCESS_TOKEN_TIDDLER, 'text', undefined, accessToken);
++
++    if (firebaseUser) {
++      var providerData = firebaseUser.providerData;
++      var text = JSON.stringify(providerData, undefined, '  ');
++
++      $tw.wiki.setText(STATUS_PROVIDER_TIDDLER, 'type', undefined, 'application/json');
++      $tw.wiki.setText(STATUS_PROVIDER_TIDDLER, 'text', undefined, text);
++    }
++  } else {
++    // User is signed out.
++    status = signedOutStatus();
++
++    $tw.wiki.deleteTiddler(TEMP_ACCESS_TOKEN_TIDDLER);
++    $tw.wiki.deleteTiddler(STATUS_USER_TIDDLER);
++  }
++
++  $tw.wiki.setText(STATUS_USER_TIDDLER, 'text', undefined, '{{||' + CURRENT_USER_TEMPLATE + '}}');
+ }
+ 
+ /*
+- * registerAuthStateListener observes Auth State Changed events from Firebase
++ * authStateChangedListener observes Auth State Changed events from Firebase
+  * and reflects the changes in a set of system tiddlers.
+  */
+-function registerAuthStateListener() {
+-	firebase.auth().onAuthStateChanged(function(user) {
+-		if (user) {
+-			// User is signed in.
+-			var displayName = user.displayName;
+-      var firstName = user.displayName.split(' ')[0];
+-			var email = user.email;
+-			var emailVerified = user.emailVerified;
+-			var photoURL = user.photoURL;
+-			var uid = user.uid;
+-			var phoneNumber = user.phoneNumber;
+-			var providerData = user.providerData;
+-
+-			user.getIdToken().then(function(accessToken) {
+-        $tw.wiki.setText('$:/temp/OAuth/Provider', 'type', undefined, 'text/plain');
+-        $tw.wiki.setText('$:/temp/OAuth/Provider', 'text', undefined, providerData);
+-        $tw.wiki.setText('$:/temp/OAuth/AccessToken', 'text', undefined, accessToken);
+-
+-        $tw.wiki.setText('$:/status/OAuth/User', 'uid', undefined, uid);
+-        $tw.wiki.setText('$:/status/OAuth/User', 'email', undefined, email);
+-        $tw.wiki.setText('$:/status/OAuth/User', 'email-verified', undefined, emailVerified);
+-        $tw.wiki.setText('$:/status/OAuth/User', 'phone-number', undefined, phoneNumber);
+-        $tw.wiki.setText('$:/status/OAuth/User', 'photo-url', undefined, photoURL);
+-        $tw.wiki.setText('$:/status/OAuth/User', 'caption', undefined, displayName);
+-			});
+-		} else {
+-      $tw.wiki.deleteTiddler('$:/temp/OAuth/AccessToken');
+-      $tw.wiki.deleteTiddler('$:/temp/OAuth/Provider');
+-      $tw.wiki.deleteTiddler('$:/status/OAuth/User');
+-		}
+-	}, function(error) {
+-    console.log('Error in sign-in flow reported by FirebaseUI:')
+-		console.log(error);
+-	});
++function authStateChangedListener(user, firebaseUser) {
++  firebaseUser.getIdToken().then(function(accessToken) {
++    setCurrentUser(user, accessToken, firebaseUser);
++  })
++  .catch(function(error) {
++    setCurrentUser(null);
++    $tw.utils.error(error);
++  });
++}
++
++function getUserName() {
++  var user = $tw.wiki.getTiddler(STATUS_USER_TIDDLER);
++
++  if (user && user.fields[USER_NAME_FIELD]) {
++    return user.fields[USER_NAME_FIELD];
++  } else {
++    return USER_NAME_ANONYMOUS;
++  }
+ }
+ 
+ // Reveal FirebaseUI and begin the sign-in flow if the user is signed out
+ function startUI(selector, config) {
+   var ui = getAuthUI();
+ 
+-  config = config || getUIConfig();
++  config = config || getAuthUIConfig();
+ 
+   console.log('Starting the sign-in flow');
+   ui.start(selector, config);
+@@ -229,6 +301,7 @@ function removeUI(selector) {
+ */
+ 
+ exports.firebaseui = {
++  status: function() { return status; },
+   initialise: initialise,
+   addReadyEventListener: addReadyEventListener,
+   addSignInSuccessListener: addSignInSuccessListener,
+@@ -249,14 +322,14 @@ var firebaseuiIsReady = function() {
+   var deadline = Date.now() + 60000; // one minute from now
+   var interval = 500; // affects the polling frequency
+   var allReady = function() {
+-    return typeof window.firebaseui !== 'undefined';
++    return typeof(window.firebaseui) !== 'undefined';
+   }
+ 
+   return new Promise(function(resolve, reject) {
+     var poll = function() {
+       var now = Date.now();
+       if (allReady()) {
+-        resolve();
++        resolve(firebaseui);
+       } else if (now < deadline) {
+         setTimeout(poll, Math.min(deadline - now, interval));
+       } else {
+@@ -281,12 +354,20 @@ function initialise(options) {
+     }
+ 
+     status = initialisingStatus();
+-    firebaseuiIsReady()
+-    .then($tw.utils.firebase.initialise())
+-    .then(function() {
++    $tw.utils.firebase.initialise()
++    .then(function(firebase) {
++      state.firebase = firebase;
++    })
++    .then(firebaseuiIsReady())
++    .then(function(_firebaseui) {
++      // React to all auth state changes from Firebase
++      addAuthStateChangedListener(authStateChangedListener);
++
++      // This component is ready to be used by others
+       status = readyStatus();
+-      resolve(firebaseui);
+-      // Notify other callers of initialise
++
++      // Notify all callers of initialise
++      resolve(_firebaseui);
+       dispatchReadyEvent();
+     })
+     .catch(function(err) {
+```
