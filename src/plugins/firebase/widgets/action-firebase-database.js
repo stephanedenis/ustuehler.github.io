@@ -70,14 +70,26 @@ ActionFirebaseDatabaseWidget.prototype.refresh = function(changedTiddlers) {
 /*
  * Fetch a tiddler's fields from the database
  */
-var fetchTiddlerFields = function(database, title) {
+var databaseFetchFields = function(database, title) {
   var encodedTitle = encodeTitle(title);
 
   return new Promise(function (resolve, reject) {
     return database.ref(DATABASE_TIDDLER_PREFIX + encodedTitle)
       .once('value') // Read the value once
       .then(function(snapshot) {
-        resolve(snapshot.val());
+        /*
+        var val = snapshot.val();
+        var fields = {};
+
+        for (var field in val) {
+          if (snapshot.hasOwnProperty(field)) {
+            fields[field] = val[field];
+          }
+        }
+        */
+        var fields = snapshot.val();
+
+        resolve(fields);
       });
   });
 }
@@ -85,7 +97,7 @@ var fetchTiddlerFields = function(database, title) {
 /*
  * Stores the tiddler's normal fields in the database
  */
-var storeTiddler = function(database, tiddler) {
+var databaseStore = function(database, tiddler) {
   return new Promise(function(resolve, reject) {
     var encodedTitle = encodeTitle(tiddler.fields.title);
 
@@ -93,7 +105,7 @@ var storeTiddler = function(database, tiddler) {
     database.ref(DATABASE_TIDDLER_PREFIX + encodedTitle)
     .set(filteredTiddlerFields(tiddler));
 
-    resolve();
+    resolve(tiddler);
   });
 }
 
@@ -156,7 +168,7 @@ ActionFirebaseDatabaseWidget.prototype.fetchTiddler = function(database, actionT
   var actionTimestamp = this.actionTimestamp;
 
   return new Promise(function(resolve, reject) {
-    fetchTiddlerFields(database, actionTiddler).then(function(fields) {
+    databaseFetchFields(database, actionTiddler).then(function(fields) {
       return new Promise(function(resolve, reject) {
         // Add or replace the actionTiddler
         var tiddler = addTiddler(actionTiddler, fields, actionTimestamp);
@@ -180,10 +192,10 @@ ActionFirebaseDatabaseWidget.prototype.storeTiddler = function(database, actionT
   return new Promise(function(resolve, reject) {
     var tiddler = $tw.wiki.getTiddler(actionTiddler);
 
-    storeTiddler(database, tiddler)
-    .then(function() {
+    databaseStore(database, tiddler)
+    .then(function(snapshot) {
       showSnackbar('Stored ' + actionTiddler);
-      resolve();
+      resolve(snapshot);
     })
     .catch(function(error) {
       $tw.utils.error(error);
@@ -198,14 +210,64 @@ ActionFirebaseDatabaseWidget.prototype.storeTiddler = function(database, actionT
  */
 ActionFirebaseDatabaseWidget.prototype.deleteTiddler = function(database, actionTiddler, showSnackbar) {
   return new Promise(function(resolve, reject) {
-    return fetchTiddlerFields(database, actionTiddler)
+    return databaseFetchFields(database, actionTiddler)
     .then(function(fields) {
-      var deletedFields = { X_FIREBASE_DELETED: 'yes' };
-      var deletedTiddler = newTiddler(actionTiddler, fields, deletedFields);
+      fields[X_FIREBASE_DELETED] = 'yes';
+      var deletedTiddler = newTiddler(actionTiddler, fields, true);
+      console.log('deletedTiddler:', deletedTiddler);
 
-      storeTiddler(database, deleteTiddler);
-      resolve([deletedTiddler, action]);
+      return databaseStore(database, deletedTiddler).then(function() {
+        showSnackbar('Deleted ' + actionTiddler);
+        resolve(deletedTiddler);
+      });
     });
+  });
+};
+
+// Resolves to the resulting tiddler, which does not necessarily exist
+ActionFirebaseDatabaseWidget.prototype.syncTiddlerCompare = function(fields) {
+  var actionTiddler = this.actionTiddler;
+  var snapshot = newTiddler(actionTiddler, fields, false);
+  var tiddler = $tw.wiki.getTiddler(actionTiddler);
+  var action = 'noop';
+
+  console.log('syncTiddlerCompare:', actionTiddler, 'fields:', fields);
+  console.log('tiddler:', tiddler, 'snapshot:', snapshot);
+
+  /*
+   * Decide what to do to synchronise the local and remote tiddlers based on
+   * the "modified" and "x-firebase-deleted" fields. The latter is a custom
+   * field introduced by this plugin.
+   */
+  if (!tiddler) {
+    console.log('Local tiddler does not exist');
+
+    if (snapshot.fields[X_FIREBASE_DELETED] == 'yes') {
+      action = 'noop';
+    } else {
+      action = 'fetch';
+    }
+  } else if (!snapshot.fields.modified || snapshot.fields.modified < tiddler.fields.modified) {
+    console.log('Local tiddler was modified more recently than snapshot');
+    console.log(snapshot.fields.modified, '<', tiddler.fields.modified);
+
+    action = 'store';
+  } else if (snapshot.fields.modified > tiddler.fields.modified) {
+    console.log('Snapshot tiddler was modified more recently than local');
+    console.log(snapshot.fields.modified, '>', tiddler.fields.modified);
+
+    if (snapshot.fields[X_FIREBASE_DELETED] == 'yes') {
+      console.log('snapshot.fields.deleted', snapshot.fields.deleted);
+
+      action = 'delete-local';
+    } else {
+      action = 'fetch';
+    }
+  }
+
+  return new Promise(function(resolve, reject) {
+    console.log('syncTiddler: Resolved', actionTiddler, 'with', action, 'action');
+    resolve([snapshot, action]);
   });
 };
 
@@ -214,47 +276,12 @@ ActionFirebaseDatabaseWidget.prototype.deleteTiddler = function(database, action
  */
 ActionFirebaseDatabaseWidget.prototype.syncTiddler = function(database, actionTiddler, showSnackbar) {
   var self = this;
-  var tiddler = $tw.wiki.getTiddler(actionTiddler);
 
-  fetchTiddlerFields(database, actionTiddler)
+  return databaseFetchFields(database, actionTiddler)
   .then(function(fields) {
-    console.log('sync: prefetched fields:', fields);
-
-    var snapshot = newTiddler(actionTiddler, fields, false);
-    var action = 'noop';
-
-    /*
-     * Decide what to do to synchronise the local and remote tiddlers based on
-     * the "modified" and "x-firebase-deleted" fields. The latter is a custom
-     * field introduced by this plugin.
-     */
-    if (!tiddler) {
-      console.log('!', tiddler);
-
-      action = 'delete-remote';
-    } else if (!snapshot.fields.modified || snapshot.fields.modified < tiddler.fields.modified) {
-      console.log('!', snapshot.fields.modified);
-      console.log(snapshot.fields.modified, '<', tiddler.fields.modified);
-
-      action = 'store';
-    } else if (snapshot.fields.modified > tiddler.fields.modified) {
-      console.log(snapshot.fields.modified, '>', tiddler.fields.modified);
-
-      if (snapshot.fields['x-firebase-deleted'] == 'yes') {
-        console.log('snapshot.fields.deleted', snapshot.fields.deleted);
-
-        action = 'delete-local';
-      } else {
-        action = 'fetch';
-      }
-    }
-
-    return new Promise(function(resolve, reject) {
-      console.log('syncTiddler: Resolved', actionTiddler, 'with', action, 'action');
-      resolve([snapshot, action]);
-    });
+    return self.syncTiddlerCompare(fields);
   })
-  .then(function(v) {
+  .then(function(v) { // Execute
     var snapshot = v[0], action = v[1];
     return new Promise(function(resolve, reject) {
       console.log('snapshot:', snapshot);
@@ -263,34 +290,39 @@ ActionFirebaseDatabaseWidget.prototype.syncTiddler = function(database, actionTi
       if (action == 'fetch') {
         // Local tiddler needs to be updated frmo database
         var op = self.fetchTiddler(database, actionTiddler, showSnackbar);
-        return op.then(function(tiddler) {
-           resolve([tiddler, action]);
+        return op.then(function(result) {
+          resolve([result, action]);
         });
       } else if (action == 'store') {
         // Remote tiddler in database needs to be updated from local
         var op = self.storeTiddler(database, actionTiddler, showSnackbar);
-        return op.then(function() {
-          resolve([snapshot, action]);
+        return op.then(function(result) {
+          resolve([result, action]);
         });
       } else if (action == 'delete-remote') {
         var op = self.deleteTiddler(database, actionTiddler, showSnackbar);
-        return op.then(function(deletedTiddler) {
-          resolve([deletedTiddler, action]);
+        return op.then(function(result) {
+          resolve([result, action]);
         });
       } else if (action == 'delete-local') {
         $tw.wiki.deleteTiddler(actionTiddler);
-        return resolve([snapshot, action]);
+        return resolve([null, action]);
       } else {
         // Local tiddler was already up-to-date
-        return resolve([snapshot, action]);
+        var tiddler = $tw.wiki.getTiddler(actionTiddler);
+
+        return resolve([tiddler, action]);
       }
     });
   })
-  .then(function(v) {
+  .then(function(v) { // Report
     var tiddler = v[0], action = v[1];
-    showSnackbar('Synchronised ' + tiddler.fields.title + ' with "' + action + '" action.');
+
+    console.log('tiddler:', tiddler, 'action:', action);
+    showSnackbar('Synchronised ' + actionTiddler + ' with "' + action + '" action.');
   })
   .catch(function(error) {
+    // TODO: Handle errors
     $tw.utils.error(error);
   });
 };
@@ -314,13 +346,13 @@ ActionFirebaseDatabaseWidget.prototype.invokeAction = function(triggeringWidget,
     var database = firebase.database();
 
     if (action === 'delete') {
-      self.deleteTiddler(database, actionTiddler, showSnackbar);
+      return self.deleteTiddler(database, actionTiddler, showSnackbar);
     } else if (action === 'fetch') {
-      self.fetchTiddler(database, actionTiddler, showSnackbar);
+      return self.fetchTiddler(database, actionTiddler, showSnackbar);
     } else if (action === 'store') {
-      self.storeTiddler(database, actionTiddler, showSnackbar);
+      return self.storeTiddler(database, actionTiddler, showSnackbar);
     } else if (action === 'sync') {
-      self.syncTiddler(database, actionTiddler, showSnackbar);
+      return self.syncTiddler(database, actionTiddler, showSnackbar);
     } else {
       $tw.utils.error(new Error(
         'Invalid action for action-firebase-database widget: "' + action

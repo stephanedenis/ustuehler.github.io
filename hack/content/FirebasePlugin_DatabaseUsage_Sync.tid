@@ -1,5 +1,5 @@
 created: 20171108143013772
-modified: 20171108170750277
+modified: 20171108185706753
 tags: FirebasePlugin FirebaseDatabase
 title: FirebasePlugin/DatabaseUsage/Sync
 type: text/vnd.tiddlywiki
@@ -11,7 +11,6 @@ type: text/vnd.tiddlywiki
 ''When'' the WikiUser invokes the "Sync" action
 
 <$button class="mdc-button mdc-button--raised">
-<$action-setfield $tiddler=<<jsonTiddler>> $timestamp="no" text=""/>
 <$action-firebase-database $action="sync" $tiddler="$:/temp/FirebasePlugin/DatabaseUsage/JSON" $snackbar=true/>
 Sync
 </$button>

@@ -2,9 +2,8 @@ caption: <<material-icon "cloud_upload">> {{$:/language/Buttons/GitHubWriteFile/
 created: 20171104130219319
 description: {{$:/language/Buttons/GitHubWriteFile/Hint}}
 list-after: $:/themes/ustuehler/material/ui/Buttons/clone
-modified: 20171104194150761
+modified: 20171108192406227
 span: 6
-tags: $:/tags/ViewToolbar/BottomLeft
 title: $:/plugins/ustuehler/github-api/ui/Buttons/write-file
 type: text/vnd.tiddlywiki
 
