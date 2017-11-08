@@ -1,0 +1,22 @@
+caption: ViewTemplate for Issues by Title
+created: 20171108062456925
+modified: 20171108064552164
+tags: IssueViewTemplate
+title: ImplicitIssueViewTemplate
+type: text/vnd.tiddlywiki
+
+\define tagTiddler() Issues
+\define isIssueTiddlerByTitle()
+[<currentTiddler>prefix[Issue]]
+ [<currentTiddler>suffix[Issue]] -[<currentTiddler>tag<tagTiddler>]
+\end
+
+<$list filter=<<isIssueTiddlerByTitle>>>
+''<$text text={{!!title}}/>'' is an [[issue|Issues]], as indicated by having `Issue` either as prefix or as suffix in its title.
+<$list filter="[<currentTiddler>!tag[Issues]]">
+This implies that it should also have the [[Issues]] tag.<br>
+<$button class="mdc-button">
+<$action-listops $tiddler=<<currentTiddler>> $field="tags" $subfilter="+[append[Issues]]"/>
+Add Issues Tag
+</$button>
+</$list>

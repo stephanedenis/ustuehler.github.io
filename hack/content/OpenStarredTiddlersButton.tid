@@ -1,0 +1,9 @@
+caption: Open Starred Tiddlers
+created: 20171108100349529
+filter: [list[$:/StarredTiddlers]sort[modified]]
+modified: 20171108101217789
+tags: $:/tags/TagDropdown
+title: OpenStarredTiddlersButton
+type: text/vnd.tiddlywiki
+
+{{||OpenRelatedTiddlersButton}}

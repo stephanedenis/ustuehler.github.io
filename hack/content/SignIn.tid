@@ -1,0 +1,10 @@
+caption: Sign-in
+created: 20171108034544440
+modified: 20171108060514307
+ref: $:/plugins/ustuehler/firebaseui/AuthContainer
+span: 4
+tags: FirebaseUIPlugin
+title: SignIn
+type: text/vnd.tiddlywiki
+
+<$transclude tiddler={{!!ref}}/>

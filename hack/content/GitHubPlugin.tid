@@ -1,0 +1,12 @@
+created: 20171108090424876
+modified: 20171108090706779
+tags: TiddlyWikiPlugins
+title: GitHubPlugin
+type: text/vnd.tiddlywiki
+
+This is actually two separate plugins, which may eventually be merged into one that would be called $:/plugins/ustuehler/github.
+
+See also:
+
+* $:/plugins/ustuehler/github-api
+* $:/plugins/ustuehler/github-pages

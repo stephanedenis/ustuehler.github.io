@@ -1,0 +1,14 @@
+caption: Open Related Tiddlers
+created: 20171108100148520
+filter: [tag{!!title}]
+modified: 20171108101120803
+tags: Buttons $:/tags/TagDropdown
+title: OpenRelatedTiddlersButton
+type: text/vnd.tiddlywiki
+
+<$button class="mdc-button">
+<$list filter={{!!filter}}>
+<$action-navigate $to=<<currentTiddler>> />
+</$list>
+{{!!caption}}
+</$button>

@@ -1,26 +1,31 @@
 caption: ViewTemplate for Questions
 created: 20171108022508526
 list-before: $:/themes/ustuehler/material/ui/ViewToolbar
-modified: 20171108024538608
-span: 12
+modified: 20171108095555463
+span: 6
 tags: $:/tags/ViewTemplate
 title: QuestionViewTemplate
 type: text/vnd.tiddlywiki
 
+\define hasRelatedQuestions()
+[tag<currentTiddler>tag[Questions]limit[1]]
+\end
 \define isQuestionTiddler()
-[<currentTiddler>prefix[HowTo]]
+[<currentTiddler>prefix[HowTo]] [<currentTiddler>get[caption]suffix[?]] +[limit[1]]
 \end
 
-<$list filter=<<isQuestionTiddler>>>
+<$list variable="_" filter=<<isQuestionTiddler>>>
 <div class="tc-tiddler-body">
 
-''<$text text={{!!title}}/>'' is a [[question|Questions]], as indicated by the `HowTo` prefix in its title.
-<$list filter="[<currentTiddler>!tag[Questions]]">
-This implies that it should also have the [[Questions]] tag.<br>
-<$button class="mdc-button">
-<$action-listops $tiddler=<<currentTiddler>> $field="tags" $subfilter="+[append[Questions]]"/>
-Add Questions Tag
-</$button>
+''{{!!title}}'' is a [[question|Questions]], as indicated by the `HowTo` prefix in its title, or because its caption ends with a question mark.
+{{||QuestionViewTemplate/Open}}
+
+<$list variable="_" filter=<<hasRelatedQuestions>>>
+
+! Related Questions
+
+{{||RelatedQuestionsTemplate}}
+
 </$list>
 
 </div>

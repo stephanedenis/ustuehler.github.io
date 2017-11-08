@@ -1,0 +1,28 @@
+caption: ViewTemplate for Feature by Title
+created: 20171108082400614
+list-before: $:/themes/ustuehler/material/ui/ViewToolbar
+modified: 20171108083656712
+span: 12
+tags: $:/tags/ViewTemplate
+title: ImplicitFeatureViewTemplate
+type: text/vnd.tiddlywiki
+
+\define titleSuffix() Feature
+\define tagTiddler() Features
+\define isFeatureTiddlerByTitle()
+[<currentTiddler>suffix<titleSuffix>]
+\end
+\define impliesTagTiddler()
+<$list filter="[<currentTiddler>!tag<tagTiddler>]">
+This implies that it should also have the <$link to<<tagTiddler>>><<tagTiddler>></$link> tag.<br>
+<$button class="mdc-button">
+<$action-listops $tiddler=<<currentTiddler>> $field="tags" $subfilter="+[append<tagTiddler>]"/>
+Add <<tagTiddler>> Tag
+</$button>
+</$list>
+\end
+
+<$list filter=<<isFeatureTiddlerByTitle>>>
+''<$text text={{!!title}}/>'' is a [[feature description|Features]], as indicated by its title ending in `Feature`.
+<<impliesTagTiddler>>
+</$list>

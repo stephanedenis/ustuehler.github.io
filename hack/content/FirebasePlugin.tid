@@ -1,0 +1,17 @@
+caption: Firebase Plugin
+created: 20171108084254123
+modified: 20171108084418036
+title: FirebasePlugin
+type: text/vnd.tiddlywiki
+
+\define pluginGroup() ustuehler
+\define pluginName() firebase
+\define pluginTitle() $:/plugins/$(pluginGroup)$/$(pluginName)$
+\define pluginTiddler(title) $(pluginTitle)$/$title$
+\define pluginDocPrefix() $(currentTiddler)$/
+
+<<pluginTitle>> &larr; Drag this link into another TiddlyWiki to install the plugin.
+
+Documentation tiddlers for this plugin:
+
+{{{ [prefix<pluginDocPrefix>] }}}

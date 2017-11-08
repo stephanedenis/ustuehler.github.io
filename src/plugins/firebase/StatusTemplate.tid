@@ -1,0 +1,5 @@
+title: $:/plugins/ustuehler/firebase/StatusTemplate
+
+|!ready |{{!!ready}} |
+|!initialising |{{!!initialising}} |
+|!signedIn |{{!!signedIn}} |

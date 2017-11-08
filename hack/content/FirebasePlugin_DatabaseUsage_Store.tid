@@ -1,0 +1,33 @@
+created: 20171108102902375
+modified: 20171108124103017
+tags: FirebasePlugin FirebaseDatabase
+title: FirebasePlugin/DatabaseUsage/Store
+type: text/vnd.tiddlywiki
+
+\define jsonTiddler() $:/temp/FirebasePlugin/DatabaseUsage/JSON
+
+''Given'' some valid JSON text
+
+<$edit-text tiddler=<<jsonTiddler>> field="text" default=""/>
+
+<$button class="mdc-button">
+<$action-setfield $tiddler=<<jsonTiddler>> text="""{
+  "title": "Test",
+  "text": "Not importtant"
+}"""/>
+Load Example JSON Text
+</$button>
+
+''And'' the WikiUser "{{$:/status/OAuth/User!!display-name}}" is authenticated
+
+''When'' the WikiUser invokes the "Save" action
+
+<$button class="mdc-button mdc-button--raised">
+<$action-setfield $tiddler=<<jsonTiddler>> type="application/json"/>
+<$action-firebase-database $action="store" $tiddler="$:/temp/FirebasePlugin/DatabaseUsage/JSON" $snackbar=true/>
+Save
+</$button>
+
+''Then'' a snackbar message indicating success appears
+
+[[Next|FirebasePlugin/DatabaseUsage/Fetch]]

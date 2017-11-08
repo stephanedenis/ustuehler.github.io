@@ -3,11 +3,13 @@
     "plugins": [
 	"tiddlywiki/filesystem",
         "tiddlywiki/highlight",
-	"ustuehler/github-api",
-	"ustuehler/caption",
 	"ustuehler/mdc-web-cdn",
 	"ustuehler/mdc",
-	"ustuehler/muuri"
+	"ustuehler/muuri",
+	"ustuehler/firebase",
+	"ustuehler/firebaseui",
+	"ustuehler/github-api",
+	"ustuehler/caption"
     ],
     "themes": [
 	"ustuehler/material"

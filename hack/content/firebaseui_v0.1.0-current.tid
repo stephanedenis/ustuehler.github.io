@@ -1,12 +1,8 @@
 title: firebaseui/v0.1.0-current
 caption: >0.1.0
 tags: $:/tags/ReleaseNotes
-created: 20171108055828
-modified: 20171108055828
-released: 20171108055828
+created: 20171108065218
+modified: 20171108065218
+released: 20171108065218
 
-Changes between version 0.1.0 and HEAD:
-
-```
-fatal: bad revision 'firebaseui/v0.1.0..HEAD'
-```
+No changes between version 0.1.0 and HEAD.

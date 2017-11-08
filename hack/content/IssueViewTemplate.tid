@@ -1,0 +1,29 @@
+caption: ViewTemplate for Issues
+created: 20171108060955241
+list-before: $:/themes/ustuehler/material/ui/ViewToolbar
+modified: 20171108064739504
+span: 12
+tags: ViewTemplates $:/tags/ViewTemplate
+title: IssueViewTemplate
+type: text/vnd.tiddlywiki
+
+\define titlePrefixOrSuffix() Issue
+\define tagTiddler() Issues
+\define isIssueTiddlerByTag()
+[<currentTiddler>tag<tagTiddler>]
+\end
+\define isIssueTiddlerByTitle()
+[<currentTiddler>prefix<titlePrefixOrSuffix>] [<currentTiddler>suffix<titlePrefixOrSuffix>] -[<tagTiddler>] -[<currentTiddler>tag<tagTiddler>]
+\end
+\define isIssueTiddler()
+$(isIssueTiddlerByTitle)$ $(isIssueTiddlerByTag)$
+\end
+
+<$list filter=<<isIssueTiddler>>>
+<div class="tc-tiddler-body">
+
+{{||ImplicitIssueViewTemplate}}
+{{||TaggedIssueViewTemplate}}
+
+</div>
+</$list>

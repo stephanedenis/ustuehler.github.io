@@ -1,8 +1,0 @@
-created: 20171108034544440
-modified: 20171108052041409
-ref: $:/plugins/ustuehler/firebaseui/AuthContainer
-tags: FirebaseUIPlugin
-title: FirebaseUIAuthContainer
-type: text/vnd.tiddlywiki
-
-<$transclude tiddler={{!!ref}}/>

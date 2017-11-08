@@ -1,0 +1,23 @@
+caption: ViewTemplate for Open Questions
+created: 20171108084728868
+list-before: $:/themes/ustuehler/material/ui/ViewToolbar
+modified: 20171108095352672
+span: 6
+tags: QuestionViewTemplate
+title: QuestionViewTemplate/Open
+type: text/vnd.tiddlywiki
+
+\define isOpenQuestionTiddler()
+[<currentTiddler>get[caption]suffix[?]]
+\end
+
+<$list filter=<<isOpenQuestionTiddler>>>
+It is an [[open question|OpenQuestions]] based on the question mark in its caption.
+</$list>
+<$list filter="[<currentTiddler>!tag[Questions]]">
+This implies that it should also have the [[Questions]] tag.<br>
+<$button class="mdc-button">
+<$action-listops $tiddler=<<currentTiddler>> $field="tags" $subfilter="+[append[Questions]]"/>
+Add Questions Tag
+</$button>
+</$list>

@@ -1,0 +1,11 @@
+caption: Update other StatusTiddlers on AuthStateChanged
+created: 20171108081801979
+modified: 20171108082304991
+tags: FirebaseUIPlugin Issues
+title: UpdateOtherStatusTiddlersOnAuthStateChangedIssue
+type: text/vnd.tiddlywiki
+
+When the FirebaseUIPlugin reacts to the `AuthStateChanged` event from Firebase, there are more tiddlers which it should updated.  For example:
+
+$:/status/UserName<br>
+$:/status/IsLoggedIn

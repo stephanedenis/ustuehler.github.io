@@ -1,0 +1,10 @@
+created: 20171108094456266
+modified: 20171108095301315
+title: OpenQuestions
+type: text/vnd.tiddlywiki
+
+<$list variable="question" filter="[tag[Questions]!sort[modified]]">
+<$list variable="openQuestion" filter="[<question>get[caption]suffix[?]]">
+<$link to=<<openQuestion>>><<openQuestion>></$link><br>
+</$list>
+</$list>

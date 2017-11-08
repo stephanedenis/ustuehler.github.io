@@ -1,6 +1,8 @@
 created: 20171107031951443
-modified: 20171107041310287
+modified: 20171108102224546
 title: SignInSuccess
 type: text/vnd.tiddlywiki
 
 You are signed in as <$link to={{$:/status/OAuth/User!!email}}>{{$:/status/OAuth/User!!email}}</$link>.
+
+{{OpenStarredTiddlersButton}}

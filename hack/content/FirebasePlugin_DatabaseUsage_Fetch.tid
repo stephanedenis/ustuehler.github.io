@@ -1,0 +1,28 @@
+created: 20171108104158514
+modified: 20171108104348790
+tags: FirebasePlugin FirebaseDatabase
+title: FirebasePlugin/DatabaseUsage/Fetch
+type: text/vnd.tiddlywiki
+
+
+
+''Given'' the WikiUser "{{$:/status/OAuth/User!!display-name}}" is authenticated
+
+''When'' the WikiUser invokes the "Load" action
+
+<$button class="mdc-button mdc-button--raised">
+Load
+</$button>
+
+''Then'' the message "Loaded." appears
+
+''And'' some JSON text
+
+```json
+{
+  "title": "Test",
+  "text": "Nothing important"
+}
+```
+
+[[Next|FirebasePlugin/DatabaseUsage/Store]]

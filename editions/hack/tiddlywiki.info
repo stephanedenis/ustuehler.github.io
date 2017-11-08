@@ -5,16 +5,15 @@
 	"tiddlywiki/filesystem",
         "tiddlywiki/highlight",
 	"tiddlywiki/railroad",
-	"ustuehler/github-api",
-	"ustuehler/github-pages",
-	"ustuehler/firebaseui",
-	"ustuehler/url",
-	"ustuehler/querystring",
-	"ustuehler/oauth",
-	"ustuehler/caption",
 	"ustuehler/mdc-web-cdn",
 	"ustuehler/mdc",
-	"ustuehler/muuri"
+	"ustuehler/muuri",
+	"ustuehler/firebase",
+	"ustuehler/firebaseui",
+	"ustuehler/github-api",
+	"ustuehler/github-pages",
+	"ustuehler/oauth",
+	"ustuehler/caption"
     ],
     "themes": [
 	"ustuehler/material"
