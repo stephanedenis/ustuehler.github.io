@@ -98,6 +98,14 @@ EOS
   printf '%s' "$new" >"$out"
 }
 
-make_buildinfo src/plugins/github-api github-api/v
+function make_plugins_buildinfo() {
+  local basedir="$1"
 
+  for plugin_dir in "$basedir"/*; do
+    plugin_name=$(basename "$plugin_dir")
+    make_buildinfo "$basedir"/$plugin_name $plugin_name/v
+  done
+}
+
+make_plugins_buildinfo src/plugins
 make_edition_buildinfo_tid hack/content/\$__BuildInfo.tid
