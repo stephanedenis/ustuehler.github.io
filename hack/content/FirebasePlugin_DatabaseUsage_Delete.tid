@@ -1,0 +1,25 @@
+created: 20171108170757873
+modified: 20171108170952858
+tags: FirebasePlugin FirebaseDatabase
+title: FirebasePlugin/DatabaseUsage/Delete
+type: text/vnd.tiddlywiki
+
+\define jsonTiddler() $:/temp/FirebasePlugin/DatabaseUsage/JSON
+
+''Given'' the WikiUser "{{$:/status/OAuth/User!!display-name}}" is authenticated
+
+''When'' the WikiUser invokes the "Delete" action
+
+<$button class="mdc-button mdc-button--raised">
+<$action-firebase-database $action="delete" $tiddler="$:/temp/FirebasePlugin/DatabaseUsage/JSON" $snackbar=true/>
+Delete
+</$button>
+
+''Then'' the snackbar indicates success
+
+''And'' the [[previously stored|FirebasePlugin/DatabaseUsage/Store]] JSON text disappears
+
+{{$:/temp/FirebasePlugin/DatabaseUsage/JSON}}
+
+[[Previous|FirebasePlugin/DatabaseUsage/Sync]] |
+[[Next|FirebasePlugin/DatabaseUsage]]

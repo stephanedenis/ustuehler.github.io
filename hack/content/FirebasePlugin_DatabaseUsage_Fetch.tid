@@ -1,28 +1,26 @@
 created: 20171108104158514
-modified: 20171108104348790
+modified: 20171108161733705
 tags: FirebasePlugin FirebaseDatabase
 title: FirebasePlugin/DatabaseUsage/Fetch
 type: text/vnd.tiddlywiki
 
-
+\define jsonTiddler() $:/temp/FirebasePlugin/DatabaseUsage/JSON
 
 ''Given'' the WikiUser "{{$:/status/OAuth/User!!display-name}}" is authenticated
 
 ''When'' the WikiUser invokes the "Load" action
 
 <$button class="mdc-button mdc-button--raised">
+<$action-setfield $tiddler=<<jsonTiddler>> text=""/>
+<$action-firebase-database $action="fetch" $tiddler="$:/temp/FirebasePlugin/DatabaseUsage/JSON" $snackbar=true/>
 Load
 </$button>
 
-''Then'' the message "Loaded." appears
+''Then'' the message "Loaded ..." appears in the snackbar
 
-''And'' some JSON text
+''And'' the [[previously stored|FirebasePlugin/DatabaseUsage/Store]] JSON text appears
 
-```json
-{
-  "title": "Test",
-  "text": "Nothing important"
-}
-```
+{{$:/temp/FirebasePlugin/DatabaseUsage/JSON}}
 
-[[Next|FirebasePlugin/DatabaseUsage/Store]]
+[[Previous|FirebasePlugin/DatabaseUsage/Store]] |
+[[Next|FirebasePlugin/DatabaseUsage/Sync]]

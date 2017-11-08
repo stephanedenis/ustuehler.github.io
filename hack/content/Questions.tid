@@ -1,11 +1,23 @@
 caption: Questions & Answers
 created: 20171108011747275
 list-item-icon: question_answer
-modified: 20171108095132515
+modified: 20171108141609951
 tags: $:/tags/Drawer
 title: Questions
 type: text/vnd.tiddlywiki
 
-<$list variable="question" filter="[tag<currentTiddler>!sort[modified]]">
-<<question>><br>
+! Questions
+
+<$list variable="question" filter="[tag[Questions]!sort[modified]]">
+<$list variable="openQuestion" filter="[<question>get[caption]suffix[?]]">
+<$link to=<<openQuestion>>><<openQuestion>></$link><br>
+</$list>
+</$list>
+
+! Answers
+
+<$list variable="question" filter="[tag[Questions]!sort[modified]]">
+<$list variable="closedQuestionCaption" filter="[<question>get[caption]!suffix[?]]">
+<$link to=<<question>>><<question>></$link><br>
+</$list>
 </$list>

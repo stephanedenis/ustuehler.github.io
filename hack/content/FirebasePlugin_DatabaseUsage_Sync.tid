@@ -1,0 +1,26 @@
+created: 20171108143013772
+modified: 20171108170750277
+tags: FirebasePlugin FirebaseDatabase
+title: FirebasePlugin/DatabaseUsage/Sync
+type: text/vnd.tiddlywiki
+
+\define jsonTiddler() $:/temp/FirebasePlugin/DatabaseUsage/JSON
+
+''Given'' the WikiUser "{{$:/status/OAuth/User!!display-name}}" is authenticated
+
+''When'' the WikiUser invokes the "Sync" action
+
+<$button class="mdc-button mdc-button--raised">
+<$action-setfield $tiddler=<<jsonTiddler>> $timestamp="no" text=""/>
+<$action-firebase-database $action="sync" $tiddler="$:/temp/FirebasePlugin/DatabaseUsage/JSON" $snackbar=true/>
+Sync
+</$button>
+
+''Then'' the snackbar shows the action that was taken
+
+''And'' the [[previously stored|FirebasePlugin/DatabaseUsage/Store]] JSON text appears
+
+{{$:/temp/FirebasePlugin/DatabaseUsage/JSON}}
+
+[[Previous|FirebasePlugin/DatabaseUsage/Fetch]]
+ | [[Next|FirebasePlugin/DatabaseUsage/Delete]]

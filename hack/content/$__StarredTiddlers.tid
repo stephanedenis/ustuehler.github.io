@@ -1,7 +1,7 @@
 created: 20171103230141129
 creator: ustuehler
-list: HowToStoreGitHubOCredentialsSecurely FirebasePlugin/DatabaseUsage/Store $:/status/OAuth/User $:/temp/FirebasePlugin/DatabaseUsage/JSON FirebasePlugin/Status [[System Tiddlers]] $:/plugins/ustuehler/firebase
-modified: 20171108134116165
+list: [[System Tiddlers]] HowToRestrictAccessToFirebaseDatabaseRecords FirebasePlugin/DatabaseUsage/Sync FirebasePlugin/DatabaseUsage/Fetch $:/temp/FirebasePlugin/DatabaseUsage/JSON FirebasePlugin/DatabaseUsage/Store FirebasePlugin/DatabaseUsage/Delete
+modified: 20171108170940745
 modifier: ustuehler
 tags: 
 title: $:/StarredTiddlers
