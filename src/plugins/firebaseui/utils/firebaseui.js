@@ -14,6 +14,46 @@ Provides FirebaseUI functions under $tw.utils.firebaseui
 /*global $tw: false */
 
 /*
+** Current state of this plugin component
+*/
+
+var state = {
+	readyEventListeners: [],
+	signInSuccessListeners: [],
+  authUI: null
+};
+
+function getAuthUI() {
+  if (!state.authUI) {
+    state.authUI = new firebaseui.auth.AuthUI(firebase.auth());
+  }
+  return state.authUI;
+}
+
+function addSignInSuccessListener(listener) {
+	state.signInSuccessListeners.push(listener);
+}
+
+function dispatchSignInSuccessEvent() {
+	while (state.signInSuccessListeners.length > 0) {
+		var cb = state.signInSuccessListeners.pop();
+		cb();
+	}
+	state.signInSuccessListeners = [];
+}
+
+var addReadyEventListener = function(listener) {
+  state.readyEventListeners.push(listener);
+};
+
+var dispatchReadyEvent = function() {
+  while (state.readyEventListeners.length > 0) {
+    var listener = state.readyEventListeners.pop();
+    listener();
+  }
+};
+
+/*
 ** FirebaseUI configuration
 */
 
@@ -24,6 +64,12 @@ function getUIConfig() {
   var tosUrl = getTermsOfServiceUrl();
 
   return {
+		callbacks: {
+			signInSuccess: function() {
+				dispatchSignInSuccessEvent();
+				return true;
+			}
+		},
     signInFlow: signInFlow,
     signInSuccessUrl: signInSuccessUrl,
     signInOptions: [
@@ -110,21 +156,6 @@ var errorStatus = function(error) {
 };
 
 /*
-** Current state of this plugin component
-*/
-
-var state = {
-  authUI: null
-};
-
-function getAuthUI() {
-  if (!state.authUI) {
-    state.authUI = new firebaseui.auth.AuthUI(firebase.auth());
-  }
-  return state.authUI;
-}
-
-/*
 ** Module functions
 */
 
@@ -179,20 +210,18 @@ function registerAuthStateListener() {
 
 // Reveal FirebaseUI and begin the sign-in flow if the user is signed out
 function startUI(selector, config) {
-	var domNode = document.querySelector(selector);
   var ui = getAuthUI();
 
   config = config || getUIConfig();
 
   console.log('Starting the sign-in flow');
-	domNode = 
   ui.start(selector, config);
 }
 
 // If possible, remove FirebaseUI from the DOM or at least hide the UI
 function removeUI(selector) {
   console.log('Canceling the sign-in flow');
-  // TODO: find out how to properly shut down FirebaseUI
+  // TODO: find out how to shut down FirebaseUI, or if it's needed
 }
 
 /*
@@ -202,6 +231,7 @@ function removeUI(selector) {
 exports.firebaseui = {
   initialise: initialise,
   addReadyEventListener: addReadyEventListener,
+  addSignInSuccessListener: addSignInSuccessListener,
   startSignInFlow: function(selector, config) {
     initialise().then(function() {
       startUI(selector, config);
@@ -237,19 +267,6 @@ var firebaseuiIsReady = function() {
     // Invoke the poller function once, and then via timeout, maybe
     poll();
   });
-};
-
-var readyEventListeners = [];
-
-var addReadyEventListener = function(listener) {
-  readyEventListeners.push(listener);
-};
-
-var dispatchReadyEvent = function() {
-  while (readyEventListeners.length > 0) {
-    var listener = readyEventListeners.pop();
-    listener();
-  }
 };
 
 /*

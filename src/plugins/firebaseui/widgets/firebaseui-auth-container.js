@@ -46,6 +46,8 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
   // Create the FirebaseUI auth container element
   domNode = document.createElement(FIREBASEUI_AUTH_CONTAINER_ELEMENT);
   domNode.setAttribute('id', FIREBASEUI_AUTH_CONTAINER_ID);
+	// XXX: set min-height to avoid layout changes, since the grid layout doesn't notice this change yet; should listen for child changes and notify the grid manager here, instead of cheating with style
+  domNode.setAttribute('style', 'min-height: 40;');
 
   // Insert this widget and its children into the DOM
   parent.insertBefore(domNode, nextSibling);
@@ -58,6 +60,9 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
    * user is already signed in. To log out, another UI element must be created.
    */
   $tw.utils.firebaseui.startSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID);
+	$tw.utils.firebaseui.addSignInSuccessListener(function() {
+		self.domNodes[0].style.display = 'none';
+	});
 };
 
 /*
@@ -66,11 +71,10 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 FirebaseUIAuthContainerWidget.prototype.removeChildDomNodes = function() {
 	var domNode = this.domNodes[0];
 
-	console.log('FirebaseUIAuthContainerWidget: Removing child DOM nodes');
-
   $tw.utils.firebaseui.cancelSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID);
 
 	// Delete all child nodes left over by FirebaseUI
+	console.log('FirebaseUIAuthContainerWidget: Removing child DOM nodes');
 	$tw.utils.each(domNode.childNodes,function(childNode) {
 		console.log('FirebaseUIAuthContainerWidget: Removing left-over FirebaseUI element: ' + childNode.tag);
 		domNode.removeChild(childNode);

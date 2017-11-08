@@ -1,0 +1,3 @@
+title: $:/plugins/ustuehler/firebaseui/AuthContainer
+
+<$firebaseui-auth-container/>
