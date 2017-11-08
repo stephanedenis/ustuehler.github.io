@@ -180,7 +180,7 @@ ActionFirebaseDatabaseWidget.prototype.fetchTiddler = function(database, actionT
       resolve(tiddler);
     })
     .catch(function(error) {
-      $tw.utils.error(error);
+      $tw.utils.showSnackbar(error);
     });
   });
 };
@@ -198,7 +198,7 @@ ActionFirebaseDatabaseWidget.prototype.storeTiddler = function(database, actionT
       resolve(snapshot);
     })
     .catch(function(error) {
-      $tw.utils.error(error);
+      $tw.utils.showSnackbar(error);
     });
   });
 };
@@ -323,7 +323,7 @@ ActionFirebaseDatabaseWidget.prototype.syncTiddler = function(database, actionTi
   })
   .catch(function(error) {
     // TODO: Handle errors
-    $tw.utils.error(error);
+    $tw.utils.showSnackbar(error);
   });
 };
 
@@ -354,7 +354,7 @@ ActionFirebaseDatabaseWidget.prototype.invokeAction = function(triggeringWidget,
     } else if (action === 'sync') {
       return self.syncTiddler(database, actionTiddler, showSnackbar);
     } else {
-      $tw.utils.error(new Error(
+      $tw.utils.showSnackbar(new Error(
         'Invalid action for action-firebase-database widget: "' + action
         + '" (expected one of: "delete", "fetch", "store" or "sync")'
       ));
