@@ -2,9 +2,10 @@ caption: Build Status
 created: 20171104131339557
 filter: [list[ActiveGitHubRepositories]]
 list-before: $:/plugins
-modified: 20171107201829080
+list-item-icon: view_list
+modified: 20171108013421063
 span: 3
-tags: 
+tags: $:/tags/DrawerBottom
 title: BuildStatus
 type: text/vnd.tiddlywiki
 

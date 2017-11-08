@@ -1,0 +1,17 @@
+created: 20171108010400527
+list-before: $:/themes/ustuehler/material/ui/ViewToolbar
+modified: 20171108014821740
+span: 12
+tags: $:/tags/ViewTemplate
+title: PlainTagViewTemplate
+type: text/vnd.tiddlywiki
+
+\define isPlainTagTiddler()
+[<currentTiddler>field:text[<<tag>>]]
+\end
+
+<$list filter=<<isPlainTagTiddler>>>
+<div class="tc-tiddler-body">
+''{{!!title}}'' is a plain [[tag tiddler|WikiTags]], which is indicated by the value of its `text` field being `<<tag>>`. You can edit it to replace the tag pill with some other content. If you do that, please remember to add the WikiTags tag to it.
+</div>
+</$list>

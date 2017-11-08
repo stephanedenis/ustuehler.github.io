@@ -57,7 +57,9 @@
       "editions/public/plugins",
       "editions/hack/tiddlers",
       "editions/hack-fs/*",
-      "hack/content/*"
+      "editions/src/*",
+      "hack/content/*",
+      "src/plugins/*/files/*"
     ],
     "delay": "1000"
   }

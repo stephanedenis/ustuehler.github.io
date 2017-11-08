@@ -17,97 +17,69 @@ doesn't serve any useful purpose, otherwise.
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
-// Current configuration of this plugin component
+/*
+** Firebase application configuration
+*/
+
+/*
+ * The configuration for this app can be found on the Authentication screen in
+ * the Firebase Console at https://console.firebase.google.com. Use the "Web
+ * Setup" button to reveal it, then copy & paste the values below.
+ */
 var config = {
+  apiKey: "AIzaSyBi0evv3BXi4d34P85PcDxlBLnvmjZuEZI",
+  authDomain: "tw5-github.firebaseapp.com",
+  databaseURL: "https://tw5-github.firebaseio.com",
+  projectId: "tw5-github",
+  storageBucket: "tw5-github.appspot.com",
+  messagingSenderId: "898278138051"
 };
 
-// Current status of this plugin component
+/*
+** Current status of this plugin component
+*/
+
 var status = {
   ok: true,
-  ready: false
+  ready: false,
+  error: null,
+  initialising: false
+};
+
+var initialisingStatus = function() {
+  return {
+    ok: status.ok,
+    ready: status.ready,
+    initialising: true,
+    error: status.error
+  };
+};
+
+var readyStatus = function() {
+  return {
+    ok: true,
+    ready: true,
+    initialising: false,
+    error: null
+  };
+};
+
+var errorStatus = function(error) {
+  return {
+    ok: false,
+    ready: false,
+    initialising: false,
+    error: error
+  };
 };
 
 /*
- * allScriptsReady resolves as soon as the required Firebase components
- * referenced in the HTML <head> are loaded.  The promise applies only to
- * <script> tags, so non-Firebase CSS may not be fully loaded yet.
- */
-var allScriptsReady = function() {
-  var deadline = Date.now() + 60000; // one minute from now
-  var interval = 500; // affects the polling frequency
-  var scriptNodes = pluginScriptNodes();
-  var allReady = function() {
-    var r = true;
-    scriptNodes.forEach(function(domNode) {
-      r = r && domNode.ready;
-    });
-    return r;
-  }
-
-  if (scriptNodes.length == 0) {
-    throw new Error('No <script> tags for Firebase in the DOM?');
-  }
-
-  return new Promise(function(resolve, reject) {
-    var poll = function() {
-      var now = Date.now();
-      if (allReady()) {
-        resolve(scriptNodes);
-      } else if (now < deadline) {
-        setTimeout(poll, Math.min(deadline - now, interval));
-      } else {
-        reject(new Error('Firebase <script> tags could not be loaded in time'));
-      }
-    };
-
-    // Invoke the poller function once, and then via timeout
-    poll();
-  });
-};
-
-/*
- * initialise resolves as soon as the required Firebase components are loaded
- * and initialised
- */
-var initialise = function() {
-  return new Promise(function(resolve, reject) {
-    allScriptsReady()
-    .then(resolve)
-    .catch(reject);
-  });
-};
-
-/*
-** Module exports and initialisation
+** Module functions
 */
 
-exports.firebase = {
-  getStatus: function() { return status; },
-  getConfig: function() { return config; },
-  initialise: initialise
-};
-
-initialise().then(function() {
-  console.log('Firebase initialised');
-});
-
-/*
-** Private utility functions for this module
-*/
-
-// Returns the collection of <script> nodes that are related to this plugin
-function pluginScriptNodes() {
-  var domNodes = [];
-
-  document.head
-    .querySelectorAll('script')
-    .forEach(function(x) {
-      if (x.src.indexOf("/firebasejs/") > 0) {
-        domNodes.push(x);
-      }
-    });
-
-  return domNodes;
+// Resolves when all required Firebase components are loaded
+var requireFirebase = function() {
+  // TODO
 };
 
 // ref: https://stackoverflow.com/questions/3393686/only-fire-an-event-once
@@ -117,5 +89,87 @@ var addEventListenerOnce = function(target, type, listener) {
     listener(event);
   });
 };
+
+// firebaseIsReady resolves as soon as the firebase-app.js script is loaded
+var firebaseIsReady = function() {
+  var deadline = Date.now() + 60000; // one minute from now
+  var interval = 500; // affects the polling frequency
+  var allReady = function() {
+    return typeof window.firebase !== 'undefined';
+  }
+
+  return new Promise(function(resolve, reject) {
+    var poll = function() {
+      var now = Date.now();
+      if (allReady()) {
+        resolve();
+      } else if (now < deadline) {
+        setTimeout(poll, Math.min(deadline - now, interval));
+      } else {
+        reject(new Error('Firebase <script> tags was not loaded in time'));
+      }
+    };
+
+    // Invoke the poller function once, and then via timeout, maybe
+    poll();
+  });
+};
+
+var readyEventListeners = [];
+
+var addReadyEventListener = function(listener) {
+  readyEventListeners.push(listener);
+};
+
+var dispatchReadyEvent = function() {
+  while (readyEventListeners.length > 0) {
+    var listener = readyEventListeners.pop();
+    listener();
+  }
+};
+
+/*
+ * initialise resolves as soon as the required Firebase components are loaded
+ * and initialised
+ */
+var initialise = function() {
+  return new Promise(function(resolve, reject) {
+    if (status.initialising) {
+      addReadyEventListener(resolve);
+      return;
+    }
+
+    status = initialisingStatus();
+    firebaseIsReady()
+    .then(function() {
+      // Initialise Firebase
+      firebase.initializeApp(config); // XXX: only once?
+      status = readyStatus();
+      resolve(firebase);
+      // Notify other callers of initialise
+      dispatchReadyEvent();
+    })
+    .catch(function(err) {
+      // Disable this component of the plugin
+      status = errorStatus(err);
+      reject(err);
+    });
+  });
+};
+
+/*
+** Module exports and initialisation
+*/
+
+exports.firebase = {
+  initialise: initialise,
+
+  // for debugging
+  status: function() { return status; },
+};
+
+initialise().then(function() {
+  console.log('Firebase initialised');
+});
 
 }})(this);

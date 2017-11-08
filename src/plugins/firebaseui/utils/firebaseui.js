@@ -13,11 +13,15 @@ Provides FirebaseUI functions under $tw.utils.firebaseui
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
+/*
+** FirebaseUI configuration
+*/
+
 // getUIConfig generates a configuration hash for Firebase UI
 function getUIConfig() {
-  var signInFlow = this.getSignInFlow();
-  var signInSuccessUrl = this.getSignInSuccessUrl();
-  var tosUrl = this.getTermsOfServiceUrl();
+  var signInFlow = getSignInFlow();
+  var signInSuccessUrl = getSignInSuccessUrl();
+  var tosUrl = getTermsOfServiceUrl();
 
   return {
     signInFlow: signInFlow,
@@ -46,7 +50,7 @@ function getBaseUrl() {
  * after she signed in.
  */
 function getSignInSuccessUrl() {
-  return this.getBaseUrl() + '#SignInSuccess';
+  return getBaseUrl() + '#SignInSuccess';
 }
 
 /*
@@ -54,7 +58,7 @@ function getSignInSuccessUrl() {
  * Firebase UI.
  */
 function getTermsOfServiceUrl() {
-  return this.getBaseUrl() + '#TermsOfService';
+  return getBaseUrl() + '#TermsOfService';
 }
 
 /*
@@ -67,35 +71,65 @@ function getSignInFlow() {
   return 'popup';
 }
 
-function getUserName() {
-  return $tw.wiki.getTiddlerText('$:/status/OAuth/UserName');;
+/*
+** Current operational status of this plugin component
+*/
+
+var status = {
+  ok: true,
+  ready: false,
+  error: null,
+  initialising: false
+};
+
+var initialisingStatus = function() {
+  return {
+    ok: status.ok,
+    ready: status.ready,
+    initialising: true,
+    error: status.error
+  };
+};
+
+var readyStatus = function() {
+  return {
+    ok: true,
+    ready: true,
+    initialising: false,
+    error: null
+  };
+};
+
+var errorStatus = function(error) {
+  return {
+    ok: false,
+    ready: false,
+    initialising: false,
+    error: error
+  };
+};
+
+/*
+** Current state of this plugin component
+*/
+
+var state = {
+  authUI: null
+};
+
+function getAuthUI() {
+  if (!state.authUI) {
+    state.authUI = new firebaseui.auth.AuthUI(firebase.auth());
+  }
+  return state.authUI;
 }
 
-// Wait until the firebase <script> tag is loaded
-function initialise(options) {
-  return new Promise(function(resolve, reject) {
-    var tries = 120;
-    var poll;
+/*
+** Module functions
+*/
 
-    // Check for progress in the initialisation of Firebase and FirebaseUI
-    poll = function() {
-      if (dependenciesReady()) {
-        // Complete the initialisation of this module
-        registerAuthStateListener();
-        resolve();
-      } else if (tries < 1) {
-        // Indicate failure to initialise this module
-        reject('gave up waiting for FirebaseUI to become ready');
-      } else {
-        // Try again later...
-        setTimeout(poll, 500);
-        tries -= 1;
-      }
-    };
-
-    // Poll once and start the polling interval timer, if needed
-    poll();
-  });
+function getUserName() {
+  return $tw.wiki.getTiddlerText('$:/status/OAuth/UserName');;
 }
 
 // Check if all initialisation preconditions are fullfilled
@@ -138,17 +172,112 @@ function registerAuthStateListener() {
       $tw.wiki.deleteTiddler('$:/status/OAuth/User');
 		}
 	}, function(error) {
-    console.log('Error in sign-in flow.')
+    console.log('Error in sign-in flow reported by FirebaseUI:')
 		console.log(error);
 	});
 }
 
-// Reveal Firebase UI and begin the sign-in flow if the user is signed out
-function startUI(selector) {
-  var ui = new firebaseui.auth.AuthUI(firebase.auth());
-  var uiConfig = getUIConfig();
+// Reveal FirebaseUI and begin the sign-in flow if the user is signed out
+function startUI(selector, config) {
+	var domNode = document.querySelector(selector);
+  var ui = getAuthUI();
 
-  ui.start(selector, uiConfig);
+  config = config || getUIConfig();
+
+  console.log('Starting the sign-in flow');
+	domNode = 
+  ui.start(selector, config);
+}
+
+// If possible, remove FirebaseUI from the DOM or at least hide the UI
+function removeUI(selector) {
+  console.log('Canceling the sign-in flow');
+  // TODO: find out how to properly shut down FirebaseUI
+}
+
+/*
+** Module exports and initialisation
+*/
+
+exports.firebaseui = {
+  initialise: initialise,
+  addReadyEventListener: addReadyEventListener,
+  startSignInFlow: function(selector, config) {
+    initialise().then(function() {
+      startUI(selector, config);
+    });
+  },
+  cancelSignInFlow: function(selector) {
+    initialise().then(function() {
+      removeUI(selector);
+    });
+  },
+};
+
+// firebaseuiIsReady resolves as soon as firebaseui.js is loaded
+var firebaseuiIsReady = function() {
+  var deadline = Date.now() + 60000; // one minute from now
+  var interval = 500; // affects the polling frequency
+  var allReady = function() {
+    return typeof window.firebaseui !== 'undefined';
+  }
+
+  return new Promise(function(resolve, reject) {
+    var poll = function() {
+      var now = Date.now();
+      if (allReady()) {
+        resolve();
+      } else if (now < deadline) {
+        setTimeout(poll, Math.min(deadline - now, interval));
+      } else {
+        reject(new Error('FirebaseUI <script> tags was not loaded in time'));
+      }
+    };
+
+    // Invoke the poller function once, and then via timeout, maybe
+    poll();
+  });
+};
+
+var readyEventListeners = [];
+
+var addReadyEventListener = function(listener) {
+  readyEventListeners.push(listener);
+};
+
+var dispatchReadyEvent = function() {
+  while (readyEventListeners.length > 0) {
+    var listener = readyEventListeners.pop();
+    listener();
+  }
+};
+
+/*
+ * initialise resolves when the FirebaseUI script is loaded and the startUI
+ * utility function is ready to be used
+ */
+function initialise(options) {
+  return new Promise(function(resolve, reject) {
+    if (status.initialising) {
+      addReadyEventListener(resolve);
+      return;
+    }
+
+    status = initialisingStatus();
+    firebaseuiIsReady()
+    .then($tw.utils.firebase.initialise())
+    .then(function() {
+      status = readyStatus();
+      resolve(firebaseui);
+      // Notify other callers of initialise
+      dispatchReadyEvent();
+    })
+    .catch(function(err) {
+      // Disable this component of the plugin
+      status = errorStatus(err);
+      reject(err);
+    });
+  });
 }
 
 /*
@@ -157,17 +286,8 @@ function startUI(selector) {
  * has to complete first, as that guarantees that the symbols "firebase" and
  * "firebaseui" are defined everywhere.
  */
-initialise();
-
-// Exported functions should ensure proper initialisation, if necessary
-exports.firebaseui = {
-  initialise: initialise,
-
-  start: function(selector) {
-    initialise().then(function(selector) {
-      startUI(selector);
-    });
-  },
-};
+initialise().then(function() {
+  console.log('FirebaseUI initialised');
+});
 
 }})(this);

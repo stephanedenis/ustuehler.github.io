@@ -1,0 +1,19 @@
+created: 20171108035020013
+list-before: $:/themes/ustuehler/material/ui/ViewToolbar
+modified: 20171108041925950
+span: 12
+tags: $:/tags/ViewTemplate
+title: RefViewTemplate
+type: text/vnd.tiddlywiki
+
+\define isRefTiddler()
+[<currentTiddler>has[ref]]
+\end
+
+<$list filter=<<isRefTiddler>>>
+<div class="tc-tiddler-body">
+
+''<$text text={{!!title}}/>'' is a [[reference|RefField]] to {{!!ref}}, as indicated by its `ref` field.
+
+</div>
+</$list>

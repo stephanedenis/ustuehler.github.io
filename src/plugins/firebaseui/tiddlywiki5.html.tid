@@ -12,8 +12,8 @@ Selectively load the Firebase components which this plugin can currently make
 use of, and then initialise them automatically.
 
 -->
-<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-auth.js"></script>
+<script class="firebase" src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
+<script class="firebase" src="https://www.gstatic.com/firebasejs/4.6.1/firebase-auth.js"></script>
 <!--
 
 Alternatively, we could load everything.  That would be useful if we wanted to
@@ -21,27 +21,7 @@ expose the Firebase library to users of this plugin, however the only goal for
 this plugin, for the moment, is to handle authentication with OAuth 2.0.
 
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-
-Once everything is loaded, automatically initialize Firebase. The configuration
-for this app can be found on the Authentication screen in the Firebase Console
-at https://console.firebase.google.com. Use the "Web Setup" button to reveal it,
-then copy & paste the snippet to replace the <script> tag below.
-
-PLEASE CREATE YOUR OWN APPLICATION ON FIREBASE, IF YOU ARE FORKING THIS PLUGIN!
-
 -->
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBi0evv3BXi4d34P85PcDxlBLnvmjZuEZI",
-    authDomain: "tw5-github.firebaseapp.com",
-    databaseURL: "https://tw5-github.firebaseio.com",
-    projectId: "tw5-github",
-    storageBucket: "tw5-github.appspot.com",
-    messagingSenderId: "898278138051"
-  };
-  firebase.initializeApp(config);
-</script>
 <!--
 
 Load FirebaseUI

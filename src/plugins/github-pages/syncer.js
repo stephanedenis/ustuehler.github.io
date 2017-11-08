@@ -42,13 +42,13 @@ function handleChanges(changes) {
   var output = $tw.wiki.filterTiddlers(input + ' +' + syncFilter + ' ' + pagesFilter);
 
   if (output.length < 1) {
-    console.log("GitHub Pages sync ignored changes in:");
-    console.log(changedTiddlers);
+    console.debug("GitHub Pages sync ignored changes in:");
+    console.debug(changedTiddlers);
     return;
   }
 
-  console.log("GitHub Pages sync noticed changes in:");
-  console.log(changedTiddlers);
+  console.debug("GitHub Pages sync noticed changes in:");
+  console.debug(changedTiddlers);
 
   // Merge the new tiddlers into the existing queue
   output.forEach(function(title) { syncQueue.add(title); });
@@ -57,7 +57,7 @@ function handleChanges(changes) {
   var queue = $tw.utils.stringifyList(Array.from(syncQueue));
   $tw.wiki.setText("$:/status/GitHubPages/SyncQueue","list",undefined,queue);
 
-  console.log("The GitHub Pages sync queue is now: " + queue);
+  console.debug("The GitHub Pages sync queue is now: " + queue);
 }
 
 // Enable background sync by default. Runs as long as required settings are

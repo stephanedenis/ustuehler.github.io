@@ -1,0 +1,10 @@
+created: 20171107235138462
+modified: 20171107235322154
+ref: https://groups.google.com/forum/#!topic/tiddlywiki/nJ_q32YqAO8
+tags: TiddlyWiki
+title: ScriptWidget
+type: text/vnd.tiddlywiki
+
+Someone has written a plugin that enables `<script>` tags in WikiText.
+
+{{!!ref}}

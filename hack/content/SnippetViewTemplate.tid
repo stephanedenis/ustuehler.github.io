@@ -1,0 +1,17 @@
+created: 20171108010047273
+list-before: $:/themes/ustuehler/material/ui/ViewToolbar
+modified: 20171108010302677
+span: 12
+tags: $:/tags/ViewTemplate
+title: SnippetViewTemplate
+type: text/vnd.tiddlywiki
+
+\define isSnippetTiddler()
+[<currentTiddler>suffix[Snippet]]
+\end
+
+<$list filter=<<isSnippetTiddler>>>
+<div class="tc-tiddler-body">
+''{{!!caption}}'' is a [[snippet|TiddlyWikiSnippets]], which implies that it is also a [[macro|TiddlyWikiMacros]]. You can edit this tiddler to view the macro definition. Be aware that that macro tiddlers may not render correctly when viewed directly.
+</div>
+</$list>

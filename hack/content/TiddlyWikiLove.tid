@@ -1,0 +1,11 @@
+caption: TiddlyWiki Love Quotes
+created: 20171107235400439
+list-item-icon: favorite
+modified: 20171108045347955
+tags: TiddlyWiki
+title: TiddlyWikiLove
+type: text/vnd.tiddlywiki
+
+<$list variable="appraisal" filter="[tag<currentTiddler>]">
+<<appraisal>><br>
+</$list>

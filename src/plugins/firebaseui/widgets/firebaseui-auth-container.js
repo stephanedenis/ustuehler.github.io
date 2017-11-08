@@ -14,7 +14,7 @@ following occurrances.
 \*/
 (function (global) {
 
-"use strict";
+'use strict';
 /*jslint node: true, browser: true */
 /*global $tw: false */
 
@@ -23,7 +23,7 @@ const FIREBASEUI_AUTH_CONTAINER_ELEMENT = 'div';
 const FIREBASEUI_AUTH_CONTAINER_ID = 'firebaseui-auth-container';
 
 // Base widget class
-var Widget = require("$:/core/modules/widgets/widget.js").widget;
+var Widget = require('$:/core/modules/widgets/widget.js').widget;
 
 // Constructor for this widget
 var FirebaseUIAuthContainerWidget = function(parseTreeNode,options) {
@@ -54,11 +54,32 @@ FirebaseUIAuthContainerWidget.prototype.render = function(parent,nextSibling) {
 
   /*
    * Start the FirebaseUI. This will insert additional DOM nodes into the
-   * container element to let the user //start// the sign-in flow, unless the
-   * user is already signed in.
+   * container element to allow the user to begin the sign-in flow, unless the
+   * user is already signed in. To log out, another UI element must be created.
    */
-  this.log('Starting the FirebaseUI in #' + FIREBASEUI_AUTH_CONTAINER_ID);
-  $tw.utils.firebaseui.start('#' + FIREBASEUI_AUTH_CONTAINER_ID);
+  $tw.utils.firebaseui.startSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID);
+};
+
+/*
+ * Remove FirebaseUI nodes from the DOM
+ */
+FirebaseUIAuthContainerWidget.prototype.removeChildDomNodes = function() {
+	var domNode = this.domNodes[0];
+
+	console.log('FirebaseUIAuthContainerWidget: Removing child DOM nodes');
+
+  $tw.utils.firebaseui.cancelSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID);
+
+	// Delete all child nodes left over by FirebaseUI
+	$tw.utils.each(domNode.childNodes,function(childNode) {
+		console.log('FirebaseUIAuthContainerWidget: Removing left-over FirebaseUI element: ' + childNode.tag);
+		domNode.removeChild(childNode);
+	});
+
+	$tw.utils.each(this.domNodes,function(domNode) {
+		domNode.parentNode.removeChild(domNode);
+	});
+	this.domNodes = [];
 };
 
 /*
@@ -76,6 +97,6 @@ FirebaseUIAuthContainerWidget.prototype.refresh = function(changedTiddlers) {
   return this.refreshChildren(changedTiddlers);
 };
 
-exports["firebaseui-auth-container"] = FirebaseUIAuthContainerWidget;
+exports['firebaseui-auth-container'] = FirebaseUIAuthContainerWidget;
 
 })(this);

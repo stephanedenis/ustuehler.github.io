@@ -1,0 +1,17 @@
+created: 20171108013956468
+list-before: $:/themes/ustuehler/material/ui/ViewToolbar
+modified: 20171108014612121
+span: 12
+tags: $:/tags/ViewTemplate
+title: DocumentedTagViewTemplate
+type: text/vnd.tiddlywiki
+
+\define isDocumentedTagTiddler()
+[<currentTiddler>tag[WikiTags]]
+\end
+
+<$list filter=<<isDocumentedTagTiddler>>>
+<div class="tc-tiddler-body">
+''{{!!title}}'' is a documented [[tag tiddler|WikiTags]], which is indicated by it having the WikiTags tag. You can edit it to change its documentation, or replace it with some other content.
+</div>
+</$list>

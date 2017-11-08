@@ -1,0 +1,13 @@
+created: 20171108004020332
+modified: 20171108012723166
+tags: Questions HowToLoadExternalScripts
+title: HowToWaitForExternalScriptInDocumentHead
+type: text/vnd.tiddlywiki
+
+! Question
+
+With a `<script>` in the document `<head>`, how do I know whent it is safe to reference its exported symbols?
+
+! Related Questions
+
+{{||RelatedQuestionsTemplate}}

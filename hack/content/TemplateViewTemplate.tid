@@ -1,0 +1,17 @@
+created: 20171108012329720
+list-before: $:/themes/ustuehler/material/ui/ViewToolbar
+modified: 20171108014648311
+span: 12
+tags: $:/tags/ViewTemplate
+title: TemplateViewTemplate
+type: text/vnd.tiddlywiki
+
+\define isTemplateTiddler()
+[<currentTiddler>suffix[Template]]
+\end
+
+<$list filter=<<isTemplateTiddler>>>
+<div class="tc-tiddler-body">
+''{{!!caption}}'' is a [[template tiddler|TemplateTiddlers]]. You can edit it to view the template definition. Be aware that that template tiddlers may not render correctly when viewed directly.
+</div>
+</$list>

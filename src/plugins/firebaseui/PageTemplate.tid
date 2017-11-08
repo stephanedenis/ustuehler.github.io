@@ -1,0 +1,8 @@
+created: 20171108035401209
+list-before: $:/core/ui/PageTemplate/topleftbar
+modified: 20171108035407150
+tags: $:/tags/PageTemplate
+title: $:/plugins/ustuehler/firebaseui/PageTemplate
+type: text/vnd.tiddlywiki
+
+<$firebaseui-auth-container/>

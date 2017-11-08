@@ -1,0 +1,23 @@
+created: 20171108001953798
+modified: 20171108012736938
+tags: Questions TiddlyWikiPlugins
+title: HowToLoadExternalScripts
+type: text/vnd.tiddlywiki
+
+! Question
+
+In a TiddlyWikiPlugin, what's the best way to lazy-load external scripts?
+
+! Complications
+
+With CORS, a page can only load external scripts via the `<script>` tag in the `<head>` element of the initial document.
+
+! Possible Answer
+
+# Create a TiddlyWikiPlugin.
+# Add a tiddler tagged with $:/tags/RawMarkup to your plugin and insert your `<script>` tags there.
+# Provide a `widget` or `utils` module in your plugin to make use of the external script.
+
+! Follow-Up Questions
+
+{{||RelatedQuestionsTemplate}}

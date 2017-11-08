@@ -1,0 +1,10 @@
+caption: Search by Filter
+created: 20171108021623556
+list-item-icon: search
+modified: 20171108021730201
+span: 4
+tags: $:/tags/Drawer $:/tags/AdvancedSearch
+title: SearchByFilter
+type: text/vnd.tiddlywiki
+
+{{$:/core/ui/AdvancedSearch/Filter}}

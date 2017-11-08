@@ -31,8 +31,8 @@ function getClient() {
 	return OAuth2;
 }
 
-console.log('Loaded simple-oauth2');
-console.log(getClient());
+console.debug('Loaded simple-oauth2');
+console.debug(getClient());
 
 var github = null;
 var config = {};
@@ -76,8 +76,8 @@ function getProvider() {
   // Load OAuth2
   initialise();
 
-  console.log("provider_id: " + config.provider_id);
-  console.log("authorization_url: " + config.authorization_url);
+  console.debug("provider_id: " + config.provider_id);
+  console.debug("authorization_url: " + config.authorization_url);
 
   // TODO: use the querystring package (decode.js)
   var querystring = function() { return urlParams; };
@@ -103,7 +103,7 @@ function requestToken() {
   var redirect_uri = config.redirect_uri;
 	var self = this;
 
-  console.log('redirect_uri: ' + redirect_uri);
+  console.debug('redirect_uri: ' + redirect_uri);
 
 	// Authorization uri definition
 	var uri = provider.authorizationCode.authorizeURL({
@@ -122,10 +122,10 @@ function requestToken() {
   */
 	openPopup(uri, function(err, code) {
     if (err) {
-      console.log('openPopup (oauth-open): ' + err);
+      console.debug('openPopup (oauth-open): ' + err);
     } else {
-      console.log('openPopup callback fired:');
-      console.log(code);
+      console.debug('openPopup callback fired:');
+      console.debug(code);
 
       //var base = window.location.href.replace(/\/*\?.*$/, '');
       //var uri = base + '?code=' + code.code;
@@ -140,15 +140,15 @@ function requestToken() {
   var opts = { name: 'github' };
 
   var cancel = jsonp(uri, opts, function(err, data) {
-    console.log("JSONP callback invoked");
+    console.debug("JSONP callback invoked");
 
     if (err) {
-      console.log("Get error: " + err);
+      console.debug("Get error: " + err);
       return;
     }
 
-    console.log("Got data:");
-    console.log(data);
+    console.debug("Got data:");
+    console.debug(data);
     // TODO:
     // window.location.assign(...)
     // callback()
@@ -165,9 +165,9 @@ function jsonpRequest(uri) {
       var meta = response.meta;
       var data = response.data;
 
-      console.log('oauth2callback response meta + data:');
-      console.log(meta);
-      console.log(data);
+      console.debug('oauth2callback response meta + data:');
+      console.debug(meta);
+      console.debug(data);
 
       resolve(response);
       // TODO: on error: reject();
@@ -176,7 +176,7 @@ function jsonpRequest(uri) {
     uri = uri + '&callback=oauth2callback';
     window.location.assign = uri;
 
-    console.log('Redirect location: ' + uri);
+    console.debug('Redirect location: ' + uri);
     script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = uri;
@@ -189,8 +189,8 @@ function callback(uri) {
   var options = {};
 
 	uri = uri || window.location.href;
-	console.log('GitHub called back to:');
-	console.log(uri);
+	console.debug('GitHub called back to:');
+	console.debug(uri);
 
   provider.authorizationCode.getToken(options, function(error, result) {
     if (error) {
@@ -199,7 +199,7 @@ function callback(uri) {
 			return;
     }
 
-    console.log('The resulting token: ', result);
+    console.debug('The resulting token: ', result);
     const token = provider.accessToken.create(result);
 
 		$tw.wiki.setText('$:/temp/GitHub/Password', 'text', undefined, token);
@@ -212,14 +212,14 @@ function callback(uri) {
 
 /*
 	provider.token.getToken(uri).then(function (user) {
-		console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... } 
+		console.debug(user) //=> { accessToken: '...', tokenType: 'bearer', ... } 
 
 		// Make a request to the github API for the current user. 
 		return popsicle.request(user.sign({
 			method: 'get',
 			url: 'https://api.github.com/user'
 		})).then(function (res) {
-			console.log(res) //=> { body: { ... }, status: 200, headers: { ... } } 
+			console.debug(res) //=> { body: { ... }, status: 200, headers: { ... } } 
 
 			if (res.status == 200) {
 				$tw.wiki.setText('$:/temp/GitHub/Password', 'text', undefined, user.accessToken);
@@ -240,18 +240,18 @@ window.oauth2Callback = function (uri) {
   var provider = getProvider();
   //var response = provider.parse(window.location.href);
 
-	console.log('GitHub called back to:');
-	console.log(uri);
+	console.debug('GitHub called back to:');
+	console.debug(uri);
 
 	provider.token.getToken(uri).then(function (user) {
-		console.log(user) //=> { accessToken: '...', tokenType: 'bearer', ... } 
+		console.debug(user) //=> { accessToken: '...', tokenType: 'bearer', ... } 
 
 		// Make a request to the github API for the current user. 
 		return popsicle.request(user.sign({
 			method: 'get',
 			url: 'https://api.github.com/user'
 		})).then(function (res) {
-			console.log(res) //=> { body: { ... }, status: 200, headers: { ... } } 
+			console.debug(res) //=> { body: { ... }, status: 200, headers: { ... } } 
 
 			if (res.status == 200) {
 				$tw.wiki.setText('$:/temp/GitHub/Password', 'text', undefined, user.accessToken);
