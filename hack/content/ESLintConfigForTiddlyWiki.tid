@@ -1,5 +1,5 @@
 created: 20171110132634797
-modified: 20171110135642586
+modified: 20171110141523048
 span: 12
 tags: JavaScriptStyleGuide
 title: ESLintConfigForTiddlyWiki
@@ -13,14 +13,28 @@ The TiddlyWiki configuration diverges from my [[standard ESLint|ESLint]] configu
 Therefore, I have to replace the `standard` package with `standardx` in these projects, and add an `eslintConfig` section to `package.json`.
 
 ```javascript
-npm install -g standard-eject
+npm install --global \
+  standard-eject \
+  eslint-config-standard \
+  eslint-plugin-standard \
+  eslint-plugin-promise \
+  eslint-plugin-import \
+  eslint-plugin-node
+npm install --save-dev \
+  eslint-config-standard \
+  eslint-plugin-standard \
+  eslint-plugin-promise \
+  eslint-plugin-import \
+  eslint-plugin-node
 standard-eject
+
 ```
 
 ```json
 {
   "eslintConfig": {
     "root": true,
+    "extends": "standard",
     "env": {
       "browser": true,
       "node": true

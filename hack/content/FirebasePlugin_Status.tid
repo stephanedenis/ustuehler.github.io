@@ -1,7 +1,7 @@
 created: 20171108110159439
-modified: 20171108114008278
+modified: 20171110142044720
 tags: FirebasePlugin/DatabaseUsage/Store
 title: FirebasePlugin/Status
 type: text/vnd.tiddlywiki
 
-{{$:/status/Firebase}}
+{{{ [prefix[$:/status/Firebase]] }}}
