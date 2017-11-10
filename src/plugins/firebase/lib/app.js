@@ -6,32 +6,32 @@ module-type: library
 Firebase App plugin component
 
 \*/
-(function () { if (typeof window !== 'undefined') {
+(function () {
+  if (typeof window !== 'undefined') {
+    'use strict'
+/* jslint node: true, browser: true */
+/* global $tw: false */
 
-"use strict";
-/*jslint node: true, browser: true */
-/*global $tw: false */
+    var Component = require('$:/plugins/ustuehler/firebase/lib/component.js').component,
+      config = require('$:/plugins/ustuehler/firebase/lib/config.js')
 
-var Component = require('$:/plugins/ustuehler/firebase/lib/component.js').component,
-    config = require('$:/plugins/ustuehler/firebase/lib/config.js');
+    var App = function () {
+    }
 
-var App = function() {
-};
+    App.prototype = new Component('') // empty name relates to how the status tiddler is named
 
-App.prototype = new Component(''); // empty name relates to how the status tiddler is named
-
-App.prototype.initialise = function(firebase) {
-  this.firebase = firebase;
-  Component.prototype.initialise('FirebaseApp');
-};
+    App.prototype.initialise = function (firebase) {
+      this.firebase = firebase
+      Component.prototype.initialise('FirebaseApp')
+    }
 
 /*
  * componentReady resolves when the Firebase app is initialised. This must be
  * completed before any other component can use Firebase.
  */
-App.prototype.componentReady = function() {
-  this.firebase.initializeApp(config);
-  return Promise.resolve();
-};
-
-}})();
+    App.prototype.componentReady = function () {
+      this.firebase.initializeApp(config)
+      return Promise.resolve()
+    }
+  }
+})()

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp deploy",
-    "test": "standard"
+    "test": "standardx"
   },
   "repository": {
     "type": "git",
@@ -48,7 +48,7 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "standard": "^10.0.3"
+    "standardx": "^1.0.3"
   },
   "nodemonConfig": {
     "verbose": true,
@@ -66,16 +66,32 @@
     ],
     "delay": "1000"
   },
-  "standard": {
+  "eslintConfig": {
+    "root": true,
     "env": {
       "browser": true,
       "node": true
     },
+    "overrides": [
+      {
+        "files": [
+          "src/plugins/*/**/*.js"
+        ],
+        "excludedFiles": [
+          "src/plugins/*/files/**/*.js"
+        ],
+        "rules": {
+          "spaced-comment": "off"
+        }
+      }
+    ]
+  },
+  "standardx": {
     "ignore": [
-      "node_modules/",
-      "src/plugins/*/files/",
+      "tw5-material/",
       "editions/",
-      "tw5-material/"
+      "node_modules/",
+      "src/plugins/*/files/"
     ]
   }
 }

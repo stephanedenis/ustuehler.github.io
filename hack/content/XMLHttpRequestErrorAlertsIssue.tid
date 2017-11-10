@@ -1,0 +1,14 @@
+caption: XMLHttpRequest error alerts can be annoying
+created: 20171110135746406
+modified: 20171110140305439
+tags: Issues
+title: XMLHttpRequestErrorAlertsIssue
+type: text/vnd.tiddlywiki
+
+! Issue
+
+The error messages about failing ''<$text text={{!!title}}/>''s when TiddlyWiki server is unavailable are really annoying, because they have to be dismissed one by one and overlay the story view, where I may be editing a tiddler at the moment.
+
+! Possible Solution
+
+Indicate the sync status with an icon in the toolbar. The icon should change to indicate whether all changes are saved, and maybe whether the server is currently available, or not.

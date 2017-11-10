@@ -1,0 +1,43 @@
+created: 20171110132634797
+modified: 20171110135642586
+span: 12
+tags: JavaScriptStyleGuide
+title: ESLintConfigForTiddlyWiki
+type: text/vnd.tiddlywiki
+
+The TiddlyWiki configuration diverges from my [[standard ESLint|ESLint]] configuration in the following ways.
+
+; spaced-comment
+: "off", because it breaks ~TiddlyWiki's recognition of the embedded metadata header in `*.js` files, which is delimited by `/*\` ... `\*/`. Search `boot/boot.js` for `jsModuleHeaderRegExpString` to see the exact regular expression. The expression could be changed in a `tiddlywiki.info` file, but I want to follow ~TiddlyWiki's rules here.
+
+Therefore, I have to replace the `standard` package with `standardx` in these projects, and add an `eslintConfig` section to `package.json`.
+
+```javascript
+npm install -g standard-eject
+standard-eject
+```
+
+```json
+{
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "overrides": [
+      {
+        "files": [
+          "src/plugins/*/**/*.js"
+        ],
+        "excludedFiles": [
+          "src/plugins/*/files/**/*.js"
+        ],
+        "rules": {
+          "spaced-comment": "off"
+        }
+      }
+    ]
+  }
+}
+```
