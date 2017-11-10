@@ -1,0 +1,15 @@
+created: 20171110122023710
+list: 
+modified: 20171110125411094
+ref: https://stackoverflow.com/questions/6803305/should-i-use-jslint-or-jshint-javascript-validation
+tags: JavaScriptStyleGuide JavaScript
+title: ESLint
+type: text/vnd.tiddlywiki
+
+''ESLint'' is my preferred code quality tool for JavaScript. JSLint would be too arcane for my taste, and JSHint I have not tried yet. According to [[StackOverflow]], ESLint seems to provide the most flexibility.
+
+However, I use ESLint through the `standard` package, which preconfigures ESLint to the StandardJavaScriptStyleGuide.
+
+```bash
+npm install --save-dev standard
+```

@@ -1,0 +1,36 @@
+caption: Function Declarations vs. Function Expressions
+created: 20171107215021488
+list: 
+modified: 20171110125000953
+ref: https://medium.freecodecamp.org/constant-confusion-why-i-still-use-javascript-function-statements-984ece0b72fd
+tags: JavaScriptStyleGuide
+title: JavaScriptFunctionDeclarationVersusFunctionExpression
+type: text/vnd.tiddlywiki
+
+I use function declarations for module scoped utility functions at the bottom of my code.
+
+```javascript
+(function() {
+
+...
+
+/*
+** Module utility functions
+*/
+
+function f() {
+}
+
+})();
+```
+
+But I use function expression when code is part of the main role of a module.
+
+```
+var f = function() {
+};
+```
+
+The consequence of using function expressions is that it forces me to gradually introduce details to build the module context, because function expressions are undefined until execution reaches that statement.
+
+I got convinced that this would be a good idea after reading BillSourour's article <$link to={{!!ref}}>Constant confusion: why I still use JavaScript function statements</$link>.

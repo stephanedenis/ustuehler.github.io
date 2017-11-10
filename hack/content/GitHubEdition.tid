@@ -1,0 +1,11 @@
+created: 20171109234353635
+modified: 20171109235954387
+tags: Ideas
+title: GitHubEdition
+type: text/vnd.tiddlywiki
+
+Create a GitHubEdition of TiddlyWiki with the FirebasePlugin included to store the GitHubAccessToken, but disabled until configured.
+
+Users could still use the ~GitHubEdition without the ~FirebasePlugin, but the ~GitHubAccessToken would have to be stored elsewhere, or it would have to be created manually for each session.
+
+I will try to be nice to users, by not making things easy that are really bad. I could see that as extending the treatment that I felt I got from browsing this section of the [[OAuth 2.0 specification|TheClientIDAndSecret]].

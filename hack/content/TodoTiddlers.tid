@@ -1,0 +1,7 @@
+created: 20171109234130202
+modified: 20171109234316937
+tags: Ideas
+title: TodoTiddlers
+type: text/vnd.tiddlywiki
+
+Tiddlers for things definitely up to do at some point. They could be identified by a common prefix, `Todo` or `Todo/`, for example. The latter may be better to avoid content tiddlers like this one from accidentally being treated as a task item.

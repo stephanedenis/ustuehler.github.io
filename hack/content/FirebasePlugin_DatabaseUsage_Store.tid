@@ -1,5 +1,5 @@
 created: 20171108102902375
-modified: 20171108140209422
+modified: 20171109214539236
 tags: FirebasePlugin FirebaseDatabase
 title: FirebasePlugin/DatabaseUsage/Store
 type: text/vnd.tiddlywiki
@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 <$button class="mdc-button">
 <$action-setfield $tiddler=<<jsonTiddler>> text="""{
   "title": "Test",
-  "text": "Not importtant"
+  "text": "Not important"
 }"""/>
 Load Example JSON Text
 </$button>

@@ -1,8 +1,8 @@
-created: 20171104034010483
-link: <a target="_" href={{!!url}}>{{!!title}}</a>
-modified: 20171104074038160
+caption: tiddlywiki.com
+created: 20171107235808673
+modified: 20171109231421314
+tags: TiddlyWikiMacros $:/tags/Macro
 title: tiddlywiki.com
 type: text/vnd.tiddlywiki
-url: http://tiddlywiki.com/
 
-{{!!url}}
+\define tiddlywiki.com(title:"HelloThere") [[$title$|http://tiddlywiki.com/#$title$]] on tiddlywiki.com

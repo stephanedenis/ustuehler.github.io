@@ -1,0 +1,7 @@
+created: 20171109233806844
+modified: 20171109234128806
+tags: Ideas
+title: SearchAndCreateView
+type: text/vnd.tiddlywiki
+
+Create a UI element that lets the user search for tiddlers like the [[standard search|$:/core/ui/AdvancedSearch/Standard]], but also lets one create a new tiddler if the search string does not match any existing tiddler title.

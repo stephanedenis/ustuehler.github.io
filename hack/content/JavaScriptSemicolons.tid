@@ -1,0 +1,36 @@
+created: 20171110123706436
+modified: 20171110124853556
+ref: http://inimino.org/~inimino/blog/javascript_semicolons
+tags: JavaScriptStyleGuide
+title: JavaScriptSemicolons
+type: text/vnd.tiddlywiki
+
+The <$link to={{!!ref}}>article</$link> explains exhaustively where semicolons are allowed, and where semicolons may be omitted. The author recommends to //omit// optional semicolons.
+
+So, instead of putting all those semicolons in there that have no effect:
+
+```javascript
+function sum(numbers) {
+  var total = 0;
+
+  for (var n in numbers) {
+    total += n;
+  }
+
+  return total;
+}
+```
+
+Make that code easier to read by writing:
+
+```javascript
+function sum(numbers) {
+  var total = 0
+
+  for (var n in numbers) {
+    total += n
+  }
+
+  return total
+}
+```

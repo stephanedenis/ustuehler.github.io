@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp deploy",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,9 @@
     "tw5-material": "git+https://git@github.com/ustuehler/tw5-material.git",
     "url": "^0.11.0"
   },
+  "devDependencies": {
+    "standard": "^10.0.3"
+  },
   "nodemonConfig": {
     "verbose": true,
     "ext": "js,tid,info,multids,json",
@@ -62,5 +65,17 @@
       "src/plugins/*/files/*"
     ],
     "delay": "1000"
+  },
+  "standard": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "ignore": [
+      "node_modules/",
+      "src/plugins/*/files/",
+      "editions/",
+      "tw5-material/"
+    ]
   }
 }

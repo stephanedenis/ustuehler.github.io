@@ -1,21 +1,6 @@
 title: $:/plugins/ustuehler/firebase/RawMarkup
 tags: $:/tags/RawMarkup
 
-<!-- Firebase
-ref: https://firebase.google.com/docs/web/setup
-
-Selectively load the Firebase components which this plugin can currently make
-use of, and then initialise them automatically.
-
--->
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-auth.js"></script>
-<!--
-
-Alternatively, we could load everything.  That would be useful if we wanted to
-expose the Firebase library to users of this plugin, however the only goal for
-this plugin, for the moment, is to handle authentication with OAuth 2.0.
-
-<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
--->
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-database.js"></script>

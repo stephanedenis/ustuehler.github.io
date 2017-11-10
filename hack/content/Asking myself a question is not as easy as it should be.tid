@@ -1,0 +1,7 @@
+created: 20171109204605054
+modified: 20171109204737764
+tags: Issues
+title: Asking myself a question is not as easy as it should be
+type: text/vnd.tiddlywiki
+
+I think now that I should be able to just type in a tiddler title with a question mark, but currently I have to remember that ImplicitQuestions are identified by looking at the `caption` field.
