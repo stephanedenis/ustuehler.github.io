@@ -6,76 +6,88 @@ module-type: library
 Firebase plugin component
 
 \*/
-(function () { if (typeof window !== 'undefined') {
+(function () {
+  var Observable = require('$:/plugins/ustuehler/firebase/lib/observable.js').Observable
+  var Status = require('$:/plugins/ustuehler/firebase/lib/status.js').Status
 
-"use strict";
-/*jslint node: true, browser: true */
-/*global $tw: false */
-
-var Observable = require('$:/plugins/ustuehler/firebase/lib/observable.js').observable;
-var Status = require('$:/plugins/ustuehler/firebase/lib/status.js').status;
-
-var Component = function(name) {
-  this.name = name; // plugin component name in CamelCase
-  this.status = new Status();
-};
-
-Component.prototype = new Observable();
-
-Component.prototype.initialise = function() {
-  var status = this.status;
-  var self = this;
-
-  if (status.fields.ready) {
-    // Prevent callers from initialising the component twice
-    return Primise.resolve(self);
+  var Component = function (name) {
+    if (arguments.length > 0) {
+      this.initialise(name)
+    }
   }
 
-  if (status.fields.initialising) {
-    // Put caller on the waiting list
-    return new Promise(function(resolve, reject) {
-      self.addEventListener('ready', function(self) {
-        resolve(self);
-      });
+  Component.prototype = new Observable()
 
-      self.addEventListener('error', function(error) {
-        reject(error);
-      });
-    });
+  Component.prototype.initialise = function () {
+    return Promise.resolve(this)
   }
 
-  status.update(status.initialisingStatus());
+  Component.prototype.initialiseComponent = function (name, self) {
+    if (!name) {
+      throw new Error('missing component name')
+    }
 
-  self.dependenciesReady()
-  .then(self.componentReady())
-  .then(function() {
-    status.update(status.readyStatus());
-    // Notify the first caller
-    resolve(self);
-    // Notify other callers
-    self.dispatchEvent('ready', self);
-  })
-  .catch(function(error) {
-    // Disable this component of the plugin
-    status.update(status.errorStatus(error));
-    reject(error);
-  });
-};
+    if (!(self instanceof Component)) {
+      throw new Error('expected a Component to initialise')
+    }
 
-// dependenciesReady should resolve when all dependencies of this component are ready
-Component.prototype.dependenciesReady = function() {
-  return Promise.resolve(); // This component has no dependencies
-};
+    // Component name must be set in the first call to initialise
+    if (!this.status) {
+      this.name = name // plugin component name in CamelCase
+      this.status = new Status(this)
+    }
 
-// componentReady should resolve when this component is ready to be used by others
-Component.prototype.componentReady = function() {
-  return Promise.resolve(); // This component is always ready
-};
+    var status = this.status
 
-/*
-** Module exports
-*/
+    if (status.fields.ready) {
+      // Prevent callers from initialising the component twice
+      return Promise.resolve(self)
+    }
 
-exports.component = Component;
+    if (status.fields.initialising) {
+      // Put caller on the waiting list
+      return new Promise(function (resolve, reject) {
+        self.addEventListener('ready', function (self) {
+          resolve(self)
+        })
 
-}})();
+        self.addEventListener('error', function (error) {
+          reject(error)
+        })
+      })
+    }
+
+    status.update(status.initialisingStatus())
+
+    return self.dependenciesReady()
+      .then(function () {
+        return self.componentReady()
+      })
+      .then(function () {
+        status.update(status.readyStatus())
+
+        // Notify callers that are waiting, and clear the waiting list
+        self.drainListeners('ready', self)
+
+        // Notify the first caller
+        return self
+      })
+      .catch(function (error) {
+        status.update(status.errorStatus(error))
+        return Promise.reject(error)
+        // Other plugin components should treat this one as disabled now
+      })
+  }
+
+  // dependenciesReady should resolve when all dependencies of this component are ready
+  Component.prototype.dependenciesReady = function () {
+    return Promise.resolve()
+  }
+
+  // componentReady should resolve when this component is ready to be used by others
+  Component.prototype.componentReady = function () {
+    return Promise.resolve()
+  }
+
+  exports.Component = Component
+})()

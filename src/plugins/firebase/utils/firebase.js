@@ -8,12 +8,16 @@ Registers Firebase plugin functions under $tw.utils.firebase, mainly to make
 them easily accessible for debugging in the browser console
 
 \*/
-(function () { if (typeof window !== 'undefined') {
+(function () {
+  exports.assign = function (to, from) {
+    for (var p in from) {
+      if (from.hasOwnProperty(p)) {
+        to[p] = from[p]
+      }
+    }
+  }
 
-"use strict";
-/*jslint node: true, browser: true */
-/*global $tw: false */
-
-exports.firebase = require('$:/plugins/ustuehler/firebase/index.js');
-
-}})();
+  exports.firebase = function () {
+    return require('$:/plugins/ustuehler/firebase/index.js').firebase
+  }
+})()

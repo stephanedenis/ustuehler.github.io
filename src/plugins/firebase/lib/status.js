@@ -6,122 +6,114 @@ module-type: library
 Firebase plugin component status
 
 \*/
-(function () { if (typeof window !== 'undefined') {
+(function () {
+  /* global $tw */
 
-"use strict";
-/*jslint node: true, browser: true */
-/*global $tw: false */
+  var Observable = require('$:/plugins/ustuehler/firebase/lib/observable.js').Observable
+  var assign = require('$:/plugins/ustuehler/firebase/utils/firebase.js').assign
 
-var Observable = require('$:/plugins/ustuehler/firebase/lib/observable.js').observable;
+  const STATUS_TIDDLER_BASE = '$:/status/'
 
-const STATUS_TIDDLER_BASE = '$:/status/Firebase';
-
-var Status = function(component, fields) {
-  // plugin component name in CamelCase; appened to STATUS_TIDDLER_BASE
-  this.component = component;
-
-  // fields to set on the status tiddler
-  if (fields) {
-    this.update(fields);
-  } else {
-    this.update(this.uninitialisedStatus());
-  }
-};
-
-Status.prototype = new Observable();
-
-Status.prototype.update = function(fields) {
-  this.fields = fields;
-  this.updateTiddler();
-  this.notifyChangeEventListeners();
-};
-
-Status.prototype.uninitialisedStatus = function() {
-  return {
-    ok: true,
-    ready: false,
-    error: null,
-    initialising: false
-  };
-};
-
-Status.prototype.initialisingStatus = function() {
-  return {
-    ok: status.ok,
-    ready: status.ready,
-    error: status.error,
-    initialising: true
-  };
-};
-
-Status.prototype.readyStatus = function() {
-  return {
-    ok: true,
-    ready: true,
-    error: null,
-    initialising: false
-  };
-};
-
-Status.prototype.errorStatus = function(error) {
-  return {
-    ok: false,
-    ready: false,
-    initialising: false,
-    error: error
-  };
-};
-
-Status.prototype.updateTiddler = function() {
-  // XXX: find out when and why $tw.wiki.setText may be undefined here and review this
-  if (typeof $tw.wiki.setText === 'undefined') {
-    console.log('Skipping this status tiddler update because $tw.wiki.setText is undefined');
-    return;
+  var Status = function (component, fields) {
+    this.initialise(component, fields)
   }
 
-  var tiddler = $tw.Tiddler({
-    type: 'application/json',
-    text: JSON.stringify(status, undefined, '  ')
-  }, this.fields, {
-    title: STATUS_TIDDLER_BASE + this.component
-  });
+  Status.prototype = new Observable()
 
-  $tw.wiki.addTiddler(tiddler);
-};
+  Status.prototype.initialise = function (component, fields) {
+    // plugin component name in CamelCase; appened to STATUS_TIDDLER_BASE
+    this.component = component
 
-Status.prototype.notifyChangeEventListeners = function() {
-  var event = {
-    component: this.component,
-    status: {}
-  };
-  assign(event.status, this.fields);
-  this.dispatchEvent('change', event);
-};
+    // fields to set on the status tiddler
+    if (!fields) {
+      fields = this.uninitialisedStatus()
+    }
 
-Status.prototype.addChangeEventListener = function(l) {
-  this.addEventListener('change', l);
-};
+    // Emit an initial status change event
+    this.update(fields)
 
-Status.prototype.removeChangeEventListener = function(l) {
-  this.removeEventListener('change', l);
-};
+    // XXX: log further status changes for debugging
+    this.addEventListener('change', function (event) {
+      console.log(event.component.name, 'event', event)
+    })
+  }
 
-/*
-** Module exports
-*/
+  Status.prototype.update = function (fields) {
+    this.fields = fields
+    this.updateTiddler()
+    this.notifyChangeEventListeners()
+  }
 
-exports.status = Status;
-
-/*
-** Module utility functions
-*/
-
-function assign(to, from) {
-  for (var p in from) {
-    if (from.hasOwnProperty(p)) {
-      to[p] = from[p];
+  Status.prototype.uninitialisedStatus = function () {
+    return {
+      ok: true,
+      ready: false,
+      error: null,
+      initialising: false
     }
   }
-}
 
-}})();
+  Status.prototype.initialisingStatus = function () {
+    return {
+      ok: this.fields.ok,
+      ready: this.fields.ready,
+      error: this.fields.error,
+      initialising: true
+    }
+  }
+
+  Status.prototype.readyStatus = function () {
+    return {
+      ok: true,
+      ready: true,
+      error: null,
+      initialising: false
+    }
+  }
+
+  Status.prototype.errorStatus = function (error) {
+    return {
+      ok: false,
+      ready: false,
+      initialising: false,
+      error: error
+    }
+  }
+
+  Status.prototype.updateTiddler = function () {
+    // XXX: find out when and why $tw.wiki.setText may be undefined here and review this
+    if (typeof $tw.wiki.setText === 'undefined') {
+      console.log('Skipping this status tiddler update because $tw.wiki.setText is undefined')
+      return
+    }
+
+    var title = STATUS_TIDDLER_BASE + this.component.name
+    var tiddler = new $tw.Tiddler(title, {
+      type: 'application/json',
+      text: JSON.stringify(this.fields, undefined, '  ')
+    }, this.fields)
+
+    $tw.wiki.addTiddler(tiddler)
+  }
+
+  Status.prototype.notifyChangeEventListeners = function () {
+    var event = {
+      component: this.component,
+      status: {}
+    }
+
+    assign(event.status, this.fields)
+
+    this.dispatchEvent('change', event)
+  }
+
+  Status.prototype.addChangeEventListener = function (l) {
+    this.addEventListener('change', l)
+  }
+
+  Status.prototype.removeChangeEventListener = function (l) {
+    this.removeEventListener('change', l)
+  }
+
+  exports.Status = Status
+})()

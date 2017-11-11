@@ -1,70 +1,99 @@
 /*\
 title: $:/plugins/ustuehler/firebase/index.js
 type: application/javascript
-module-type: utils
+module-type: library
 caption: firebase
 
-Provides utility functions under $tw.utils.firebase
+Firebase plugin component index
 
 \*/
-(function (global) { if (typeof window !== 'undefined') {
+(function () {
+  var App = require('$:/plugins/ustuehler/firebase/lib/app.js').App
+  var Database = require('$:/plugins/ustuehler/firebase/lib/database.js').Database
+  var Storage = require('$:/plugins/ustuehler/firebase/lib/storage.js').Storage
+  var Component = require('$:/plugins/ustuehler/firebase/lib/component.js').Component
 
-"use strict";
-/*jslint node: true, browser: true */
-/*global $tw: false */
-
-var Component = require('$:/plugins/ustuehler/firebase/lib/component.js').component;
-
-var app = require('$:/plugins/ustuehler/firebase/lib/app.js').app,
-    database = require('$:/plugins/ustuehler/firebase/lib/database.js').database,
-    storage = require('$:/plugins/ustuehler/firebase/lib/storage.js').storage;
-
-var index = new Component('Firebase');
-
-index.dependenciesReady = function() {
-  var deadline = Date.now() + 60000; // one minute from now
-  var interval = 500; // affects the polling frequency
-
-  var allReady = function() {
-    return typeof window.firebase !== 'undefined';
+  var Firebase = function () {
   }
 
-  return new Promise(function(resolve, reject) {
-    var poll = function() {
-      var now = Date.now();
+  Firebase.prototype = new Component()
 
-      if (allReady()) {
-        resolve();
-      } else if (now < deadline) {
-        setTimeout(poll, Math.min(deadline - now, interval));
-      } else {
-        reject(new Error('Firebase <script> tags were not loaded in time'));
+  Firebase.prototype.initialise = function () {
+    return this.initialiseComponent('Firebase', this)
+  }
+
+  Firebase.prototype.dependenciesReady = function () {
+    var deadline = Date.now() + 60000 // one minute from now
+    var interval = 500 // affects the polling frequency
+
+    if (typeof window === 'undefined') {
+      return Promise.reject(new Error('window context is required for firebase '))
+    }
+
+    return new Promise(function (resolve, reject) {
+      var poll = function () {
+        var now = Date.now()
+
+        if (typeof window.firebase !== 'undefined') {
+          resolve()
+        } else if (now < deadline) {
+          setTimeout(poll, Math.min(deadline - now, interval))
+        } else {
+          reject(new Error('Firebase <script> tags were not loaded in time'))
+        }
       }
-    };
 
-    // Invoke the poller function once, and then via timeout, maybe
-    poll();
-  });
-};
+      // Invoke the poller function once, and then via timeout, maybe
+      poll()
+    })
+  }
 
-// Resolves to the global `firebase` object from the dependencies
-index.componentReady = function() {
-  return new Promise(function(resolve, reject) {
-    resolve(window.firebase);
-  });
-};
+  Firebase.prototype.componentReady = function () {
+    console.log('Firebase SDK version:', window.firebase.SDK_VERSION)
+    this.firebase = window.firebase
+    this.app = new App(this.firebase)
+    return Promise.resolve()
+  }
 
-var initialise = function() {
-  return index.initialise().then(function(firebase) {
-    return app.initialise(firebase);
-  });
-};
+  Firebase.prototype.initialiseApp = function () {
+    return Promise.resolve(this.app)
+  }
 
-exports.firebase = {
-  initialise: initialise,
-  app: app,
-  database: database,
-  storage: storage
-};
+  Firebase.prototype.initialiseDatabase = function () {
+    this.database = this.database || new Database(this.firebase.database())
+    return this.database.initialise()
+  }
 
-}})(this);
+  Firebase.prototype.initialiseStorage = function () {
+    this.storage = this.storage || new Storage(this.firebase.storage())
+    return this.storage.initialise()
+  }
+
+  var initialise = (function () {
+    var firebase
+
+    return function () {
+      if (firebase) {
+        return Promise.resolve(firebase)
+      }
+
+      firebase = new Firebase()
+      return firebase.initialise()
+    }
+  }())
+
+  exports.firebase = {
+    app: function () {
+      return initialise()
+        .then(function (firebase) { return firebase.initialiseApp() })
+    },
+    database: function () {
+      return initialise()
+        .then(function (firebase) { return firebase.initialiseDatabase() })
+    },
+    storage: function () {
+      return initialise()
+        .then(function (firebase) { return firebase.initialiseStorage() })
+    }
+  }
+})()

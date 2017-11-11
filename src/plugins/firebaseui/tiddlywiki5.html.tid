@@ -1,6 +1,0 @@
-title: $:/plugins/ustuehler/firebaseui/tiddlywiki5.html
-tags: $:/tags/RawMarkup
-
-<!-- FirebaseUI -->
-<script src="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.js"></script>
-<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.4.1/firebaseui.css" />

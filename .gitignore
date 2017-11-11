@@ -10,3 +10,5 @@
 /hack/content/Draft of *.tid
 
 /hack/content/$__BuildInfo.tid
+
+/src/plugins/*/files/*.tmp-browserify-*

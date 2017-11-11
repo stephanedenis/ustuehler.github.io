@@ -6,27 +6,24 @@ module-type: library
 Firebase Storage plugin component
 
 \*/
-(function () { if (typeof window !== 'undefined') {
+(function () {
+  var Component = require('$:/plugins/ustuehler/firebase/lib/component.js').Component
 
-"use strict";
-/*jslint node: true, browser: true */
-/*global $tw: false */
+  var Storage = function (storage) {
+    if (arguments.length > 0) {
+      this.initialise(storage)
+    }
+  }
 
-var Component = require('$:/plugins/ustuehler/firebase/lib/component.js').component;
+  Storage.prototype = new Component()
 
-var Storage = function() {
-};
+  Storage.prototype.initialise = function (firebaseStorage) {
+    if (arguments.length > 0) {
+      this.storage = firebaseStorage
+    }
 
-Storage.prototype = new Component(''); // empty name relates to how the status tiddler is named
+    return this.initialiseComponent('FirebaseStorage', this)
+  }
 
-Storage.prototype.initialise = function(firebase) {
-  this.firebase = firebase;
-  Component.prototype.initialise('FirebaseStorage');
-};
-
-Storage.prototype.componentReady = function() {
-  // TODO: initialise Firebase Storage
-  return Promise.resolve();
-};
-
-}})();
+  exports.Storage = Storage
+})()

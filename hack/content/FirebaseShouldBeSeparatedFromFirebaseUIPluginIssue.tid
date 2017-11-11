@@ -1,7 +1,0 @@
-created: 20171108085906112
-modified: 20171108102526076
-tags: FirebasePlugin FirebaseUIPlugin Issues
-title: FirebaseShouldBeSeparatedFromFirebaseUIPluginIssue
-type: text/vnd.tiddlywiki
-
-FirebaseUIPlugin currently handles loading of Firebase //and// FirebaseUI. Since I also want to use the storage component of Firebase, it now makes more sense to move the Firebase code into a new FirebasePlugin.
