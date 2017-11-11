@@ -1,0 +1,13 @@
+created: 20171104082317886
+modified: 20171105015705195
+span: 12
+title: $:/plugins/ustuehler/github/status
+type: text/vnd.tiddlywiki
+
+<$github>
+
+|<$link to="$:/temp/GitHub/UserName">~GitHub username:</$link> |<$edit-text tiddler="$:/temp/GitHub/UserName" default={{$:/plugins/ustuehler/github/settings/username}} tag="input"/> |
+|<$link to="$:/temp/GitHub/Password">~GitHub password:</$link> |<$edit-text tiddler="$:/temp/GitHub/Password" default={{$:/plugins/ustuehler/github/settings/password}} tag="input" type="password"/> |
+|<$link to="$:/temp/GitHub/Branch">Default branch:</$link> |<$edit-text tiddler="$:/temp/GitHub/Branch" default={{$:/plugins/ustuehler/github/settings/branch}} tag="input"/> |
+
+</$github>

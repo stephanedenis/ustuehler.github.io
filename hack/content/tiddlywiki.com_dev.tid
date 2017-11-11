@@ -1,0 +1,16 @@
+caption: tiddlywiki.com/dev
+created: 20171111215352610
+modified: 20171111215656269
+tags: TiddlyWikiMacros $:/tags/Macro
+title: tiddlywiki.com/dev
+type: text/vnd.tiddlywiki
+
+\define tiddlywiki.com-dev(title:"HelloThere") [[$title$|https://tiddlywiki.com/#$title$]] at https://tiddlywiki.com/dev
+
+This tiddler defines the ''tiddlywiki.com-dev'' macro that defines how links to https://tiddlywiki.com/dev are rendered.
+
+; Example
+: `<<tiddlywiki.com-dev 'SyncAdaptorModules'>>`
+
+; Output
+: <<tiddlywiki.com-dev 'SyncAdaptorModules'>>

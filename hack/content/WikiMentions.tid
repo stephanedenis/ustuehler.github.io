@@ -1,0 +1,7 @@
+created: 20171111194856998
+modified: 20171111195324000
+tags: Ideas
+title: WikiMentions
+type: text/vnd.tiddlywiki
+
+Would it be interesting to have `@` mentions work in WikiText? Qualified mentions as used in the fediverse should also be recognised.

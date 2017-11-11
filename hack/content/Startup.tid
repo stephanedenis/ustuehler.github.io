@@ -1,0 +1,40 @@
+created: 20171111195942099
+modified: 20171111201716728
+span: 6
+tags: 
+title: Startup
+type: text/vnd.tiddlywiki
+
+"Miscellaneous startup logic for both the client and server" is in [[$:/core/modules/startup.js]].
+
+The module exports a single function, the ''startup'' procedure, which takes no arguments and returns no value.
+
+The following snippet from the ''startup'' procedure finds a "working" SyncAdaptor and then sets up a [[Syncer]] that uses the SyncAdaptor that was found.
+
+```javascript
+    // Find a working syncadaptor
+    $tw.syncadaptor = undefined;
+    $tw.modules.forEachModuleOfType("syncadaptor",function(title,module) {
+        if(!$tw.syncadaptor && module.adaptorClass) {
+            $tw.syncadaptor = new module.adaptorClass({wiki: $tw.wiki});
+        }
+    });
+    // Set up the syncer object if we've got a syncadaptor
+    if($tw.syncadaptor) {
+        $tw.syncer = new $tw.Syncer({wiki: $tw.wiki, syncadaptor: $tw.syncadaptor});
+    }
+```
+
+Directly after that, the ''startup'' procedure creates the SaverHandler. Whatever that is exactly aside for now, but it sure is related.
+
+```javascript
+    // Setup the saver handler
+    $tw.saverHandler = new $tw.SaverHandler({wiki: $tw.wiki, dirtyTracking: !$tw.syncadaptor});
+    // Host-specific startup
+    if($tw.browser) {
+        // Install the popup manager
+        $tw.popup = new $tw.utils.Popup();
+        // Install the animator
+        $tw.anim = new $tw.utils.Animator();
+    }
+```

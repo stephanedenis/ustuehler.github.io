@@ -1,0 +1,16 @@
+caption: Analysis and documentation of a single page application based on TiddlyWiki   
+created: 20171111201834059
+modified: 20171111204443093
+tags: TiddlyWikiMacros $:/tags/Macro
+title: cjrk68
+type: text/vnd.tiddlywiki
+
+\define cjrk68(title:"Introduction") [[$title$|https://homepages.thm.de/~cjrk68/Wiki.html#$title$]] at https://homepages.thm.de/~cjrk68/Wiki.html
+
+This tiddler defines the ''cjrk68'' macro that generates markup for links to Christian Heigele's and Christian Jurke's wonderful documentation of TiddlyWiki as a SinglePageApplication.
+
+; Example
+: `<<cjrk68 'Syncadaptor'>>`
+
+; Output
+: <<cjrk68 'Syncadaptor'>>

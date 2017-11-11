@@ -1,0 +1,7 @@
+created: 20171111221342583
+modified: 20171111221659587
+tags: Features GitHubPlugin Ideas
+title: QueueChangesToGitHub
+type: text/vnd.tiddlywiki
+
+The GitHubPlugin could queue all changes, maybe even on another branch, until the user wishes to commit them in one change to the main branch.

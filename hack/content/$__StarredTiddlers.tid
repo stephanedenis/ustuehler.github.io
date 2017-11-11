@@ -1,7 +1,7 @@
 created: 20171103230141129
 creator: ustuehler
-list: HowToWriteASyncPluginForTiddlyWiki HowToRestrictAccessToFirebaseDatabaseRecords GitHubPlugin
-modified: 20171111050126838
+list: GitHubPlugin SyncAdaptor HowToWriteASyncAdaptorForTiddlyWiki Search
+modified: 20171111201217446
 modifier: ustuehler
 tags: 
 title: $:/StarredTiddlers

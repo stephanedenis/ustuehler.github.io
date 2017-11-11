@@ -1,0 +1,11 @@
+created: 20171111211853399
+modified: 20171111212430415
+tags: $:/tags/Macro TiddlyWikiMacros
+title: SearchOnGoogle
+type: text/vnd.tiddlywiki
+
+\define google-search-button(org:"ustuehler" repo:"ustuehler.github.io" q:"example" label:"Search on Google")
+<<a-button href:"https://www.google.com/search?q=$q$" label:"$label$">>
+\end
+
+<<google-search-button>>

@@ -1,0 +1,18 @@
+caption: syncadaptor
+created: 20171111185612021
+modified: 20171111215724639
+span: 4
+tags: TiddlyWikiPluginDevelopment
+title: SyncAdaptor
+type: text/vnd.tiddlywiki
+
+A ''{{!!caption}}'' is used by the [[Syncer]] to synchronise individual tiddlers with an external TiddlerStore. It is even better summarised in <<cjrk68 Syncadaptor>>, and more fully documented in <<tiddlywiki.com-dev SyncAdaptorModules>>.
+
+! Examples
+
+Syncadaptor modules in TiddlyWiki5:
+
+* [[filesystem|https://github.com/Jermolene/TiddlyWiki5/tree/master/plugins/tiddlywiki/filesystem]]
+* [[tiddlyweb|https://github.com/Jermolene/TiddlyWiki5/tree/master/plugins/tiddlywiki/tiddlyweb]]
+
+<<github-search-button org:Jermolene repo:TiddlyWiki5 q:"syncadaptor" label:"Search in ~TiddlyWiki5">> <<google-search-button q:"tiddlywiki+syncadaptor">>

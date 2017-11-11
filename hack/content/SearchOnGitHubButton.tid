@@ -1,0 +1,11 @@
+created: 20171111211605415
+modified: 20171111212410018
+tags: $:/tags/Macro TiddlyWikiMacros
+title: SearchOnGitHubButton
+type: text/vnd.tiddlywiki
+
+\define github-search-button(org:"ustuehler" repo:"ustuehler.github.io" q:"example" label:"Search on ~GitHub")
+<<a-button href:"https://github.com/$org$/$repo$/search?utf8=%E2%9C%93&q=$q$&type=" label:"$label$">>
+\end
+
+<<github-search-button>>

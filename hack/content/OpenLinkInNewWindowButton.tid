@@ -1,0 +1,11 @@
+created: 20171111211003189
+modified: 20171111211146050
+tags: $:/tags/Macro TiddlyWikiMacros
+title: OpenLinkInNewWindowButton
+type: text/vnd.tiddlywiki
+
+\define a-button(href:"#" label:"Open Link in New Window")
+<a target="_" href="$href$" class="mdc-button mdc-button--raised" style="color: white;">$label$</a>
+\end
+
+<<a-button>>

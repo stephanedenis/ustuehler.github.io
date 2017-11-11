@@ -1,12 +1,10 @@
+caption: GitHub Plugin
 created: 20171108090424876
-modified: 20171108090706779
+modified: 20171111220915033
 tags: TiddlyWikiPlugins
 title: GitHubPlugin
 type: text/vnd.tiddlywiki
 
-This is actually two separate plugins, which may eventually be merged into one that would be called $:/plugins/ustuehler/github.
+$:/plugins/ustuehler/github
 
-See also:
-
-* $:/plugins/ustuehler/github-api
-* $:/plugins/ustuehler/github-pages
+The ~GitHubPlugin for TiddlyWiki provides a SyncAdaptor that syncronises the TiddlerStore with a branch in a GitHub repository.

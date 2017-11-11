@@ -1,0 +1,8 @@
+caption: syncer
+created: 20171111190705164
+modified: 20171111192402523
+ref: $:/core/modules/syncer.js
+title: Syncer
+type: text/vnd.tiddlywiki
+
+The code for the ''{{!!caption}}'' is in {{!!ref}}.

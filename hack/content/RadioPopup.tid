@@ -1,0 +1,30 @@
+created: 20171111193048516
+modified: 20171111201441710
+span: 6
+tags: 
+title: RadioPopup
+type: text/vnd.tiddlywiki
+
+The link to a popup radio player in vanilla HTML with JavaScript could be:
+
+```html
+<a href="#" onclick="window.open('#Radio','Radio','height=480,width=640'); return false">Open Radio in New Window</a>
+```
+; Try it out: <a href="#" onclick="window.open('#Radio','Radio','height=480,width=640'); return false">Open Radio in New Window</a>
+
+If the link above doesn't work, then the WikiText parser has discarded the `onclick` attribute for safety reasons.
+
+There is definitely code for handling "popups", though, and there's a view toolbar action to open the current tiddler in a new window.  Here's the code from the [[Startup]] module, that I'm referring to:
+
+```javascript
+exports.startup = function() {
+    ...
+    // Host-specific startup
+    if($tw.browser) {
+        // Install the popup manager
+        $tw.popup = new $tw.utils.Popup();
+        // Install the animator
+        $tw.anim = new $tw.utils.Animator();
+    }
+}
+```
