@@ -42,8 +42,8 @@ FirebaseUI component
           // Ensure that the Firebase App is initialised before using it
           return firebase.app()
             .then(function () {
-              self.auth = window.firebase.auth
               self.firebaseui = window.firebaseui
+              self.firebase_auth = window.firebase.auth
             })
             .then(resolve)
             .catch(reject)
@@ -75,7 +75,7 @@ FirebaseUI component
   FirebaseUI.prototype.addAuthStateChangedListener = function (l) {
     var self = this
 
-    this.auth.onAuthStateChanged(function (user) {
+    this.firebase_auth.onAuthStateChanged(function (user) {
       if (user) {
         var event = {
           'display-name': user.displayName,
@@ -161,7 +161,7 @@ FirebaseUI component
 
   FirebaseUI.prototype.getAuthUI = function () {
     if (!this.authUI) {
-      this.authUI = new this.firebaseui.auth.AuthUI(this.auth)
+      this.authUI = new this.firebaseui.auth.AuthUI(this.firebase_auth)
     }
     return this.authUI
   }
