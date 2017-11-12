@@ -265,8 +265,8 @@ FirebaseUI component
   FirebaseUI.prototype.startSignInFlow = function (selector, config) {
     return this.initialise()
       .then(function () {
-      startUI(selector, config)
-    })
+        startUI(selector, config)
+      })
   }
 
   exports.FirebaseUI = {
