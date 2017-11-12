@@ -60,11 +60,6 @@ Firebase plugin component index
     return Promise.resolve(this.app)
   }
 
-  Firebase.prototype.initialiseUI = function () {
-    this.ui = this.ui || new UI(this.firebase) // TODO: check if this is the correct argument
-    return this.database.initialise()
-  }
-
   Firebase.prototype.initialiseDatabase = function () {
     this.database = this.database || new Database(this.firebase.database())
     return this.database.initialise()
@@ -73,6 +68,11 @@ Firebase plugin component index
   Firebase.prototype.initialiseStorage = function () {
     this.storage = this.storage || new Storage(this.firebase.storage())
     return this.storage.initialise()
+  }
+
+  Firebase.prototype.initialiseUI = function () {
+    this.ui = this.ui || new UI(this.firebase) // TODO: check if this is the correct argument
+    return this.database.initialise()
   }
 
   var initialise = (function () {
@@ -100,6 +100,10 @@ Firebase plugin component index
     storage: function () {
       return initialise()
         .then(function (firebase) { return firebase.initialiseStorage() })
+    },
+    ui: function () {
+      return initialise()
+        .then(function (firebase) { return firebase.initialiseUI() })
     }
   }
 })()
