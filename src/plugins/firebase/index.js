@@ -73,7 +73,7 @@ Firebase plugin component index
 
     return function () {
       if (firebaseui) {
-        return firebaseui
+        return Promise.resolve(firebaseui)
       }
 
       return initialise()
