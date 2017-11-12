@@ -111,7 +111,7 @@ initialisation and status reporting
    * Resolves when the specified window property is set. This can be used to wait for
    * external scripts which would set those properties when they are loaded.
    */
-  FirebaseUI.prototype.getWindowProperty = function (property) {
+  Component.prototype.getWindowProperty = function (property) {
     var deadline = Date.now() + 60000 // one minute from now
     var interval = 500 // affects the polling frequency
 
