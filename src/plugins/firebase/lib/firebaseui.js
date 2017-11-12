@@ -19,10 +19,14 @@ FirebaseUI component
 
   const CURRENT_USER_TEMPLATE = '$:/plugins/ustuehler/firebase/ui/UserViewTemplate'
 
-  var FirebaseUI = function () {
+  /*
+   * FirebaseUI constructs a new authentication UI. The `firebase` argument is
+   * the global window.firebase object.
+   */
+  var FirebaseUI = function (firebase) {
     Component.call(this, 'FirebaseUI')
 
-    this.authUI = null
+    this.firebase = firebase
   }
 
   FirebaseUI.prototype = Object.create(Component.prototype)
