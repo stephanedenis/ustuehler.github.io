@@ -25,8 +25,10 @@ FirebaseUI component
   var FirebaseUI = function (firebase) {
     Component.call(this, 'FirebaseUI')
 
+    // XXX: Sanity check because the initialisation code got complicated
     if (firebase !== window.firebase) {
-      throw new Error('invalid object passed to FirebaseUI constructor: ' + instanceof(firebase))
+      throw new Error('invalid object passed to FirebaseUI constructor: ' +
+        instanceof(firebase) + ' (expected window.firebase)'
     }
 
     this.firebase = firebase
