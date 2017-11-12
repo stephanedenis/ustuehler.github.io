@@ -140,7 +140,7 @@ FirebaseUI component
   }
 
   // Reveal FirebaseUI and begin the sign-in flow if the user is signed out
-  FirebaseUI.prototype.startUI (selector, config) {
+  FirebaseUI.prototype.startUI = function (selector, config) {
     var ui = this.getAuthUI()
 
     config = config || getAuthUIConfig()
@@ -150,7 +150,7 @@ FirebaseUI component
   }
 
   // If possible, remove FirebaseUI from the DOM or at least hide the UI
-  function removeUI (selector) {
+  FirebaseUI.prototype.removeUI = function (selector) {
     console.log('Canceling the sign-in flow')
     // TODO: find out how to shut down FirebaseUI, or if it's needed
   }
