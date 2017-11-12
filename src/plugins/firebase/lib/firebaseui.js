@@ -237,20 +237,20 @@ FirebaseUI component
 
   FirebaseUI.prototype.signedInStatus = function () {
     return {
-      ok: this.status.ok,
-      error: this.status.error,
-      ready: this.status.ready,
-      initialising: this.status.initialising,
+      ok: this.status.fields.ok,
+      error: this.status.fields.error,
+      ready: this.status.fields.ready,
+      initialising: this.status.fields.initialising,
       signedIn: true
     }
   }
 
   FirebaseUI.prototype.signedOutStatus = function () {
     return {
-      ok: this.status.ok,
-      error: this.status.error,
-      ready: this.status.ready,
-      initialising: this.status.initialising,
+      ok: this.status.fields.ok,
+      error: this.status.fields.error,
+      ready: this.status.fields.ready,
+      initialising: this.status.fields.initialising,
       signedIn: false
     }
   }
