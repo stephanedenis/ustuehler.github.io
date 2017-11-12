@@ -50,7 +50,7 @@ FirebaseUI component
       )
     }
 
-    this.authUI = new this.firebaseui.auth.AuthUI(this.firebase_auth)
+    this.authUI = new this.firebaseui.auth.AuthUI(this.firebase.auth())
 
     return Promise.resolve()
   }
