@@ -52,7 +52,7 @@ FirebaseUI component
     firebase.auth().onAuthStateChanged(function (u) {
       if (u) {
         // User is signed in.
-        self.status.update(signedInStatus())
+        self.status.update(this.signedInStatus())
         l({
           'display-name': u.displayName,
           'first-name': u.displayName.split(' ')[0],
@@ -64,14 +64,14 @@ FirebaseUI component
         }, user)
       } else {
         // User is signed out.
-        self.status.update(signedOutStatus())
+        self.status.update(this.signedOutStatus())
         l(null)
       }
     })
   }
 
   // Updates the tiddler that holds information about the authenticated user
-  FirebaseUI.prototype.setCurrentUser (user, accessToken, firebaseUser) {
+  FirebaseUI.prototype.setCurrentUser = function (user, accessToken, firebaseUser) {
     $tw.wiki.deleteTiddler(STATUS_PROVIDER_TIDDLER)
 
     if (user) {
