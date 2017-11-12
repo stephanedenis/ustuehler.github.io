@@ -14,6 +14,8 @@ FirebaseUI component
   var Component = require('$:/plugins/ustuehler/component/index.js').Component
   var firebase = require('$:/plugins/ustuehler/firebase/index.js').firebase
 
+  console.log('firebase:', firebase)
+
   const STATUS_USER_TIDDLER = '$:/status/OAuth/User'
   const STATUS_PROVIDER_TIDDLER = '$:/status/OAuth/Provider'
 
