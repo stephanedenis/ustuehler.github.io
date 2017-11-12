@@ -1,6 +1,6 @@
 created: 20171108090123407
-modified: 20171108090130299
+modified: 20171112131923136
 title: FirebaseUI
 type: text/vnd.tiddlywiki
 
-See FirebaseUIPlugin.
+''~FirebaseUI'' is a separate project, not to be conflated with [[Firebase]] itself. However, the FirebasePlugin provides access to both libraries.

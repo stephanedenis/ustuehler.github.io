@@ -1,11 +1,13 @@
 caption: Update other StatusTiddlers on AuthStateChanged
 created: 20171108081801979
-modified: 20171108082304991
+modified: 20171112132556974
 tags: FirebaseUIPlugin Issues
 title: UpdateOtherStatusTiddlersOnAuthStateChangedIssue
 type: text/vnd.tiddlywiki
 
-When the FirebaseUIPlugin reacts to the `AuthStateChanged` event from Firebase, there are more tiddlers which it should updated.  For example:
+When the FirebasePlugin reacts to the `AuthStateChanged` event from the underlying library, there are more tiddlers which should get updated.  For example:
 
 $:/status/UserName<br>
 $:/status/IsLoggedIn
+
+These tiddlers will be initialised by TiddlyWiki when the SyncAdaptor completes the `getStatus` call.

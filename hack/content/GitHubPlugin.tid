@@ -1,9 +1,15 @@
 caption: GitHub Plugin
 created: 20171108090424876
-modified: 20171112044213273
+modified: 20171112131201787
 tags: TiddlyWikiPlugins
 title: GitHubPlugin
 type: text/vnd.tiddlywiki
+
+\define pluginGroup() ustuehler
+\define pluginName() firebase
+\define pluginTitle() $:/plugins/$(pluginGroup)$/$(pluginName)$
+\define pluginTiddler(title) $(pluginTitle)$/$title$
+\define pluginDocPrefix() $(currentTiddler)$/
 
 <table>
  <tr>

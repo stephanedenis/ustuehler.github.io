@@ -1,6 +1,6 @@
 caption: FirebaseUI Plugin
 created: 20171107012648423
-modified: 20171108090145070
+modified: 20171112131957015
 tags: FirebaseUI OAuthPlugin
 title: FirebaseUIPlugin
 type: text/vnd.tiddlywiki
@@ -11,8 +11,8 @@ type: text/vnd.tiddlywiki
 \define pluginTiddler(title) $(pluginTitle)$/$title$
 \define pluginDocPrefix() $(currentTiddler)$/
 
-<<pluginTitle>> &larr; Drag this link into another TiddlyWiki to install the plugin.
+<<pluginTitle>> has been merged into the FirebasePlugin.
 
-Documentation tiddlers for this plugin:
+Documentation tiddlers for this former plugin:
 
 {{{ [prefix<pluginDocPrefix>] }}}
