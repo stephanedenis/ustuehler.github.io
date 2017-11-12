@@ -34,11 +34,11 @@ FirebaseUI component
   const USER_NAME_ANONYMOUS = 'anonymous'
   */
 
-  FirebaseUI.prototype addSignInSuccessListener (l) {
+  FirebaseUI.prototype.addSignInSuccessListener (l) {
     this.addEventListener('signin', l)
   }
 
-  FirebaseUI.prototype dispatchSignInSuccessEvent () {
+  FirebaseUI.prototype.dispatchSignInSuccessEvent () {
     var event = {} // TODO: report user information in event
     this.addEventListener('signin', event)
   }
