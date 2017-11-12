@@ -78,7 +78,7 @@ FirebaseUI component
 
     if (user) {
       // User is signed in.
-      status = this.signedInStatus()
+      this.status.update(this.signedInStatus())
 
       for (var field in user) {
         if (user.hasOwnProperty(field)) {
@@ -97,7 +97,7 @@ FirebaseUI component
       }
     } else {
       // User is signed out.
-      status = this.signedOutStatus()
+      this.status.update(this.signedOutStatus())
 
       $tw.wiki.deleteTiddler(TEMP_ACCESS_TOKEN_TIDDLER)
       $tw.wiki.deleteTiddler(STATUS_USER_TIDDLER)
