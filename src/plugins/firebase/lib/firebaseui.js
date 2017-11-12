@@ -291,7 +291,7 @@ FirebaseUI component
   if (typeof window !== 'undefined') {
     var firebaseui = new FirebaseUI()
 
-    exports.firebase.ui = firebaseui
+    exports.firebaseui = firebaseui
 
     firebaseui.initialise().then(function () {
       console.log('FirebaseUI initialised')
