@@ -9,7 +9,4 @@ them easily accessible for debugging in the browser console
 
 \*/
 (function () {
-  exports.firebaseui = function () {
-    return require('$:/plugins/ustuehler/firebase/lib/firebaseui.js').firebaseui
-  }
 })()
