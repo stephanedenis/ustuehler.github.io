@@ -163,7 +163,7 @@ FirebaseUI component
   FirebaseUI.prototype.startUI = function (selector, config) {
     var ui = this.getAuthUI()
 
-    config = config || getAuthUIConfig()
+    config = config || this.getAuthUIConfig()
 
     console.log('Starting the sign-in flow')
     ui.start(selector, config)
