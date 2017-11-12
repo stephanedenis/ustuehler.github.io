@@ -179,6 +179,7 @@ FirebaseUI component
           this.dispatchEvent('signin', {
             // TODO: report user information in the event
           })
+
           // Still redirect to signInSuccessUrl
           return true
         }
