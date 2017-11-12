@@ -55,39 +55,34 @@ Firebase plugin component index
   }
 
   var getFirebase = (function () {
-    var firebase
-
+    var firebase // This is a singleton
     return function () {
-      if (firebase) {
-        return Promise.resolve(firebase)
+      if (!firebase) {
+        firebase = new Firebase()
       }
-
-      firebase = new Firebase()
       return firebase.initialise()
     }
   }())
 
-  exports.getFirebaseUI = (function () {
+  var getFirebaseUI = (function () {
     var firebaseui
 
     return function () {
-      if (firebaseui) {
-        return Promise.resolve(firebaseui)
-      }
-
       return getFirebase()
         .then(function (firebase) {
-          var FirebaseUI = require('$:/plugins/ustuehler/firebase/lib/firebaseui.js').FirebaseUI
-
-          firebaseui = new FirebaseUI(firebase.firebase)
-
-          return firebaseui.initialise()
+          if (!firebaseui) {
+            var FirebaseUI = require('$:/plugins/ustuehler/firebase/lib/firebaseui.js').FirebaseUI
+            firebaseui = new FirebaseUI(firebase.firebase)
+          }
         })
-        .then(function (firebaseui) {
-          return firebaseui
+        .then(function () {
+          return firebaseui.initialise()
         })
     }
   }())
+
+  exports.getFirebase = getFirebase
+  exports.getFirebaseUI = getFirebaseUI
 
   exports.firebase = {
     app: function () {
