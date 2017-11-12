@@ -9,6 +9,7 @@ Firebase plugin component index
 \*/
 (function () {
   var App = require('$:/plugins/ustuehler/firebase/lib/app.js').App
+  var UI = require('$:/plugins/ustuehler/firebase/lib/ui.js').UI
   var Database = require('$:/plugins/ustuehler/firebase/lib/database.js').Database
   var Storage = require('$:/plugins/ustuehler/firebase/lib/storage.js').Storage
   var Component = require('$:/plugins/ustuehler/firebase/lib/component.js').Component
@@ -57,6 +58,11 @@ Firebase plugin component index
 
   Firebase.prototype.initialiseApp = function () {
     return Promise.resolve(this.app)
+  }
+
+  Firebase.prototype.initialiseUI = function () {
+    this.ui = this.ui || new UI(this.firebase) // TODO: check if this is the correct argument
+    return this.database.initialise()
   }
 
   Firebase.prototype.initialiseDatabase = function () {
