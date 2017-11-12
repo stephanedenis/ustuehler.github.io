@@ -4,14 +4,18 @@ type: application/javascript
 module-type: library
 caption: firebase
 
-Firebase plugin component index
+Firebase plugin component index. This module is instantiates eqch component
+when it is first requested, but will not wait for the component to be reqdy.
+That is the responsibility of each component.
 
 \*/
 (function () {
   var Component = require('$:/plugins/ustuehler/component/index.js').Component
+
   var App = require('$:/plugins/ustuehler/firebase/lib/app.js').App
   var Database = require('$:/plugins/ustuehler/firebase/lib/database.js').Database
   var Storage = require('$:/plugins/ustuehler/firebase/lib/storage.js').Storage
+  var FirebaseUI = require('$:/plugins/ustuehler/firebase/lib/storage.js').FirebaseUI
 
   var Firebase = function () {
     Component.call(this, 'Firebase')
