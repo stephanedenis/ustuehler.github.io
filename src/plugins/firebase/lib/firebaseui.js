@@ -159,13 +159,6 @@ FirebaseUI component
       })
   }
 
-  FirebaseUI.prototype.getAuthUI = function () {
-    if (!this.authUI) {
-      this.authUI = new this.firebaseui.auth.AuthUI(this.firebase_auth)
-    }
-    return this.authUI
-  }
-
   // Reveal FirebaseUI and begin the sign-in flow if the user is signed out
   FirebaseUI.prototype.startUI = function (selector, config) {
     var ui = this.getAuthUI()
@@ -174,6 +167,13 @@ FirebaseUI component
 
     console.log('Starting the sign-in flow')
     ui.start(selector, config)
+  }
+
+  FirebaseUI.prototype.getAuthUI = function () {
+    if (!this.authUI) {
+      this.authUI = new this.firebaseui.auth.AuthUI(this.firebase_auth)
+    }
+    return this.authUI
   }
 
   // If possible, remove FirebaseUI from the DOM or at least hide the UI
@@ -187,7 +187,7 @@ FirebaseUI component
   */
 
   // getAuthUIConfig generates a configuration hash for Firebase UI
-  function getAuthUIConfig () {
+  FirebaseUI.prototype.getAuthUIConfig = function () {
     var signInFlow = getSignInFlow()
     var signInSuccessUrl = getSignInSuccessUrl()
     var tosUrl = getTermsOfServiceUrl()
@@ -206,7 +206,7 @@ FirebaseUI component
         //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
         //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-        firebase.auth.GithubAuthProvider.PROVIDER_ID
+        this.firebase_auth.GithubAuthProvider.PROVIDER_ID
         //firebase.auth.EmailAuthProvider.PROVIDER_ID,
         //firebase.auth.PhoneAuthProvider.PROVIDER_ID
       ],
@@ -292,6 +292,8 @@ FirebaseUI component
    * has to complete first, as that guarantees that the symbols "firebase" and
    * "firebaseui" are defined everywhere.
    */
+  /*
+   * TODO: move this to initialise
   if (typeof window !== 'undefined') {
     var firebaseui = new FirebaseUI()
 
@@ -301,4 +303,5 @@ FirebaseUI component
       console.log('FirebaseUI initialised')
     })
   }
+  */
 })()
