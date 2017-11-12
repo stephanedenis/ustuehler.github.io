@@ -262,16 +262,19 @@ FirebaseUI component
     }
   }
 
-  exports.ui = {
+  FirebaseUI.prototype.startSignInFlow = function (selector, config) {
+    return this.initialise()
+      .then(function () {
+      startUI(selector, config)
+    })
+  }
+
+  exports.FirebaseUI = {
     status: function () { return status },
     initialise: initialise,
     addReadyEventListener: addReadyEventListener,
     addSignInSuccessListener: addSignInSuccessListener,
-    startSignInFlow: function (selector, config) {
-      initialise().then(function () {
-        startUI(selector, config)
-      })
-    },
+    startSignInFlow: 
     cancelSignInFlow: function (selector) {
       initialise().then(function () {
         removeUI(selector)
