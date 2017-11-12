@@ -25,7 +25,7 @@ FirebaseUI component
   var FirebaseUI = function (firebase) {
     this.firebase = firebase // Same as window.firebase
     this.firebaseui = null // Set to window.firebaseui by dependenciesReady
-    this.authUI = null // Created by componentReady
+    this.authUI = null // FirebaseUI auth application created by componentReady
 
     Component.call(this, 'FirebaseUI')
   }
