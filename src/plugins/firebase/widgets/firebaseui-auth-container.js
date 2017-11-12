@@ -74,7 +74,6 @@ following occurrances.
 
     // Delete all child nodes left over by FirebaseUI
     $tw.utils.each(domNode.childNodes, function (childNode) {
-      console.log('FirebaseUIAuthContainerWidget: Removing left-over FirebaseUI element: ' + childNode.tag)
       domNode.removeChild(childNode)
     })
 
