@@ -55,16 +55,6 @@ FirebaseUI component
     return Promise.resolve()
   }
 
-  FirebaseUI.prototype.addSignInSuccessListener = function (l) {
-    this.addEventListener('signin', l)
-  }
-
-  FirebaseUI.prototype.dispatchSignInSuccessEvent = function () {
-    var event = {} // TODO: report user information in event
-
-    this.dispatchEvent('signin', event)
-  }
-
   /*
    * addAuthStateChangedListener observes Auth State Changed events from Firebase
    * and reflects the changes in a set of system tiddlers.
@@ -185,7 +175,11 @@ FirebaseUI component
     return {
       callbacks: {
         signInSuccess: function () {
-          this.dispatchSignInSuccessEvent()
+          // Notify other components
+          this.dispatchEvent('signin', {
+            // TODO: report user information in the event
+          })
+          // Still redirect to signInSuccessUrl
           return true
         }
       },
