@@ -2,7 +2,6 @@
 title: $:/plugins/ustuehler/firebase/lib/ui.js
 type: application/javascript
 module-type: library
-caption: firebaseui
 
 FirebaseUI component
 
