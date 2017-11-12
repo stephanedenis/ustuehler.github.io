@@ -15,14 +15,11 @@ Firebase plugin component index
   var Storage = require('$:/plugins/ustuehler/firebase/lib/storage.js').Storage
 
   var Firebase = function () {
+    Component.call(this, 'Firebase')
   }
 
   Firebase.prototype = Object.create(Component.prototype)
   Firebase.prototype.constructor = Firebase
-
-  Firebase.prototype.initialise = function () {
-    return this.initialiseComponent('Firebase', this)
-  }
 
   Firebase.prototype.dependenciesReady = function () {
     var deadline = Date.now() + 60000 // one minute from now
