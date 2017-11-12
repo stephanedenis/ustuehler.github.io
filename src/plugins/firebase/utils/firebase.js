@@ -9,8 +9,6 @@ them easily accessible for debugging in the browser console
 
 \*/
 (function () {
-  var index = require('$:/plugins/ustuehler/firebase/index.js')
-
   exports.assign = function (to, from) {
     for (var p in from) {
       if (from.hasOwnProperty(p)) {
@@ -20,6 +18,6 @@ them easily accessible for debugging in the browser console
   }
 
   exports.firebase = function () {
-    return index.firebase
+    return require('$:/plugins/ustuehler/firebase/index.js').firebase
   }
 })()
