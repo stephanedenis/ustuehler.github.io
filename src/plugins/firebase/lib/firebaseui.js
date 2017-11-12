@@ -33,7 +33,7 @@ FirebaseUI component
   FirebaseUI.prototype = Object.create(Component.prototype)
   FirebaseUI.prototype.constructor = FirebaseUI
 
-  // dependenciesReady resolves as soon as firebaseui.js is loaded
+  // Resolves when firebaseui.js is loaded and Firebase is initialised
   FirebaseUI.prototype.dependenciesReady = function () {
     var deadline = Date.now() + 60000 // one minute from now
     var interval = 500 // affects the polling frequency
@@ -43,7 +43,7 @@ FirebaseUI component
         var now = Date.now()
 
         if (typeof window.firebaseui !== 'undefined') {
-          // Now ensure that Firebase is initialised, too
+          // Ensure that Firebase is initialised before using it
           return firebase.initialise()
         } else if (now < deadline) {
           setTimeout(poll, Math.min(deadline - now, interval))
@@ -96,6 +96,18 @@ FirebaseUI component
     })
   }
 
+  /*
+  function getUserName () {
+    var user = $tw.wiki.getTiddler(STATUS_USER_TIDDLER)
+
+    if (user && user.fields[USER_NAME_FIELD]) {
+      return user.fields[USER_NAME_FIELD]
+    } else {
+      return USER_NAME_ANONYMOUS
+    }
+  }
+  */
+
   // Updates the tiddler that holds information about the authenticated user
   FirebaseUI.prototype.setCurrentUser = function (user, accessToken, firebaseUser) {
     $tw.wiki.deleteTiddler(STATUS_PROVIDER_TIDDLER)
@@ -144,18 +156,6 @@ FirebaseUI component
         $tw.utils.error(error)
       })
   }
-
-  /*
-  function getUserName () {
-    var user = $tw.wiki.getTiddler(STATUS_USER_TIDDLER)
-
-    if (user && user.fields[USER_NAME_FIELD]) {
-      return user.fields[USER_NAME_FIELD]
-    } else {
-      return USER_NAME_ANONYMOUS
-    }
-  }
-  */
 
   FirebaseUI.prototype.getAuthUI = function () {
     if (!this.authUI) {
