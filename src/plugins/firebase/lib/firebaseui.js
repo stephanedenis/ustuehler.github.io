@@ -39,7 +39,7 @@ FirebaseUI component
   }
 
   FirebaseUI.prototype dispatchSignInSuccessEvent () {
-    var event = {}
+    var event = {} // TODO: report user information in event
     this.addEventListener('signin', event)
   }
 
