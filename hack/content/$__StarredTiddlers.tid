@@ -1,7 +1,7 @@
 created: 20171103230141129
 creator: ustuehler
-list: GitHubPlugin Search $:/plugins/ustuehler/component [[System Tiddlers]] GitHubPlugin/ListRepositories FirebasePlugin GitHubPlugin/SignInWithFirebase FirebasePlugin/Status UpdateOtherStatusTiddlersOnAuthStateChangedIssue CloudUpload $:/plugins/ustuehler/firebase/ui/AuthContainer
-modified: 20171112135702134
+list: GitHubPlugin Search $:/plugins/ustuehler/component [[System Tiddlers]] GitHubPlugin/ListRepositories FirebasePlugin GitHubPlugin/SignInWithFirebase FirebasePlugin/SignIn
+modified: 20171112142735462
 modifier: ustuehler
 tags: 
 title: $:/StarredTiddlers
