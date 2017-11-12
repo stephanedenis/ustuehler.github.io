@@ -110,7 +110,7 @@ FirebaseUI component
    * authStateChangedListener observes Auth State Changed events from Firebase
    * and reflects the changes in a set of system tiddlers
    */
-  FirebaseUI.prototype.authStateChangedListener (user, firebaseUser) {
+  FirebaseUI.prototype.authStateChangedListener = function (user, firebaseUser) {
     firebaseUser.getIdToken().then(function (accessToken) {
       setCurrentUser(user, accessToken, firebaseUser)
     })
