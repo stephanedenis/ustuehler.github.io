@@ -299,4 +299,6 @@ FirebaseUI component
       console.log('FirebaseUI initialised')
     })
   }
+
+  console.log('loading firebaseui: done')
 })()
