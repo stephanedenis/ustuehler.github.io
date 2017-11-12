@@ -21,7 +21,15 @@ FirebaseUI component
 
   var FirebaseUI = function () {
     Component.call(this, 'FirebaseUI')
+
+    this.readyEventListeners = []
+    this.signInSuccessListeners = []
+    this.firebase = null
+    this.authUI = null
   }
+
+  FirebaseUI.prototype = Object.create(Component.prototype)
+  FirebaseUI.prototype.constructor = FirebaseUI
 
   /*
   const USER_NAME_FIELD = 'display-name'
@@ -30,10 +38,6 @@ FirebaseUI component
 
   // TOOD: create a real plugin component, FirebaseUI
   var state = {
-    readyEventListeners: [],
-    signInSuccessListeners: [],
-    firebase: null,
-    authUI: null
   }
 
   var addReadyEventListener = function (listener) {
