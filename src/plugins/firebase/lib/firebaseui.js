@@ -29,7 +29,7 @@ FirebaseUI component
   FirebaseUI.prototype = Object.create(Component.prototype)
   FirebaseUI.prototype.constructor = FirebaseUI
 
-  // Resolves when firebaseui.js is loaded and Firebase is initialised
+  // Resolves when firebaseui.js is loaded and the Firebase App is ready
   FirebaseUI.prototype.dependenciesReady = function () {
     var deadline = Date.now() + 60000 // one minute from now
     var interval = 500 // affects the polling frequency
@@ -40,7 +40,7 @@ FirebaseUI component
 
         if (typeof window.firebaseui !== 'undefined') {
           // Ensure that Firebase is initialised before using it
-          return firebase.initialise()
+          return firebase.app()
         } else if (now < deadline) {
           setTimeout(poll, Math.min(deadline - now, interval))
         } else {
