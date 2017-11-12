@@ -41,34 +41,11 @@ FirebaseUI component
       })
   }
 
-  // Resolves when firebaseui.js is loaded and the Firebase App is ready
-  FirebaseUI.prototype.getWindowProperty = function (property) {
-    var deadline = Date.now() + 60000 // one minute from now
-    var interval = 500 // affects the polling frequency
-
-    return new Promise(function (resolve, reject) {
-      var poll = function () {
-        var now = Date.now()
-
-        if (typeof window[property] !== 'undefined') {
-          return resolve(window[property])
-        } else if (now < deadline) {
-          setTimeout(poll, Math.min(deadline - now, interval))
-        } else {
-          reject(new Error('window.' + property + ' did not appear within the alotted time'))
-        }
-      }
-
-      // Invoke the poller function once, and then via timeout, maybe
-      poll()
-    })
-  }
-
   FirebaseUI.prototype.componentReady = function () {
     // XXX: Sanity check because the initialisation code got complicated
     if (this.firebase !== window.firebase) {
       throw new Error(
-        'invalid object passed to FirebaseUI constructor: ' + firebase +
+        'invalid object passed to FirebaseUI constructor: ' + this.firebase +
         ' (expected window.firebase)'
       )
     }
