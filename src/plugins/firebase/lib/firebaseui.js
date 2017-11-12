@@ -61,7 +61,7 @@ FirebaseUI component
           'email-verified': u.emailVerified,
           'photo-url': u.photoURL,
           'phone-number': u.phoneNumber
-        }, user)
+        }, u)
       } else {
         // User is signed out.
         self.status.update(this.signedOutStatus())
