@@ -73,7 +73,6 @@ following occurrances.
     $tw.utils.firebaseui().cancelSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
 
     // Delete all child nodes left over by FirebaseUI
-    console.log('FirebaseUIAuthContainerWidget: Removing child DOM nodes')
     $tw.utils.each(domNode.childNodes, function (childNode) {
       console.log('FirebaseUIAuthContainerWidget: Removing left-over FirebaseUI element: ' + childNode.tag)
       domNode.removeChild(childNode)
