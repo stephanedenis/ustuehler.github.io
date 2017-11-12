@@ -70,7 +70,7 @@ following occurrances.
   FirebaseUIAuthContainerWidget.prototype.removeChildDomNodes = function () {
     var domNode = this.domNodes[0]
 
-    $tw.utils.firebaseui.cancelSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
+    $tw.utils.firebaseui().cancelSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
 
     // Delete all child nodes left over by FirebaseUI
     console.log('FirebaseUIAuthContainerWidget: Removing child DOM nodes')
