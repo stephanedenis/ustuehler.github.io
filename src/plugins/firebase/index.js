@@ -68,6 +68,25 @@ Firebase plugin component index
     }
   }())
 
+  exports.firebaseui = (function () {
+    var firebaseui
+
+    return function () {
+      if (firebaseui) {
+        return Promise.resolve(firebaseui)
+      }
+
+      return initialise()
+        .then(function (firebase) {
+          firebaseui = new FirebaseUI(firebase.firebase)
+          return firebaseui.initialise()
+        })
+        .then(function (firebaseui) {
+          return firebaseui
+        })
+    }
+  }())
+
   exports.firebase = {
     app: function () {
       return initialise()
@@ -84,25 +103,6 @@ Firebase plugin component index
     storage: function () {
       return initialise()
         .then(function (firebase) { return firebase.initialiseStorage() })
-    }
-  }
-
-  exports.firebaseui = function () {
-    var firebaseui
-
-    return function () {
-      if (firebaseui) {
-        return Promise.resolve(firebaseui)
-      }
-
-      return initialise()
-        .then(function (firebase) {
-          firebaseui = new FirebaseUI(firebase.firebase)
-          return firebaseui.initialise()
-        })
-        .then(function (firebaseui) {
-          return firebaseui
-        })
     }
   }
 })()
