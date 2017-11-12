@@ -10,7 +10,6 @@ Firebase plugin component index
 (function () {
   var Component = require('$:/plugins/ustuehler/component/index.js').Component
   var App = require('$:/plugins/ustuehler/firebase/lib/app.js').App
-  var UI = require('$:/plugins/ustuehler/firebase/lib/ui.js').UI
   var Database = require('$:/plugins/ustuehler/firebase/lib/database.js').Database
   var Storage = require('$:/plugins/ustuehler/firebase/lib/storage.js').Storage
 
@@ -68,11 +67,6 @@ Firebase plugin component index
     return this.storage.initialise()
   }
 
-  Firebase.prototype.initialiseUI = function () {
-    this.ui = this.ui || new UI(this.firebase) // TODO: check if this is the correct argument
-    return this.database.initialise()
-  }
-
   var initialise = (function () {
     var firebase
 
@@ -98,10 +92,6 @@ Firebase plugin component index
     storage: function () {
       return initialise()
         .then(function (firebase) { return firebase.initialiseStorage() })
-    },
-    ui: function () {
-      return initialise()
-        .then(function (firebase) { return firebase.initialiseUI() })
     }
   }
 })()
