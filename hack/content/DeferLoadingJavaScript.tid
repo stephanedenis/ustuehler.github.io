@@ -1,0 +1,10 @@
+created: 20171112010146010
+modified: 20171112010631464
+ref: https://varvy.com/pagespeed/defer-loading-javascript.html
+tags: PageSpeed JavaScript
+title: DeferLoadingJavaScript
+type: text/vnd.tiddlywiki
+
+> The overwhelming priority should be placed on delivering the content to the user as soon as possible. We have not been doing that with how we have treated our javascript. A user should not have to wait to see their content because of some script that is likely doing something to below the fold content. No matter how cool your footer is, there really is no reason for a user who may never even scroll down to your footer to load the javascript that makes your footer cool.
+
+The article also links to a tool for testing the JavaScript usage on a page, which I have not checked out.

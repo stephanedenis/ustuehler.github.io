@@ -1,0 +1,12 @@
+title: component/v0.1.0-current
+caption: >0.1.0
+tags: $:/tags/ReleaseNotes
+created: 20171111225930
+modified: 20171111225930
+released: 20171111225930
+
+Changes between version 0.1.0 and HEAD:
+
+```
+fatal: bad revision 'component/v0.1.0..HEAD'
+```

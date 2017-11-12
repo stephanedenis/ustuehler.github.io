@@ -1,0 +1,22 @@
+caption: edit-tiddler-list
+created: 20171112000540329
+modified: 20171112000956246
+tags: TiddlyWikiMacros $:/tags/Macro
+title: EditTiddlerLinkMacro
+type: text/vnd.tiddlywiki
+
+\define edit-tiddler-link(to:"" text:"edit tiddler")
+<$set name="currentTiddler" value="$to$"><$button class="tc-btn-invisible tc-tiddlylink" message="tm-edit-tiddler"><$text text="$text$"/></$button></$set>
+\end
+
+The ''edit-tiddler-list'' macro renders as a link that edits the given tiddler when clicked. It is actually a button disguised as a link by following the tip in <<tiddlywiki.com ButtonWidget>>.
+
+; Example
+
+`<<edit-tiddler-link to:"EditTiddlerLinkMacro"
+ text:"edit this tiddler">>`
+
+; Output
+
+<<edit-tiddler-link to:"EditTiddlerLinkMacro"
+ text:"edit this tiddler">>

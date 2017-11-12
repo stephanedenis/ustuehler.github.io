@@ -1,0 +1,11 @@
+caption: Material Edition
+created: 20171103225916088
+creator: ustuehler
+link: <a target="_" href={{!!ref}}>{{!!caption}}</a>
+modified: 20171112051100006
+modifier: ustuehler
+ref: https://ustuehler.github.io/tw5-material
+title: tw5-material
+type: text/vnd.tiddlywiki
+
+{{!!ref}}

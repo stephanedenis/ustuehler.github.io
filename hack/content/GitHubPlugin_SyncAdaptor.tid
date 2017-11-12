@@ -1,0 +1,8 @@
+created: 20171112001725155
+modified: 20171112013127006
+title: GitHubPlugin/SyncAdaptor
+type: text/vnd.tiddlywiki
+
+The ''<<edit-tiddler-link to:"$:/plugins/ustuehler/github/lib/githubadaptor.js" text:"githubadaptor">>'' module of the GitHubPlugin is an implementation of a SyncAdaptor. It synchronises changsd tiddlers to a repository on GitHub.
+
+A good starting point seems to be the [[tiddlywebadaptor|$:/plugins/tiddlywiki/tiddlyweb/tiddlywebadaptor.js]].

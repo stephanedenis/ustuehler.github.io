@@ -1,7 +1,7 @@
 created: 20171108020752254
 creator: ustuehler
 list-before: $:/themes/ustuehler/material/ui/ViewToolbar
-modified: 20171108021137988
+modified: 20171112001809358
 modifier: ustuehler
 span: 12
 tags: $:/tags/ViewTemplate
@@ -14,6 +14,6 @@ type: text/vnd.tiddlywiki
 
 <$list filter=<<isPlainTagTiddler>>>
 <div class="tc-tiddler-body">
-''{{!!title}}'' is an empty tiddler. This means that its `text` field is empty. However, its other fields may hold useful information.
+''{{!!title}}'' is an empty tiddler. This means that its `text` field is empty. However, its other fields may hold useful information, or its presence alone may hold some significance.
 </div>
 </$list>

@@ -66,6 +66,7 @@
       "editions/hack/tiddlers",
       "editions/hack-fs/*",
       "editions/src/*",
+      "editions/github/*",
       "hack/content/*",
       "src/plugins/*/files/*"
     ],

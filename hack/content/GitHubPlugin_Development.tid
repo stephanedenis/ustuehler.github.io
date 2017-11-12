@@ -1,0 +1,16 @@
+created: 20171111235149192
+modified: 20171111235150304
+tags: 
+title: GitHubPlugin/Development
+type: text/vnd.tiddlywiki
+
+You can access the plugin's library functions which encapsulate all access to the GitHub API from the browser console as `$tw.utils.github`.
+
+; Example: Get a user's profile data
+
+```javascript
+$tw.utils.github.getUser('ustuehler').getProfile()
+  .then(function (profile) {
+    console.log(JSON.stringify(profile.data, null, '  '))
+  })
+```

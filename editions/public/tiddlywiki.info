@@ -1,7 +1,7 @@
 {
 	"build": {
 		"index": [
-			"--rendertiddler","$:/core/save/all","src.html","text/plain"]
+			"--rendertiddler","$:/core/save/all","public.html","text/plain"]
 	},
 	"config": {
 		"retain-original-tiddler-path": true,

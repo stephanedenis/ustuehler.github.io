@@ -1,0 +1,12 @@
+title: loader/v0.1.0-current
+caption: >0.1.0
+tags: $:/tags/ReleaseNotes
+created: 20171111225912
+modified: 20171111225912
+released: 20171111225912
+
+Changes between version 0.1.0 and HEAD:
+
+```
+fatal: bad revision 'loader/v0.1.0..HEAD'
+```

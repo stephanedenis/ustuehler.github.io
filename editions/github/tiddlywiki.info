@@ -1,0 +1,25 @@
+{
+    "description": "GitHub edition",
+    "plugins": [
+	"tiddlywiki/filesystem",
+	"tiddlywiki/tiddlyweb",
+        "tiddlywiki/highlight",
+	"ustuehler/firebase",
+	"ustuehler/github",
+	"ustuehler/caption"
+    ],
+    "themes": [
+	"ustuehler/material"
+    ],
+    "includeWikis": {
+	"path": "../public"
+    },
+    "build": {
+        "index": [
+	    "--output",".",
+	    "--rendertiddler","$:/core/save/all","github.html","text/plain"]
+    },
+    "config": {
+	"retain-original-tiddler-path": true
+    }
+}

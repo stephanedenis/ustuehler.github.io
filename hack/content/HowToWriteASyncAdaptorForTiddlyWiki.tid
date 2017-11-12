@@ -1,6 +1,6 @@
 caption: How to write a syncadaptor for TiddlyWiki
 created: 20171109204843290
-modified: 20171111192637731
+modified: 20171112001715952
 tags: TiddlyWiki Questions
 title: HowToWriteASyncAdaptorForTiddlyWiki
 type: text/vnd.tiddlywiki
@@ -8,7 +8,7 @@ type: text/vnd.tiddlywiki
 ! Steps
 
 # Read about the [[Syncer]] core module and learn how a SyncAdaptor works.
-# Write a plugin.
+# Write a plugin like [[GitHubPlugin/SyncAdaptor]].
 
 ! Questions
 
