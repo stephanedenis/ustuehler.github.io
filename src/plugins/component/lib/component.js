@@ -61,10 +61,12 @@ initialisation and status reporting
     if (status.fields.initialising) {
       // Put caller on the waiting list
       return new Promise(function (resolve, reject) {
+        // FIXME: This one-time listener is leaked on error
         self.addEventListener('ready', function (self) {
           resolve(self)
         })
 
+        // FIXME: This one-time listener is leaked on success
         self.addEventListener('error', function (error) {
           reject(error)
         })
