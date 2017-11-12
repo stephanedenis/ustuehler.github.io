@@ -43,48 +43,6 @@ FirebaseUI component
     this.addEventListener('signin', event)
   }
 
-  /*
-  ** Current operational status of this plugin component
-  */
-
-  var status = {
-    ok: true,
-    error: null,
-    ready: false,
-    initialising: false,
-    signedIn: false
-  }
-
-  var initialisingStatus = function () {
-    return {
-      ok: status.ok,
-      error: status.error,
-      ready: status.ready,
-      initialising: true,
-      signedIn: status.signedIn
-    }
-  }
-
-  var readyStatus = function () {
-    return {
-      ok: true,
-      ready: true,
-      initialising: false,
-      error: null,
-      signedIn: status.signedIn
-    }
-  }
-
-  var errorStatus = function (error) {
-    return {
-      ok: false,
-      ready: false,
-      initialising: false,
-      error: error,
-      signedIn: status.signedIn
-    }
-  }
-
   var signedInStatus = function () {
     return {
       ok: status.ok,
@@ -109,22 +67,23 @@ FirebaseUI component
    * addAuthStateChangedListener observes Auth State Changed events from Firebase
    * and reflects the changes in a set of system tiddlers.
    */
-  FirebaseUI.prototype addAuthStateChangedListener (listener) {
-    state.firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
+  FirebaseUI.prototype.addAuthStateChangedListener (l) {
+    state.firebase.auth().onAuthStateChanged(function (u) {
+      if (u) {
+        self.
         // User is signed in.
-        listener({
-          'display-name': user.displayName,
-          'first-name': user.displayName.split(' ')[0],
-          'uid': user.uid,
-          'email': user.email,
-          'email-verified': user.emailVerified,
-          'photo-url': user.photoURL,
-          'phone-number': user.phoneNumber
+        l({
+          'display-name': u.displayName,
+          'first-name': u.displayName.split(' ')[0],
+          'uid': u.uid,
+          'email': u.email,
+          'email-verified': u.emailVerified,
+          'photo-url': u.photoURL,
+          'phone-number': u.phoneNumber
         }, user)
       } else {
         // User is signed out.
-        listener(null)
+        l(null)
       }
     })
   }
