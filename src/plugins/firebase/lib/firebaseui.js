@@ -191,7 +191,7 @@ FirebaseUI component
     return {
       callbacks: {
         signInSuccess: function () {
-          dispatchSignInSuccessEvent()
+          this.dispatchSignInSuccessEvent()
           return true
         }
       },
