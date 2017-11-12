@@ -68,7 +68,7 @@ Firebase plugin component index
     }
   }())
 
-  exports.firebaseui = (function () {
+  var firebaseui = (function () {
     var firebaseui
 
     return function () {
@@ -88,6 +88,7 @@ Firebase plugin component index
   }())
 
   exports.firebase = {
+    ui: firebaseui,
     app: function () {
       return initialise()
         .then(function (firebase) { return firebase.initialiseApp() })
