@@ -43,34 +43,16 @@ FirebaseUI component
     this.addEventListener('signin', event)
   }
 
-  var signedInStatus = function () {
-    return {
-      ok: status.ok,
-      error: status.error,
-      ready: status.ready,
-      initialising: status.initialising,
-      signedIn: true
-    }
-  }
-
-  var signedOutStatus = function () {
-    return {
-      ok: status.ok,
-      error: status.error,
-      ready: status.ready,
-      initialising: status.initialising,
-      signedIn: false
-    }
-  }
-
   /*
    * addAuthStateChangedListener observes Auth State Changed events from Firebase
    * and reflects the changes in a set of system tiddlers.
    */
   FirebaseUI.prototype.addAuthStateChangedListener (l) {
+    var self = this
+
     state.firebase.auth().onAuthStateChanged(function (u) {
       if (u) {
-        self.
+        self.status.update(signedInStatus()
         // User is signed in.
         l({
           'display-name': u.displayName,
@@ -257,6 +239,26 @@ FirebaseUI component
    */
   function getSignInFlow () {
     return 'popup'
+  }
+
+  FirebaseUI.prototype.signedInStatus = function () {
+    return {
+      ok: this.status.ok,
+      error: this.status.error,
+      ready: this.status.ready,
+      initialising: this.status.initialising,
+      signedIn: true
+    }
+  }
+
+  FirebaseUI.prototype.signedOutStatus = function () {
+    return {
+      ok: this.status.ok,
+      error: this.status.error,
+      ready: this.status.ready,
+      initialising: this.status.initialising,
+      signedIn: false
+    }
   }
 
   exports.ui = {
