@@ -1,23 +1,15 @@
 /*\
-title: $:/plugins/ustuehler/firebase/utils/firebase.js
+title: $:/plugins/ustuehler/firebase/utils/firebaseui.js
 type: application/javascript
 module-type: utils
-caption: firebase
+caption: firebaseui
 
-Registers Firebase plugin functions under $tw.utils.firebase, mainly to make
+Registers FirebaseuUII functions under $tw.utils.firebaseui, mainly to make
 them easily accessible for debugging in the browser console
 
 \*/
 (function () {
-  exports.assign = function (to, from) {
-    for (var p in from) {
-      if (from.hasOwnProperty(p)) {
-        to[p] = from[p]
-      }
-    }
-  }
-
-  exports.firebase = function () {
-    return require('$:/plugins/ustuehler/firebase/index.js').firebase
+  exports.firebaseui = function () {
+    return require('$:/plugins/ustuehler/firebase/lib/firebaseui.js').firebase
   }
 })()
