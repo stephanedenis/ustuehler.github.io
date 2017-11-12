@@ -23,17 +23,9 @@ FirebaseUI component
    * the global window.firebase object, and *not* the Firebase plugin component.
    */
   var FirebaseUI = function (firebase) {
-    Component.call(this, 'FirebaseUI')
-
-    // XXX: Sanity check because the initialisation code got complicated
-    if (firebase !== window.firebase) {
-      throw new Error(
-        'invalid object passed to FirebaseUI constructor: ' + firebase +
-        ' (expected window.firebase)'
-      )
-    }
-
     this.firebase = firebase
+
+    Component.call(this, 'FirebaseUI')
   }
 
   FirebaseUI.prototype = Object.create(Component.prototype)
@@ -51,10 +43,9 @@ FirebaseUI component
 
         if (typeof window.firebaseui !== 'undefined') {
           // Ensure that the Firebase App is initialised before using it
-          return firebase.app()
+          return this.firebase.app()
             .then(function () {
               self.firebaseui = window.firebaseui
-              self.firebase_auth = window.firebase.auth
             })
             .then(resolve)
             .catch(reject)
@@ -68,6 +59,20 @@ FirebaseUI component
       // Invoke the poller function once, and then via timeout, maybe
       poll()
     })
+  }
+
+  FirebaseUI.prototype.componentReady = function () {
+    // XXX: Sanity check because the initialisation code got complicated
+    if (this.firebase !== window.firebase) {
+      throw new Error(
+        'invalid object passed to FirebaseUI constructor: ' + firebase +
+        ' (expected window.firebase)'
+      )
+    }
+
+    this.authUI = new this.firebaseui.auth.AuthUI(this.firebase_auth)
+
+    return Promise.resolve()
   }
 
   FirebaseUI.prototype.addSignInSuccessListener = function (l) {
@@ -178,13 +183,6 @@ FirebaseUI component
 
     console.log('Starting the sign-in flow')
     ui.start(selector, config)
-  }
-
-  FirebaseUI.prototype.getAuthUI = function () {
-    if (!this.authUI) {
-      this.authUI = new this.firebaseui.auth.AuthUI(this.firebase_auth)
-    }
-    return this.authUI
   }
 
   // If possible, remove FirebaseUI from the DOM or at least hide the UI
