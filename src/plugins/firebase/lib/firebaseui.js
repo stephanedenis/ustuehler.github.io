@@ -22,7 +22,6 @@ FirebaseUI component
   var FirebaseUI = function () {
     Component.call(this, 'FirebaseUI')
 
-    this.firebase = null
     this.authUI = null
   }
 
@@ -50,7 +49,7 @@ FirebaseUI component
   FirebaseUI.prototype.addAuthStateChangedListener = function (l) {
     var self = this
 
-    state.firebase.auth().onAuthStateChanged(function (u) {
+    firebase.auth().onAuthStateChanged(function (u) {
       if (u) {
         // User is signed in.
         self.status.update(signedInStatus())
@@ -72,7 +71,7 @@ FirebaseUI component
   }
 
   // Updates the tiddler that holds information about the authenticated user
-  function setCurrentUser (user, accessToken, firebaseUser) {
+  FirebaseUI.prototype.setCurrentUser (user, accessToken, firebaseUser) {
     $tw.wiki.deleteTiddler(STATUS_PROVIDER_TIDDLER)
 
     if (user) {
@@ -107,7 +106,7 @@ FirebaseUI component
 
   /*
    * authStateChangedListener observes Auth State Changed events from Firebase
-   * and reflects the changes in a set of system tiddlers.
+   * and reflects the changes in a set of system tiddlers
    */
   function authStateChangedListener (user, firebaseUser) {
     firebaseUser.getIdToken().then(function (accessToken) {
