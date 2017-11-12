@@ -289,7 +289,9 @@ FirebaseUI component
    * "firebaseui" are defined everywhere.
    */
   if (typeof window !== 'undefined') {
-    initialise().then(function () {
+    var firebaseui = new FirebaseUI()
+
+    firebaseui.initialise().then(function () {
       console.log('FirebaseUI initialised')
     })
   }
