@@ -45,7 +45,6 @@ FirebaseUI component
   FirebaseUI.prototype.getWindowProperty = function (property) {
     var deadline = Date.now() + 60000 // one minute from now
     var interval = 500 // affects the polling frequency
-    var self = this
 
     return new Promise(function (resolve, reject) {
       var poll = function () {
