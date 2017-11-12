@@ -27,8 +27,10 @@ FirebaseUI component
 
     // XXX: Sanity check because the initialisation code got complicated
     if (firebase !== window.firebase) {
-      throw new Error('invalid object passed to FirebaseUI constructor: ' +
+      throw new Error(
+        'invalid object passed to FirebaseUI constructor: ' +
         firebase + ' (expected window.firebase)'
+      )
     }
 
     this.firebase = firebase
