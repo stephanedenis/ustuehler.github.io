@@ -49,11 +49,9 @@ FirebaseUI component
   FirebaseUI.prototype.addAuthStateChangedListener = function (l) {
     var self = this
 
-    firebase.auth().onAuthStateChanged(function (u) {
-      if (u) {
-        // User is signed in.
-        self.status.update(this.signedInStatus())
-        l({
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        var event = {
           'display-name': u.displayName,
           'first-name': u.displayName.split(' ')[0],
           'uid': u.uid,
@@ -61,11 +59,15 @@ FirebaseUI component
           'email-verified': u.emailVerified,
           'photo-url': u.photoURL,
           'phone-number': u.phoneNumber
-        }, u)
+        }
+
+        // User is signed in.
+        self.status.update(this.signedInStatus())
+        l(event, user)
       } else {
         // User is signed out.
         self.status.update(this.signedOutStatus())
-        l(null)
+        l(null, null)
       }
     })
   }
