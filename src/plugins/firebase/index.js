@@ -22,34 +22,14 @@ Firebase plugin component index
   Firebase.prototype.constructor = Firebase
 
   Firebase.prototype.dependenciesReady = function () {
-    var deadline = Date.now() + 60000 // one minute from now
-    var interval = 500 // affects the polling frequency
-
-    if (typeof window === 'undefined') {
-      return Promise.reject(new Error('window context is required for firebase '))
-    }
-
-    return new Promise(function (resolve, reject) {
-      var poll = function () {
-        var now = Date.now()
-
-        if (typeof window.firebase !== 'undefined') {
-          resolve()
-        } else if (now < deadline) {
-          setTimeout(poll, Math.min(deadline - now, interval))
-        } else {
-          reject(new Error('Firebase <script> tags were not loaded in time'))
-        }
-      }
-
-      // Invoke the poller function once, and then via timeout, maybe
-      poll()
-    })
+    return this.getWindowProperty('firebase')
+      .then(function (value) {
+        this.firebase = value
+      })
   }
 
   Firebase.prototype.componentReady = function () {
-    console.log('Firebase SDK version:', window.firebase.SDK_VERSION)
-    this.firebase = window.firebase
+    console.log('Firebase SDK version:', this.firebase.SDK_VERSION)
     this.app = new App(this.firebase)
     return Promise.resolve()
   }
@@ -115,10 +95,12 @@ Firebase plugin component index
         return Promise.resolve(firebaseui)
       }
 
-      firebase = new FirebaseUI()
-
       return initialise()
-        .then(function (firebase) {
+        .then(function () {
+          firebaseui = new FirebaseUI(firebase.firebase)
+        })
+        .then(function () {
+          return firebaseui.initialise()
         })
     }
   }
