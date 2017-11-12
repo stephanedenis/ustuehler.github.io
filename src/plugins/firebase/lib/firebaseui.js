@@ -52,13 +52,13 @@ FirebaseUI component
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         var event = {
-          'display-name': u.displayName,
-          'first-name': u.displayName.split(' ')[0],
-          'uid': u.uid,
-          'email': u.email,
-          'email-verified': u.emailVerified,
-          'photo-url': u.photoURL,
-          'phone-number': u.phoneNumber
+          'display-name': user.displayName,
+          'first-name': user.displayName.split(' ')[0],
+          'uid': user.uid,
+          'email': user.email,
+          'email-verified': user.emailVerified,
+          'photo-url': user.photoURL,
+          'phone-number': user.phoneNumber
         }
 
         // User is signed in.
