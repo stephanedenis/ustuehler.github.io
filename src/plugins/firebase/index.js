@@ -8,8 +8,6 @@ Firebase plugin component index
 
 \*/
 (function () {
-  console.log('loading firebase')
-
   var Component = require('$:/plugins/ustuehler/component/index.js').Component
   var App = require('$:/plugins/ustuehler/firebase/lib/app.js').App
   var Database = require('$:/plugins/ustuehler/firebase/lib/database.js').Database
@@ -96,6 +94,4 @@ Firebase plugin component index
         .then(function (firebase) { return firebase.initialiseStorage() })
     }
   }
-
-  console.log('loading firebase: done')
 })()
