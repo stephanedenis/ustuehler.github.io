@@ -21,9 +21,11 @@ following occurrances.
 
   // Base widget class
   var Widget = require('$:/core/modules/widgets/widget.js').widget
+  var firebaseui = require('$:/plugins/ustuehler/firebase/index.js').firebaseui()
 
   // Constructor for this widget
   var FirebaseUIAuthContainerWidget = function (parseTreeNode, options) {
+    this.signInListener = null
     this.initialise(parseTreeNode, options)
   }
 
@@ -52,16 +54,19 @@ following occurrances.
     this.domNodes.push(domNode)
 
     // Hide FirebaseUI entirely on success
-    $tw.utils.firebaseui().addSignInSuccessListener(function () {
-      self.domNodes[0].style.display = 'none'
-    })
+    if (!this.signInListener) {
+      this.signInListener = function () {
+        self.domNodes[0].style.display = 'none'
+      })
+    }
+    firebaseui.addEventListener('signin', this.signInListener)
 
     /*
      * Start the FirebaseUI. This will insert additional DOM nodes into the
      * container element to allow the user to begin the sign-in flow, unless the
      * user is already signed in. To log out, another UI element must be created.
      */
-    $tw.utils.firebaseui().startSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
+    firebaseui.startSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
   }
 
   /*
@@ -70,7 +75,12 @@ following occurrances.
   FirebaseUIAuthContainerWidget.prototype.removeChildDomNodes = function () {
     var domNode = this.domNodes[0]
 
-    $tw.utils.firebaseui().cancelSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
+    if (this.signInListener) {
+      firebaseui.removeEventListener('signin', this.signInListener)
+      this.signInListener = null
+    }
+
+    firebaseui.cancelSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
 
     // Delete all child nodes left over by FirebaseUI
     $tw.utils.each(domNode.childNodes, function (childNode) {
