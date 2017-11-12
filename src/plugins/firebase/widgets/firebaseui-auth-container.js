@@ -51,15 +51,17 @@ following occurrances.
     this.renderChildren(domNode, null)
     this.domNodes.push(domNode)
 
-    /*
-   * Start the FirebaseUI. This will insert additional DOM nodes into the
-   * container element to allow the user to begin the sign-in flow, unless the
-   * user is already signed in. To log out, another UI element must be created.
-   */
-    $tw.utils.firebaseui.startSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
-    $tw.utils.firebaseui.addSignInSuccessListener(function () {
+    // Hide FirebaseUI entirely on success
+    $tw.utils.firebaseui().addSignInSuccessListener(function () {
       self.domNodes[0].style.display = 'none'
     })
+
+    /*
+     * Start the FirebaseUI. This will insert additional DOM nodes into the
+     * container element to allow the user to begin the sign-in flow, unless the
+     * user is already signed in. To log out, another UI element must be created.
+     */
+    $tw.utils.firebaseui().startSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
   }
 
   /*
