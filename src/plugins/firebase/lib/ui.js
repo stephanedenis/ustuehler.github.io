@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/ustuehler/firebase/lib/firebaseui.js
+title: $:/plugins/ustuehler/firebase/lib/ui.js
 type: application/javascript
 module-type: library
 caption: firebaseui
