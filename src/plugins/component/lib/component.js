@@ -107,5 +107,31 @@ initialisation and status reporting
     return Promise.resolve()
   }
 
+  /*
+   * Resolves when the specified window property is set. This can be used to wait for
+   * external scripts which would set those properties when they are loaded.
+   */
+  FirebaseUI.prototype.getWindowProperty = function (property) {
+    var deadline = Date.now() + 60000 // one minute from now
+    var interval = 500 // affects the polling frequency
+
+    return new Promise(function (resolve, reject) {
+      var poll = function () {
+        var now = Date.now()
+
+        if (typeof window[property] !== 'undefined') {
+          return resolve(window[property])
+        } else if (now < deadline) {
+          setTimeout(poll, Math.min(deadline - now, interval))
+        } else {
+          reject(new Error('window.' + property + ' did not appear within the alotted time'))
+        }
+      }
+
+      // Invoke the poller function once, and then via timeout, maybe
+      poll()
+    })
+  }
+
   exports.Component = Component
 })()
