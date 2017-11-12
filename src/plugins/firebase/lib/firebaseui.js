@@ -23,18 +23,26 @@ FirebaseUI component
    * the global window.firebase object, and *not* the Firebase plugin component.
    */
   var FirebaseUI = function (firebase) {
-    this.firebase = firebase
-    this.firebaseui = null
-    this.authUI = null
+    this.firebase = firebase // Same as window.firebase
+    this.firebaseui = null // Set to window.firebaseui by dependenciesReady
+    this.authUI = null // Created by componentReady
 
     Component.call(this, 'FirebaseUI')
   }
 
+  // Inherit from Component
   FirebaseUI.prototype = Object.create(Component.prototype)
   FirebaseUI.prototype.constructor = FirebaseUI
 
-  // Resolves when firebaseui.js is loaded and the Firebase App is ready
   FirebaseUI.prototype.dependenciesReady = function () {
+    return this.getWindowProperty('firebaseui')
+      .then(function (value) {
+        this.firebaseui = value
+      })
+  }
+
+  // Resolves when firebaseui.js is loaded and the Firebase App is ready
+  FirebaseUI.prototype.getWindowProperty = function (property) {
     var deadline = Date.now() + 60000 // one minute from now
     var interval = 500 // affects the polling frequency
     var self = this
@@ -43,18 +51,12 @@ FirebaseUI component
       var poll = function () {
         var now = Date.now()
 
-        if (typeof window.firebaseui !== 'undefined') {
-          // Ensure that the Firebase App is initialised before using it
-          return this.firebase.app()
-            .then(function () {
-              self.firebaseui = window.firebaseui
-            })
-            .then(resolve)
-            .catch(reject)
+        if (typeof window[property] !== 'undefined') {
+          return resolve(window[property])
         } else if (now < deadline) {
           setTimeout(poll, Math.min(deadline - now, interval))
         } else {
-          reject(new Error('FirebaseUI assets were not loaded in time'))
+          reject(new Error('window.' + property + ' did not appear within time'))
         }
       }
 
