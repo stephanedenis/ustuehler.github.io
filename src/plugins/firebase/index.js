@@ -98,9 +98,10 @@ Firebase plugin component index
       return initialise()
         .then(function (firebase) {
           firebaseui = new FirebaseUI(firebase.firebase)
-        })
-        .then(function () {
           return firebaseui.initialise()
+        })
+        .then(function (firebaseui) {
+          return firebaseui
         })
     }
   }
