@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/ustuehler/firebase/lib/ui.js
+title: $:/plugins/ustuehler/firebase/lib/firebaseui.js
 type: application/javascript
 module-type: library
 
@@ -9,12 +9,8 @@ FirebaseUI component
 (function () {
   /* global $tw */
 
+  var Component = require('$:/plugins/ustuehler/component/index.js').Component
   var firebase = require('$:/plugins/ustuehler/firebase/index.js').firebase
-
-  /*
-  const USER_NAME_FIELD = 'display-name'
-  const USER_NAME_ANONYMOUS = 'anonymous'
-  */
 
   const STATUS_USER_TIDDLER = '$:/status/OAuth/User'
   const STATUS_PROVIDER_TIDDLER = '$:/status/OAuth/Provider'
@@ -22,6 +18,15 @@ FirebaseUI component
   const TEMP_ACCESS_TOKEN_TIDDLER = '$:/temp/OAuth/AccessToken'
 
   const CURRENT_USER_TEMPLATE = '$:/plugins/ustuehler/firebase/ui/UserViewTemplate'
+
+  var FirebaseUI = function () {
+    Component.call(this, 'FirebaseUI')
+  }
+
+  /*
+  const USER_NAME_FIELD = 'display-name'
+  const USER_NAME_ANONYMOUS = 'anonymous'
+  */
 
   // TOOD: create a real plugin component, FirebaseUI
   var state = {
