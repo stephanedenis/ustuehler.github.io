@@ -53,22 +53,22 @@ following occurrances.
     this.renderChildren(domNode, null)
     this.domNodes.push(domNode)
 
-    // Hide FirebaseUI entirely on success
-    if (!this.signInListener) {
-      this.signInListener = function () {
-        self.domNodes[0].style.display = 'none'
-      }
-      getFirebaseUI().then(function (ui) {
+    getFirebaseUI().then(function (ui) {
+      // Hide FirebaseUI entirely on success
+      if (!self.signInListener) {
+        self.signInListener = function () {
+          self.domNodes[0].style.display = 'none'
+        }
         ui.addEventListener('signin', self.signInListener)
-      })
-    }
+      }
 
-    /*
-     * Start the FirebaseUI. This will insert additional DOM nodes into the
-     * container element to allow the user to begin the sign-in flow, unless the
-     * user is already signed in. To log out, another UI element must be created.
-     */
-    ui.startSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
+      /*
+       * Start the FirebaseUI. This will insert additional DOM nodes into the
+       * container element to allow the user to begin the sign-in flow, unless the
+       * user is already signed in. To log out, another UI element must be created.
+       */
+      ui.startSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
+    })
   }
 
   /*
