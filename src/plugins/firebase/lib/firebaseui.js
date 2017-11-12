@@ -47,7 +47,7 @@ FirebaseUI component
    * addAuthStateChangedListener observes Auth State Changed events from Firebase
    * and reflects the changes in a set of system tiddlers.
    */
-  FirebaseUI.prototype.addAuthStateChangedListener (l) {
+  FirebaseUI.prototype.addAuthStateChangedListener = function (l) {
     var self = this
 
     state.firebase.auth().onAuthStateChanged(function (u) {
@@ -131,13 +131,12 @@ FirebaseUI component
   }
   */
 
-    var getAuthUI = function () {
-      if (!state.authUI) {
-        state.authUI = new window.firebaseui.auth.AuthUI(firebase.auth())
-      }
-      return state.authUI
+  var getAuthUI = function () {
+    if (!state.authUI) {
+      state.authUI = new window.firebaseui.auth.AuthUI(firebase.auth())
     }
-
+    return state.authUI
+  }
 
   // Reveal FirebaseUI and begin the sign-in flow if the user is signed out
   function startUI (selector, config) {
