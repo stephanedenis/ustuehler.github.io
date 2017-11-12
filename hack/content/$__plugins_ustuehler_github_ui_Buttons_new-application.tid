@@ -1,0 +1,12 @@
+created: 20171112054836812
+modified: 20171112055007231
+tags: 
+title: $:/plugins/ustuehler/github/ui/Buttons/new-application
+type: text/vnd.tiddlywiki
+
+<a
+  target="_"
+  href="https://github.com/settings/applications/new"
+  class="mdc-button mdc-button--raised"
+  style="color: white;"
+>New Application</a>

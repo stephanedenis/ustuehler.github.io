@@ -1,0 +1,11 @@
+created: 20171112054853217
+modified: 20171112054854350
+tags: 
+title: $:/plugins/ustuehler/github/ui/Buttons/view-applications
+type: text/vnd.tiddlywiki
+
+<a
+  target="_"
+  href="https://github.com/settings/developers"
+  class="mdc-button"
+>View Applications</a>

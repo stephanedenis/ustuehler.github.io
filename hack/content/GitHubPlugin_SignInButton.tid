@@ -1,0 +1,19 @@
+created: 20171106105209461
+modified: 20171112055731000
+title: GitHubPlugin/SignInButton
+type: text/vnd.tiddlywiki
+
+This was the old one, using the widget:
+
+```
+<$button class="mdc-button mdc-button--raised">
+<$action-githubsignin/>
+Sign in
+</$button>
+```
+
+And this is the new one:
+
+{{$:/plugins/ustuehler/github/ui/Buttons/sign-in}}
+
+<<edit-tiddler-link to:"$:/plugins/ustuehler/github/ui/Buttons/sign-in" text:"(source)">>

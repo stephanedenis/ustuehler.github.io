@@ -1,0 +1,11 @@
+created: 20171112055127183
+modified: 20171112055128323
+tags: 
+title: $:/plugins/ustuehler/github/ui/Buttons/open-settings
+type: text/vnd.tiddlywiki
+
+<$button
+  to="$:/plugins/ustuehler/github/ui/Settings"
+  class="mdc-button mdc-button--raised"
+  style="color: white;"
+>Open Settings</$button>

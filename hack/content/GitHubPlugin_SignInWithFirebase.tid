@@ -1,0 +1,26 @@
+created: 20171112054448407
+list: 
+modified: 20171112055344946
+span: 4
+tags: GitHubPlugin/OAuthLogin
+title: GitHubPlugin/SignInWithFirebase
+type: text/vnd.tiddlywiki
+
+<$github-signin>
+
+Signing in with your GitHub account lets you synchronize your changes with the GitRepository.
+
+''Step 1: Sign in with your ~GitHub account''
+
+{{$:/plugins/ustuehler/github/ui/Buttons/sign-in}}
+
+''Step 2: Obtain a client ID and secret''
+
+<$transclude tiddler="$:/plugins/ustuehler/github/ui/Buttons/new-application"/>
+<$transclude tiddler="$:/plugins/ustuehler/github/ui/Buttons/view-applications"/>
+
+''Step 2: Set client ID and secret for this application''
+
+<$transclude tiddler="$:/plugins/ustuehler/github/ui/Buttons/open-settings"/>
+
+</$github-signin>
