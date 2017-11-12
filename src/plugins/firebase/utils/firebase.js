@@ -18,6 +18,10 @@ them easily accessible for debugging in the browser console
   }
 
   exports.firebase = function () {
-    return require('$:/plugins/ustuehler/firebase/index.js').firebase
+    return require('$:/plugins/ustuehler/firebase/index.js').firebase()
+  }
+
+  exports.firebaseui = function () {
+    return require('$:/plugins/ustuehler/firebase/index.js').firebaseui()
   }
 })()
