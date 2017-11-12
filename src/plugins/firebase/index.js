@@ -68,7 +68,6 @@ Firebase plugin component index
   }())
 
   var getFirebaseUI = (function () {
-    var FirebaseUI = require('$:/plugins/ustuehler/firebase/lib/firebaseui.js').FirebaseUI
     var firebaseui
 
     return function () {
@@ -78,7 +77,10 @@ Firebase plugin component index
 
       return getFirebase()
         .then(function (firebase) {
+          var FirebaseUI = require('$:/plugins/ustuehler/firebase/lib/firebaseui.js').FirebaseUI
+
           firebaseui = new FirebaseUI(firebase.firebase)
+
           return firebaseui.initialise()
         })
         .then(function (firebaseui) {
