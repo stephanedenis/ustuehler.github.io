@@ -26,6 +26,7 @@ FirebaseUI component
   var FirebaseUI = function () {
     Component.call(this, 'FirebaseUI')
 
+    this.auth = null
     this.authUI = null
   }
 
@@ -53,7 +54,7 @@ FirebaseUI component
   FirebaseUI.prototype.addAuthStateChangedListener = function (l) {
     var self = this
 
-    firebase().auth().onAuthStateChanged(function (user) {
+    this.auth.onAuthStateChanged(function (user) {
       if (user) {
         var event = {
           'display-name': user.displayName,
@@ -115,9 +116,10 @@ FirebaseUI component
    * and reflects the changes in a set of system tiddlers
    */
   FirebaseUI.prototype.authStateChangedListener = function (user, firebaseUser) {
-    firebaseUser.getIdToken().then(function (accessToken) {
-      this.setCurrentUser(user, accessToken, firebaseUser)
-    })
+    firebaseUser.getIdToken()
+      .then(function (accessToken) {
+        this.setCurrentUser(user, accessToken, firebaseUser)
+      })
       .catch(function (error) {
         this.setCurrentUser(null)
         $tw.utils.error(error)
@@ -138,7 +140,7 @@ FirebaseUI component
 
   FirebaseUI.prototype.getAuthUI = function () {
     if (!this.authUI) {
-      this.authUI = new window.firebaseui.auth.AuthUI(firebase().auth())
+      this.authUI = new window.firebaseui.auth.AuthUI(this.auth)
     }
     return this.authUI
   }
@@ -157,6 +159,10 @@ FirebaseUI component
   FirebaseUI.prototype.removeUI = function (selector) {
     console.log('Canceling the sign-in flow')
     // TODO: find out how to shut down FirebaseUI, or if it's needed
+  }
+
+  FirebaseUI.prototype.dependenciesReady = function () {
+    return firebase.initialise()
   }
 
   // componentReady resolves as soon as firebaseui.js is loaded
