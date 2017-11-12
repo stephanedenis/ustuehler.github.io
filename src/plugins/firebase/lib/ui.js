@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/ustuehler/firebase/lib/firebaseui.js
+title: $:/plugins/ustuehler/firebase/firebaseui.js
 type: application/javascript
 module-type: library
 
@@ -255,23 +255,6 @@ FirebaseUI component
     // TODO: find out how to shut down FirebaseUI, or if it's needed
   }
 
-  exports.ui = {
-    status: function () { return status },
-    initialise: initialise,
-    addReadyEventListener: addReadyEventListener,
-    addSignInSuccessListener: addSignInSuccessListener,
-    startSignInFlow: function (selector, config) {
-      initialise().then(function () {
-        startUI(selector, config)
-      })
-    },
-    cancelSignInFlow: function (selector) {
-      initialise().then(function () {
-        removeUI(selector)
-      })
-    }
-  }
-
   // componentReady resolves as soon as firebaseui.js is loaded
   FirebaseUI.prototype.componentReady = function () {
     var deadline = Date.now() + 60000 // one minute from now
@@ -357,6 +340,23 @@ FirebaseUI component
    */
   function getSignInFlow () {
     return 'popup'
+  }
+
+  exports.ui = {
+    status: function () { return status },
+    initialise: initialise,
+    addReadyEventListener: addReadyEventListener,
+    addSignInSuccessListener: addSignInSuccessListener,
+    startSignInFlow: function (selector, config) {
+      initialise().then(function () {
+        startUI(selector, config)
+      })
+    },
+    cancelSignInFlow: function (selector) {
+      initialise().then(function () {
+        removeUI(selector)
+      })
+    }
   }
 
   /*
