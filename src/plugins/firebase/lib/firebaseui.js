@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/ustuehler/firebase/firebaseui.js
+title: $:/plugins/ustuehler/firebase/lib/firebaseui.js
 type: application/javascript
 module-type: library
 
@@ -22,8 +22,6 @@ FirebaseUI component
   var FirebaseUI = function () {
     Component.call(this, 'FirebaseUI')
 
-    this.readyEventListeners = []
-    this.signInSuccessListeners = []
     this.firebase = null
     this.authUI = null
   }
@@ -32,57 +30,17 @@ FirebaseUI component
   FirebaseUI.prototype.constructor = FirebaseUI
 
   /*
-   * initialise resolves when the FirebaseUI script is loaded and the startUI
-   * utility function is ready to be used
-   */
-  FirebaseUI.prototype initialise () {
-    return new Promise(function (resolve, reject) {
-        .then(firebaseuiIsReady())
-        .then(function (_firebaseui) {
-          // React to all auth state changes from Firebase
-          addAuthStateChangedListener(authStateChangedListener)
-
-          // This component is ready to be used by others
-          status = readyStatus()
-
-          // Notify all callers of initialise
-          resolve(_firebaseui)
-          dispatchReadyEvent()
-        })
-        .catch(function (err) {
-          // Disable this component of the plugin
-          status = errorStatus(err)
-          reject(err)
-        })
-    })
-  }
-
-  /*
   const USER_NAME_FIELD = 'display-name'
   const USER_NAME_ANONYMOUS = 'anonymous'
   */
 
-  FirebaseUI.prototype addReadyEventListener = function (listener) {
-    state.readyEventListeners.push(listener)
-  }
-
-  FirebaseUI.prototype dispatchReadyEvent = function () {
-    while (state.readyEventListeners.length > 0) {
-      var listener = state.readyEventListeners.pop()
-      listener()
-    }
-  }
-
-  FirebaseUI.prototype addSignInSuccessListener (listener) {
-    state.signInSuccessListeners.push(listener)
+  FirebaseUI.prototype addSignInSuccessListener (l) {
+    this.addEventListener('signin', l)
   }
 
   FirebaseUI.prototype dispatchSignInSuccessEvent () {
-    while (state.signInSuccessListeners.length > 0) {
-      var cb = state.signInSuccessListeners.pop()
-      cb()
-    }
-    state.signInSuccessListeners = []
+    var event = {}
+    this.addEventListener('signin', event)
   }
 
   /*
