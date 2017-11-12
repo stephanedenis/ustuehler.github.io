@@ -112,10 +112,10 @@ FirebaseUI component
    */
   FirebaseUI.prototype.authStateChangedListener = function (user, firebaseUser) {
     firebaseUser.getIdToken().then(function (accessToken) {
-      setCurrentUser(user, accessToken, firebaseUser)
+      this.setCurrentUser(user, accessToken, firebaseUser)
     })
       .catch(function (error) {
-        setCurrentUser(null)
+        this.setCurrentUser(null)
         $tw.utils.error(error)
       })
   }
