@@ -49,7 +49,7 @@ FirebaseUI component
   FirebaseUI.prototype.addAuthStateChangedListener = function (l) {
     var self = this
 
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase().auth().onAuthStateChanged(function (user) {
       if (user) {
         var event = {
           'display-name': user.displayName,
@@ -134,7 +134,7 @@ FirebaseUI component
 
   FirebaseUI.prototype.getAuthUI = function () {
     if (!this.authUI) {
-      this.authUI = new window.firebaseui.auth.AuthUI(firebase.auth())
+      this.authUI = new window.firebaseui.auth.AuthUI(firebase().auth())
     }
     return this.authUI
   }
