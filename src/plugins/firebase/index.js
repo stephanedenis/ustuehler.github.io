@@ -8,16 +8,17 @@ Firebase plugin component index
 
 \*/
 (function () {
+  var Component = require('$:/plugins/ustuehler/component/index.js').Component
   var App = require('$:/plugins/ustuehler/firebase/lib/app.js').App
   var UI = require('$:/plugins/ustuehler/firebase/lib/ui.js').UI
   var Database = require('$:/plugins/ustuehler/firebase/lib/database.js').Database
   var Storage = require('$:/plugins/ustuehler/firebase/lib/storage.js').Storage
-  var Component = require('$:/plugins/ustuehler/firebase/lib/component.js').Component
 
   var Firebase = function () {
   }
 
-  Firebase.prototype = new Component()
+  Firebase.prototype = Object.create(Component.prototype)
+  Firebase.prototype.constructor = Firebase
 
   Firebase.prototype.initialise = function () {
     return this.initialiseComponent('Firebase', this)
