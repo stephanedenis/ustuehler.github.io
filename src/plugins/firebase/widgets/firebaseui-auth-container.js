@@ -58,8 +58,10 @@ following occurrances.
       this.signInListener = function () {
         self.domNodes[0].style.display = 'none'
       }
+      getFirebaseUI().then(function (ui) {
+        ui.addEventListener('signin', self.signInListener)
+      })
     }
-    ui.addEventListener('signin', this.signInListener)
 
     /*
      * Start the FirebaseUI. This will insert additional DOM nodes into the
