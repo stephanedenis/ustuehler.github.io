@@ -57,6 +57,13 @@ Firebase plugin component index
     return Promise.resolve(this.app)
   }
 
+  Firebase.prototype.initialiseAuth = function () {
+    return this.initialiseApp()
+      .then(function () {
+        return this.firebase.auth()
+      })
+  }
+
   Firebase.prototype.initialiseDatabase = function () {
     this.database = this.database || new Database(this.firebase.database())
     return this.database.initialise()
@@ -84,6 +91,10 @@ Firebase plugin component index
     app: function () {
       return initialise()
         .then(function (firebase) { return firebase.initialiseApp() })
+    },
+    auth: function () {
+      return initialise()
+        .then(function (firebase) { return firebase.initialiseAuth() })
     },
     database: function () {
       return initialise()
