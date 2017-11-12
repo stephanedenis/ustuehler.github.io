@@ -271,12 +271,20 @@ FirebaseUI component
       })
   }
 
+  FirebaseUI.prototype.cancelSignInFlow = function (selector, config) {
+    var self = this
+
+    return this.initialise()
+      .then(function () {
+        self.removeUI(selector)
+      })
+  }
+
   exports.FirebaseUI = {
     status: function () { return status },
     initialise: initialise,
     addReadyEventListener: addReadyEventListener,
     addSignInSuccessListener: addSignInSuccessListener,
-    startSignInFlow: 
     cancelSignInFlow: function (selector) {
       initialise().then(function () {
         removeUI(selector)
