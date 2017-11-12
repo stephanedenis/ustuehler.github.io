@@ -40,7 +40,7 @@ FirebaseUI component
 
         if (typeof window.firebaseui !== 'undefined') {
           // Ensure that Firebase is initialised before using it
-          return firebase.app()
+          return firebase.app().then(resolve).catch(reject)
         } else if (now < deadline) {
           setTimeout(poll, Math.min(deadline - now, interval))
         } else {
