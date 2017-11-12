@@ -280,17 +280,7 @@ FirebaseUI component
       })
   }
 
-  exports.FirebaseUI = {
-    status: function () { return status },
-    initialise: initialise,
-    addReadyEventListener: addReadyEventListener,
-    addSignInSuccessListener: addSignInSuccessListener,
-    cancelSignInFlow: function (selector) {
-      initialise().then(function () {
-        removeUI(selector)
-      })
-    }
-  }
+  exports.FirebaseUI = FirebaseUI
 
   /*
    * Register a global listener for auth state change events. The listener will
