@@ -20,10 +20,6 @@ them easily accessible for debugging in the browser console
   }
 
   exports.firebase = function () {
-    return index.firebase()
-  }
-
-  exports.firebaseui = function () {
-    return index.firebaseui()
+    return index.firebase
   }
 })()
