@@ -132,11 +132,11 @@ FirebaseUI component
   }
   */
 
-  var getAuthUI = function () {
-    if (!state.authUI) {
-      state.authUI = new window.firebaseui.auth.AuthUI(firebase.auth())
+  FirebaseUI.prototype.getAuthUI = function () {
+    if (!this.authUI) {
+      this.authUI = new window.firebaseui.auth.AuthUI(firebase.auth())
     }
-    return state.authUI
+    return this.authUI
   }
 
   // Reveal FirebaseUI and begin the sign-in flow if the user is signed out
