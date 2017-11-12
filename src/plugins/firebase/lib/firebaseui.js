@@ -53,7 +53,7 @@ FirebaseUI component
     state.firebase.auth().onAuthStateChanged(function (u) {
       if (u) {
         // User is signed in.
-        self.status.update(signedInStatus()
+        self.status.update(signedInStatus())
         l({
           'display-name': u.displayName,
           'first-name': u.displayName.split(' ')[0],
@@ -65,7 +65,7 @@ FirebaseUI component
         }, user)
       } else {
         // User is signed out.
-        self.status.update(signedOutStatus()
+        self.status.update(signedOutStatus())
         l(null)
       }
     })
