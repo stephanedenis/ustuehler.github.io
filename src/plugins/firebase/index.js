@@ -29,16 +29,17 @@ promise.
   Firebase.prototype = Object.create(Component.prototype)
   Firebase.prototype.constructor = Firebase
 
+  // Resolves when window.firebase is available
   Firebase.prototype.dependenciesReady = function () {
     return this.getWindowProperty('firebase')
       .then(function (value) {
+        // Memorize the value of window.firebase for later
         this.firebase = value
       })
   }
 
   Firebase.prototype.componentReady = function () {
     console.log('Firebase SDK version:', this.firebase.SDK_VERSION)
-    this.app = new App(this.firebase)
     return Promise.resolve()
   }
 
@@ -63,52 +64,5 @@ promise.
     return this.storage.initialise()
   }
 
-  var getFirebase = (function () {
-    var firebase // This is a singleton
-    return function () {
-      if (!firebase) {
-        firebase = new Firebase()
-      }
-      return firebase.initialise()
-    }
-  }())
-
-  var getFirebaseUI = (function () {
-    var firebaseui
-
-    return function () {
-      return getFirebase()
-        .then(function (firebase) {
-          if (!firebaseui) {
-            var FirebaseUI = require('$:/plugins/ustuehler/firebase/lib/firebaseui.js').FirebaseUI
-            firebaseui = new FirebaseUI(firebase.firebase)
-          }
-        })
-        .then(function () {
-          return firebaseui.initialise()
-        })
-    }
-  }())
-
-  exports.getFirebase = getFirebase
-  exports.getFirebaseUI = getFirebaseUI
-
-  exports.firebase = {
-    app: function () {
-      return getFirebase()
-        .then(function (firebase) { return firebase.initialiseApp() })
-    },
-    auth: function () {
-      return getFirebase()
-        .then(function (firebase) { return firebase.initialiseAuth() })
-    },
-    database: function () {
-      return getFirebase()
-        .then(function (firebase) { return firebase.initialiseDatabase() })
-    },
-    storage: function () {
-      return getFirebase()
-        .then(function (firebase) { return firebase.initialiseStorage() })
-    }
-  }
+  exports.firebase = new Firebase()
 })()
