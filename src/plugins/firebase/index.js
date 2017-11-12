@@ -106,4 +106,20 @@ Firebase plugin component index
         .then(function (firebase) { return firebase.initialiseStorage() })
     }
   }
+
+  exports.firebaseui = function () {
+    var firebaseui
+
+    return function () {
+      if (firebaseui) {
+        return Promise.resolve(firebaseui)
+      }
+
+      firebase = new FirebaseUI()
+
+      return initialise()
+        .then(function (firebase) {
+        })
+    }
+  }
 })()
