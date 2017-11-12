@@ -96,7 +96,7 @@ Firebase plugin component index
       }
 
       return initialise()
-        .then(function () {
+        .then(function (firebase) {
           firebaseui = new FirebaseUI(firebase.firebase)
         })
         .then(function () {
