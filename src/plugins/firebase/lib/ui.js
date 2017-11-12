@@ -32,99 +32,57 @@ FirebaseUI component
   FirebaseUI.prototype.constructor = FirebaseUI
 
   /*
+   * initialise resolves when the FirebaseUI script is loaded and the startUI
+   * utility function is ready to be used
+   */
+  FirebaseUI.prototype initialise () {
+    return new Promise(function (resolve, reject) {
+        .then(firebaseuiIsReady())
+        .then(function (_firebaseui) {
+          // React to all auth state changes from Firebase
+          addAuthStateChangedListener(authStateChangedListener)
+
+          // This component is ready to be used by others
+          status = readyStatus()
+
+          // Notify all callers of initialise
+          resolve(_firebaseui)
+          dispatchReadyEvent()
+        })
+        .catch(function (err) {
+          // Disable this component of the plugin
+          status = errorStatus(err)
+          reject(err)
+        })
+    })
+  }
+
+  /*
   const USER_NAME_FIELD = 'display-name'
   const USER_NAME_ANONYMOUS = 'anonymous'
   */
 
-  // TOOD: create a real plugin component, FirebaseUI
-  var state = {
-  }
-
-  var addReadyEventListener = function (listener) {
+  FirebaseUI.prototype addReadyEventListener = function (listener) {
     state.readyEventListeners.push(listener)
   }
 
-  var dispatchReadyEvent = function () {
+  FirebaseUI.prototype dispatchReadyEvent = function () {
     while (state.readyEventListeners.length > 0) {
       var listener = state.readyEventListeners.pop()
       listener()
     }
   }
 
-  function addSignInSuccessListener (listener) {
+  FirebaseUI.prototype addSignInSuccessListener (listener) {
     state.signInSuccessListeners.push(listener)
   }
 
-  function dispatchSignInSuccessEvent () {
+  FirebaseUI.prototype dispatchSignInSuccessEvent () {
     while (state.signInSuccessListeners.length > 0) {
       var cb = state.signInSuccessListeners.pop()
       cb()
     }
     state.signInSuccessListeners = []
-  }
-
-  /*
-  ** FirebaseUI configuration
-  */
-
-  // getAuthUIConfig generates a configuration hash for Firebase UI
-  function getAuthUIConfig () {
-    var signInFlow = getSignInFlow()
-    var signInSuccessUrl = getSignInSuccessUrl()
-    var tosUrl = getTermsOfServiceUrl()
-
-    return {
-      callbacks: {
-        signInSuccess: function () {
-          dispatchSignInSuccessEvent()
-          return true
-        }
-      },
-      signInFlow: signInFlow,
-      signInSuccessUrl: signInSuccessUrl,
-      signInOptions: [
-        // Leave the lines as is for the providers you want to offer your users.
-        //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-        //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-        firebase.auth.GithubAuthProvider.PROVIDER_ID
-        //firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        //firebase.auth.PhoneAuthProvider.PROVIDER_ID
-      ],
-      tosUrl: tosUrl
-    }
-  }
-
-  // getBaseUrl infers the wiki's base URL from the current window location
-  function getBaseUrl () {
-    // XXX: There is certainly a configuration parameter to set the base URL which we can read, or another function already in core that returns the base URL without looking at the window location.
-    return window.location.href.replace(/\/*\?.*$/, '')
-  }
-
-  /*
-   * getSignInSuccessUrl returns the URL to which the user will be redirected
-   * after she signed in.
-   */
-  function getSignInSuccessUrl () {
-    return getBaseUrl() + '#SignInSuccess'
-  }
-
-  /*
-   * getTermsOfServiceUrl returns the URL for the "Terms of Service" link in
-   * Firebase UI.
-   */
-  function getTermsOfServiceUrl () {
-    return getBaseUrl() + '#TermsOfService'
-  }
-
-  /*
-   * getSignInFlow is supposed to determine whether the 'popup' or 'redierct'
-   * flow should be used for sign-in. The redirect flow relies on Cross-Origin
-   * Resource Sharing policy, which is sometimes hard to control, so we use
-   * 'popup' instead until there's a reason to support 'redirect' as well.
-   */
-  function getSignInFlow () {
-    return 'popup'
   }
 
   /*
@@ -193,7 +151,7 @@ FirebaseUI component
    * addAuthStateChangedListener observes Auth State Changed events from Firebase
    * and reflects the changes in a set of system tiddlers.
    */
-  function addAuthStateChangedListener (listener) {
+  FirebaseUI.prototype addAuthStateChangedListener (listener) {
     state.firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         // User is signed in.
@@ -273,6 +231,14 @@ FirebaseUI component
   }
   */
 
+    var getAuthUI = function () {
+      if (!state.authUI) {
+        state.authUI = new window.firebaseui.auth.AuthUI(firebase.auth())
+      }
+      return state.authUI
+    }
+
+
   // Reveal FirebaseUI and begin the sign-in flow if the user is signed out
   function startUI (selector, config) {
     var ui = getAuthUI()
@@ -306,8 +272,8 @@ FirebaseUI component
     }
   }
 
-  // firebaseuiIsReady resolves as soon as firebaseui.js is loaded
-  var firebaseuiIsReady = function () {
+  // componentReady resolves as soon as firebaseui.js is loaded
+  FirebaseUI.prototype.componentReady = function () {
     var deadline = Date.now() + 60000 // one minute from now
     var interval = 500 // affects the polling frequency
 
@@ -330,37 +296,67 @@ FirebaseUI component
   }
 
   /*
-   * initialise resolves when the FirebaseUI script is loaded and the startUI
-   * utility function is ready to be used
+  ** Dynamically generated configuration for FirebaseUI
+  */
+
+  // getAuthUIConfig generates a configuration hash for Firebase UI
+  function getAuthUIConfig () {
+    var signInFlow = getSignInFlow()
+    var signInSuccessUrl = getSignInSuccessUrl()
+    var tosUrl = getTermsOfServiceUrl()
+
+    return {
+      callbacks: {
+        signInSuccess: function () {
+          dispatchSignInSuccessEvent()
+          return true
+        }
+      },
+      signInFlow: signInFlow,
+      signInSuccessUrl: signInSuccessUrl,
+      signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID
+        //firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        //firebase.auth.PhoneAuthProvider.PROVIDER_ID
+      ],
+      tosUrl: tosUrl
+    }
+  }
+
+  // getBaseUrl infers the wiki's base URL from the current window location
+  function getBaseUrl () {
+    // XXX: There is certainly a configuration parameter to set the base URL which we can read, or another function already in core that returns the base URL without looking at the window location.
+    return window.location.href.replace(/\/*\?.*$/, '')
+  }
+
+  /*
+   * getSignInSuccessUrl returns the URL to which the user will be redirected
+   * after she signed in.
    */
-  function initialise (options) {
-    return new Promise(function (resolve, reject) {
-      if (status.initialising) {
-        addReadyEventListener(resolve)
-        return
-      }
+  function getSignInSuccessUrl () {
+    return getBaseUrl() + '#SignInSuccess'
+  }
 
-      status = initialisingStatus()
+  /*
+   * getTermsOfServiceUrl returns the URL for the "Terms of Service" link in
+   * Firebase UI.
+   */
+  function getTermsOfServiceUrl () {
+    return getBaseUrl() + '#TermsOfService'
+  }
 
-      firebase.app()
-        .then(firebaseuiIsReady())
-        .then(function (_firebaseui) {
-          // React to all auth state changes from Firebase
-          addAuthStateChangedListener(authStateChangedListener)
-
-          // This component is ready to be used by others
-          status = readyStatus()
-
-          // Notify all callers of initialise
-          resolve(_firebaseui)
-          dispatchReadyEvent()
-        })
-        .catch(function (err) {
-          // Disable this component of the plugin
-          status = errorStatus(err)
-          reject(err)
-        })
-    })
+  /*
+   * getSignInFlow is supposed to determine whether the 'popup' or 'redierct'
+   * flow should be used for sign-in. The redirect flow relies on Cross-Origin
+   * Resource Sharing policy, which is sometimes hard to control, so we use
+   * 'popup' instead until there's a reason to support 'redirect' as well.
+   */
+  function getSignInFlow () {
+    return 'popup'
   }
 
   /*
@@ -370,13 +366,6 @@ FirebaseUI component
    * "firebaseui" are defined everywhere.
    */
   if (typeof window !== 'undefined') {
-    var getAuthUI = function () {
-      if (!state.authUI) {
-        state.authUI = new window.firebaseui.auth.AuthUI(firebase.auth())
-      }
-      return state.authUI
-    }
-
     initialise().then(function () {
       console.log('FirebaseUI initialised')
     })
