@@ -57,7 +57,7 @@ following occurrances.
     if (!this.signInListener) {
       this.signInListener = function () {
         self.domNodes[0].style.display = 'none'
-      })
+      }
     }
     firebaseui.addEventListener('signin', this.signInListener)
 
