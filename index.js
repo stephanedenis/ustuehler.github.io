@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /*
-This is invoked as a shell script by NPM when the `tiddlywiki` command is typed
-*/
+ * This is invoked as shell script by NPM
+ */
 
 var $tw = require('tiddlywiki/boot/boot.js').TiddlyWiki()
 
