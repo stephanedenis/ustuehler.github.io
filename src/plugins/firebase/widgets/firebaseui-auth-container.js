@@ -21,7 +21,7 @@ following occurrances.
 
   // Base widget class
   var Widget = require('$:/core/modules/widgets/widget.js').widget
-  var getFirebaseUI = require('$:/plugins/ustuehler/firebase/index.js').firebase.getFirebaseUI
+  var getFirebaseUI = require('$:/plugins/ustuehler/firebase/index.js').getFirebaseUI
 
   // Constructor for this widget
   var FirebaseUIAuthContainerWidget = function (parseTreeNode, options) {
