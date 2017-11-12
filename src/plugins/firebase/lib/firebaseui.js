@@ -9,6 +9,8 @@ FirebaseUI component
 (function () {
   /* global $tw */
 
+  console.log('loading firebaseui')
+
   var Component = require('$:/plugins/ustuehler/component/index.js').Component
   var firebase = require('$:/plugins/ustuehler/firebase/index.js').firebase
 
