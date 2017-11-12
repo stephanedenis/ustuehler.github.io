@@ -10,7 +10,6 @@ FirebaseUI component
   /* global $tw */
 
   var Component = require('$:/plugins/ustuehler/component/index.js').Component
-  var firebase = require('$:/plugins/ustuehler/firebase/index.js').firebase
 
   const STATUS_USER_TIDDLER = '$:/status/OAuth/User'
   const STATUS_PROVIDER_TIDDLER = '$:/status/OAuth/Provider'
@@ -21,10 +20,14 @@ FirebaseUI component
 
   /*
    * FirebaseUI constructs a new authentication UI. The `firebase` argument is
-   * the global window.firebase object.
+   * the global window.firebase object, and *not* the Firebase plugin component.
    */
   var FirebaseUI = function (firebase) {
     Component.call(this, 'FirebaseUI')
+
+    if (firebase !== window.firebase) {
+      throw new Error('invalid object passed to FirebaseUI constructor: ' + instanceof(firebase))
+    }
 
     this.firebase = firebase
   }
