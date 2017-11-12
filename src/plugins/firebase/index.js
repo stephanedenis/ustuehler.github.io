@@ -17,10 +17,10 @@ promise.
 (function () {
   var Component = require('$:/plugins/ustuehler/component/index.js').Component
 
-  var App = require('$:/plugins/ustuehler/firebase/lib/app.js').App
-  var Database = require('$:/plugins/ustuehler/firebase/lib/database.js').Database
-  var Storage = require('$:/plugins/ustuehler/firebase/lib/storage.js').Storage
-  var FirebaseUI = require('$:/plugins/ustuehler/firebase/lib/storage.js').FirebaseUI
+  //var App = require('$:/plugins/ustuehler/firebase/lib/app.js').App
+  //var Database = require('$:/plugins/ustuehler/firebase/lib/database.js').Database
+  //var Storage = require('$:/plugins/ustuehler/firebase/lib/storage.js').Storage
+  //var FirebaseUI = require('$:/plugins/ustuehler/firebase/lib/storage.js').FirebaseUI
 
   var Firebase = function () {
     Component.call(this, 'Firebase')
@@ -41,27 +41,6 @@ promise.
   Firebase.prototype.componentReady = function () {
     console.log('Firebase SDK version:', this.firebase.SDK_VERSION)
     return Promise.resolve()
-  }
-
-  Firebase.prototype.initialiseApp = function () {
-    return Promise.resolve(this.app)
-  }
-
-  Firebase.prototype.initialiseAuth = function () {
-    return this.initialiseApp()
-      .then(function () {
-        return this.firebase.auth()
-      })
-  }
-
-  Firebase.prototype.initialiseDatabase = function () {
-    this.database = this.database || new Database(this.firebase.database())
-    return this.database.initialise()
-  }
-
-  Firebase.prototype.initialiseStorage = function () {
-    this.storage = this.storage || new Storage(this.firebase.storage())
-    return this.storage.initialise()
   }
 
   exports.firebase = new Firebase()
