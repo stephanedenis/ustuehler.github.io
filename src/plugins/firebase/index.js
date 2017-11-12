@@ -5,8 +5,8 @@ module-type: library
 caption: firebase
 
 Firebase plugin component index. This module instantiates eqch component with
-its dependencies when it is first requested, but will not wait for the
-component to be reqdy.
+its dependencies when it is first requested, but it will not wait for those
+component instances to become reqdy.
 
 It is the responsibility of each component to ensure that it is properly
 initialised for the method that is called.  If the method needs to wait for
