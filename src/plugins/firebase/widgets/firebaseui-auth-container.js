@@ -21,7 +21,7 @@ following occurrances.
 
   // Base widget class
   var Widget = require('$:/core/modules/widgets/widget.js').widget
-  var getFirebaseUI = require('$:/plugins/ustuehler/firebase/index.js').getFirebaseUI
+  var firebase = require('$:/plugins/ustuehler/firebase/index.js').firebase
 
   // Constructor for this widget
   var FirebaseUIAuthContainerWidget = function (parseTreeNode, options) {
@@ -53,22 +53,20 @@ following occurrances.
     this.renderChildren(domNode, null)
     this.domNodes.push(domNode)
 
-    getFirebaseUI().then(function (ui) {
-      // Hide FirebaseUI entirely on success
-      if (!self.signInListener) {
-        self.signInListener = function () {
-          self.domNodes[0].style.display = 'none'
-        }
-        ui.addEventListener('signin', self.signInListener)
+    // Hide FirebaseUI entirely on success
+    if (!self.signInListener) {
+      self.signInListener = function () {
+        self.domNodes[0].style.display = 'none'
       }
+      firebase.ui.addEventListener('signin', self.signInListener)
+    }
 
-      /*
-       * Start the FirebaseUI. This will insert additional DOM nodes into the
-       * container element to allow the user to begin the sign-in flow, unless the
-       * user is already signed in. To log out, another UI element must be created.
-       */
-      ui.startSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
-    })
+    /*
+     * Start the FirebaseUI. This will insert additional DOM nodes into the
+     * container element to allow the user to begin the sign-in flow, unless the
+     * user is already signed in. To log out, another UI element must be created.
+     */
+    firebase.ui.startSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
   }
 
   /*
@@ -78,11 +76,11 @@ following occurrances.
     var domNode = this.domNodes[0]
 
     if (this.signInListener) {
-      ui.removeEventListener('signin', this.signInListener)
+      firebase.ui.removeEventListener('signin', this.signInListener)
       this.signInListener = null
     }
 
-    ui.cancelSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
+    firebase.ui.cancelSignInFlow('#' + FIREBASEUI_AUTH_CONTAINER_ID)
 
     // Delete all child nodes left over by FirebaseUI
     $tw.utils.each(domNode.childNodes, function (childNode) {
