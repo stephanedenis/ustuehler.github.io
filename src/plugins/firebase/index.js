@@ -55,7 +55,7 @@ Firebase plugin component index
     return this.storage.initialise()
   }
 
-  var initialise = (function () {
+  var getFirebase = (function () {
     var firebase
 
     return function () {
@@ -68,7 +68,7 @@ Firebase plugin component index
     }
   }())
 
-  var firebaseui = (function () {
+  var getFirebaseUI = (function () {
     var firebaseui
 
     return function () {
@@ -76,7 +76,7 @@ Firebase plugin component index
         return Promise.resolve(firebaseui)
       }
 
-      return initialise()
+      return getFirebase()
         .then(function (firebase) {
           firebaseui = new FirebaseUI(firebase.firebase)
           return firebaseui.initialise()
@@ -88,21 +88,21 @@ Firebase plugin component index
   }())
 
   exports.firebase = {
-    ui: firebaseui,
+    ui: getFirebaseUI,
     app: function () {
-      return initialise()
+      return getFirebase()
         .then(function (firebase) { return firebase.initialiseApp() })
     },
     auth: function () {
-      return initialise()
+      return getFirebase()
         .then(function (firebase) { return firebase.initialiseAuth() })
     },
     database: function () {
-      return initialise()
+      return getFirebase()
         .then(function (firebase) { return firebase.initialiseDatabase() })
     },
     storage: function () {
-      return initialise()
+      return getFirebase()
         .then(function (firebase) { return firebase.initialiseStorage() })
     }
   }
