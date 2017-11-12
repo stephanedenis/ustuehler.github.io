@@ -33,10 +33,29 @@ FirebaseUI component
   FirebaseUI.prototype = Object.create(Component.prototype)
   FirebaseUI.prototype.constructor = FirebaseUI
 
-  /*
-  const USER_NAME_FIELD = 'display-name'
-  const USER_NAME_ANONYMOUS = 'anonymous'
-  */
+  // dependenciesReady resolves as soon as firebaseui.js is loaded
+  FirebaseUI.prototype.dependenciesReady = function () {
+    var deadline = Date.now() + 60000 // one minute from now
+    var interval = 500 // affects the polling frequency
+
+    return new Promise(function (resolve, reject) {
+      var poll = function () {
+        var now = Date.now()
+
+        if (typeof window.firebaseui !== 'undefined') {
+          // Now ensure that Firebase is initialised, too
+          return firebase.initialise()
+        } else if (now < deadline) {
+          setTimeout(poll, Math.min(deadline - now, interval))
+        } else {
+          reject(new Error('FirebaseUI assets were not loaded in time'))
+        }
+      }
+
+      // Invoke the poller function once, and then via timeout, maybe
+      poll()
+    })
+  }
 
   FirebaseUI.prototype.addSignInSuccessListener = function (l) {
     this.addEventListener('signin', l)
@@ -159,33 +178,6 @@ FirebaseUI component
   FirebaseUI.prototype.removeUI = function (selector) {
     console.log('Canceling the sign-in flow')
     // TODO: find out how to shut down FirebaseUI, or if it's needed
-  }
-
-  FirebaseUI.prototype.dependenciesReady = function () {
-    return firebase.initialise()
-  }
-
-  // componentReady resolves as soon as firebaseui.js is loaded
-  FirebaseUI.prototype.componentReady = function () {
-    var deadline = Date.now() + 60000 // one minute from now
-    var interval = 500 // affects the polling frequency
-
-    return new Promise(function (resolve, reject) {
-      var poll = function () {
-        var now = Date.now()
-
-        if (typeof window.firebaseui !== 'undefined') {
-          resolve(window.firebaseui)
-        } else if (now < deadline) {
-          setTimeout(poll, Math.min(deadline - now, interval))
-        } else {
-          reject(new Error('FirebaseUI <script> tags was not loaded in time'))
-        }
-      }
-
-      // Invoke the poller function once, and then via timeout, maybe
-      poll()
-    })
   }
 
   /*
