@@ -12,7 +12,6 @@ Firebase plugin component index
   var App = require('$:/plugins/ustuehler/firebase/lib/app.js').App
   var Database = require('$:/plugins/ustuehler/firebase/lib/database.js').Database
   var Storage = require('$:/plugins/ustuehler/firebase/lib/storage.js').Storage
-  var FirebaseUI = require('$:/plugins/ustuehler/firebase/lib/firebaseui.js').FirebaseUI
 
   var Firebase = function () {
     Component.call(this, 'Firebase')
@@ -69,6 +68,7 @@ Firebase plugin component index
   }())
 
   var getFirebaseUI = (function () {
+    var FirebaseUI = require('$:/plugins/ustuehler/firebase/lib/firebaseui.js').FirebaseUI
     var firebaseui
 
     return function () {
