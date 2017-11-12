@@ -24,6 +24,8 @@ FirebaseUI component
    */
   var FirebaseUI = function (firebase) {
     this.firebase = firebase
+    this.firebaseui = null
+    this.authUI = null
 
     Component.call(this, 'FirebaseUI')
   }
