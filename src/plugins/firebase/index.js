@@ -96,4 +96,6 @@ Firebase plugin component index
         .then(function (firebase) { return firebase.initialiseStorage() })
     }
   }
+
+  console.log('loading firebase: done')
 })()
