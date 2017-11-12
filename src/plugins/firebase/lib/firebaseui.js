@@ -22,7 +22,6 @@ FirebaseUI component
   var FirebaseUI = function () {
     Component.call(this, 'FirebaseUI')
 
-    this.auth = null
     this.authUI = null
   }
 
@@ -33,14 +32,21 @@ FirebaseUI component
   FirebaseUI.prototype.dependenciesReady = function () {
     var deadline = Date.now() + 60000 // one minute from now
     var interval = 500 // affects the polling frequency
+    var self = this
 
     return new Promise(function (resolve, reject) {
       var poll = function () {
         var now = Date.now()
 
         if (typeof window.firebaseui !== 'undefined') {
-          // Ensure that Firebase is initialised before using it
-          return firebase.app().then(resolve).catch(reject)
+          // Ensure that the Firebase App is initialised before using it
+          return firebase.app()
+            .then(function () {
+              self.auth = window.firebase.auth
+              self.firebaseui = window.firebaseui
+            })
+            .then(resolve)
+            .catch(reject)
         } else if (now < deadline) {
           setTimeout(poll, Math.min(deadline - now, interval))
         } else {
@@ -155,7 +161,7 @@ FirebaseUI component
 
   FirebaseUI.prototype.getAuthUI = function () {
     if (!this.authUI) {
-      this.authUI = new window.firebaseui.auth.AuthUI(this.auth)
+      this.authUI = new this.firebaseui.auth.AuthUI(this.auth)
     }
     return this.authUI
   }
