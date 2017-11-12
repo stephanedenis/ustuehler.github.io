@@ -78,7 +78,7 @@ FirebaseUI component
 
     if (user) {
       // User is signed in.
-      status = signedInStatus()
+      status = this.signedInStatus()
 
       for (var field in user) {
         if (user.hasOwnProperty(field)) {
@@ -97,7 +97,7 @@ FirebaseUI component
       }
     } else {
       // User is signed out.
-      status = signedOutStatus()
+      status = this.signedOutStatus()
 
       $tw.wiki.deleteTiddler(TEMP_ACCESS_TOKEN_TIDDLER)
       $tw.wiki.deleteTiddler(STATUS_USER_TIDDLER)
@@ -110,7 +110,7 @@ FirebaseUI component
    * authStateChangedListener observes Auth State Changed events from Firebase
    * and reflects the changes in a set of system tiddlers
    */
-  function authStateChangedListener (user, firebaseUser) {
+  FirebaseUI.prototype.authStateChangedListener (user, firebaseUser) {
     firebaseUser.getIdToken().then(function (accessToken) {
       setCurrentUser(user, accessToken, firebaseUser)
     })
