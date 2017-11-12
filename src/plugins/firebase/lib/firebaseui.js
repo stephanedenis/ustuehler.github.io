@@ -55,7 +55,7 @@ FirebaseUI component
         } else if (now < deadline) {
           setTimeout(poll, Math.min(deadline - now, interval))
         } else {
-          reject(new Error('window.' + property + ' did not appear within the alotted time frame'))
+          reject(new Error('window.' + property + ' did not appear within the alotted time'))
         }
       }
 
