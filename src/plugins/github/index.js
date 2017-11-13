@@ -97,13 +97,13 @@ The plugin's main logic
   }
 
   // Updates the status tiddler's error field
-  // XXX: should be moved to the Status class
+  // XXX: should be lifted to the Status class
   GitHub.prototype.setErrorStatus = function (err) {
     this.setStatusFields(this.status.errorStatus(err))
   }
 
   // Updates the status tiddler's fields
-  // XXX: should be moved to the Status class
+  // XXX: should be lifted to the Status class
   GitHub.prototype.setStatusFields = function (fields) {
     var newFields = {
       signedIn: this.isSignedIn ? 'yes' : 'no'
