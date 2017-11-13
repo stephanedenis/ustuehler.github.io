@@ -1,10 +1,12 @@
 created: 20171112054448407
 list: 
-modified: 20171112201607511
+modified: 20171113194925784
 span: 4
 tags: GitHubPlugin/OAuthLogin
 title: GitHubPlugin/SignInWithFirebase
 type: text/vnd.tiddlywiki
+
+<span style="color: orange;">''This flow is incomplete.'' Follow the new sign-in flow described in [[GitHubPlugin/SignIn]].</span>
 
 <$github-signin>
 

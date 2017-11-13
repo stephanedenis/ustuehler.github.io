@@ -1,16 +1,29 @@
 created: 20171112232838681
-modified: 20171113024253096
+modified: 20171113200125026
 title: GitHubPlugin/SignIn
 type: text/vnd.tiddlywiki
 
-Because this plugin needs write access to the GitHubAPI, you must sign in with a PersonalAccessToken. If TwoFactorAuthentication is not enforced for your account, then a password can also be used. Using passwords isn't recommended, however.
+\define signedIn()
+[[$:/temp/GitHub/AccessToken]has[text]!field:text[]]
+\end
+\define signedOut()
+[[$:/temp/GitHub/AccessToken]] -$(signedIn)$
+\end
 
-<$list variable="" filter="[[$:/status/GitHub]field:signedIn[yes]]">
+''Step 1: Obtain a personal access token''
+
+{{GitHubPlugin/ObtainingAccessTokens}}
+
+''Step 2: Sign in with this access token''
+
+If TwoFactorAuthentication is not enforced for your account, then a username and password combination can also be used. Using passwords isn't recommended, however.
+
+<$list variable="" filter=<<signedIn>>>
 
 {{$:/plugins/ustuehler/github/ui/SignedIn}}
 
 </$list>
-<$list variable="" filter="[[$:/status/GitHub]field:signedIn[no]]">
+<$list variable="" filter=<<signedOut>>>
 
 {{$:/plugins/ustuehler/github/ui/SignIn}}
 
