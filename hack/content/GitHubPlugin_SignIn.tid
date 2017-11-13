@@ -1,13 +1,13 @@
 created: 20171112232838681
-modified: 20171113200125026
+modified: 20171113224009512
 title: GitHubPlugin/SignIn
 type: text/vnd.tiddlywiki
 
 \define signedIn()
-[[$:/temp/GitHub/AccessToken]has[text]!field:text[]]
+[[$:/status/GitHub]field:signed-in[true]]
 \end
 \define signedOut()
-[[$:/temp/GitHub/AccessToken]] -$(signedIn)$
+[[$:/status/GitHub]field:signed-in[false]]
 \end
 
 ''Step 1: Obtain a personal access token''
@@ -16,20 +16,17 @@ type: text/vnd.tiddlywiki
 
 ''Step 2: Sign in with this access token''
 
-If TwoFactorAuthentication is not enforced for your account, then a username and password combination can also be used. Using passwords isn't recommended, however.
-
 <$list variable="" filter=<<signedIn>>>
 
 {{$:/plugins/ustuehler/github/ui/SignedIn}}
 
 </$list>
+
 <$list variable="" filter=<<signedOut>>>
 
 {{$:/plugins/ustuehler/github/ui/SignIn}}
 
-The button above creates an ActionSendMessageWidget with the `tm-github-sign-in` message, which is handled with the handler installed by the [[startup module|$:/plugins/ustuehler/github/modules/startup.js]].
-
 </$list>
 
-[[Previous|GitHubPlugin/Startup]] |
-[[Up|GitHubPlugin]]
+[[Up|GitHubPlugin]] |
+[[Next|GitHubPlugin/SyncAdaptor]]

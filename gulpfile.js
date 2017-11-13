@@ -93,7 +93,7 @@ gulp.task('deploy', [], function (cb) {
 })
 
 // ref: https://stackoverflow.com/questions/28048029/running-a-command-with-gulp-to-start-node-js-server
-gulp.task('server', ['build'], function () {
+gulp.task('hack', ['build'], function () {
   nodemon({
     script: 'index.js',
     watch: ['*']
@@ -107,7 +107,7 @@ gulp.task('github', ['build'], function () {
   }).on('restart', ['build'])
 })
 
-gulp.task('hack', ['build'], function () {
+gulp.task('wip', ['build'], function () {
   nodemon({
     script: 'index.js',
     watch: ['*']

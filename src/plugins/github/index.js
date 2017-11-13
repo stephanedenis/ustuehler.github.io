@@ -13,13 +13,14 @@ The plugin's main logic
   var Client = require('$:/plugins/ustuehler/github/modules/github.js').GitHub
 
   var GitHub = function () {
+    var self = this
+
     // Anonymous access by default
     this.client = new Client()
-    this.isSignedIn = false
 
-    Component.call(this, 'GitHub')
-
-    this.setErrorStatus(null)
+    Component.call(this, 'GitHub').then(function () {
+      self.status.update(signedOutStatus())
+    })
   }
 
   GitHub.prototype = Object.create(Component.prototype)
@@ -30,6 +31,8 @@ The plugin's main logic
   }
 
   GitHub.prototype.signIn = function (username, accessToken) {
+    console.log('GitHub.signIn username:', username, 'accessToken:', accessToken, 'remembered accessToken:', recallAccessToken())
+
     var self = this
 
     // When only an access token is provided (recommended)
@@ -43,10 +46,15 @@ The plugin's main logic
       accessToken = recallAccessToken()
     }
 
-    // Use the new API client with the provided credentials
+    // Create a new API client with the provided credentials
     var client = new Client(username, accessToken)
 
-    // Try to get the user information for this access token
+    /*
+     * Try to get the user profile for this access token. This API call
+     * requires authentication, and so should be useful in determining if the
+     * accsess token is valid.
+     */
+    self.status.update(signingInStatus())
     return client.getUser().getProfile()
       .then(function (response) {
         return response.data
@@ -55,15 +63,15 @@ The plugin's main logic
         var user = { login: profile.login }
         setUserName(user.login)
         rememberAccessToken(accessToken)
-        self.isSignedIn = true
         self.client = client
-        self.setErrorStatus(null)
+        self.status.setError(null)
+        self.status.update(signedInStatus())
         return user
       })
       .catch(function (err) {
         forgetAccessToken()
-        self.isSignedIn = false
-        self.setErrorStatus(err)
+        self.status.setError(err)
+        self.status.update(signedOutStatus())
         return err
       })
   }
@@ -71,6 +79,7 @@ The plugin's main logic
   GitHub.prototype.signOut = function () {
     forgetAccessToken()
     this.client = new Client()
+    this.status.update(signedOutStatus())
     // Now we have only anonymous access, again
     return Promise.resolve()
   }
@@ -96,30 +105,11 @@ The plugin's main logic
     })
   }
 
-  // Updates the status tiddler's error field
-  // XXX: should be lifted to the Status class
-  GitHub.prototype.setErrorStatus = function (err) {
-    this.setStatusFields(this.status.errorStatus(err))
-  }
-
-  // Updates the status tiddler's fields
-  GitHub.prototype.setStatusFields = function (fields) {
-    var newFields = {}
-
-    Object.assign(newFields, this.status.fields)
-    Object.assign(newFields, fields)
-
-    newFields.signedIn = this.isSignedIn ? 'yes' : 'no'
-
-    // TODO: update should allow a subset of status fields to be updated
-    this.status.update(newFields)
-  }
-
   const STATUS_USER_NAME = '$:/status/GitHub/UserName'
-  const STATUS_ACCESS_TOKEN = '$:/temp/GitHub/AccessToken'
+  const TEMP_ACCESS_TOKEN = '$:/temp/GitHub/AccessToken'
 
   function getUserName () {
-    $tw.wiki.getTiddlerText(STATUS_USER_NAME)
+    return $tw.wiki.getTiddlerText(STATUS_USER_NAME)
   }
 
   function setUserName (login) {
@@ -127,15 +117,36 @@ The plugin's main logic
   }
 
   function recallAccessToken () {
-    $tw.wiki.getTiddlerText(STATUS_ACCESS_TOKEN)
+    return $tw.wiki.getTiddlerText(TEMP_ACCESS_TOKEN)
   }
 
   function rememberAccessToken (token) {
-    $tw.wiki.setText(STATUS_ACCESS_TOKEN, 'text', null, token)
+    $tw.wiki.setText(TEMP_ACCESS_TOKEN, 'text', null, token)
   }
 
   function forgetAccessToken () {
-    $tw.wiki.deleteTiddler(STATUS_ACCESS_TOKEN)
+    $tw.wiki.deleteTiddler(TEMP_ACCESS_TOKEN)
+  }
+
+  function signedOutStatus () {
+    return {
+      'signed-in': false,
+      'signing-in': false
+    }
+  }
+
+  function signingInStatus () {
+    return {
+      'signed-in': false,
+      'signing-in': true
+    }
+  }
+
+  function signedInStatus () {
+    return {
+      'signed-in': true,
+      'signing-in': false
+    }
   }
 
   var github = new GitHub()

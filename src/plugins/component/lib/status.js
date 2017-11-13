@@ -23,23 +23,55 @@ Plugin component status
   Status.prototype = Object.create(Observable.prototype)
   Status.prototype.constructor = Status
 
-  Status.prototype.initialise = function (component, fields) {
-    // plugin component name in CamelCase; appened to STATUS_TIDDLER_BASE
-    this.component = component
+  /*
+   * Sets the status fields to {ok: true, error: null, ready: false,
+   * initialising: false} and emits an initial change event
+   */
+  Status.prototype.initialise = function (title, fields) {
+    // Appened to STATUS_TIDDLER_BASE
+    this.title = title
 
-    // fields to set on the status tiddler
+    // The fields are also set on the status tiddler
     if (!fields) {
       fields = this.uninitialisedStatus()
     }
 
     // Emit an initial status change event
+    this.fields = {}
     this.update(fields)
   }
 
+  /*
+   * Update only the ok and error fields (null to clear the last error)
+   */
+  Status.prototype.setError = function (err) {
+    this.update({ ok: !err, error: err ? err + '' : null })
+  }
+
+  /*
+   * Update zero or more status fields and emit an event on change. The status
+   * tiddler will also be updated so that UI elements may react to the change.
+   */
   Status.prototype.update = function (fields) {
-    this.fields = fields
-    this.updateTiddler()
-    this.notifyChangeEventListeners()
+    if (!fields) {
+      return
+    }
+
+    var fieldsHaveChanged = false
+
+    for (var field in fields) {
+      if (this.fields[field] !== fields[field]) {
+        fieldsHaveChanged = true
+        break
+      }
+    }
+
+    if (fieldsHaveChanged) {
+      assign(this.fields, fields)
+
+      this.updateTiddler()
+      this.notifyChangeEventListeners()
+    }
   }
 
   Status.prototype.uninitialisedStatus = function () {
@@ -51,33 +83,6 @@ Plugin component status
     }
   }
 
-  Status.prototype.initialisingStatus = function () {
-    return {
-      ok: this.fields.ok,
-      ready: this.fields.ready,
-      error: this.fields.error,
-      initialising: true
-    }
-  }
-
-  Status.prototype.readyStatus = function () {
-    return {
-      ok: true,
-      ready: true,
-      error: null,
-      initialising: false
-    }
-  }
-
-  Status.prototype.errorStatus = function (error) {
-    return {
-      ok: false,
-      ready: false,
-      initialising: false,
-      error: error
-    }
-  }
-
   Status.prototype.updateTiddler = function () {
     // XXX: find out when and why $tw.wiki.setText may be undefined here and review this
     if (typeof $tw.wiki.setText === 'undefined') {
@@ -85,7 +90,7 @@ Plugin component status
       return
     }
 
-    var title = STATUS_TIDDLER_BASE + this.component
+    var title = STATUS_TIDDLER_BASE + this.title
     var tiddler = new $tw.Tiddler({
       type: 'application/json',
       text: JSON.stringify(this.fields, undefined, '  ')
@@ -96,7 +101,7 @@ Plugin component status
 
   Status.prototype.notifyChangeEventListeners = function () {
     var event = {
-      component: this.component,
+      source: this.title,
       status: {}
     }
 

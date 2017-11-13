@@ -1,0 +1,9 @@
+created: 20171113220011289
+modified: 20171113220143028
+tags: 
+title: FieldNames
+type: text/vnd.tiddlywiki
+
+> Field names must be lowercase letters, digits or the characters - (dash), _ (underscore) and . (period).
+>
+> -- <<tiddlywiki.com 'TiddlerFields'>>

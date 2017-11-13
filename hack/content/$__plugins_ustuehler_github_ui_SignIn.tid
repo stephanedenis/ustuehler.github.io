@@ -1,11 +1,14 @@
 created: 20171113015939800
-modified: 20171113022628880
+modified: 20171113223506082
 span: 12
 tags: 
 title: $:/plugins/ustuehler/github/ui/SignIn
 type: text/vnd.tiddlywiki
 
-|<$link to="$:/status/GitHub/UserName">Username on ~GitHub (may be empty):</$link> |<$edit-text tiddler="$:/status/GitHub/UserName" default={{$:/status/GitHub/UserName}} tag="input"/> |
-|<$link to="$:/temp/GitHub/AccessToken">Personal access token (or password):</$link> |<$edit-text tiddler="$:/temp/GitHub/AccessToken" default="" tag="input" type="password"/> |
+|<$link to="$:/temp/GitHub/AccessToken">Personal access token:</$link> |<$edit-text tiddler="$:/temp/GitHub/AccessToken" default="" tag="input" type="password"/> |
 
-{{$:/plugins/ustuehler/github/ui/Buttons/sign-in}} {{$:/status/GitHub!!error}}
+{{$:/plugins/ustuehler/github/ui/Buttons/sign-in}}
+
+<$list variable="error" filter="[{$:/status/GitHub!!error}] -null">
+<<error>>
+</$list>

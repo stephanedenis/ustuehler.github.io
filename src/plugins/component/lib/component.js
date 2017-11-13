@@ -18,7 +18,7 @@ initialisation and status reporting
 
     if (arguments.length > 0) {
       // Invoke the promise to initialise this component asynchronously
-      this.initialise(name)
+      return this.initialise(name)
     }
   }
 
@@ -71,20 +71,20 @@ initialisation and status reporting
       })
     }
 
-    status.update(status.initialisingStatus())
+    status.update(initialisingStatus())
     return self.dependenciesReady()
       .then(function () {
         return self.componentReady()
       })
       .then(function () {
         // Notify callers that are waiting, and clear the waiting list
-        status.update(status.readyStatus())
+        status.update(readyStatus())
         self.drainListeners('initialise', null)
         // Notify the first caller
         return null
       })
       .catch(function (error) {
-        status.update(status.errorStatus(error))
+        status.update(errorStatus(error))
         self.drainListeners('initialise', error)
         return error
       })
@@ -128,6 +128,30 @@ initialisation and status reporting
       // Invoke the poller function once, and then via timeout, maybe
       poll()
     })
+  }
+
+  function initialisingStatus () {
+    return {
+      initialising: true
+    }
+  }
+
+  function readyStatus () {
+    return {
+      ok: true,
+      ready: true,
+      error: null,
+      initialising: false
+    }
+  }
+
+  function errorStatus (err) {
+    return {
+      ok: false,
+      ready: false,
+      initialising: false,
+      error: err
+    }
   }
 
   exports.Component = Component
