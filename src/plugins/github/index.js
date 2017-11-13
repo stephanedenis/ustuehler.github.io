@@ -114,6 +114,7 @@ The plugin's main logic
 
     newFields.signedIn = this.isSignedIn ? 'yes' : 'no'
 
+    // TODO: update should allow a subset of status fields to be updated
     this.status.update(newFields)
   }
 
