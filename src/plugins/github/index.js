@@ -103,7 +103,7 @@ The plugin's main logic
   }
 
   // Updates the status tiddler's fields
-  // XXX: should be lifted to the Status class
+  // XXX: parts of this should be lifted to the Status class
   GitHub.prototype.setStatusFields = function (fields) {
     var newFields = {
       signedIn: this.isSignedIn ? 'yes' : 'no'
