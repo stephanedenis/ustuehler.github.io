@@ -7,23 +7,16 @@ Firebase Storage plugin component
 
 \*/
 (function () {
-  var Component = require('$:/plugins/ustuehler/firebase/lib/component.js').Component
+  var Component = require('$:/plugins/ustuehler/component/lib/component.js').Component
 
-  var Storage = function (storage) {
-    if (arguments.length > 0) {
-      this.initialise(storage)
-    }
+  var Storage = function (firebase) {
+    this.storage = firebase.firebase.storage()
+
+    Component.call(this, 'FirebaseStorage')
   }
 
-  Storage.prototype = new Component()
-
-  Storage.prototype.initialise = function (firebaseStorage) {
-    if (arguments.length > 0) {
-      this.storage = firebaseStorage
-    }
-
-    return this.initialiseComponent('FirebaseStorage', this)
-  }
+  Storage.prototype = Object.create(Component.prototype)
+  Storage.prototype.constructor = Storage
 
   exports.Storage = Storage
 })()

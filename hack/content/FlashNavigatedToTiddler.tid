@@ -1,0 +1,7 @@
+created: 20171112234630856
+modified: 20171112234727761
+tags: Ideas
+title: FlashNavigatedToTiddler
+type: text/vnd.tiddlywiki
+
+If the tiddler being navigated to is already visible on the screen, or if the distance that was scrolled is small, flash it briefly to make the user aware of its location on the screen.

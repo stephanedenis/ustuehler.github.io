@@ -19,12 +19,11 @@ FirebaseUI component
   const CURRENT_USER_TEMPLATE = '$:/plugins/ustuehler/firebase/ui/UserViewTemplate'
 
   /*
-   * FirebaseUI constructs a new authentication UI. The `firebase` argument is
-   * the global window.firebase object, and *not* the Firebase plugin component.
+   * FirebaseUI constructs a new authentication UI
    */
-  var FirebaseUI = function (firebase) {
-    this.firebase = firebase // Same as window.firebase
-    this.firebaseui = null // Set to window.firebaseui by dependenciesReady
+  var FirebaseUI = function (index) {
+    this.index = index // This plugin's component index
+    this.firebaseui = null // Set to window.firebaseui in dependenciesReady
     this.authUI = null // FirebaseUI auth application created by componentReady
 
     Component.call(this, 'FirebaseUI')
@@ -34,24 +33,25 @@ FirebaseUI component
   FirebaseUI.prototype = Object.create(Component.prototype)
   FirebaseUI.prototype.constructor = FirebaseUI
 
+  // TODO: remove the name argument
+  FirebaseUI.prototype.initialise = function (name) {
+    if (!$tw.browser) {
+      return Promise.resolve(this)
+    }
+    return Component.prototype.initialise.call(this, name)
+  }
+
   FirebaseUI.prototype.dependenciesReady = function () {
+    var self = this
     return this.getWindowProperty('firebaseui')
       .then(function (value) {
-        this.firebaseui = value
+        self.firebaseui = value
+        return self.index.app.initialise()
       })
   }
 
   FirebaseUI.prototype.componentReady = function () {
-    // XXX: Sanity check because the initialisation code got complicated
-    if (this.firebase !== window.firebase) {
-      throw new Error(
-        'invalid object passed to FirebaseUI constructor: ' + this.firebase +
-        ' (expected window.firebase)'
-      )
-    }
-
-    this.authUI = new this.firebaseui.auth.AuthUI(this.firebase.auth())
-
+    this.authUI = new this.firebaseui.auth.AuthUI(this.index.firebase.auth())
     return Promise.resolve()
   }
 
@@ -62,7 +62,7 @@ FirebaseUI component
   FirebaseUI.prototype.addAuthStateChangedListener = function (l) {
     var self = this
 
-    this.firebase_auth.onAuthStateChanged(function (user) {
+    this.index.firebase.auth.onAuthStateChanged(function (user) {
       if (user) {
         var event = {
           'display-name': user.displayName,
@@ -147,13 +147,11 @@ FirebaseUI component
   }
 
   // Reveal FirebaseUI and begin the sign-in flow if the user is signed out
-  FirebaseUI.prototype.startUI = function (selector, config) {
-    var ui = this.getAuthUI()
-
-    config = config || this.getAuthUIConfig()
+  FirebaseUI.prototype.startUI = function (selector) {
+    var config = this.getAuthUIConfig()
 
     console.log('Starting the sign-in flow')
-    ui.start(selector, config)
+    this.authUI.start(selector, config)
   }
 
   // If possible, remove FirebaseUI from the DOM or at least hide the UI
@@ -171,12 +169,14 @@ FirebaseUI component
     var signInFlow = getSignInFlow()
     var signInSuccessUrl = getSignInSuccessUrl()
     var tosUrl = getTermsOfServiceUrl()
+    var firebase = this.index.firebase // window.firebase
+    var self = this
 
     return {
       callbacks: {
         signInSuccess: function () {
           // Notify other components
-          this.dispatchEvent('signin', {
+          self.dispatchEvent('signin', {
             // TODO: report user information in the event
           })
           // Redirect to signInSuccessUrl
@@ -190,7 +190,7 @@ FirebaseUI component
         //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
         //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-        this.firebase.auth.GithubAuthProvider.PROVIDER_ID
+        firebase.auth.GithubAuthProvider.PROVIDER_ID
         //firebase.auth.EmailAuthProvider.PROVIDER_ID,
         //firebase.auth.PhoneAuthProvider.PROVIDER_ID
       ],

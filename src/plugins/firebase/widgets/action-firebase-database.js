@@ -10,7 +10,8 @@ The action-firebase-database widget manipulates tiddlers in the Firestore Databa
 (function () {
   /* global $tw */
 
-  var firebase = require('$:/plugins/ustuehler/firebase/index.js').firebase
+  // Firebase component index
+  var firebase = require('$:/plugins/ustuehler/firebase/lib/index.js').firebase
 
   // Base widget class
   var Widget = require('$:/core/modules/widgets/widget.js').widget

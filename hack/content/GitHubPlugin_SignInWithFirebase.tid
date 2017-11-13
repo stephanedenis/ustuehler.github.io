@@ -1,6 +1,6 @@
 created: 20171112054448407
 list: 
-modified: 20171112142338438
+modified: 20171112201607511
 span: 4
 tags: GitHubPlugin/OAuthLogin
 title: GitHubPlugin/SignInWithFirebase
@@ -12,7 +12,7 @@ Signing in with your GitHub account lets you synchronize your changes with the G
 
 ''Step 1: Sign in with your ~GitHub account''
 
-To begin, you must authenticate yourself on ~GitHub and grant the ''~TiddlyWiki Plugin for ~GitHub'' application access to your user profile. If you see no sign-in widget below this paragraph, then you are already signed in.
+To begin, you must authenticate yourself on ~GitHub and grant the ''~TiddlyWiki Plugin for ~GitHub'' application access to your user profile. If you see no sign-in button below this paragraph, then you are already signed in.
 
 {{$:/plugins/ustuehler/firebase/ui/AuthContainer}}
 

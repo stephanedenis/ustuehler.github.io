@@ -1,9 +1,13 @@
 created: 20171111195942099
-modified: 20171111201716728
+modified: 20171112210835400
 span: 6
 tags: 
 title: Startup
 type: text/vnd.tiddlywiki
+
+The startup process of TiddlyWiki is explained well in <<cjrk68 'Startup Process'>>.
+
+! Miscellaneous startup logic
 
 "Miscellaneous startup logic for both the client and server" is in [[$:/core/modules/startup.js]].
 

@@ -8,7 +8,7 @@ Filter operator returning all tiddler titles in the Firebase Database
 
 \*/
 (function () {
-  var firebase = require('$:/plugins/ustuehler/firebase/index.js').firebase
+  var firebase = require('$:/plugins/ustuehler/firebase/lib/index.js').firebase
 
   /*
    * Export our filter function

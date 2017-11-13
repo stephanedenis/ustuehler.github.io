@@ -9,10 +9,10 @@ A promisified sync adaptor module base class
 (function () {
   var Component = require('$:/plugins/ustuehler/component/lib/component.js').Component
 
-  function SyncAdaptor (name, options) {
-    // Sets this.name
-    Component.call(this, name)
+  function SyncAdaptor (componentName, adaptorName, options) {
+    Component.call(this, componentName)
 
+    this.name = adaptorName
     this.wiki = options.wiki
     this.hasStatus = false
   }

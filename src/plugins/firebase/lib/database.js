@@ -9,7 +9,7 @@ Firebase Database component
 (function () {
   /* global $tw */
 
-  var Component = require('$:/plugins/ustuehler/firebase/lib/component.js').Component
+  var Component = require('$:/plugins/ustuehler/component/lib/component.js').Component
   var TiddlerStore = require('$:/plugins/ustuehler/firebase/lib/tiddler-store.js').TiddlerStore
 
   var Database = function (firebaseDatabase) {

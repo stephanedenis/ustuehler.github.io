@@ -15,21 +15,15 @@ Provides a tiddler data store interface above FirebaseDatabase or FirebaseStorag
   // field which marks a FirebaseTiddler as deleted
   const DELETED_FIELD = 'x-firebase-deleted' // accepts "yes" or "no"
 
-  var Component = require('$:/plugins/ustuehler/firebase/lib/component.js').Component
-  //TODO: var Syncer = require('$:/plugins/ustuehler/firebase/lib/syncer.js').Syncer
+  var Component = require('$:/plugins/ustuehler/component/lib/component.js').Component
 
   var TiddlerStore = function (origin) {
-    if (arguments.length > 0) {
-      this.origin = origin
-      this.initialiseComponent(origin.name + 'Tiddlers', this)
-    }
+    this.origin = origin
+    Component.call(this, origin.name + 'Tiddlers')
   }
 
-  TiddlerStore.prototype = new Component()
-
-  TiddlerStore.prototype.initialise = function (origin) {
-    return Promise.resolve(self)
-  }
+  TiddlerStore.prototype = Object.create(Component.prototype)
+  TiddlerStore.prototype.constructor = TiddlerStore
 
   // Resolves to all existing tiddler titles at the origin
   TiddlerStore.prototype.allTitles = function () {

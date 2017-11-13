@@ -1,6 +1,6 @@
 caption: GitHub Plugin
 created: 20171108090424876
-modified: 20171112131201787
+modified: 20171112202423759
 tags: TiddlyWikiPlugins
 title: GitHubPlugin
 type: text/vnd.tiddlywiki
@@ -32,4 +32,4 @@ The aim of the ~GitHubPlugin for TiddlyWiki is to provide a SyncAdaptor that syn
 
 ! Documentation
 
-{{{ [prefix[GitHubPlugin/]] }}}
+{{{ [prefix<pluginDocPrefix>] }}}

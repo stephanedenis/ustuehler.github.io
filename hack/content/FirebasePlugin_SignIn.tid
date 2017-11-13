@@ -1,9 +1,9 @@
 created: 20171112135845750
-modified: 20171112140028955
+modified: 20171112202123072
 tags: FirebasePlugin/DatabaseUsage/Store
 title: FirebasePlugin/SignIn
 type: text/vnd.tiddlywiki
 
-In this tiddler, below this paragraph, you will either see the FirebaseUI widget, or nothing at all. If you see nothing, that means that you're already signed in.
+In this tiddler, below this paragraph, you will either see the FirebaseUI widget, or nothing at all. If you see nothing, that means that you're already signed in, or the UI element is already shown elsewhere on this page.
 
 {{$:/plugins/ustuehler/firebase/ui/AuthContainer}}

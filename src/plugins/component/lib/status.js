@@ -34,11 +34,6 @@ Plugin component status
 
     // Emit an initial status change event
     this.update(fields)
-
-    // XXX: log further status changes for debugging
-    this.addEventListener('change', function (event) {
-      console.log(event.component.name, 'event', event)
-    })
   }
 
   Status.prototype.update = function (fields) {
@@ -90,7 +85,7 @@ Plugin component status
       return
     }
 
-    var title = STATUS_TIDDLER_BASE + this.component.name
+    var title = STATUS_TIDDLER_BASE + this.component
     var tiddler = new $tw.Tiddler({
       type: 'application/json',
       text: JSON.stringify(this.fields, undefined, '  ')
