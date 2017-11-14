@@ -1,5 +1,5 @@
 created: 20171113195532722
-modified: 20171113200031201
+modified: 20171114034203977
 tags: 
 title: GitHubPlugin/ObtainingAccessTokens
 type: text/vnd.tiddlywiki
@@ -14,4 +14,4 @@ type: text/vnd.tiddlywiki
   target="_"
   href="https://github.com/settings/tokens"
   class="mdc-button"
->List Tokens</a>
+>View Existing Tokens</a>

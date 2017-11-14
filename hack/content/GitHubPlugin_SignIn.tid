@@ -1,5 +1,5 @@
 created: 20171112232838681
-modified: 20171113232107353
+modified: 20171114035518928
 title: GitHubPlugin/SignIn
 type: text/vnd.tiddlywiki
 
@@ -9,12 +9,6 @@ type: text/vnd.tiddlywiki
 \define signedOut()
 [[$:/status/GitHub]field:signed-in[false]]
 \end
-
-''Step 1: Obtain a personal access token''
-
-{{GitHubPlugin/ObtainingAccessTokens}}
-
-''Step 2: Sign in with this access token''
 
 <$list variable="" filter=<<signedIn>>>
 
@@ -27,6 +21,3 @@ type: text/vnd.tiddlywiki
 {{$:/plugins/ustuehler/github/ui/SignIn}}
 
 </$list>
-
-[[Up|GitHubPlugin]] |
-[[Next|GitHubPlugin/SyncAdaptor]]

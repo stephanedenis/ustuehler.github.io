@@ -25,7 +25,7 @@ The plugin's main logic
     if (!adaptorClass) {
       var options = {}
       this.syncadaptor = new GitHubAdaptor(options)
-      this.syncer = new $tw.Syncer({wiki: $tw.wiki, syncadaptor: this.syncadaptor})
+      this.syncer = null // Created by startSync()
     }
   }
 
@@ -87,6 +87,13 @@ The plugin's main logic
 
     return this.signIn().then(function (user) {
       return self.syncadaptor.start().then(function () {
+        if (!self.syncer) {
+          // The syncer is created once since it can't be shut down
+          self.syncer = new $tw.Syncer({
+            wiki: $tw.wiki,
+            syncadaptor: self.syncadaptor
+          })
+        }
         self.status.setError(null)
         self.status.update(synchronisingStatus())
       }).catch(function (err) {

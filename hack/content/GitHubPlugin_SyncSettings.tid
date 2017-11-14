@@ -1,0 +1,10 @@
+created: 20171114035036083
+modified: 20171114035037207
+tags: 
+title: GitHubPlugin/SyncSettings
+type: text/vnd.tiddlywiki
+
+|Organisation or username |<$edit-text tiddler="$:/config/GitHub/Org" tag="input" default=""/> |
+|Repository |<$edit-text tiddler="$:/config/GitHub/Repo" tag="input" default=""/> |
+|Branch |<$edit-text tiddler="$:/config/GitHub/Branch" tag="input" default=""/> |
+|Path |<$edit-text tiddler="$:/config/GitHub/Path" tag="input" default=""/> |

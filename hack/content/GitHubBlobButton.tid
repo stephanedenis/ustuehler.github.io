@@ -1,0 +1,11 @@
+created: 20171114042100287
+modified: 20171114042714506
+tags: $:/tags/Macro TiddlyWikiMacros
+title: GitHubBlobButton
+type: text/vnd.tiddlywiki
+
+\define github-blob-button(org:"ustuehler" repo:"ustuehler.github.io" branch:"master" file:"README.md" label:"View File on ~GitHub")
+<<a-button href:"https://github.com/$org$/$repo$/blob/$branch$/$file$" label:"$label$">>
+\end
+
+<<github-blob-button>>

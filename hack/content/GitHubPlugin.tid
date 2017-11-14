@@ -1,6 +1,6 @@
 caption: GitHub Plugin
 created: 20171108090424876
-modified: 20171113224456643
+modified: 20171114035429653
 tags: TiddlyWikiPlugins
 title: GitHubPlugin
 type: text/vnd.tiddlywiki
@@ -32,7 +32,7 @@ The aim of the ~GitHubPlugin for TiddlyWiki is to provide a SyncAdaptor that syn
 
 ! Usage
 
-You should start by [[signing in|GitHubPlugin/SignIn]] with your ~GitHub account.
+You should start by reading the [[setup guide|GitHubPlugin/Setup]].
 
 ! Documentation
 
