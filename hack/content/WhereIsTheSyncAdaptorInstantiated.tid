@@ -1,0 +1,27 @@
+created: 20171113232901030
+modified: 20171113233622104
+tags: Questions SyncAdaptor
+title: WhereIsTheSyncAdaptorInstantiated
+type: text/vnd.tiddlywiki
+
+Where in the TiddlyWiki5 code  is the SyncAdaptor instantiated?
+
+<<github-search-button org:Jermolene repo:TiddlyWiki5 q:"syncadaptor" label:"Search in ~TiddlyWiki5">>
+
+It is created in $:/core/modules/startup.js by this code:
+
+```javascript
+	// Find a working syncadaptor
+	$tw.syncadaptor = undefined;
+	$tw.modules.forEachModuleOfType("syncadaptor",function(title,module) {
+		if(!$tw.syncadaptor && module.adaptorClass) {
+			$tw.syncadaptor = new module.adaptorClass({wiki: $tw.wiki});
+		}
+	});
+	// Set up the syncer object if we've got a syncadaptor
+	if($tw.syncadaptor) {
+		$tw.syncer = new $tw.Syncer({wiki: $tw.wiki, syncadaptor: $tw.syncadaptor});
+	} 
+	// Setup the saver handler
+	$tw.saverHandler = new $tw.SaverHandler({wiki: $tw.wiki, dirtyTracking: !$tw.syncadaptor});
+```

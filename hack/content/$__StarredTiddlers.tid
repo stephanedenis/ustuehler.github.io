@@ -1,7 +1,7 @@
 created: 20171103230141129
 creator: ustuehler
-list: GitHubPlugin/SignIn
-modified: 20171113223759103
+list: GitHubPlugin/SignIn GitHubPlugin/SyncAdaptor $:/status/GitHub
+modified: 20171113234539774
 modifier: ustuehler
 tags: 
 title: $:/StarredTiddlers

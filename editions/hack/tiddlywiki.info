@@ -8,10 +8,9 @@
 	"ustuehler/mdc-web-cdn",
 	"ustuehler/mdc",
 	"ustuehler/muuri",
+	"ustuehler/component",
 	"ustuehler/firebase",
-	"ustuehler/firebaseui",
-	"ustuehler/github-api",
-	"ustuehler/github-pages",
+	"ustuehler/github",
 	"ustuehler/oauth",
 	"ustuehler/caption"
     ],

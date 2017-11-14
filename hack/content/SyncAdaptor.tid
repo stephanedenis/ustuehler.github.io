@@ -1,12 +1,16 @@
 caption: syncadaptor
 created: 20171111185612021
-modified: 20171111215724639
+modified: 20171113232854455
 span: 4
 tags: TiddlyWikiPluginDevelopment
 title: SyncAdaptor
 type: text/vnd.tiddlywiki
 
 A ''{{!!caption}}'' is used by the [[Syncer]] to synchronise individual tiddlers with an external TiddlerStore. It is even better summarised in <<cjrk68 Syncadaptor>>, and more fully documented in <<tiddlywiki.com-dev SyncAdaptorModules>>.
+
+! Related Questions
+
+{{||RelatedQuestionsTemplate}}
 
 ! Examples
 

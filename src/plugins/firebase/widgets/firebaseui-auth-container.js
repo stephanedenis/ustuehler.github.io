@@ -1,5 +1,5 @@
 /*\
-title: $:/plugins/ustuehler/firebase/moduleswidgets/firebaseui-auth-container.js
+title: $:/plugins/ustuehler/firebase/widgets/firebaseui-auth-container.js
 type: application/javascript
 module-type: widget
 caption: firebaseui-auth-container
@@ -20,7 +20,7 @@ DOM will result in an error.
 
   // Base widget class
   var Widget = require('$:/core/modules/widgets/widget.js').widget
-  var firebase = require('$:/plugins/ustuehler/firebase/lib/index.js').firebase
+  var firebase = require('$:/plugins/ustuehler/firebase').firebase
 
   // Constructor for this widget
   var FirebaseUIAuthContainerWidget = function (parseTreeNode, options) {

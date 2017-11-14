@@ -4,6 +4,7 @@
 	"tiddlywiki/filesystem",
 	"tiddlywiki/tiddlyweb",
         "tiddlywiki/highlight",
+	"ustuehler/component",
 	"ustuehler/firebase",
 	"ustuehler/github",
 	"ustuehler/caption"
