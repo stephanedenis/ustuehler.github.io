@@ -1,6 +1,8 @@
-created: 20171104221544910
-modified: 20171104221549954
-tags: Search
+created: 20171118182655000
+creator: ustuehler
+modified: 20171118182706534
+modifier: ustuehler
+tags: GitHubPlugin/Tests/WriteFile
 title: New Tiddler 9
-type: text/vnd.tiddlywiki
 
+foo bar
