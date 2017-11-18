@@ -10,40 +10,32 @@ A promisified sync adaptor module base class
   var Component = require('$:/plugins/ustuehler/component/component.js').Component
 
   function SyncAdaptor (componentName, adaptorName, options) {
-    Component.call(this, componentName)
-
     this.name = adaptorName
     this.wiki = options.wiki
-    this.hasStatus = false
+
+    return Component.call(this, componentName)
   }
 
+  // Inherit from Component
   SyncAdaptor.prototype = Object.create(Component.prototype)
   SyncAdaptor.prototype.constructor = SyncAdaptor
 
-  SyncAdaptor.prototype.isReady = function () {
-    console.log('isReady:', this.hasStatus)
-    return this.hasStatus
-  }
-
   // Returns additional information needed by this adaptor
   SyncAdaptor.prototype.getTiddlerInfo = function (tiddler) {
-    console.log('getTiddlerInfo', tiddler)
+    console.debug('getTiddlerInfo', tiddler)
     return this.getTiddlerInfoFromStore(tiddler)
   }
 
   /*
-   * Get the current status of the sync connection
+   * Get the current username and whether the user is signed in
    */
   SyncAdaptor.prototype.getStatus = function (callback) {
-    console.log('getStatus')
-    this.getLoggedInUser()
-      .then(function (response) {
-        this.hasStatus = true
-        return response
-      })
-      .then(function (value) {
-        var isLoggedIn = value[0]
-        var username = value[1]
+    this.getClientStatus()
+      .then(function (values) {
+        var isLoggedIn = values[0]
+        var username = values[1]
+
+        console.log('getStatus:', isLoggedIn, username)
 
         if (callback) { callback(null, isLoggedIn, username) }
       })
@@ -136,12 +128,15 @@ A promisified sync adaptor module base class
     var adaptorInfo = options.tiddlerInfo.adaptorInfo
 
     // If we have an empty adaptorInfo it means that the tiddler hasn't been seen by the server, so we don't need to delete it
-    if (adaptorInfo.length === 0) {
+    /*
+     * TODO: review
+    if (!adaptorInfo || adaptorInfo.length === 0) {
       return callback(null)
     }
+    */
 
     // Issue request to delete the tiddler
-    this.deleteTiddlerFromStore(adaptorInfo)
+    this.deleteTiddlerFromStore(title, adaptorInfo)
       .then(function () {
         callback(null)
       })

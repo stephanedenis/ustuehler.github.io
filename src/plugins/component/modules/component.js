@@ -15,9 +15,8 @@ initialisation and status reporting
   var Status = require('$:/plugins/ustuehler/component/status.js').Status
 
   /*
-   * A Component is adds the following capabilities to subclasses:
+   * A Component is adds the following capabilities to its subclasses:
    *
-   * - can access per-component configuration settings (getConfig)
    * - reflects component status in a JSON tiddler (status.update)
    * - event handling (addEventListener, dispatchEvent)
    */

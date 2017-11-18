@@ -23,7 +23,10 @@ The plugin's main logic
 
     // Create our own syncer, unless githubadaptor is the default syncadaptor
     if (!adaptorClass) {
-      var options = {}
+      var options = {
+        wiki: $tw.wiki
+      }
+
       this.syncadaptor = new GitHubAdaptor(options)
       this.syncer = null // Created by startSync()
     }

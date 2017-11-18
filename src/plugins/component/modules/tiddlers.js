@@ -19,6 +19,14 @@ Plugin component configuration in tiddlers
     this.tempTiddler = TEMP_TIDDLER_BASE + name
   }
 
+  Tiddlers.prototype.getConfigField = function (title, field, fallback) {
+    var tiddler = $tw.wiki.getTiddler(this.configTiddler + '/' + title)
+    if (!tiddler) {
+      return fallback
+    }
+    return tiddler.fields[field]
+  }
+
   Tiddlers.prototype.getConfigText = function (name) {
     return $tw.wiki.getTiddlerText(this.configTiddler + '/' + name)
   }

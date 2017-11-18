@@ -61,8 +61,6 @@ Selectively refreshes the widget if needed. Returns true if the widget or any of
  * Invoke the action associated with this widget
  */
   GitHubListReposWidget.prototype.invokeAction = function (triggeringWidget, event) {
-    var username = this.getTemporarySetting('UserName', this.getSetting('username'))
-    var password = this.getTemporarySetting('Password', this.getSetting('password'))
     var title = this.tiddler
     var field = this.field
     var filter = this.filter

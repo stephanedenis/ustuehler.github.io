@@ -7,6 +7,8 @@ GitHub API client that can configure itself from tiddlers
 
 \*/
 (function () {
+  /* global $tw */
+
   var getWindowProperty = require('$:/plugins/ustuehler/component/utils').getWindowProperty
   var Tiddlers = require('$:/plugins/ustuehler/component').Tiddlers
 
@@ -91,7 +93,7 @@ GitHub API client that can configure itself from tiddlers
    * if that was changed in the meantime.
    */
   Client.prototype.getUserKeys = function (username) {
-    this.initialise().then(function (github) {
+    return this.initialise().then(function (github) {
       return new Promise(function (resolve, reject) {
         var u = github.getUser(username)
 
@@ -103,6 +105,96 @@ GitHub API client that can configure itself from tiddlers
           }
         })
       })
+    })
+  }
+
+  /*
+   * getFileContent resolves to the full content of the specified file if the
+   * file exists, to null if the file was not found, and rejects the promise
+   * with an error under all other conditions
+   */
+  Client.prototype.getFileContent = function (repo, ref, path) {
+    return this.initialise().then(function (github) {
+      return github.getRepo(repo).getContents(ref, path)
+        .then(function (response) {
+          if ($tw.utils.isArray(response.data)) {
+            // The path points to a directory, not a file
+            throw new Error('Expected a file, not a directory: ' + path)
+          }
+
+          // Verify the type of this tree node
+          var type = response.data.type
+          if (type !== 'file') {
+            throw new Error('Expected a file, not a ' + type + ': ' + path)
+          }
+
+          // Return the actual file content
+          return response.data.contents
+        })
+        .catch(function (err) {
+          // File not found returns null as the file content
+          if (err.response.status === 404) {
+            return null
+          }
+
+          // It's really an error
+          return err
+        })
+    })
+  }
+
+  /*
+   * writeFile resolves when the specified file content has been written
+   * successfully. The options hash must specify a committer.
+   */
+  Client.prototype.writeFile = function (user, repo, branch, path, content, message, options) {
+    var committer = {}
+
+    message = message || 'Update ' + path
+
+    if (options.committer) {
+      Object.assign(committer, options.committer)
+    }
+
+    if (!committer.name) {
+      committer.name = 'TiddlyWiki'
+    }
+
+    if (!committer.email) {
+      committer.email = 'no-reply@github.com'
+    }
+
+    return this.initialise().then(function (github) {
+      return github.getRepo(user, repo)
+        .writeFile(branch, path, content, message, {
+          committer: committer,
+          encode: true
+        })
+        .catch(function (err) {
+          if (err.response.status === 409) {
+            // Not an error, just means that the content is up-to-date
+            return err.response
+          }
+          return err
+        })
+    })
+  }
+
+  /*
+   * deleteFile resolves when the specified file content has been deleted
+   * successfully
+   */
+  Client.prototype.deleteFile = function (user, repo, branch, path) {
+    return this.initialise().then(function (github) {
+      return github.getRepo(user, repo)
+        .deleteFile(branch, path)
+        .catch(function (err) {
+          if (err.response.status === 409) {
+            // Not an error, just means that the file does not exist
+            return err.response
+          }
+          return err
+        })
     })
   }
 
