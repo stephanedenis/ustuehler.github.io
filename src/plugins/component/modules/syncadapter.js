@@ -21,11 +21,13 @@ A promisified sync adaptor module base class
   SyncAdaptor.prototype.constructor = SyncAdaptor
 
   SyncAdaptor.prototype.isReady = function () {
+    console.log('isReady:', this.hasStatus)
     return this.hasStatus
   }
 
   // Returns additional information needed by this adaptor
   SyncAdaptor.prototype.getTiddlerInfo = function (tiddler) {
+    console.log('getTiddlerInfo', tiddler)
     return this.getTiddlerInfoFromStore(tiddler)
   }
 
@@ -33,6 +35,7 @@ A promisified sync adaptor module base class
    * Get the current status of the sync connection
    */
   SyncAdaptor.prototype.getStatus = function (callback) {
+    console.log('getStatus')
     this.getLoggedInUser()
       .then(function (response) {
         this.hasStatus = true
@@ -53,6 +56,7 @@ A promisified sync adaptor module base class
    * Attempt to login and invoke the callback(err)
    */
   SyncAdaptor.prototype.login = function (username, password, callback) {
+    console.log('login', username, password)
     this.loginToStore(username, password)
       .then(function () {
         callback(null)
@@ -66,6 +70,7 @@ A promisified sync adaptor module base class
    * Forget cached login credentials and everything
    */
   SyncAdaptor.prototype.logout = function (callback) {
+    console.log('logout')
     this.logoutOfStore()
       .then(function () {
         callback(null)
@@ -79,6 +84,7 @@ A promisified sync adaptor module base class
    * Get an array of skinny tiddler fields from the server
    */
   SyncAdaptor.prototype.getSkinnyTiddlers = function (callback) {
+    console.log('getSkinnyTiddlers')
     this.getSkinnyTiddlersFromStore()
       .then(function (tiddlers) {
         callback(null, tiddlers)
@@ -92,6 +98,7 @@ A promisified sync adaptor module base class
    * Save a tiddler and invoke the callback with (err,adaptorInfo,revision)
    */
   SyncAdaptor.prototype.saveTiddler = function (tiddler, callback) {
+    console.log('saveTiddler', tiddler)
     this.saveTiddlerInStore(tiddler)
       .then(function (value) {
         var adaptorInfo = value[0]
@@ -108,6 +115,7 @@ A promisified sync adaptor module base class
    * Load a tiddler and invoke the callback with (err,tiddlerFields)
    */
   SyncAdaptor.prototype.loadTiddler = function (title, callback) {
+    console.log('loadTiddler', title)
     this.loadTiddlerFromStore(title)
       .then(function (tiddler) {
         callback(null, tiddler)
@@ -123,6 +131,8 @@ A promisified sync adaptor module base class
    * tiddlerInfo: the syncer's tiddlerInfo for this tiddler
    */
   SyncAdaptor.prototype.deleteTiddler = function (title, callback, options) {
+    console.log('deleteTiddler', title, options)
+
     var adaptorInfo = options.tiddlerInfo.adaptorInfo
 
     // If we have an empty adaptorInfo it means that the tiddler hasn't been seen by the server, so we don't need to delete it

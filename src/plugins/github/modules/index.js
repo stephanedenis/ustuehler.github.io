@@ -47,6 +47,10 @@ The plugin's main logic
   GitHub.prototype.signIn = function (username, accessToken) {
     var self = this
 
+    if (this.status.fields['signed-in']) {
+      return Promise.resolve()
+    }
+
     if (arguments.length < 2) {
       accessToken = username
       username = null
@@ -64,6 +68,8 @@ The plugin's main logic
         //rememberAccessToken(accessToken)
         self.status.setError(null)
         self.status.update(signedInStatus())
+        // Asynchronous; we don't care if this fails
+        self.startSync()
       })
       .catch(function (err) {
         forgetAccessToken()

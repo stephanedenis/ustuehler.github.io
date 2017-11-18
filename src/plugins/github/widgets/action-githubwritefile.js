@@ -76,7 +76,7 @@ Action widget that toggles the visibility of the first drawer found in the docum
     var tiddler = $tw.wiki.getTiddler(currentTiddler)
     var client = new Client()
 
-    var owner = this.owner || this.config.getConfigText('Owner') || this.config.getStatusText('UserName')
+    var owner = this.owner || this.config.getConfigText('User') || this.config.getStatusText('UserName')
     var repo = this.repo || this.config.getConfigText('Repo') || (owner + '.github.io')
     var branch = this.branch || this.config.getConfigText('Branch') || 'master'
     var path = this.path || this.getPathFromTitle(currentTiddler)

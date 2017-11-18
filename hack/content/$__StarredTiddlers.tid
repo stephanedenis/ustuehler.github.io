@@ -1,7 +1,7 @@
 created: 20171103230141129
 creator: ustuehler
-list: $:/status/GitHub GitHubPlugin/Tests/WriteFile
-modified: 20171114035804800
+list: $:/status/GitHub GitHubPlugin/Tests/WriteFile $:/status/GitHubAdaptor
+modified: 20171114055312965
 modifier: ustuehler
 tags: 
 title: $:/StarredTiddlers
