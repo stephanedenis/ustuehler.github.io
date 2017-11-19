@@ -1,7 +1,8 @@
 created: 20171113225756037
+creator: ustuehler
 draft.of: GitHubPlugin/SyncAdaptor
 draft.title: GitHubPlugin/SyncAdaptor
-modified: 20171119113517955
+modified: 20171119113640463
 modifier: ustuehler
 tags: 
 title: Draft of 'GitHubPlugin/SyncAdaptor'
@@ -47,7 +48,7 @@ Start
 
 <div>
 [[Prev|GitHubPlugin/SignIn]] |
-[[Up|GitHubPlugin]]
+[[Up|GitHubPlugin]] 
 
 <div style="float: right;">
 [[Notes|GitHubPlugin/Development/SyncAdaptor]]
