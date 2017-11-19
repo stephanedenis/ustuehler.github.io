@@ -1,0 +1,7 @@
+created: 20171119113751358
+creator: ustuehler
+modified: 20171119114219300
+modifier: ustuehler
+title: GitHubPlugin/SyncFilter
+
+The [[githubadaptor|GitHubPlugin/SyncAdaptor]] does not save draft tiddlers, or the $:/StoryList tiddler.
