@@ -58,7 +58,7 @@ A sync adaptor module for synchronising with GitHub
   GitHubAdaptor.prototype.constructor = GitHubAdaptor
 
   SyncAdaptor.prototype.isReady = function () {
-    console.log('isReady:', this.status.fields.synchronising)
+    console.debug('isReady:', this.status.fields.synchronising)
     return this.status.fields.synchronising
   }
 

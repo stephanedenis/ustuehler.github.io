@@ -1,3 +1,6 @@
-list: GitHubPlugin/Tests/WriteFile GitHubPlugin/SyncAdaptor GitHubPlugin/SignIn GitHubPlugin/SyncFilter
+created: 20171119135514750
+list: Search OpenLinkInNewWindowButton GitHubBlobButton GitHubPlugin/SignIn GitHubPlugin/SyncAdaptor GitHubPlugin/SyncFilter
+modified: 20171119135514750
 title: $:/StoryList
+type: text/vnd.tiddlywiki
 

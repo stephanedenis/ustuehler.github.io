@@ -10,26 +10,20 @@ The plugin's main logic
   /* global $tw */
 
   var Component = require('$:/plugins/ustuehler/component').Component
+  var Syncer = require('$:/plugins/ustuehler/component').Syncer
   var Client = require('$:/plugins/ustuehler/github/client').Client
   var GitHubAdaptor = require('$:/plugins/ustuehler/github/githubadaptor').GitHubAdaptor
-  var adaptorClass = require('$:/plugins/ustuehler/github/githubadaptor').adaptorClass
 
   var GitHub = function () {
     var self = this
 
+    // Created by startSync()
+    this.syncadaptor = null
+    this.syncer = null
+
     Component.call(this, 'GitHub').then(function () {
       self.status.update(signedOutStatus())
     })
-
-    // Create our own syncer, unless githubadaptor is the default syncadaptor
-    if (!adaptorClass) {
-      var options = {
-        wiki: $tw.wiki
-      }
-
-      this.syncadaptor = new GitHubAdaptor(options)
-      this.syncer = null // Created by startSync()
-    }
   }
 
   GitHub.prototype = Object.create(Component.prototype)
@@ -95,14 +89,20 @@ The plugin's main logic
     var self = this
 
     return this.signIn().then(function (user) {
+      if (!self.syncadaptor) {
+        self.syncadaptor = new GitHubAdaptor({
+          wiki: $tw.wiki
+        })
+      }
+
       return self.syncadaptor.start().then(function () {
         if (!self.syncer) {
-          // The syncer is created once since it can't be shut down
-          self.syncer = new $tw.Syncer({
+          self.syncer = new Syncer({
             wiki: $tw.wiki,
             syncadaptor: self.syncadaptor
           })
         }
+
         self.status.setError(null)
         self.status.update(synchronisingStatus())
       }).catch(function (err) {
@@ -114,8 +114,22 @@ The plugin's main logic
   }
 
   GitHub.prototype.stopSync = function () {
+    var self = this
+
+    if (!this.status.fields.synchronising) {
+      return Promise.resolve()
+    }
+
     this.status.update(notSynchronisingStatus())
-    return this.syncadaptor.stop()
+
+    return this.syncer.stop()
+      .then(function () {
+        return self.syncadaptor.stop()
+      })
+      .then(function () {
+        self.syncer = null
+        self.syncadaptor = null
+      })
   }
 
   GitHub.prototype.setSyncAdaptor = function (syncadaptor) {
