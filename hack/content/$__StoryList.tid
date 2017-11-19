@@ -1,6 +1,6 @@
-created: 20171119141855419
-list: GitHubPlugin/SignIn GitHubPlugin/SyncAdaptor GitHubPlugin/SyncFilter
-modified: 20171119141855419
+created: 20171119142211739
+list: $:/Import GitHubPlugin/SignIn GitHubPlugin/SyncAdaptor GitHubPlugin/SyncFilter
+modified: 20171119142211739
 title: $:/StoryList
 type: text/vnd.tiddlywiki
 
