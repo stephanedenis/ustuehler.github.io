@@ -1,3 +1,3 @@
-list: BuildStatus GitHubPlugin/Tests/WriteFile GitHubPlugin/SyncAdaptor
+list: BuildStatus GitHubPlugin/Tests/WriteFile GitHubPlugin/SyncAdaptor GitHubPlugin/SyncFilter
 title: $:/StoryList
 
