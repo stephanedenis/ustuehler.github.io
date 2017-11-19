@@ -15,6 +15,10 @@ script:
   - npm run build
   #- npm run test
 
+  # Deploy everything but node modules and hidden files to GitHub Pages
+  - echo '.*' > .gitignore
+  - echo /node_modules/ >> .gitignore
+
 cache:
   directories:
     - node_modules

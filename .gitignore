@@ -1,7 +1,10 @@
 .*.sw?
 
+# FIXME: don't copy plugins or themes around
 /editions/public/plugins/
 /editions/public/themes/
+
+/editions/*/output/
 
 /node_modules/
 
