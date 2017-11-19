@@ -1,5 +1,7 @@
 created: 20171113225756037
-modified: 20171114035040412
+creator: ustuehler
+modified: 20171119113734777
+modifier: ustuehler
 tags: 
 title: GitHubPlugin/SyncAdaptor
 type: text/vnd.tiddlywiki
@@ -44,7 +46,8 @@ Start
 
 <div>
 [[Prev|GitHubPlugin/SignIn]] |
-[[Up|GitHubPlugin]]
+[[Up|GitHubPlugin]] |
+[[Next|GitHubPlugin/SyncFilter]]
 
 <div style="float: right;">
 [[Notes|GitHubPlugin/Development/SyncAdaptor]]
