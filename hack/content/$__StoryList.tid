@@ -1,3 +1,3 @@
-list: BuildStatus GitHubPlugin/Tests/WriteFile GitHubPlugin/SyncAdaptor GitHubPlugin/Development/SyncAdaptor
+list: [[Draft of 'New Tiddler']] BuildStatus GitHubPlugin/Tests/WriteFile GitHubPlugin/SyncAdaptor
 title: $:/StoryList
 
