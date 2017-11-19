@@ -23,6 +23,7 @@ A $tw.Syncer that can be shut down cleanly
    */
   Syncer.prototype.stop = function () {
     // FIXME: deregister all event listeners registered by this syncer
+    return Promise.resolve()
   }
 
   exports.Syncer = Syncer

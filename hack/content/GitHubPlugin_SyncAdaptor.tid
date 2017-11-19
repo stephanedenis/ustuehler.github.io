@@ -1,6 +1,6 @@
 created: 20171113225756037
 creator: ustuehler
-modified: 20171119135514754
+modified: 20171119140613256
 modifier: ustuehler
 tags: 
 title: GitHubPlugin/SyncAdaptor
@@ -20,15 +20,6 @@ The [[githubadaptor|GitHubPlugin/Development/SyncAdaptor]] synchronises changed 
 
 {{GitHubPlugin/SyncSettings}}
 
-<$macrocall $name="github-blob-button"
-  user={{$:/config/GitHub/User}}
-  repo={{$:/config/GitHub/Repo}}
-  branch={{$:/config/GitHub/Branch}}
-  file={{$:/config/GitHub/Path}}
-  label="Open on ~GitHub"
-  class="mdc-button"
-  style="color: inherit"/>
-
 ''Step 2: Start synchronising tiddlers in the background''
 
 <$list variable="" filter=<<synchronising>>>
@@ -39,6 +30,15 @@ The [[githubadaptor|GitHubPlugin/Development/SyncAdaptor]] synchronises changed 
 <$action-sendmessage $message="tm-github-stop-sync"/>
 Stop
 </$button>
+<$macrocall $name="github-blob-button"
+  user={{$:/config/GitHub/User}}
+  repo={{$:/config/GitHub/Repo}}
+  branch={{$:/config/GitHub/Branch}}
+  file={{$:/config/GitHub/Path}}
+  label="View Tiddlers on ~GitHub"
+  class="mdc-button"
+  style="color: inherit"/>
+{{$:/status/GitHub!!error}}
 
 </$list>
 
@@ -48,10 +48,17 @@ Stop
 <$action-sendmessage $message="tm-github-start-sync"/>
 Start
 </$button>
+<$macrocall $name="github-blob-button"
+  user={{$:/config/GitHub/User}}
+  repo={{$:/config/GitHub/Repo}}
+  branch={{$:/config/GitHub/Branch}}
+  file={{$:/config/GitHub/Path}}
+  label="View Tiddlers on ~GitHub"
+  class="mdc-button"
+  style="color: inherit"/>
+{{$:/status/GitHub!!error}}
 
 </$list>
-
-{{$:/status/GitHub!!error}}
 
 <div>
 [[Prev|GitHubPlugin/SignIn]] |
