@@ -4,7 +4,8 @@ list: tiddlywiki.com tw5-material tw5-plugin
 modified: 20171104074233770
 modifier: ustuehler
 span: 4
-title: TiddlyWiki Links
+title: TiddlyWikiLinks
+caption: TiddlyWiki Links
 type: text/vnd.tiddlywiki
 view-style: background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/TiddlyWiki_Icon.png/1145px-TiddlyWiki_Icon.png);   background-size: cover; background-repeat: no-repeat; background-position: center; background-color: #f0f0f0;
 
