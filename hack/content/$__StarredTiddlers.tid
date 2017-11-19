@@ -1,7 +1,7 @@
 created: 20171103230141129
 creator: ustuehler
-list: GitHubPlugin/SignIn
-modified: 20171119115619895
+list: GitHubPlugin/SignIn GitHubPlugin/SyncAdaptor GitHubPlugin/SyncFilter
+modified: 20171119120304963
 modifier: ustuehler
 revision: 0
 tags: 
