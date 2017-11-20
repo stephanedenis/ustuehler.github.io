@@ -17,6 +17,7 @@
 /src/plugins/*/files/*.tmp-browserify-*
 
 /index.html
+/hack.html
 
 # Draft tiddlers
 Draft of *.tid
