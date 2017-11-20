@@ -7,7 +7,7 @@ title: OpenLinkInNewWindowButton
 type: text/vnd.tiddlywiki
 
 \define a-button(href:"#" label:"Open Link in New Window" class:"mdc-button mdc-button--raised" style:"color: white;")
-<a target="_" href="$href$" class="$class$" style="$style$">$label$</a>
+<a target="_blank" href="$href$" class="$class$" style="$style$">$label$</a>
 \end
 
 <<a-button>>

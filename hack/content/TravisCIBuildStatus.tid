@@ -8,7 +8,7 @@ type: text/vnd.tiddlywiki
 https://travis-ci.org/$owner$/$repo$
 \end
 \define img(owner repo branch:"master")
-<a target="_" href=<<travis-url $owner$ $repo$>>>
+<a target="_blank" href=<<travis-url $owner$ $repo$>>>
 <img src="https://travis-ci.org/$owner$/$repo$.svg?branch=$branch$"/>
 </a>
 \end

@@ -18,6 +18,6 @@ https://github.com/$(github-repo-owner)$/$(github-repo-name)$
 
 <$list filter=<<is-github-repository-filter>>>
 <div class="tc-tiddler-body">
-''<a target="_" href=<<github-repo-url>>><<github-repo-fullname>></a>'' is a repository on ~GitHub.
+''<a target="_blank" href=<<github-repo-url>>><<github-repo-fullname>></a>'' is a repository on ~GitHub.
 </div>
 </$list>

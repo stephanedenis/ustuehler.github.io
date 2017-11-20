@@ -1,6 +1,6 @@
 caption: GitHub Desktop
 created: 20171120010434480
-link: <a target="_" href={{!!url}}>{{!!caption}}</a>
+link: <a target="_blank" href={{!!url}}>{{!!caption}}</a>
 modified: 20171120012636023
 title: desktop
 type: text/vnd.tiddlywiki

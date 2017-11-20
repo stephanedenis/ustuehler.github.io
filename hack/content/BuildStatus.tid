@@ -64,9 +64,9 @@ table#build-status tr td:last-child {
     <$set name="branch" value={{!!travis-branch}} emptyValue="master">
     <$set name="url" value=<<homepage-url>> emptyValue=<<default-url>>>
     <tr>
-      <td><$list variable="url" filter=<<has-url-filter>>><a target="_" href=<<url>>><<material-icon "home">></a></$list></td>
+      <td><$list variable="url" filter=<<has-url-filter>>><a target="_blank" href=<<url>>><<material-icon "home">></a></$list></td>
       <td><$link><$view field="title"/></$link></td>
-      <td><a target="_" href=<<branch-url>>><$view field="travis-branch"><$text text="master"/></$view></a></td>
+      <td><a target="_blank" href=<<branch-url>>><$view field="travis-branch"><$text text="master"/></$view></a></td>
       <td><!-- spacer to make the last column right-aligned --></td>
       <td>{{||TravisCIBuildStatus}}</td>
     </tr>

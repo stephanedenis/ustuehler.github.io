@@ -5,7 +5,7 @@ title: $:/plugins/ustuehler/github/ui/Buttons/view-applications
 type: text/vnd.tiddlywiki
 
 <a
-  target="_"
+  target="_blank"
   href="https://github.com/settings/developers"
   class="mdc-button"
 >View Applications</a>

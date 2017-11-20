@@ -1,7 +1,7 @@
 caption: GitHub Edition
 created: 20171119222308478
 creator: ustuehler
-link: <a target="_" href={{!!url}}>{{!!caption}}</a>
+link: <a target="_blank" href={{!!url}}>{{!!caption}}</a>
 modified: 20171119222334898
 modifier: ustuehler
 tags: 

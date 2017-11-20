@@ -1,6 +1,6 @@
 title: tw5-theme
 caption: Themes
 url: https://ustuehler.github.io/tw5-theme
-link: <a target="_" href={{!!url}}>{{!!caption}}</a>
+link: <a target="_blank" href={{!!url}}>{{!!caption}}</a>
 
 {{!!url}}
