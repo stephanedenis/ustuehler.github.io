@@ -79,10 +79,10 @@
     "overrides": [
       {
         "files": [
-          "src/plugins/*/**/*.js"
+          "plugins/*/**/*.js"
         ],
         "excludedFiles": [
-          "src/plugins/*/files/**/*.js"
+          "plugins/*/files/**/*.js"
         ],
         "rules": {
           "spaced-comment": "off"
