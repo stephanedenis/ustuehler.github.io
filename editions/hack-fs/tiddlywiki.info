@@ -8,6 +8,7 @@
 	"ustuehler/muuri",
 	"ustuehler/component",
 	"ustuehler/firebase",
+	"ustuehler/core",
 	"ustuehler/github",
 	"ustuehler/caption"
     ],
