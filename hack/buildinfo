@@ -4,11 +4,11 @@ cd "$(dirname "$0")/.."
 
 EDITION_PATH="${1:-editions/public}"
 
-tiddler_text() {
+function tiddler_text() {
   awk '!body && /^$/ { body = 1; next; } body { print; }'
 }
 
-buildinfo_tid_body() {
+function buildinfo_tid_body() {
   local dir="$1"
   local vprefix="$2"
   local ver="$3"
@@ -27,7 +27,7 @@ buildinfo_tid_body() {
   fi
 }
 
-buildinfo_tid() {
+function buildinfo_tid() {
   local dir="$1"
   local vprefix="$2"
   local ver="$3"
@@ -45,7 +45,7 @@ $(buildinfo_tid_body "$dir" "$vprefix" "$ver")
 EOS
 }
 
-make_buildinfo() {
+function make_buildinfo() {
   local dir="$1"
   local vprefix="$2"
   local name=$(dirname $vprefix)
@@ -69,6 +69,35 @@ make_buildinfo() {
   printf '%s' "$new" >"$out"
 }
 
+function make_edition_buildinfo_tid() {
+  local out="$1"
+  local now="$(TZ=UTC date +'%Y%m%d%H%M%S')"
+  local new="$(cat <<EOS
+created: $now
+modified: $now
+title: \$:/BuildInfo
+
+This ~TiddlyWiki edition was built on <\$view field="modified" format="date" template="DDD, MMM DDth YYYY at hh:0mm"/>.
+EOS
+)"
+
+  if [[ -f $out ]]; then
+    if [[ "$(tiddler_text <<<"$new")" == "$(tiddler_text <"$out")" ]]; then
+      echo "$out is already up-to-date."
+      return
+    else
+      echo "Updating $out."
+      echo "$new"
+      echo "---"
+      cat "$out" | tiddler_text
+    fi
+  else
+    echo "Creating $out."
+  fi
+
+  printf '%s' "$new" >"$out"
+}
+
 for pluginPath in plugins/*/* themes/*/*; do
   plugin=$(basename "$pluginPath")
   prefix="$plugin/v"
@@ -80,3 +109,5 @@ done
 
 cp package.json $EDITION_PATH/tiddlers/files/package
 cp package-lock.json $EDITION_PATH/tiddlers/files/package-lock
+
+make_edition_buildinfo_tid hack/content/\$__BuildInfo.tid
