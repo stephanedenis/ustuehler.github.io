@@ -1,5 +1,5 @@
 title: tw5-theme
-caption: TiddlyWiki Themes
+caption: Themes
 url: https://ustuehler.github.io/tw5-theme
 link: <a target="_" href={{!!url}}>{{!!caption}}</a>
 
