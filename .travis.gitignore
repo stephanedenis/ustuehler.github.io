@@ -1,14 +1,4 @@
-# Hidden files
-.*
-
-# Created by "tiddlywiki --build"
-/editions/*/output/
-
-# Created by "npm install"
-/node_modules/
-/npm-debug.log
-
 # Ignore everything but the .html pages
-/*
+*
 !/index.html
 !/hack.html
