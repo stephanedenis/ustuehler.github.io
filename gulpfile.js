@@ -30,9 +30,7 @@ gulp.task('hack.html', ['buildinfo'], shell.task([
   'tiddlywiki editions/hack-fs --build'
 ]))
 
-gulp.task('build', [], function (cb) {
-  runSequence('clean', ['index.html'], cb)
-})
+gulp.task('build', ['index.html'])
 
 gulp.task('deploy', [], function (cb) {
   runSequence('build', ['hack.html'], cb)
