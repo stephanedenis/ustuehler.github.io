@@ -1,16 +1,14 @@
 {
-    "description": "Local hacking edition",
+    "description": "Hacking edition",
     "plugins": [
 	"tiddlywiki/filesystem",
         "tiddlywiki/highlight",
+	"ustuehler/caption",
 	"ustuehler/mdc-web-cdn",
 	"ustuehler/mdc",
 	"ustuehler/muuri",
-	"ustuehler/component",
-	"ustuehler/firebase",
 	"ustuehler/core",
-	"ustuehler/github",
-	"ustuehler/caption"
+	"ustuehler/github"
     ],
     "themes": [
 	"ustuehler/material"
