@@ -11,5 +11,9 @@ plugin.setThemesEnv('TIDDLYWIKI_THEME_PATH')
 // Pass the command line arguments to the boot kernel
 $tw.boot.argv = process.argv.slice(2)
 
+if ($tw.boot.argv.length === 0) {
+  $tw.boot.argv = ['editions/hack', '--server', '8080']
+}
+
 // Boot the TW5 app
 $tw.boot.boot()

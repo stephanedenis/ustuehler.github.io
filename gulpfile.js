@@ -3,16 +3,10 @@
 * Imports
 *******************************************************************/
 
-// var pump = require('pump')
 var gulp = require('gulp')
-// var gutil = require('gulp-util')
-// var clean = require('gulp-clean')
-// var uglify = require('gulp-uglify')
 var nodemon = require('gulp-nodemon')
 var shell = require('gulp-shell')
 var runSequence = require('run-sequence').use(gulp)
-// var rename = require('gulp-rename')
-// var dest = 'editions/public/'
 
 /********************************************************************
 * Tasks
