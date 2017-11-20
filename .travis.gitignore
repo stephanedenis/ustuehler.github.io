@@ -9,6 +9,6 @@
 /npm-debug.log
 
 # Ignore everything but the .html pages
-/editions/
-/hack/
-/public/
+/*
+!/index.html
+!/hack.html
