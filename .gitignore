@@ -17,3 +17,9 @@
 /src/plugins/*/files/*.tmp-browserify-*
 
 /index.html
+
+# Draft tiddlers
+Draft of *.tid
+
+# $:/StoryList
+$__StoryList.tid
