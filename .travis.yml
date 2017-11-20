@@ -16,8 +16,7 @@ script:
   #- npm run test
 
   # Deploy everything but node modules and hidden files to GitHub Pages
-  - echo '.*' > .gitignore
-  - echo /node_modules/ >> .gitignore
+  - cp .travis.gitignore .gitignore
 
 cache:
   directories:

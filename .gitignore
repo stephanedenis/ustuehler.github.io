@@ -15,3 +15,5 @@
 /hack/content/$__BuildInfo.tid
 
 /src/plugins/*/files/*.tmp-browserify-*
+
+/index.html

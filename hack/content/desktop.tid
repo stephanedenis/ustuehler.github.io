@@ -1,0 +1,11 @@
+caption: GitHub Desktop
+created: 20171120010434480
+link: <a target="_" href={{!!url}}>{{!!caption}}</a>
+modified: 20171120012636023
+title: desktop
+type: text/vnd.tiddlywiki
+url: https://ustuehler.github.io/desktop
+
+I [[forked|https://github.com/ustuehler/desktop]] [[GitHub Desktop|https://desktop.github.com/]] to experiment with this [[Electron application|ElectronJS]]. The [[upstream repository|https://github.com/desktop/desktop]] conveniently has a `.travis.yml`, and Linux support was recently added.
+
+; [[Building on Ubuntu 16.04|https://github.com/ustuehler/desktop/blob/master/docs/contributing/setup.md#ubuntu-1604]]
