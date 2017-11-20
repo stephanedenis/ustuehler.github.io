@@ -1,14 +1,17 @@
 {
   "description": "Public edition",
-    "plugins": [
-	"tiddlywiki/filesystem",
-        "tiddlywiki/highlight",
-	"tiddlywiki/railroad",
-	"ustuehler/mdc-web-cdn",
-	"ustuehler/mdc",
-	"ustuehler/muuri",
-	"ustuehler/caption"
-    ],
+  "plugins": [
+    "tiddlywiki/filesystem",
+    "tiddlywiki/highlight",
+    "tiddlywiki/railroad",
+    "ustuehler/mdc-web-cdn",
+    "ustuehler/mdc",
+    "ustuehler/muuri",
+    "ustuehler/caption"
+  ],
+  "themes": [
+    "ustuehler/material"
+  ],
   "build": {
     "index": [
       "--output",".",
