@@ -7,3 +7,8 @@
 # Created by "npm install"
 /node_modules/
 /npm-debug.log
+
+# Ignore everything but the .html pages
+/editions/
+/hack/
+/public/
