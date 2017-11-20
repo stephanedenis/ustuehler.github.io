@@ -3,84 +3,30 @@
 * Imports
 *******************************************************************/
 
-var pump = require('pump')
+// var pump = require('pump')
 var gulp = require('gulp')
 // var gutil = require('gulp-util')
-var clean = require('gulp-clean')
+// var clean = require('gulp-clean')
 // var uglify = require('gulp-uglify')
 var nodemon = require('gulp-nodemon')
 var shell = require('gulp-shell')
 var runSequence = require('run-sequence').use(gulp)
 // var rename = require('gulp-rename')
-var dest = 'editions/public/'
+// var dest = 'editions/public/'
 
 /********************************************************************
 * Tasks
 *******************************************************************/
 
-gulp.task('clean', function (cb) {
-  pump([
-    gulp.src([dest + '/themes', dest + '/plugins'], {read: false}),
-    clean()
-    // no target
-  ], cb)
-})
-
-gulp.task('tiddlers', function (cb) {
-  pump([
-    gulp.src(['src/**', 'node_modules/tw5-material/src/**', '!**/*.js']),
-    gulp.dest(dest)
-  ], cb)
-})
-
-gulp.task('querystring', function (cb) {
-  pump([
-    gulp.src([
-      'node_modules/querystring/LICENSE'
-    ]),
-    gulp.dest('src/plugins/querystring/files/')
-  ], cb)
-})
-
-gulp.task('oauth', function (cb) {
-  pump([
-    gulp.src([
-      'node_modules/simple-oauth2/src/LICENSE'
-    ]),
-    gulp.dest('src/plugins/oauth/files/')
-  ], cb)
-})
-
-gulp.task('browserify', ['querystring', 'oauth'], shell.task([
-  // "browserify -o src/plugins/querystring/files/index.js node_modules/querystring/index.js",
-  // "browserify -o src/plugins/oauth/files/index.js node_modules/simple-oauth2/index.js",
-  "browserify -r 'simple-oauth2' -s SimpleOAuth2 -o src/plugins/oauth/files/index.js node_modules/simple-oauth2/index.js",
-  // "browserify -r 'oauth-open' -s oauthOpen -o src/plugins/oauth/files/oauth-open.js node_modules/oauth-open/index.js",
-  "browserify -r 'oauth-open' -s oauthOpen -o src/plugins/oauth/files/oauth-open.js src/plugins/oauth/files/oauth-open-github.js",
-  "browserify -r 'jsonp' -s jsonp -o src/plugins/oauth/files/jsonp.js node_modules/jsonp/index.js"
-]))
-
-gulp.task('javascript', ['browserify'], function (cb) {
-  pump([
-    gulp.src(['src/**/*.js', 'node_modules/tw5-material/src/**/*.js']),
-    // uglify({ compress: false, output: { comments: /^\\/ } }),
-    gulp.dest(dest)
-  ], cb)
-})
-
 gulp.task('buildinfo', [], shell.task([
   'hack/buildinfo'
 ], { verbose: true }))
 
-gulp.task('index.html', ['buildinfo', 'tiddlers', 'javascript'], shell.task([
+gulp.task('index.html', ['buildinfo'], shell.task([
   'tiddlywiki editions/public --build'
 ]))
 
-gulp.task('github.html', ['buildinfo', 'tiddlers', 'javascript'], shell.task([
-  'tiddlywiki editions/github --build'
-]))
-
-gulp.task('hack.html', ['buildinfo', 'tiddlers', 'javascript'], shell.task([
+gulp.task('hack.html', ['buildinfo'], shell.task([
   'tiddlywiki editions/hack-fs --build'
 ]))
 
@@ -89,20 +35,13 @@ gulp.task('build', [], function (cb) {
 })
 
 gulp.task('deploy', [], function (cb) {
-  runSequence('build', ['github.html', 'hack.html'], cb)
+  runSequence('build', ['hack.html'], cb)
 })
 
 // ref: https://stackoverflow.com/questions/28048029/running-a-command-with-gulp-to-start-node-js-server
 gulp.task('hack', ['build'], function () {
   nodemon({
     script: 'index.js',
-    watch: ['*']
-  }).on('restart', ['build'])
-})
-
-gulp.task('github', ['build'], function () {
-  nodemon({
-    script: 'github.js',
     watch: ['*']
   }).on('restart', ['build'])
 })
