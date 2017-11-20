@@ -1,0 +1,105 @@
+{
+  "name": "ustuehler.github.io",
+  "version": "1.0.0",
+  "description": "Personal GitHub Pages Site",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp deploy",
+    "test": "standardx",
+    "hack": "gulp hack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ustuehler/ustuehler.github.io.git"
+  },
+  "keywords": [
+    "tiddlywiki",
+    "blog"
+  ],
+  "author": "Uwe Stuehler",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/ustuehler/ustuehler.github.io/issues"
+  },
+  "homepage": "https://github.com/ustuehler/ustuehler.github.io#readme",
+  "dependencies": {
+    "@zalando/oauth2-client-js": "0.0.18",
+    "browserify": "^14.5.0",
+    "client-oauth2": "^4.1.0",
+    "github": "^12.0.1",
+    "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
+    "gulp-clean": "^0.3.2",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-shell": "^0.6.3",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.3.11",
+    "hubfs.js": "^1.0.0",
+    "jsonp": "^0.2.1",
+    "nodemon": "^1.12.1",
+    "oauth-open": "^1.0.3",
+    "pump": "^1.0.2",
+    "querystring": "^0.2.0",
+    "run-sequence": "^2.2.0",
+    "simple-oauth2": "^1.4.0",
+    "tiddlywiki": "^5.1.14",
+    "tw5-material": "git+https://git@github.com/ustuehler/tw5-material.git",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "standardx": "^1.0.3"
+  },
+  "nodemonConfig": {
+    "verbose": true,
+    "ext": "js,tid,info,multids,json",
+    "ignore": [
+      "node_modules/*",
+      "editions/public/output",
+      "editions/public/themes",
+      "editions/public/plugins",
+      "editions/hack/tiddlers",
+      "editions/hack-fs/*",
+      "editions/src/*",
+      "editions/github/*",
+      "hack/content/*",
+      "src/plugins/*/files/*"
+    ],
+    "delay": "1000"
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "root": true,
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "overrides": [
+      {
+        "files": [
+          "src/plugins/*/**/*.js"
+        ],
+        "excludedFiles": [
+          "src/plugins/*/files/**/*.js"
+        ],
+        "rules": {
+          "spaced-comment": "off"
+        }
+      }
+    ]
+  },
+  "standardx": {
+    "ignore": [
+      "tw5-material/",
+      "editions/",
+      "node_modules/",
+      "src/plugins/*/files/"
+    ]
+  }
+}

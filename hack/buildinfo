@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-set -o errexit
 
 cd "$(dirname "$0")/.."
 
-#cat >editions/material/tiddlers/content/material_
-#ssss log --stat --pretty=oneline material/v0.1.9.. -- src/themes/material >
+EDITION_PATH="${1:-editions/public}"
 
 tiddler_text() {
   awk '!body && /^$/ { body = 1; next; } body { print; }'
@@ -29,7 +27,7 @@ buildinfo_tid_body() {
   fi
 }
 
-plugin_buildinfo_tid() {
+buildinfo_tid() {
   local dir="$1"
   local vprefix="$2"
   local ver="$3"
@@ -51,61 +49,34 @@ make_buildinfo() {
   local dir="$1"
   local vprefix="$2"
   local name=$(dirname $vprefix)
+  local out="$EDITION_PATH/tiddlers/content/${name}_current.tid"
   local ver=$(jq -r .version "$dir"/plugin.info)
-  local out="hack/content/${name}_v$ver-current.tid"
-  local new="$(plugin_buildinfo_tid "$dir" "$vprefix" "$ver")"
+  local new="$(buildinfo_tid "$dir" "$vprefix" "$ver")"
 
   if [[ -f $out ]]; then
     if [[ "$(tiddler_text <<<"$new")" = "$(tiddler_text <"$out")" ]]; then
       echo "$out is already up-to-date."
       return
     else
-      echo "Updating $out."
+      echo "Writing $out."
+      tiddler_text <<<"$new" >/tmp/a
+      tiddler_text <"$out" >/tmp/b
+      diff -u /tmp/a /tmp/b
+      echo $?
     fi
-  else
-    echo "Creating $out."
   fi
 
   printf '%s' "$new" >"$out"
 }
 
-make_edition_buildinfo_tid() {
-  local out="$1"
-  local now="$(TZ=UTC date +'%Y%m%d%H%M%S')"
-  local new="$(cat <<EOS
-created: $now
-modified: $now
-title: \$:/BuildInfo
+for pluginPath in plugins/*/* themes/*/*; do
+  plugin=$(basename "$pluginPath")
+  prefix="$plugin/v"
 
-This ~TiddlyWiki edition was built on <\$view field="modified" format="date" template="DDD, MMM DDth YYYY at hh:0mm"/>.
-EOS
-)"
-
-  if [[ -f $out ]]; then
-    if [[ "$(tiddler_text <<<"$new")" == "$(tiddler_text <"$out")" ]]; then
-      echo "$out is already up-to-date."
-      return
-    else
-      echo "Updating $out."
-      echo "$new"
-      echo "---"
-      cat "$out" | tiddler_text
-    fi
-  else
-    echo "Creating $out."
+  if [[ -d $pluginPath ]]; then
+    make_buildinfo "$pluginPath" "$prefix"
   fi
+done
 
-  printf '%s' "$new" >"$out"
-}
-
-function make_plugins_buildinfo() {
-  local basedir="$1"
-
-  for plugin_dir in "$basedir"/*; do
-    plugin_name=$(basename "$plugin_dir")
-    make_buildinfo "$basedir"/$plugin_name $plugin_name/v
-  done
-}
-
-make_plugins_buildinfo src/plugins
-make_edition_buildinfo_tid hack/content/\$__BuildInfo.tid
+cp package.json $EDITION_PATH/tiddlers/files/package
+cp package-lock.json $EDITION_PATH/tiddlers/files/package-lock
