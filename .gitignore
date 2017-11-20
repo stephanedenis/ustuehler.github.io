@@ -19,8 +19,11 @@
 /index.html
 /hack.html
 
-# Draft tiddlers
-Draft of *.tid
-
 # $:/StoryList
 $__StoryList.tid
+
+# core tiddlers
+$__core_*
+
+# Draft tiddlers
+Draft of *
