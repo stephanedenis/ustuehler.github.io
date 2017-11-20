@@ -46,6 +46,7 @@
     "simple-oauth2": "^1.4.0",
     "tiddlywiki": "^5.1.14",
     "tw5-material": "git+https://git@github.com/ustuehler/tw5-material.git",
+    "tw5-plugin": "git+https://github.com/ustuehler/tw5-plugin.git",
     "url": "^0.11.0"
   },
   "devDependencies": {

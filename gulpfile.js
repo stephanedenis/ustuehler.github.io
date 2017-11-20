@@ -23,11 +23,11 @@ gulp.task('buildinfo', [], shell.task([
 ], { verbose: true }))
 
 gulp.task('index.html', ['buildinfo'], shell.task([
-  'tiddlywiki editions/public --build'
+  'node index.js editions/public --build'
 ]))
 
 gulp.task('hack.html', ['buildinfo'], shell.task([
-  'tiddlywiki editions/hack-fs --build'
+  'node index.js editions/hack-fs --build'
 ]))
 
 gulp.task('build', ['index.html'])
